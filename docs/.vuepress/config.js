@@ -43,7 +43,7 @@ export default defineUserConfig({
                     {
                         text: 'JavaScript',
                         icon: 'ph:file-js',
-                        link: '/前端基础/JavaScript',
+                        link: '/notes/JavaScript/WebSocket',
                     },
                     {
                         text: 'TypeScript',
@@ -133,6 +133,30 @@ export default defineUserConfig({
                             text: 'CSS方案',
                             icon: 'icon-park-outline:plan',
                             items: ['响应式布局方案']
+                        },
+                    ]
+                },
+                {
+                    dir: 'JavaScript', // 声明笔记的目录，相对于 `notes.dir`
+                    link: '/JavaScript/', // 声明笔记的链接前缀
+                    sidebar: [ // 配置侧边栏
+                        {
+                            text: 'JavaScript基础',
+                            icon: 'ic:baseline-dashboard',
+                            items: ['WebSocket', '内置对象方法', '原型链',
+                             '正则表达式','ECMAScript6','H5离线储存',
+                            'Promise','PWA渐进式应用','Set、Map、WeakSet和WeakMap'
+                            ]
+                        },
+                        {
+                            text: 'JavaScript问题',
+                            icon: 'icon-park-outline:file-question',
+                            items: ['笔记']
+                        },
+                        {
+                            text: 'JavaScript方案',
+                            icon: 'icon-park-outline:plan',
+                            items: ['常用方法']
                         },
                     ]
                 },
