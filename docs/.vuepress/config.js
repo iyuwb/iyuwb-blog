@@ -80,7 +80,7 @@ export default defineUserConfig({
             },
             {
                 text: '插件',
-                link: '/base/',
+                link: '/notes/插件相关/[教程]Vue封装组件并发布到npm.md',
                 icon: 'clarity:plugin-line'
             },
             {
@@ -158,6 +158,17 @@ export default defineUserConfig({
                             icon: 'icon-park-outline:plan',
                             items: ['常用方法']
                         },
+                    ]
+                },
+                {
+                    dir: '插件相关', // 声明笔记的目录，相对于 `notes.dir`
+                    link: '/插件相关/', // 声明笔记的链接前缀
+                    sidebar: [ // 配置侧边栏
+                        {
+                            text: '插件封装',
+                            icon: 'ic:baseline-dashboard',
+                            items: ['[教程]Vue封装组件并发布到npm']
+                        }
                     ]
                 },
             ]

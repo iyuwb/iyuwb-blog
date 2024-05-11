@@ -1,9 +1,11 @@
 ---
-title: [JavaScript高级程序设计]读书笔记
+title: JavaScript高级程序设计-读书笔记
 author: 耶温
-createTime: 2024/05/11 15:43:13
-permalink: /JavaScript/5lbk82gc/
+createTime: 2024/05/11 21:14:32
+permalink: /JavaScript/cc86z3zu/
 ---
+
+
 # [JavaScript 高级程序设计]读书笔记
 
 ## 语言基础
