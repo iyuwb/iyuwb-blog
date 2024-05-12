@@ -30,7 +30,9 @@ tags:
 ### 开源项目
 
 - [个人博客](https://iyuwb.github.io/home)：个人博客，使用 Vuepress 实现，记录日常问题学习看书笔记。
-- [时间轴插件封装]()：个人封装插件分享，根据数据配置，实现视频类配置项拖拽移动滚动条时间轴。
+- [时间轴插件封装](https://github.com/iyuwb/vue-time-axis)：个人封装插件分享，根据数据配置，实现视频类配置项拖拽移动滚动条时间轴。
+  - [[github]：https://github.com/iyuwb/vue-time-axis](https://github.com/iyuwb/vue-time-axis)
+  - [[npmjs]：https://www.npmjs.com/package/vuetimeaxisdemo](https://www.npmjs.com/package/vuetimeaxisdemo)
 - [画布配置插件封装]()：个人实现配置画布分享，实现元素拖拽创以及建移动缩放等功能。
 
 ### 技术文章
