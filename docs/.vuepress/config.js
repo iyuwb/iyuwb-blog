@@ -101,7 +101,7 @@ export default defineUserConfig({
                         {
                             text: 'HTML基础',
                             icon: 'ic:baseline-dashboard',
-                            items: ['HTML元素属性相关', 'HTML5新增内容']
+                            items: ['HTML-input','HTML元素属性相关', 'HTML5新增内容']
                         },
                         {
                             text: 'HTML问题',
@@ -177,6 +177,11 @@ export default defineUserConfig({
         footer: {
             message: '耶温博客|日常记录|前端学习笔记',
             copyright: 'Copyright © 2024'
+        },
+        plugins: {
+            markdownEnhance: {
+                demo: true,
+            },
         }
     }),
     bundler: viteBundler(),
