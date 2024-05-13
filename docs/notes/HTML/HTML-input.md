@@ -8,11 +8,21 @@ permalink: /HTML/4nvq330q/
 
 ## 按钮：`button`
 
-::: normal-demo button 代码演示
+- `accesskey`：快捷键操作，一般浏览器都需要搭配`alt`使用（为了避免冲突）
+
+::: normal-demo button 代码演示 （试试 `ALT`+`Q`）
 
 ```html
-<input type="button"  accesskey="s" value="按钮" />
+<input type="button"  accesskey="q" value="按钮" />
 ```
+```javascript
+document.querySelector('input').onclick = function(){
+  alert('点击')
+}
+```
+
+
+
 :::
 
 ## 复选框：`checkbox`
