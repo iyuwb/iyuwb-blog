@@ -85,8 +85,14 @@ export default defineUserConfig({
             },
             {
                 text: '其他',
-                link: '/notes/HTML/HTML元素属性相关.md',
-                icon: 'icon-park-outline:other'
+                icon: 'icon-park-outline:other',
+                items: [
+                    {
+                        text: 'Git',
+                        icon: 'teenyicons:git-outline',
+                        link: '/notes/Git/Git Commit Message规范.md',
+                    },
+                ],
             }
         ],
         // aside
@@ -168,6 +174,17 @@ export default defineUserConfig({
                             text: '插件封装',
                             icon: 'ic:baseline-dashboard',
                             items: ['[教程]Vue封装组件并发布到npm']
+                        }
+                    ]
+                },
+                {
+                    dir: 'Git', // 声明笔记的目录，相对于 `notes.dir`
+                    link: '/Git/', // 声明笔记的链接前缀
+                    sidebar: [ // 配置侧边栏
+                        {
+                            text: 'Git使用',
+                            icon: 'ic:baseline-dashboard',
+                            items: ['Git Commit Message规范']
                         }
                     ]
                 },
