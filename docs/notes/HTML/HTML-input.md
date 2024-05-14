@@ -8,7 +8,11 @@ permalink: /HTML/4nvq330q/
 
 ## 按钮：`button`
 
-- `accesskey`：快捷键操作，一般浏览器都需要搭配`alt`使用（为了避免冲突）
+### 特殊属性
+- `accesskey`：快捷键操作，一般浏览器都需要搭配`alt`使用（为了避免冲突），Mac上需要搭配`control`和`option`使用
+
+### 事件
+-   `click`：点击事件
 
 ::: normal-demo button 代码演示 （试试 `ALT`+`Q`）
 
