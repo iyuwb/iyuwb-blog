@@ -59,7 +59,7 @@ export default defineUserConfig({
                     {
                         text: 'Vue',
                         icon: 'ph:file-vue',
-                        link: '/前端框架/Vue',
+                        link: '/notes/Vue/Vue组件自我调用.md',
                     },
                     {
                         text: 'React',
@@ -163,6 +163,17 @@ export default defineUserConfig({
                             text: 'JavaScript方案',
                             icon: 'icon-park-outline:plan',
                             items: ['常用方法']
+                        },
+                    ]
+                },
+                {
+                    dir: 'Vue', // 声明笔记的目录，相对于 `notes.dir`
+                    link: '/Vue/', // 声明笔记的链接前缀
+                    sidebar: [ // 配置侧边栏
+                        {
+                            text: 'Vue方案',
+                            icon: 'icon-park-outline:plan',
+                            items: ['Vue组件自我调用']
                         },
                     ]
                 },
