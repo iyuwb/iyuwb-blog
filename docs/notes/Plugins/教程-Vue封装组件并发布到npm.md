@@ -1,12 +1,10 @@
 ---
 title: 教程-Vue封装组件并发布到npm
-tags:
-  - 插件
-  - npm
 author: 耶温
-createTime: 2024/05/11 21:17:39
-permalink: /插件相关/okrhd2w5/
+createTime: 2024/05/13 10:32:01
+permalink: /Plugins/u0qxfvz3/
 ---
+
 
 # [教程]Vue封装组件并发布到npm
 

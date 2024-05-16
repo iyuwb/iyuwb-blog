@@ -1,9 +1,10 @@
 ---
 title: Git Commit Message规范
 author: 耶温
-createTime: 2024/05/13 21:40:22
-permalink: /article/6mm2cy5r/
+createTime: 2024/05/16 17:32:38
+permalink: /Git/zx31phxv/
 ---
+
 # Git Commit Message规范
 
 # 代码初始化 `init`

@@ -80,8 +80,19 @@ export default defineUserConfig({
             },
             {
                 text: '插件',
-                link: '/notes/插件相关/[教程]Vue封装组件并发布到npm.md',
-                icon: 'clarity:plugin-line'
+                icon: 'clarity:plugin-line',
+                items: [
+                    {
+                        text: 'NPM',
+                        icon: 'ph:file-vue',
+                        link: '/notes/Plugins/教程-Vue封装组件并发布到npm.md',
+                    },
+                    {
+                        text: 'Element',
+                        icon: 'mdi:react',
+                        link: '/notes/Plugins/Element-Table表头顺序错乱问题',
+                    }
+                ],
             },
             {
                 text: '其他',
@@ -178,24 +189,34 @@ export default defineUserConfig({
                     ]
                 },
                 {
-                    dir: '插件相关', // 声明笔记的目录，相对于 `notes.dir`
-                    link: '/插件相关/', // 声明笔记的链接前缀
-                    sidebar: [ // 配置侧边栏
+                    dir: 'Plugins', 
+                    link: '/Plugins/', 
+                    sidebar: [ 
                         {
                             text: '插件封装',
                             icon: 'ic:baseline-dashboard',
-                            items: ['[教程]Vue封装组件并发布到npm']
-                        }
+                            items: ['教程-Vue封装组件并发布到npm']
+                        },
+                        {
+                            text: 'Element',
+                            icon: 'ic:baseline-dashboard',
+                            items: ['Element-Table表头顺序错乱问题']
+                        },
                     ]
                 },
                 {
-                    dir: 'Git', // 声明笔记的目录，相对于 `notes.dir`
-                    link: '/Git/', // 声明笔记的链接前缀
-                    sidebar: [ // 配置侧边栏
+                    dir: 'Git', 
+                    link: '/Git/', 
+                    sidebar: [ 
                         {
                             text: 'Git使用',
                             icon: 'ic:baseline-dashboard',
                             items: ['Git Commit Message规范']
+                        },
+                        {
+                            text: 'Git命令',
+                            icon: 'ic:baseline-dashboard',
+                            items: ['Git常用命令']
                         }
                     ]
                 },
