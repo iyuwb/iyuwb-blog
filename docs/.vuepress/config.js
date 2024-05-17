@@ -160,7 +160,7 @@ export default defineUserConfig({
                         {
                             text: 'JavaScript基础',
                             icon: 'ic:baseline-dashboard',
-                            items: ['[JavaScript高级程序设计]读书笔记','WebSocket', '内置对象方法', '原型链',
+                            items: ['JavaScript-作用域和闭包','[JavaScript高级程序设计]读书笔记','WebSocket', '内置对象方法', '原型链',
                              '正则表达式','ECMAScript6','H5离线储存',
                             'Promise','PWA渐进式应用','Set、Map、WeakSet和WeakMap'
                             ]
