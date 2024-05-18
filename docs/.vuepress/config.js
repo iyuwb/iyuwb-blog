@@ -118,7 +118,7 @@ export default defineUserConfig({
                         {
                             text: 'HTML基础',
                             icon: 'ic:baseline-dashboard',
-                            items: ['HTML-input','HTML元素属性相关', 'HTML5新增内容']
+                            items: ['HTML属性','HTML-input','HTML元素属性相关', 'HTML5新增内容']
                         },
                         {
                             text: 'HTML问题',

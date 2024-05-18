@@ -102,7 +102,16 @@ el.indeterminate = true
 
 ## 日期选择：`date`
 
+> 不支持日期选择的浏览器，会被优雅降级为普通的`<input type='text'>`
+
+### 属性
+
+-   `max`
+-   `min`
+-   `step`
+
 ### 事件
+
 
 -   `input`：日期发生改变时触发
 
@@ -115,3 +124,11 @@ el.indeterminate = true
 <input type="date" step="day"/>
 ```
 :::
+
+## 时间日期选择：`datetime-locel`
+
+> 受到浏览器限制，不建议使用
+
+属性和事件，与上`date`一致
+
+## 邮箱：`email`
