@@ -184,7 +184,7 @@ export default defineUserConfig({
                         {
                             text: 'Vue方案',
                             icon: 'icon-park-outline:plan',
-                            items: ['Vue组件自我调用']
+                            items: ['Vue组件自我调用','Vue事件总线使用']
                         },
                     ]
                 },
