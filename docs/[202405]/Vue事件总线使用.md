@@ -7,6 +7,7 @@ tags:
   - Event Bus
   - 事件总线
   - 组件
+permalink: /article/6ht5n5dl/
 ---
 # Vue事件总线使用 
 
