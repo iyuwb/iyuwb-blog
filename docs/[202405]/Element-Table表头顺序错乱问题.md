@@ -2,8 +2,9 @@
 title: Element-Table表头顺序错乱问题
 author: 耶温
 tags:
+  - BUG
   - Element
-  - UI
+  - Vue
 createTime: 2024/05/16 16:58:07
 permalink: /article/cwn7bsvt/
 ---
