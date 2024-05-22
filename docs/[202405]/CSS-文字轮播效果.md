@@ -3,10 +3,11 @@ title: CSS-文字轮播效果
 author: 耶温
 createTime: 2024/05/21 15:21:45
 tags:
-  - 文字轮播  
+  - 文字轮播
   - CSS
   - animation
   - 动画
+permalink: /article/25reh9dk/
 ---
 # CSS-文字轮播效果
 
