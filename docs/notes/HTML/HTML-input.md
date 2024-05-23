@@ -283,18 +283,168 @@ el.indeterminate = true
 
 ## 隐藏元素：`hidden`
 
+|   `hidden`    | 解释说明            |   备注   |
+| :------: | :--------------: | :--: |
+| 事件     | 无           |   无   |
+| 支持的公共属性 | `autocomplete` |   无   |
+| IDL属性  | `value`          |   无   |
+| DOM接口  | `HTMLInputElement` |    无  |
+| 方法  | 无  | 无 |
+
+`hidden` 类型的` <input>` 元素允许 Web 开发者包含用户不可见、不可改的数据，在用户提交表单时，这些数据会一并发送出。
+
+`type`为`hidden`的`<input>`元素在页面中完全不可见，并且无法操作使其可见。
+
+:::tip
+用户可以通过浏览器开发者工具看到这些隐藏元素和值
+:::
+
+```html
+
+<input type='hidden' name='artId' value='a123456' />
+```
+提交时发送数据为：`artid=a123456`
 
 
 ## 图形按钮：`image`
 
+`image` 类型的` <input>`元素用于创建图形化的提交按钮，即采用图像而非文本形式的提交按钮。
+
+
+额外属性与`submit`保持一致 
+
 ## 年月日期：`month`
+
+
+|   `month`    | 解释说明            |   备注   |
+| :------: | :--------------: | :--: |
+| 事件     | `change`、`input`           |   无   |
+| 支持的公共属性 | `autocomplete`、`list`、`readonly`、`step` |   无   |
+| IDL属性  | `value`          |   无   |
+| DOM接口  | `HTMLInputElement` |    无  |
+| 方法  | `select`、`stepDown`、`stepUp`  | 无 |
+
+年月日期`month`的值：按照 YYYY-MM 格式化过的代表年份和月份的字符串，或者为空字符串。
+
+> 不支持年月选择的浏览器，会被优雅降级为普通的`<input type='text'>`( 火狐、Safar不支持 )
+额外属性
+
+-   `max`：所接受的最新日期
+-   `min`：所接受的最早日期
+-   `step`：步骤值
+
+事件
+
+-   `input`：日期发生改变时触发
+
+-   `change`：日期发生改变并且用户关闭日期选择器之后会触发`change`事件
+
+::: normal-demo month 代码演示
+```html
+<label for="bday-month">你在哪个月出生？</label>
+<input id="bday-month" type="month" name="bday-month" value="2001-06" />
+```
+:::
 
 ## 数字：`number`
 
+|   `number`    | 解释说明            |   备注   |
+| :------: | :--------------: | :--: |
+| 事件     | `change`、`input`           |   无   |
+| 支持的公共属性 | `autocomplete`、`list`、`readonly`、`placeholder` |   无   |
+| IDL属性  | `value` 、`list`、`valueAsNumber`       |   无   |
+| DOM接口  | `HTMLInputElement` |    无  |
+| 方法  | `select`、`stepDown`、`stepUp`  | 无 |
+
+类型为`number`的输入框的值，为数字类型`Number`,可以为带小数数字。
+
+数字输入框，只允许输入数字，不同浏览器，可能会提供不同样式的步进箭头，方便调整数字。
+
+:::tip
+在移动设备中，使用`number`输入值时，会尝试使用特殊的数字键盘。
+:::
+
+额外属性
+
+-   `max`：最大值
+-   `min`：最小值
+-   `step`：步进值，每一步增加或减少值，默认为1,(将有效值限制在一系列步进值中,提交时会进行校检)
+
+IDL属性
+
+-   `valueAsNumber`：将字符串转成数字
+
+```js
+const input = document.querySelector('input')
+console.log(input.valueAsNumber)
+```
+
+::: normal-demo number 代码演示
+```html
+数字输入（只允许输入数字）：
+<form>
+    <input  type="number" name="name"  step="10" min="0" max="100"/>
+    <input type="submit" />
+</form>
+```
+:::
+
 ## 密码：`password`
 
-## 单选：`radio`
+|   `password`    | 解释说明            |   备注   |
+| :------: | :--------------: | :--: |
+| 事件     | `change`、`input`           |   无   |
+| 支持的公共属性 | `autocomplete`、`inputmode`、`maxlength`、`minlength`、`pattern`、`readonly`、`placeholder`、`required`、`size` |   无   |
+| IDL属性  | `selectionStart` 、`selectionEnd`、`selectionDirection` 、`value`      |   无   |
+| DOM接口  | `HTMLInputElement` |    无  |
+| 方法  | `select`、`setRangeText`、`setSelectionRange()`  | 无 |
 
+密码输入框，根据不同浏览器会使用`·`、`*`等替代自己输入的字符。
+
+执行模式：`inputmode`
+
+-   `none`：无虚拟键盘
+-   `text`：使用用户本地区域设置的标准文本输入键盘
+-   `decimal`：小数输入键盘，包含数字和分隔符
+-   `numeric`：数字输入键盘，所需要的就是 0 到 9 的数字
+-   `tel`：电话输入键盘，包含 0 到 9 的数字、星号（*）和井号（#）键
+-   `search`：为搜索输入优化的虚拟键盘，比如，返回键可能被重新标记为“搜索”
+-   `email`：为邮件地址输入优化的虚拟键盘，通常包含"@"符号和其他优化
+-   `url`：为邮件地址输入优化的虚拟键盘，通常包含"@"符号和其他优化
+
+自动补全：`autocomplete`
+
+-   `on`：允许浏览器或密码管理器自动填写密码字段
+
+-   `off`：不允许浏览器或密码管理器自动填写密码字段
+
+-   `current-password`：允许浏览器或密码管理器输入网站的当前密码
+
+-   `new-password`：允许浏览器或密码管理器自动输入网站的新密码 
+
+::: normal-demo password 代码演示
+```html
+账号输入：
+<form>
+    <input  type="text" name="username" />
+    密码输入：
+    <input  type="password" autocomplete="new-password"  name="password" />
+    <input type="submit" />
+</form>
+```
+:::
+
+## 单选：`radio`
+::: normal-demo radio 代码演示
+```html
+<form>
+    <input  type="radio" name="html"  value="html"/>
+    <input  type="radio" name="css"  value="css"/>
+    <input  type="radio" name="javascript"  value="javascript"/>
+    <input type="submit" />
+</form>
+```
+:::
 ## 范围滑块：`range`
 
 ## 重置按钮：`reset`
