@@ -123,7 +123,7 @@ Safar不支持该属性
 
 > 不支持火狐
 :::
-
+### `-webkit-scrollbar`
 选择器
 
 - `::-webkit-scrollbar`：整个滚动条。
