@@ -133,6 +133,7 @@ el.indeterminate = true
 :::
 
 ## 日期选择：`date`
+
 |   `date`    | 解释说明            |   备注   |
 | :------: | :--------------: | :--: |
 | 事件     | `change`、`input`            |   无   |
@@ -435,17 +436,131 @@ console.log(input.valueAsNumber)
 :::
 
 ## 单选：`radio`
+
+|   `radio`    | 解释说明            |   备注   |
+| :------: | :--------------: | :--: |
+| 事件     | `change`、`input`           |   无   |
+| 支持的通用属性 | `checked`、`value`、`required` |   无   |
+| IDL属性  | `checked` 、`value` |   无   |
+| DOM接口  | `HTMLInputElement` |    无  |
+| 方法  | `select`  | 无 | 
+
+
+CSS属性- `appearance`：删除本地元素
+```css
+input {
+  appearance: none;
+}
+```
+然后可以重新编写样式：
+
+
 ::: normal-demo radio 代码演示
+
 ```html
 <form>
-    <input  type="radio" name="html"  value="html"/>
-    <input  type="radio" name="css"  value="css"/>
-    <input  type="radio" name="javascript"  value="javascript"/>
+    <label> 
+        <input  type="radio" name="skill"  value="html"/>HTML
+    </label>
+    <label> 
+        <input  type="radio" name="skill"  value="css"/>CSS
+    </label>
+    <label> 
+        <input  type="radio" name="skill"  value="javascript"/>JavaScript
+    </label>
     <input type="submit" />
 </form>
 ```
+```css
+input[type=radio] {
+  appearance: none;
+  border-radius: 50%;
+  width: 16px;
+  height: 16px;
+  border: 2px solid #999;
+  transition: 0.2s all linear;
+  margin-right: 5px;
+  position: relative;
+  top: 4px;
+}
+
+input[type=radio]:checked {
+  border: 6px solid black;
+}
+```
 :::
+
+如上面示例：在`name`相等的一组`radio`中，只能选择和提交一个选项,如`skill=html`等
+
 ## 范围滑块：`range`
+
+|   `range`    | 解释说明            |   备注   |
+| :------: | :--------------: | :--: |
+| 事件     | `change`、`input`           |   无   |
+| 支持的通用属性 | `autocomplate`、`list`、`max`、`min`、`step` |   无   |
+| IDL属性  | `list` 、`value`、和`valueAsNumber` |   无   |
+| DOM接口  | `HTMLInputElement` |    无  |
+| 方法  | `stepDown`、`stepUp`  | 无 | 
+
+滑块的值为一个代表已选择数值的字符串，可以使用 valueAsNumber 来将此值作为数值获取。
+
+
+::: normal-demo range 代码演示
+
+```html
+
+    <div>
+        <label> 
+            <input  type="range" name="size"  value="5" min="0" max="10" step="0.1"/> size
+        </label>
+    </div>
+    <div>
+        <label> 
+            <input  type="range" name="position"  value="50" min="0" max="100"  step="1"/> position
+        </label>
+    </div>
+
+```
+:::
+`list`：输入建议
+
+::: normal-demo  list 输入建议 代码演示
+
+```html
+    <h5>选择合适的音量</h5>
+    <div>
+        <input type="range" name="size"  value="5" min="0" max="100" step="1" list="voice"/> 
+        <datalist id="voice">
+            <option value="0" label="0音量"></option>
+            <option value="25" label="25音量"></option>
+            <option value="50" label="50音量"></option>
+            <option value="75" label="75音量"></option>
+            <option value="100" label="100音量"></option>
+        </datalist>
+    </div>
+```
+```css
+datalist {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  writing-mode: vertical-lr;
+  width: 400px;
+}
+
+option {
+  padding: 0;
+}
+
+input[type="range"] {
+  width: 400px;
+  margin: 0;
+}
+```
+:::
+
+
+
 
 ## 重置按钮：`reset`
 
