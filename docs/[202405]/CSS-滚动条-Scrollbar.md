@@ -1,8 +1,12 @@
 ---
-title: CSS滚动条-Scrollbar
+title: CSS-滚动条-Scrollbar
 author: 耶温
 createTime: 2024/05/22 19:53:24
-permalink: /CSS/b3trdf6x/
+tags:
+  - Scrollbar
+  - CSS
+  - HTML
+permalink: /article/9hcky3jl/
 ---
 # CSS滚动条-Scrollbar
 
