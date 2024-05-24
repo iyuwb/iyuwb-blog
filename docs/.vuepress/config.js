@@ -3,11 +3,11 @@ import { viteBundler } from '@vuepress/bundler-vite'
 import { plumeTheme } from 'vuepress-theme-plume'
 
 export default defineUserConfig({
-    base: '/home/',
+    base: '/',
     // 请不要忘记设置默认语言
     lang: 'zh-CN',
     theme: plumeTheme({
-        hostname: 'https://iyuwb.github.io/home/',
+        hostname: 'http://yuwb.cn',
         logo: '/logo.png',
         // 作者
         avatar: {
@@ -237,7 +237,7 @@ export default defineUserConfig({
     // 标题
     title: '耶温博客',
     // 介绍
-    description: '日常笔记',
+    description: '耶温的博客，包括内容：前端笔记,问题记录,HTML,CSS,JavaScript,Vue,Node.js,NPM',
     head: [
         ['link', {
             rel: 'icon',
