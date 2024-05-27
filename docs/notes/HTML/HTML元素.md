@@ -31,12 +31,12 @@ permalink: /HTML/xxidnvf1/
 | `<col>` | 表格列元素，通常和`<colgroup>`一起使用 |`<tabel><colgroup> <col /> <col span="2" class="name"/> </colgroup></tabel>`|
 | `<colgroup>` | 表格列组元素，通常和`<col>`一起使用 |`<tabel><colgroup> <col /> <col span="2" class="name"/> </colgroup></tabel>`|
 | `<data>` | 指定内容 |`<p><data value="18">YEVIN</data></p> `|
-|  |  ||
-|  |  ||
-|  |  ||
-|  |  ||
-|  |  ||
-|  |  ||
+| `<datalist>` | 建议列表，通常和`option`一起使用 |`<datalist id="form"> <option value="name"></option> <option value="age"></option></datalist>`|
+| `<dd>` | 描述列表，表格元素 |`<dl><dt>Coffee</dt><dd>Black hot drink</dd><dt>Milk</dt> <dd>White cold drink</dd></dl>`|
+| `<del>` | 指定删除内容，文字中间会有横线 |`<p><del>This text has been deleted</del>, here is the rest of the paragraph.</p>`|
+| `<details>` | 详细信息展现，里内容默认会被隐藏 |`<details><summary>Details</summary> Something small enough to escape casual notice.</details>`|
+| `<dfn>` | 定义术语 |`dfn><abbr title="World-Wide Web">WWW</abbr></dfn>`|
+|                 |                                        |                                                              |
 |  |  ||
 |  |  ||
 |  |  ||
@@ -51,5 +51,8 @@ permalink: /HTML/xxidnvf1/
 |  |  ||
 |  |  ||
 
-
+<datalist id="form">
+  <option value="name"></option>
+  <option value="age"></option>
+</datalist>
 
