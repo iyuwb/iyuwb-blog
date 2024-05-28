@@ -6,6 +6,18 @@ permalink: /HTML/4nvq330q/
 ---
 # HTML-input
 
+## input类型
+
+## 属性
+
+`<input> `元素包含的属性包含全局的 HTML 属性和以下这些额外属性：
+|   属性   | 类型（TYPE） |   描述   |
+| :------: | :--------------: | :--: |
+| `accept`    | 	`file`   |   文件上传控件中接受的预期文件类型  |
+| `alt`    | 	`image`   |   图片类型的 alt 属性  |
+| `autocomplete` | `checkbox`、`radio`和按钮以外的所有类型  |  表单自动填充特性提示 |
+| `capture` | `file`  |  件上传控件中媒体捕获方法 |
+| `checked` | `checkbox`、`radio`  |  件上传控件中媒体捕获方法 |
 
 ## 输入框
 
