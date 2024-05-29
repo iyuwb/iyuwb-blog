@@ -6,18 +6,33 @@ permalink: /HTML/4nvq330q/
 ---
 # HTML-input
 
-## input类型
+## input类型列表
 
-## 属性
-
-`<input> `元素包含的属性包含全局的 HTML 属性和以下这些额外属性：
-|   属性   | 类型（TYPE） |   描述   |
+|   类型   | 描述 | 支持属性 |
 | :------: | :--------------: | :--: |
-| `accept`    | 	`file`   |   文件上传控件中接受的预期文件类型  |
-| `alt`    | 	`image`   |   图片类型的 alt 属性  |
-| `autocomplete` | `checkbox`、`radio`和按钮以外的所有类型  |  表单自动填充特性提示 |
-| `capture` | `file`  |  件上传控件中媒体捕获方法 |
-| `checked` | `checkbox`、`radio`  |  件上传控件中媒体捕获方法 |
+| `button` | 按钮 |   无   |
+| `checkbox` | 多选框 |   无   |
+| `color` | 颜色拾取器 |   无   |
+| `date` | 日期（年、月、日） |   无   |
+| `datetime-local` | 日期时间 |   无   |
+| `email` | 邮箱 |   无   |
+| `file` | 选择文件 |   无   |
+| `hidden` | 隐藏属性 |   无   |
+| `image` | 图形化按钮 |   无   |
+| `month` | 日期（年月） |   无   |
+| `number` | 数字 |   无   |
+| `passowrd` | 密码 |   无   |
+| `radio` | 单选 |   无   |
+| `range` | 范围滑块 |   无   |
+| `reset` | 重置按钮 |   无   |
+| `search` | 搜索输入框 |   无   |
+| `submit` | 提交按钮 |   无   |
+| `tel` | 电话号码 |   无   |
+| `text` | 文本框 |   无   |
+| `time` | 时间控件 |   无   |
+| `url` | URL  |   无   |
+| `weak` | 日期（年，周）  |   无   |
+
 
 ## 输入框
 
