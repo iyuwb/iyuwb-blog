@@ -209,14 +209,9 @@ export default defineUserConfig({
                     link: '/Git/', 
                     sidebar: [ 
                         {
-                            text: 'Git使用',
+                            text: 'Git',
                             icon: 'ic:baseline-dashboard',
-                            items: ['Git Commit Message规范']
-                        },
-                        {
-                            text: 'Git命令',
-                            icon: 'ic:baseline-dashboard',
-                            items: ['Git常用命令']
+                            items: ['Git Commit Message规范','Git常用命令']
                         }
                     ]
                 },

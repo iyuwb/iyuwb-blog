@@ -90,42 +90,44 @@ permalink: /HTML/5yqunq5r/
 | `value` | 所有类型| 表单控件的初始值 |
 | `width` | `image`| 元素宽度 |
 
+## 自动填充：`autocomplete`
+
 ## 输入建议：`list`
  
 给输入框提供一个预先定义的输入建议列表和`datalist`一起使用
 
 ```html
- <input  list="data-list" type='text'  name="输入框"  />
-    <datalist id="data-list">
-        <option value="输入建议1"></option>
-        <option value="输入建议1"></option>
-        <option value="输入建议1"></option>
-  </datalist>
+<input  list="data-list" type='text'  name="输入框"  />
+<datalist id="data-list">
+  <option value="输入建议1"></option>
+  <option value="输入建议1"></option>
+  <option value="输入建议1"></option>
+</datalist>
 ```
 ::: normal-demo date 代码演示
-  ```html
-  <input  list="data-list" type='text'  name="输入框"  />
-    <datalist id="data-list">
-        <option value="输入建议1"></option>
-        <option value="输入建议1"></option>
-        <option value="输入建议1"></option>
-  </datalist>
+```html
+<div>请点击输入<div>
+<input  list="data-list" type='text'  name="输入框"  />
+<datalist id="data-list">
+  <option value="输入建议1"></option>
+  <option value="输入建议1"></option>
+  <option value="输入建议1"></option>
+</datalist>
 ```
 :::
 
-## 自动填充：`autocomplete`
 
 ## 正则匹配：`pattern`
 规定一个表单控件的值应该匹配正则表达式,如果`value`不满足正则匹配,`patternMismatch` 将为 `true`。当为 `true` 时，该元素与 `:invalid` CSS 伪类匹配。为`false`时与 `:valid `匹配
 
 示例如下：
 ```html
-  <input type='text' value='' name="输入框"  placeholder="输入日期格式xxxx-xx-xx" pattern="\d{4}-\d{2}-\d{2}"/>
+<input type='text' value='' name="输入框"  placeholder="输入日期格式xxxx-xx-xx" pattern="\d{4}-\d{2}-\d{2}"/>
 ```
 
 ::: normal-demo date 代码演示
-  ```html
-  <input type='text' value='' name="输入框"  placeholder="输入日期格式xxxx-xx-xx" pattern="\d{4}-\d{2}-\d{2}"/>
+```html
+<input type='text' value='' name="输入框"  placeholder="输入日期格式xxxx-xx-xx" pattern="\d{4}-\d{2}-\d{2}"/>
 ```
 ```css
 input{
