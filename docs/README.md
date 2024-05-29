@@ -13,7 +13,7 @@ config:
       text: 认真生活，简单做人，用心做事。
       actions:
         -
-          text: 我的博客
+          text: 笔记
           link: /blog/
           theme: brand
         -
