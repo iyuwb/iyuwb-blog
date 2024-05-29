@@ -33,7 +33,7 @@ export default defineUserConfig({
                     {
                         text: 'HTML',
                         icon: 'ph:file-html',
-                        link: '/notes/HTML/HTML元素属性相关.md',
+                        link: '/notes/HTML/HTML元素.md',
                     },
                     {
                         text: 'CSS',
@@ -144,7 +144,7 @@ export default defineUserConfig({
                         {
                             text: 'CSS问题',
                             icon: 'icon-park-outline:file-question',
-                            items: []
+                            items: ['H5页面点击异常背景色问题']
                         },
                         {
                             text: 'CSS方案',

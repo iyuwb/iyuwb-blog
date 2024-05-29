@@ -28,7 +28,7 @@ config:
         icon:
           src: /html.svg
           wrap: true
-        link: /blog/
+        link: /notes/HTML/HTML元素.md
         details: HTML与HTML5相关笔记
       -
         title: CSS
