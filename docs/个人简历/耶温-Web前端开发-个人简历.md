@@ -3,7 +3,6 @@ title: 耶温-Web前端开发-个人简历
 author: 耶温
 createTime: 2024/05/11 15:46:24
 permalink: /article/xunkdas4/
-sticky: 999
 tags:
   - 个人简历
 ---
@@ -15,7 +14,7 @@ tags:
 - 耶温/男/1997/在职/寻找机会
 - 本科/黄淮学院/软件工程
 - 工作年限：5 年
-- 博客：https://iyuwb.github.io/home
+- 博客：[http://yuwb.cn](http://yuwb.cn/)或者[https://iyuwb.github.io/home](https://iyuwb.github.io/home)
 - 期望职位：Web 前端工程师 / 前端项目管理
 - 期望薪资：面议
 - 期望城市：西安
@@ -29,22 +28,22 @@ tags:
 
 ### 开源项目
 
-- [个人博客](https://iyuwb.github.io/home)：个人博客，使用 Vuepress 实现，记录日常问题学习看书笔记。
-- [时间轴插件封装](https://github.com/iyuwb/vue-time-axis)：个人封装插件分享，根据数据配置，实现视频类配置项拖拽移动滚动条时间轴。
-  - [[github]：https://github.com/iyuwb/vue-time-axis](https://github.com/iyuwb/vue-time-axis)
-  - [[npmjs]：https://www.npmjs.com/package/vuetimeaxisdemo](https://www.npmjs.com/package/vuetimeaxisdemo)
-- [画布配置插件封装]()：个人实现配置画布分享，实现元素拖拽创以及建移动缩放等功能。
+- [个人博客](http://yuwb.cn/)：个人博客，使用 Vuepress 实现，记录日常工作问题和学习看书笔记。
+- [时间轴插件](https://github.com/iyuwb/vue-time-axis)：个人封装插件，根据数据配置，实现视频类配置项拖拽移动滚动条时间轴。
+- [画布配置插件]()：个人实现配置画布分享，实现元素拖拽创建以及建移动缩放等功能。
+- [ElementTablePlus](https://github.com/iyuwb/element-table-plus)：数据驱动的表格组件，根据数据配置，实现多级表头等。
 
 ### 技术文章
 
-- [JavaScript 深入理解-Promise](https://iyuwb.github.io/home/JavaScript/JavaScript%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3-Promise.html)
-- [JavaScript 深入理解之原型链](https://iyuwb.github.io/home/JavaScript/JavaScript%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3-%E5%8E%9F%E5%9E%8B%E9%93%BE.html#%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E5%88%9B%E5%BB%BA%E5%AF%B9%E8%B1%A1)
-- [JavaScript 高级程序设计-读书笔记](https://iyuwb.github.io/home/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/%5BJavaScript%E9%AB%98%E7%BA%A7%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%5D%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0.html)
+- [JavaScript Promise](http://yuwb.cn/JavaScript/e6uvtokj/)
+- [JavaScript 作用域和闭包](http://yuwb.cn/JavaScript/moeno7s5/)
+- [JavaScript 深入理解原型链](http://yuwb.cn/JavaScript/6osmhhn5/)
+- [JavaScript 高级程序设计-读书笔记](http://yuwb.cn/JavaScript/cc86z3zu/)
 
 ## 技能清单
 
-- 熟练掌握vue-cli+vue-router+axios+vuex+nuxt.js等前端常用技术，可以独立进⾏各种项⽬的维护以及开发；
-- 熟练掌握JavaScript以及最新ECMAScript标准，能够根据需求独立封装并维护各种插件；
+- 熟练掌握vue-cli+vue-router+axios+vuex+nuxt.js等前端常用技术，可以独立进⾏各种项⽬的开发以及维护；
+- 熟练掌握JavaScript以及最新ECMAScript标准，能够根据需求独立封装维护各种插件组件；
 - 熟练掌握各种大屏画布配置类技术，根据配置数据实现各种大屏动态展示以及配置画布数据实现具体视频输出。
 - 扎实的 JavaScript、HTML、CSS 基础,能够利⽤ HTML5/CSS3/JavaScript 等各种 Web 技术进⾏产品界⾯开发；
 - 熟练使⽤各种框架 element-ui、vant、bootstrap 、Jquery 以及数据可视化⼯具 Echarts 开发；
@@ -52,9 +51,9 @@ tags:
 - 熟悉 ES6 基本语法,了解 webpack 常⽤配置；
 - 熟悉微信开发⼯具，能够进⾏⼩程序开发，能够使用 uni-app 完成各种小程序项目；
 - 熟悉 Git,并能够使⽤ GitLab、GitHub 、配合 Jira 完成团队合作项⽬；
-- 熟悉 VuePress，能够独立完成搭建网站。
-- 了解 Node.js，MySQL 相关，并且能够独立完成简单项目的前后端搭建。
-- 良好的代码命名及书写规范，代码冗余率底，能够快速定位并解决问题；
+- 熟悉 Linux，Nginx，云服务器，能够独立完成网站开发部署搭建和维护；
+- 熟悉 Node.js，MySQL 相关，并且能够独立完成项目的前后端搭建；
+- 丰富的项目管理经验和开发团队管理经验；
 
 ## 工作经历
 
@@ -63,7 +62,7 @@ tags:
 #### 工作描述
 
 - 负责陕西移动大数据网格中台前端项目部分（包括H5,PC），对接产品，测试，后台，数据开发等。
-- 负责虚拟主播项目的整体前端，根据具体需求，开发页面，封装插件，并且对接WEBGL渲染端，实现虚拟形象的实时渲染、换装、动作等各种操作。
+- 负责虚拟主播项目，根据具体需求，开发页面，封装插件，并且对接WEBGL渲染端，实现虚拟形象的实时渲染、换装、动作等各种操作。
 - 负责虚拟主播视频创建的整体架构以及实现，根据各种形象素材语音视频，进行配置化视频，并进行输出。
 - 负责大屏项目以及智能BI前端代码的编写，根据业务需要进行开发、维护迭代，并根据需求对功能以及插件进行重构优化调整； 
 - 与后端开发团队紧密配合,确保代码有效对接,确保项目整体的稳定性以及流程性；
@@ -133,7 +132,8 @@ tags:
 
 #### 其他项目
 
-- 移动摸排小工具
+- 陕西移动网格中台平台
+- 移动宽带光纤摸排小工具
 
 ### 中原地产 （2019年3月-2021年8月）
 
@@ -189,16 +189,16 @@ tags:
 
 #### 其他项目
 
-- House730 个人中心项目（已上线）
-- ⾹港中原官⽹（PC 与 WAP 响应式）重构更新 （已上线）
-- House730 项⽬ Google Tag Manager 埋点相关
+- House730 个人中心项目
+- ⾹港中原官⽹（PC 与 WAP 响应式）重构更新 
+- House730 整体项⽬ Google Tag Manager 埋点相关
 - 中原相关项⽬ GrowingIO 埋点统计
 - 中原官⽹（H5）版本迭代
 - 中原直聊项⽬（UNI-APP，兼容 h5 与微信小程序）（已废弃未上线）
 
 ## 个人评价
 
-良好的学习能力，适应能力强，责任心强。
+优秀的学习能力，适应能力强，责任心强。
 热爱喜欢编程，喜欢学习新技术，具有良好的逻辑思维。
 具备较好的沟通能力、团队协作精神、学习能力以及独立解决问题能力。
 

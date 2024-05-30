@@ -13,8 +13,12 @@ config:
       text: 认真生活，简单做人，用心做事。
       actions:
         -
-          text: 笔记
+          text: 笔  记
           link: /blog/
+          theme: brand
+        -
+          text: 简  历
+          link: /article/xunkdas4/
           theme: brand
         -
           text: Github
@@ -89,7 +93,7 @@ config:
         description: HTML，CSS，JavaScript，TypeScript
       -
         title: 框架
-        description: Vue，React，UNI-APP，jQuery
+        description: Vue，React，uni-app，jQuery
       -
         title: 组件库
         description: Element，Vant，Ant Design，Bootstrap
@@ -98,7 +102,7 @@ config:
         description: Echarts，Baidu Map，Google Map
       -
         title: 其他
-        description: Node.js，Python，MySQL，微信小程序。
+        description: Python，Node.js，MySQL，Linux，Nginx，网站部署维护等
   -
     type: text-image
     title: 工作经验
