@@ -219,7 +219,7 @@ export default defineUserConfig({
         },
         // 页脚
         footer: {
-            message: '耶温学习笔记|日常记录|前端学习笔记',
+            message: '耶温笔记|日常记录|前端学习',
             copyright: 'Copyright © 2024'
         },
         plugins: {
@@ -230,9 +230,9 @@ export default defineUserConfig({
     }),
     bundler: viteBundler(),
     // 标题
-    title: '耶温学习笔记',
+    title: '耶温笔记',
     // 介绍
-    description: '耶温的学习笔记，包括内容：前端笔记,问题记录,HTML,CSS,JavaScript,Vue,Node.js,NPM',
+    description: '耶温学习笔记，包括内容：前端笔记,问题记录,HTML,CSS,JavaScript,Vue,Node.js,NPM',
     head: [
         ['link', {
             rel: 'icon',
