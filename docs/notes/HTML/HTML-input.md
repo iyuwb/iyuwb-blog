@@ -8,40 +8,44 @@ permalink: /HTML/4nvq330q/
 
 ## input类型列表
 
-|   类型   | 描述 | 支持属性 |
+所有类型都支持的属性：全局属性 和 `type`、`name`、`value`、`disabled`、`form`
+
+|   类型   | 描述 | 支持属性(除上述属性外的额外属性) |
 | :------: | :--------------: | :--: |
-| `button` | 按钮 |   无   |
-| `checkbox` | 多选框 |   无   |
-| `color` | 颜色拾取器 |   无   |
-| `date` | 日期（年、月、日） |   无   |
-| `datetime-local` | 日期时间 |   无   |
-| `email` | 邮箱 |   无   |
-| `file` | 选择文件 |   无   |
-| `hidden` | 隐藏属性 |   无   |
-| `image` | 图形化按钮 |   无   |
-| `month` | 日期（年月） |   无   |
-| `number` | 数字 |   无   |
-| `passowrd` | 密码 |   无   |
-| `radio` | 单选 |   无   |
-| `range` | 范围滑块 |   无   |
+| `button` | 按钮 | `formaction`、`formenctype`、`formmethod`、`formnovalidate`、`formtarget` |
+| `checkbox` | 多选框 |  `checked`、`required`    |
+| `color` | 颜色拾取器 |  `autocomplete`、`list`  |
+| `date` | 日期（年、月、日） |   `autocomplete`、`list` 、`max`、`min` 、`readonly` 、`required`、`step`|
+| `datetime-local` | 日期时间 |  `autocomplete`、`list` 、`max`、`min` 、`readonly` 、`required`、`step` |
+| `email` | 邮箱 |   `autocomplete`、`list` 、`maxlength`、`minlength`、`multiple` 、`pattern` 、`placeholder`、`readonly` 、`required`、`size` |
+| `file` | 选择文件 |   `accept`、`autocomplete`、`capture`、`list` 、`multiple` 、`readonly` 、`required` |
+| `hidden` | 隐藏属性 |   `autocomplete`   |
+| `image` | 图形化按钮 |  `alt`、`src`、`formaction`、`formenctype`、`formmethod`、`formnovalidate`、`formtarget`   |
+| `month` | 日期（年月） | `autocomplete`、`list` 、`max`、`min` 、`readonly` 、`required`、`step`   |
+| `number` | 数字 |  `autocomplete`、`list` 、`max`、`min`、`placeholder`、`readonly` 、`required`、`step`   |
+| `password` | 密码 |  `autocomplete` 、`maxlength`、`minlength`、`pattern`、`placeholder`、`readonly` 、`required`、`size` |
+| `radio` | 单选 | `checked`、`required` |
+| `range` | 范围滑块 |  `autocomplete`、`list` 、`max`、`min`、`step`    |
 | `reset` | 重置按钮 |   无   |
-| `search` | 搜索输入框 |   无   |
-| `submit` | 提交按钮 |   无   |
-| `tel` | 电话号码 |   无   |
-| `text` | 文本框 |   无   |
-| `time` | 时间控件 |   无   |
-| `url` | URL  |   无   |
-| `weak` | 日期（年，周）  |   无   |
+| `search` | 搜索输入框 |    `autocomplete`、`dirname`、`list` 、`maxlength`、`minlength`、`pattern` 、`placeholder`、`readonly` 、`required`、`size`    |
+| `submit` | 提交按钮 | `formaction`、`formenctype`、`formmethod`、`formnovalidate`、`formtarget` |
+| `tel` | 电话号码 |  `autocomplete`、`list` 、`maxlength`、`minlength`、`pattern` 、`placeholder`、`readonly` 、`required`、`size`  |
+| `text` | 文本框 |   `autocomplete`、`dirname`、`list` 、`maxlength`、`minlength`、`pattern` 、`placeholder`、`readonly` 、`required`、`size`  |
+| `time` | 时间控件 |    `autocomplete`、`list` 、`max`、`min` 、`readonly` 、`required`、`step`  |
+| `url` | URL  |   `autocomplete`、`list` 、`maxlength`、`minlength`、`pattern` 、`placeholder`、`readonly` 、`required`、`size`  |
+| `week` | 日期（年，周）  |    `autocomplete`、`list` 、`max`、`min` 、`readonly` 、`required`、`step`    |
 
 
 ## 输入框
 
 ### 邮箱：`email`
 
+支持的属性：全局属性 和 `type`、`name`、`value`、`disabled`、`form`与 下表 额外属性
+
 |   `email`    | 解释说明            |   备注   |
 | :------: | :--------------: | :--: |
 | 事件     | `change`、`input`            |   无   |
-| 支持的通用属性 | `autocomplete`、`list`、`maxlength`、`minlength`、`multiple`、`name`、`pattern`、`placeholder`、`readonly`、`required`、`size` 和 `type`   |   无   |
+| 额外属性 | `autocomplete`、`list` 、`maxlength`、`minlength`、`multiple` 、`pattern` 、`placeholder`、`readonly` 、`required`、`size` |   无   |
 | IDL属性  | `list`、`value`          |   无   |
 | DOM接口  | `HTMLInputElement` |    无  |
 | 方法  | `select()` | 无 |
@@ -103,10 +107,12 @@ permalink: /HTML/4nvq330q/
 
 ### 隐藏元素：`hidden`
 
+支持的属性：全局属性 和 `type`、`name`、`value`、`disabled`、`form`与 下表 额外属性
+
 |   `hidden`    | 解释说明            |   备注   |
 | :------: | :--------------: | :--: |
 | 事件     | 无           |   无   |
-| 支持的公共属性 | `autocomplete` |   无   |
+| 额外属性 | `autocomplete` |   无   |
 | IDL属性  | `value`          |   无   |
 | DOM接口  | `HTMLInputElement` |    无  |
 | 方法  | 无  | 无 |
@@ -127,13 +133,14 @@ permalink: /HTML/4nvq330q/
 
 
 
-
 ### 数字：`number`
+
+支持的属性：全局属性 和 `type`、`name`、`value`、`disabled`、`form`与 下表 额外属性
 
 |   `number`    | 解释说明            |   备注   |
 | :------: | :--------------: | :--: |
 | 事件     | `change`、`input`           |   无   |
-| 支持的公共属性 | `autocomplete`、`list`、`readonly`、`placeholder` |   无   |
+| 额外属性 | `autocomplete`、`list` 、`max`、`min`、`placeholder`、`readonly` 、`required`、`step` |   无   |
 | IDL属性  | `value` 、`list`、`valueAsNumber`       |   无   |
 | DOM接口  | `HTMLInputElement` |    无  |
 | 方法  | `select`、`stepDown`、`stepUp`  | 无 |
@@ -173,10 +180,12 @@ console.log(input.valueAsNumber)
 
 ### 密码：`password`
 
+支持的属性：全局属性 和 `type`、`name`、`value`、`disabled`、`form`与 下表 额外属性
+
 |   `password`    | 解释说明            |   备注   |
 | :------: | :--------------: | :--: |
 | 事件     | `change`、`input`           |   无   |
-| 支持的公共属性 | `autocomplete`、`inputmode`、`maxlength`、`minlength`、`pattern`、`readonly`、`placeholder`、`required`、`size` |   无   |
+| 额外属性 | `autocomplete` 、`maxlength`、`minlength`、`pattern`、`placeholder`、`readonly` 、`required`、`size` |   无   |
 | IDL属性  | `selectionStart` 、`selectionEnd`、`selectionDirection` 、`value`      |   无   |
 | DOM接口  | `HTMLInputElement` |    无  |
 | 方法  | `select`、`setRangeText`、`setSelectionRange()`  | 无 |
@@ -218,13 +227,15 @@ console.log(input.valueAsNumber)
 
 ### 搜索：`search`
 
+支持的属性：全局属性 和 `type`、`name`、`value`、`disabled`、`form`与 下表 额外属性
+
 |   `search`    | 解释说明            |   备注   |
 | :------: | :--------------: | :--: |
 | 事件     | `change`、`input`           |   无   |
-| 支持的通用属性 | `autocomplate`、`list`、`maxlength`、`minlength`、`pattern` 、`placeholder` 、`required` 、`size` |   无   |
+| 额外属性 | `autocomplete`、`dirname`、`list` 、`maxlength`、`minlength`、`pattern` 、`placeholder`、`readonly` 、`required`、`size`|   无   |
 | IDL属性  |`value` |   无   |
 | DOM接口  | `HTMLInputElement` |    无  |
-| 方法  |`select()`、`setRangeText()`、`setSelectionRange()` | 无 | 
+| 方法  |`select()`、`setRangeText()`、`setSelectionRange()` | 无 |
 
 搜索类型的输入框，功能上和Text输入框一致，浏览器不同，可能会有不同的样式和优化。`value`为搜索字符串。
 
@@ -255,13 +266,15 @@ results 属性是一个数字值（仅受 Safari 支持），可让你覆盖要�
 
 ### 电话号码：`tel`
 
+支持的属性：全局属性 和 `type`、`name`、`value`、`disabled`、`form`与 下表 额外属性
+
 |   `tel`    | 解释说明            |   备注   |
 | :------: | :--------------: | :--: |
 | 事件     | `change`、`input`           |   无   |
-| 支持的通用属性 | `autocomplate`、`list`、`maxlength`、`minlength`、`pattern` 、`placeholder` 、`readonly` 、`size` |   无   |
+| 额外属性 |`autocomplete`、`list` 、`maxlength`、`minlength`、`pattern` 、`placeholder`、`readonly` 、`required`、`size`|   无   |
 | IDL属性  |`list`、`value`、`selectionStart`、`selectionEnd`、`selectionDirection` |   无   |
 | DOM接口  | `HTMLInputElement` |    无  |
-| 方法  |`select()`、`setRangeText()`、`setSelectionRange()` | 无 | 
+| 方法  |`select()`、`setRangeText()`、`setSelectionRange()` | 无 |
 
 
 `tel`类型的 输入框 和`text`功能上基本一致，但是手机上，可能会提供专门的电话号码输入键盘。
@@ -280,13 +293,15 @@ results 属性是一个数字值（仅受 Safari 支持），可让你覆盖要�
 
 ### 文本：`text`
 
+支持的属性：全局属性 和 `type`、`name`、`value`、`disabled`、`form`与 下表 额外属性
+
 |   `text`    | 解释说明            |   备注   |
 | :------: | :--------------: | :--: |
 | 事件     | `change`、`input`           |   无   |
-| 支持的通用属性 | `autocomplate`、`list`、`maxlength`、`minlength`、`pattern` 、`placeholder` 、`readonly` 、`size` |   无   |
+| 额外属性 | `autocomplete`、`dirname`、`list` 、`maxlength`、`minlength`、`pattern` 、`placeholder`、`readonly` 、`required`、`size` |   无   |
 | IDL属性  |`list`、`value`、`selectionStart`、`selectionEnd`、`selectionDirection` |   无   |
 | DOM接口  | `HTMLInputElement` |    无  |
-| 方法  |`select()`、`setRangeText()`、`setSelectionRange()` | 无 | 
+| 方法  |`select()`、`setRangeText()`、`setSelectionRange()` | 无 |
 
 `value`值，为输入框输入字符串，可以通过`HTMLInputElement.value`获取。
 ```js
@@ -306,13 +321,15 @@ console.log(el.value)
 
 ### URL：`url`
 
+支持的属性：全局属性 和 `type`、`name`、`value`、`disabled`、`form`与 下表 额外属性
+
 |   `url`    | 解释说明            |   备注   |
 | :------: | :--------------: | :--: |
 | 事件     | `change`、`input`           |   无   |
-| 支持的通用属性 | `autocomplate`、`list`、`readonly` 、`size`、`step` |   无   |
+| 额外属性 | `autocomplete`、`list` 、`maxlength`、`minlength`、`pattern` 、`placeholder`、`readonly` 、`required`、`size` |   无   |
 | IDL属性  |`value`、`valueAsDate`、`valueAsNumber `、`list` |   无   |
 | DOM接口  | `HTMLInputElement` |    无  |
-| 方法  |`select()`、`stepUp()`、`stepDown()` | 无 | 
+| 方法  |`select()`、`stepUp()`、`stepDown()` | 无 |
 
 
 当元素非空值提交时，会自动验证当前URL是否合法。合法URL为：`https://baidu.com`
@@ -336,10 +353,12 @@ console.log(el.value)
 
 ### 日期选择：`date`
 
+支持的属性：全局属性 和 `type`、`name`、`value`、`disabled`、`form`与 下表 额外属性
+
 |   `date`    | 解释说明            |   备注   |
 | :------: | :--------------: | :--: |
 | 事件     | `change`、`input`            |   无   |
-| 支持的常用属性 | `autocomplete`、`list`    |   无   |
+| 额外属性 | `autocomplete`、`list` 、`max`、`min` 、`readonly` 、`required`、`step`   |   无   |
 | IDL属性  | `list`、`value`          |   无   |
 | DOM接口  | `HTMLInputElement` |    无  |
 | 方法  | `select()` | 无 |
@@ -377,11 +396,13 @@ console.log(el.value)
 
 ### 年月日期：`month`
 
+支持的属性：全局属性 和 `type`、`name`、`value`、`disabled`、`form`与 下表 额外属性
+
 
 |   `month`    | 解释说明            |   备注   |
 | :------: | :--------------: | :--: |
 | 事件     | `change`、`input`           |   无   |
-| 支持的公共属性 | `autocomplete`、`list`、`readonly`、`step` |   无   |
+| 额外属性 | `autocomplete`、`list` 、`max`、`min` 、`readonly` 、`required`、`step` |   无   |
 | IDL属性  | `value`          |   无   |
 | DOM接口  | `HTMLInputElement` |    无  |
 | 方法  | `select`、`stepDown`、`stepUp`  | 无 |
@@ -410,13 +431,15 @@ console.log(el.value)
 
 ### 时间：`time`
 
+支持的属性：全局属性 和 `type`、`name`、`value`、`disabled`、`form`与 下表 额外属性
+
 |   `time`    | 解释说明            |   备注   |
 | :------: | :--------------: | :--: |
 | 事件     | `change`、`input`           |   无   |
-| 支持的通用属性 | `autocomplate`、`list`、`readonly` 、`size`、`step` |   无   |
+| 额外属性 | `autocomplete`、`list` 、`max`、`min` 、`readonly` 、`required`、`step` |   无   |
 | IDL属性  |`value`、`valueAsDate`、`valueAsNumber `、`list` |   无   |
 | DOM接口  | `HTMLInputElement` |    无  |
-| 方法  |`select()`、`stepUp()`、`stepDown()` | 无 | 
+| 方法  |`select()`、`stepUp()`、`stepDown()` | 无 |
 
 值为表示时间的字符串。(`15:20`or`15:20:21`)
 
@@ -463,13 +486,15 @@ document.querySelector('input').onchange= function(){
 
 ### 周：`week`
 
+支持的属性：全局属性 和 `type`、`name`、`value`、`disabled`、`form`与 下表 额外属性
+
 |   `week`    | 解释说明            |   备注   |
 | :------: | :--------------: | :--: |
 | 事件     | `change`、`input`           |   无   |
-| 支持的通用属性 | `autocomplate`、`list`、`readonly` 、`step` |   无   |
+| 额外属性 | `autocomplete`、`list` 、`max`、`min` 、`readonly` 、`required`、`step` |   无   |
 | IDL属性  |`value`、`valueAsDate`、`valueAsNumber `、`list` |   无   |
 | DOM接口  | `HTMLInputElement` |    无  |
-| 方法  |`select()`、`stepUp()`、`stepDown()` | 无 | 
+| 方法  |`select()`、`stepUp()`、`stepDown()` | 无 |
 
 值为表示日期和周数的字符串，eg:`2017-W01`。表示2017年第一周
 
@@ -486,10 +511,12 @@ document.querySelector('input').onchange= function(){
 
 ### 按钮：`button`
 
+支持的属性：全局属性 和 `type`、`name`、`value`、`disabled`、`form`与 下表 额外属性
+
 | `button`     | 解释说明            |   备注   |
 | :------: | :--------------: | :--: |
 | 事件     | `click`            |   无   |
-| 支持的通用属性 | `type`、`value `     |   无   |
+| 额外属性 | `autocomplete`、`list` 、`max`、`min` 、`readonly` 、`required`、`step`    |   无   |
 | IDL属性  | `value`            |   无   |
 | DOM接口  | `HTMLInputElement` |    无  |
 | 方法  | 无 | 无 |
@@ -527,13 +554,15 @@ document.querySelector('input').onclick = function(){
 
 ### 重置按钮：`reset`
 
+支持的属性：全局属性 和 `type`、`name`、`value`、`disabled`、`form`与 下表 额外属性
+
 |   `reset`    | 解释说明            |   备注   |
 | :------: | :--------------: | :--: |
 | 事件     | `click`         |   无   |
-| 支持的常用属性 | `type`、`value` |   无   |
+| 额外属性 | 无  |   无   |
 | IDL属性  | `value` |   无   |
 | DOM接口  | `HTMLInputElement` |    无  |
-| 方法  | 无  | 无 | 
+| 方法  | 无  | 无 |
 
 重置按钮，将表单中的所有输入重置为初始值，元素的`value`为按钮展示名称
 
@@ -574,14 +603,16 @@ document.querySelector('input').onclick = function(){
 
 ### 提交按钮：`submit`
 
+支持的属性：全局属性 和 `type`、`name`、`value`、`disabled`、`form`与 下表 额外属性
+
 
 |   `submit`    | 解释说明            |   备注   |
 | :------: | :--------------: | :--: |
 | 事件     | `click`          |   无   |
-| 支持的通用属性 | `type`、`value`|   无   |
+| 额外属性 | `formaction`、`formenctype`、`formmethod`、`formnovalidate`、`formtarget`|   无   |
 | IDL属性  |`value` |   无   |
 | DOM接口  | `HTMLInputElement` |    无  |
-| 方法  |无 | 
+| 方法  |无 ||
 
 表单提交按钮，`value`值为按钮名称。
 
@@ -629,10 +660,13 @@ document.querySelector('input').onclick = function(){
 ## 选择
 
 ### 复选框：`checkbox`
+
+支持的属性：全局属性 和 `type`、`name`、`value`、`disabled`、`form`与 下表 额外属性
+
 | `checkbox`    | 解释说明            |   备注   |
 | :------: | :--------------: | :--: |
 | 事件     | `change`、`input`            |   无   |
-| 支持的常用属性 | `chceked`    |   无   |
+| 额外属性 | `checked`、`required`  |   无   |
 | IDL属性  | `chceked`、 `indeterminate`、`value`          |   无   |
 | DOM接口  | `HTMLInputElement` |    无  |
 | 方法  | `select()` | 无 |
@@ -684,12 +718,14 @@ el.indeterminate = true
 
 
 
-
 ### 颜色选择：`color`
+
+支持的属性：全局属性 和 `type`、`name`、`value`、`disabled`、`form`与 下表 额外属性
+
 |   `color`    | 解释说明            |   备注   |
 | :------: | :--------------: | :--: |
 | 事件     | `change`、`input`            |   无   |
-| 支持的公共属性 | `autocomplete`、`list`    |   无   |
+| 额外属性 | `autocomplete`、`list`    |   无   |
 | IDL属性  | `list`、`value`          |   无   |
 | DOM接口  | `HTMLInputElement` |    无  |
 | 方法  | `select()` | 无 |
@@ -722,16 +758,17 @@ el.indeterminate = true
 ```
 :::
 
-
 ### 单选：`radio`
+
+支持的属性：全局属性 和 `type`、`name`、`value`、`disabled`、`form`与 下表 额外属性
 
 |   `radio`    | 解释说明            |   备注   |
 | :------: | :--------------: | :--: |
 | 事件     | `change`、`input`           |   无   |
-| 支持的通用属性 | `checked`、`value`、`required` |   无   |
+| 额外属性 | `checked`、`required` |   无   |
 | IDL属性  | `checked` 、`value` |   无   |
 | DOM接口  | `HTMLInputElement` |    无  |
-| 方法  | `select`  | 无 | 
+| 方法  | `select`  | 无 |
 
 
 CSS属性- `appearance`：删除本地元素
@@ -782,13 +819,15 @@ input[type=radio]:checked {
 
 ### 滑块：`range`
 
+支持的属性：全局属性 和 `type`、`name`、`value`、`disabled`、`form`与 下表 额外属性
+
 |   `range`    | 解释说明            |   备注   |
 | :------: | :--------------: | :--: |
 | 事件     | `change`、`input`           |   无   |
-| 支持的通用属性 | `autocomplate`、`list`、`max`、`min`、`step` |   无   |
+| 额外属性 | `autocomplete`、`list` 、`max`、`min`、`step` |   无   |
 | IDL属性  | `list` 、`value`、和`valueAsNumber` |   无   |
 | DOM接口  | `HTMLInputElement` |    无  |
-| 方法  | `stepDown`、`stepUp`  | 无 | 
+| 方法  | `stepDown`、`stepUp`  | 无 |
 
 滑块的值为一个代表已选择数值的字符串，可以使用 valueAsNumber 来将此值作为数值获取。
 
@@ -851,11 +890,12 @@ input[type="range"] {
 
 ### 文件选择：`file`
 
+支持的属性：全局属性 和 `type`、`name`、`value`、`disabled`、`form`与 下表 额外属性
+
 |   `file`    | 解释说明            |   备注   |
 | :------: | :--------------: | :--: |
 | 事件     | `change`、`input`            |   无   |
-| 支持的公共属性 | `required` |   无   |
-| 附加属性 | `accpet` 、`capture`、`multiple`|   无   |
+| 额外属性 | `accept`、`autocomplete`、`capture`、`list` 、`multiple` 、`readonly` 、`required` |   无   |
 | IDL属性  | `files`、`value`          |   无   |
 | DOM接口  | `HTMLInputElement` |    无  |
 | 方法  | `select()` | 无 |
@@ -892,7 +932,6 @@ input[type="range"] {
 -   `lastModified`：文件最后一次修改时间
 -   `size`：文件大小，单位为字节
 -   `type`：文件的MIME类型
-
 
 
 

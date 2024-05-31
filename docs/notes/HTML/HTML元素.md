@@ -15,7 +15,7 @@ permalink: /HTML/xxidnvf1/
 | `<abbr>`|缩写词 |
 | `<address>`|联系信息 |
 | `<abbr>`|缩写词 |
-| `<area>` |定于区域，关联查链接。仅在`<map>` |
+| `<area>` |定于区域，关联超链接。仅在`<map>`中使用 |
 | `<article>` | 语义化元素，独立结构 |
 | `<b>` | 加粗，强调  |
 | `<base>` | 指定文档根URL |
@@ -115,4 +115,3 @@ permalink: /HTML/xxidnvf1/
 |`var`|表示变量的元素|
 |`video`|视频嵌入元素|
 |`wbr`|换行机会元素|
-

@@ -62,17 +62,18 @@ permalink: /HTML/5yqunq5r/
 | `accept`    | 	`file`   |   文件上传控件中接受的预期文件类型  |
 | `alt`    | 	`image`   |   图片类型的 alt 属性  |
 | `autocomplete` | `checkbox`、`radio`和按钮以外的所有类型  |  表单自动填充特性提示 |
-| `capture` | `file`  |  件上传控件中媒体捕获方法 |
-| `checked` | `checkbox`、`radio`  |  文件上传控件中媒体捕获方法 |
+| `capture` | `file`  | 文件上传控件中媒体捕获方法 |
+| `checked` | `checkbox`、`radio`  | 是否选中 |
 | `dirname` | `search`、`text` | 表单字段的名称，用于在提交表单时发送元素的方向性 |
 | `disabled` | 所有类型 | 是否禁用 |
 | `form` | 所有类型 | 在`<input>`控件联系到表单元素 |
 | `formaction` | `image`、`submit` | 提交表单的URL地址 |
 | `formenctype` | `image`、`submit` | 提交表单时使用的编码类型|
-| `formnovalidate` | `image`、`submit` | 提交时是否验证表单控件 |
-| `formtarget` | 所有类型 | 提交表单时的浏览上下文|
+| `formmethod` | `image`、`submit` | 提交表单时所使用的HTTP方法 |
+| `formnovalidate` | `image`、`submit` | 提交时是否跳过验证表单控件 |
+| `formtarget` | `image`、`submit` | 提交表单时的浏览上下文|
 | `height` | `image` | 元素高度|
-| `list` |`hidden`、`password`、`checkbox`、`radio`和按钮以外的所有类型 | 输入建议|
+| `list` |`hidden`、`password`、`checkbox`、`radio`和按钮以外的所有类型 | 输入建议，和`<datalist>`的`id`属性绑定 |
 | `max` |`date`、`month`、`week`、`time`、`datatime-local`、`number`、`range`  | 最大值|
 |`maxlength` | `text`、`search` 、`url` 、`tel` 、`email` 、`password` | `value`的最大字符长度|
 | `min` |`date`、`month`、`week`、`time`、`datatime-local`、`number`、`range`  | 最小值|
@@ -80,7 +81,7 @@ permalink: /HTML/5yqunq5r/
 | `multiple` | `email`、`file` | 布尔值，是否允许多选|
 | `name` | 所有类型 | 表单的控件名称，提交时作为键值对的键一起提交|
 | `pattern` | `text`、`search`、`url`、`tel`、`email`、`password` |正则匹配|
-| `placeholder` | `text`、`search`、`url`、`tel`、`email`、`password` |当没有值设定时，出现在表单控件上的文字|
+| `placeholder` | `text`、`search`、`url`、`tel`、`email`、`password`、`number` |当没有值设定时，出现在表单控件上的文字|
 | `readonly` | `hidden`、`range`、`color`、`checkbox`、`radio` 和按钮以外的所有类型 | 布尔值。能否编辑值|
 | `required` | `hidden`、`range`、`color` 和按钮以外的所有类型 | 布尔值，是否必填|
 | `size` | `text`、`search`、`url`、`tel`、`email`、`password`| 控件的尺寸 |
@@ -93,7 +94,7 @@ permalink: /HTML/5yqunq5r/
 ## 自动填充：`autocomplete`
 
 ## 输入建议：`list`
- 
+
 给输入框提供一个预先定义的输入建议列表和`datalist`一起使用
 
 ```html
