@@ -123,12 +123,12 @@ export default defineUserConfig({
                         {
                             text: 'HTML问题',
                             icon: 'icon-park-outline:file-question',
-                            items: ['H5端REM适配方案', 'Canvas实现两张图片合成']
+                            items: ['移动端H5-相关问题']
                         },
                         {
                             text: 'HTML方案',
                             icon: 'icon-park-outline:plan',
-                            items: ['H5相关问题']
+                            items: ['移动端H5-响应布局', 'Canvas-图片合成']
                         },
                     ]
                 },
@@ -236,7 +236,11 @@ export default defineUserConfig({
     head: [
         ['link', {
             rel: 'icon',
-            href: 'icon.png'
+            href: '/icon.png'
+        }],
+        ['link', {
+            rel: 'stylesheet',
+            href: '/index.css'
         }]
     ],
 })
