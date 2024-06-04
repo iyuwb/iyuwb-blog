@@ -94,56 +94,106 @@ Document.readyState 属性发生改变时，会触发 readystatechange 事件。
 
 ### reset
 
+当表单被重置时，触发事件
+
 ### submit
+
+当表单被提交时，触发事件
+
+
+## HTMLInputElement
 
 ### change
 
+当控件中元素值改变时，触发事件
+
 ### invalid
 
-### abort
-
-### canplay
+当控件中值不符合校验时，触发事件
 
 
 ## HTMLMediaElement
 
 ### abort
 
+资源没有被完全加载时，触发事件
+
 ### canplay
+
+可以播放媒体文件时，触发事件（可能还没有加载足够的数据来播放媒体直到其结束，即后续可能需要停止以进一步缓冲内容）
 
 ### canplaythrough
 
+可以播放媒体文件时，触发事件（媒体文件已经全部加载）
+
 ### durationchange
+
+`duration`属性更新时，触发事件。
 
 ### emptied
 
+当媒体资源为空时，触发事件（断网或者，媒体文件被移除）
+
 ### error
+
+错误（如网络连接错误）导致无法加载资源的时，触发事件
 
 ### loadeddata
 
+事件在媒体当前播放位置的视频帧（通常是第一帧）加载完成后，触发事件
+
 ### loadeddata-data
+
+在元数据（metadata）被加载完成后，触发事件
 
 ### loadstart
 
+事件当浏览器开始载入一个资源文件时，触发事件
+
 ### play
+
+当 `paused` 属性由 `true` 转换为 fa`lse 时，触发事件
 
 ### playing
 
+在播放准备开始时（之前被暂停或者由于数据缺乏被暂缓），触发事件
+
 ### progress
+
+进度，加载一个资源的时候周期性触发事件
+
+
+### ratechange
+
+播放速率发生变化时，触发事件。
 
 ### seeked
 
+在用户已移动/跳跃到媒体的新播放位置时，触发事件
+
 ### seeking
+
+在用户开始移动/跳跃到媒体的新播放位置时，触发事件
 
 ### stalled
 
+获取媒体数据但数据意外未返回时，触发事件
+
 ### suspend
+
+当媒体数据加载暂停时，触发事件。
 
 ### timeupdate
 
+当currentTime更新时，触发事件。
+
 ### volumechange
 
+当音量调整时，触发事件
+
 ### waiting
+
+由于暂时缺少数据而停止播放时，触发事件。
 
 ## Window
 
