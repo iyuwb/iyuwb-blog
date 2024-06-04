@@ -9,8 +9,9 @@ permalink: /HTML/xxidnvf1/
 
 ## HTML元素列表
 
-|      | 解释说明            |  
+|  标签   | 解释说明            |  
 | :------: | :--------------: | 
+|`<!DOCTYPE>`|声明当前HTML文档类型 |
 |`<a>`|超链接 |
 | `<abbr>`|缩写词 |
 | `<address>`|联系信息 |
@@ -115,3 +116,49 @@ permalink: /HTML/xxidnvf1/
 |`var`|表示变量的元素|
 |`video`|视频嵌入元素|
 |`wbr`|换行机会元素|
+
+## 基础
+
+### `<!DOCTYPE>`
+
+定义HTML文档类型。
+
+### `<html> ... </html>` 
+
+HTML 文档
+
+### `<title> ... </title>` 
+文档标题
+
+### `<body> ... </body>` 
+文档主体
+
+### `<h1> ... </h1> to <h6> ... </h6>` 
+HTML内容标题
+
+### `<p> ... </p>`
+段落
+
+### `<br/>`
+换行
+
+### `<hr/>`
+隔离线，水平线
+
+### `<!-- ... -->`
+注释，网页不会显示
+
+```html
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+
+```
