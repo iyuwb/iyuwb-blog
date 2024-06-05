@@ -7,7 +7,7 @@ export default defineUserConfig({
     // 请不要忘记设置默认语言
     lang: 'zh-CN',
     theme: plumeTheme({
-        hostname: 'http://yuwb.cn',
+        hostname: 'https://wwww.yuwb.cn',
         logo: '/logo.png',
         // 作者
         avatar: {
@@ -98,6 +98,11 @@ export default defineUserConfig({
                 text: '其他',
                 icon: 'icon-park-outline:other',
                 items: [
+                    {
+                        text: 'Node.js',
+                        icon: 'devicon-plain:nodejs-wordmark',
+                        link: '/notes/Node.js/Node版本管理-n.md',
+                    },
                     {
                         text: 'Git',
                         icon: 'teenyicons:git-outline',
@@ -215,12 +220,23 @@ export default defineUserConfig({
                         }
                     ]
                 },
+                {
+                    dir: 'Node.js', 
+                    link: '/Node.js/', 
+                    sidebar: [ 
+                        {
+                            text: '解决方案',
+                            icon: 'ic:baseline-dashboard',
+                            items: ['Node版本管理-n','Node版本管理-nvm']
+                        }
+                    ]
+                },
             ]
         },
         // 页脚
         footer: {
             message: '耶温笔记|日常记录|前端学习',
-            copyright: 'Copyright © 2024'
+            copyright: 'Copyright © 2024 | ICP备案号：<a target="_blank" href="https://beian.miit.gov.cn/">陕ICP备2024040821号-1</a>'
         },
         plugins: {
             markdownEnhance: {
