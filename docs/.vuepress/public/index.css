@@ -1,0 +1,9 @@
+@font-face {
+    font-family: 'LXGWWenKaiLite';
+    src: url('/LXGWWenKaiLite-Bold.woff') format('woff');
+}
+
+:root:root {
+    --vp-font-family-base: 'LXGWWenKaiLite', "Chinese Quotes", inter, ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    --vp-font-family-mono: 'LXGWWenKaiLite', ui-monospace, sfmono-regular, menlo, monaco, consolas, "Liberation Mono", "Courier New", monospace;
+}

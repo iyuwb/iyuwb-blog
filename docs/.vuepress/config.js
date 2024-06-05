@@ -254,6 +254,10 @@ export default defineUserConfig({
             rel: 'icon',
             href: '/icon.png'
         }],
+        ['link', {
+            rel: 'stylesheet',
+            href: '/index.css'
+        }],
         // 开启PWA
         ['link', {
             rel: 'manifest',
