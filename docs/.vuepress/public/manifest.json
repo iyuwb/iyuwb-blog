@@ -1,0 +1,17 @@
+{
+    "lang": "zh-cn",
+    "name": "耶温笔记",
+    "short_name": "耶温笔记",
+    "description": "耶温学习笔记，包括内容：前端笔记,问题记录,HTML,CSS,JavaScript,Vue,Node.js,NPM,PWA",
+    "start_url": "/",
+    "background_color": "#2f3d58",
+    "theme_color": "#2f3d58",
+    "orientation": "any",
+    "display": "standalone",
+    "icons": [
+        {
+            "src": "/logo.png",
+            "sizes": "144x144"
+        }
+    ]
+}
