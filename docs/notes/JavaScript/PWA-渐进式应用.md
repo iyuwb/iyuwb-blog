@@ -1,61 +1,112 @@
 ---
-title: PWA渐进式应用
+title: PWA-渐进式应用
 author: 耶温
 createTime: 2024/05/11 15:05:45
 permalink: /JavaScript/3xe7gql0/
 ---
 
-# JavaScript 深入理解之 PWA 渐进式应用
+# PWA-渐进式应用
 
 ## PWA 是什么
 
-> 渐进式 Web 应用，提升 web app 浏览体验。
+> Progressive Web App：渐进式 Web 应用，提升页面浏览体验。可以将一个网页单独安装在桌面，并且可以将资源和请求缓存保存在本地，可以再断网的情况下继续访问。
+
+- 标准的 PWA 程序，包括 3 个部分
+  - https 或者 http://localhost：为了安全考虑，只有https网站和本地环境可以使用。
+  - manifest.json：Web 应用程序清单，提供有关应用程序的信息。
+  - service worker：缓存网站资源，让网站在网络不好的环境下也可以使用。
 
 ## manifest
 
-> 应用程序清单
+> manifest：Web 应用程序清单在一个 JSON 文本文件中提供有关应用程序的信息（如名称，作者，图标和描述）。manifest 的目的是将 Web 应用程序安装到设备的主屏幕，为用户提供更快的访问和更丰富的体验
 
 基本介绍：
 
-- `web app manifest`是 PWA 技术集合中的一部分
-- `web app manifest`可以让网站安装到设备的主屏幕，而不需要用户通过应用商店下载
-- `web app manifest`，在一个 JSON 文本文件中提供有关应用程序的信息（名称，作者，图标和描述等等）
+- `manifest` 是 PWA 技术集合中的一部分
+- `manifest` 可以让网站安装到设备的主屏幕，而不需要用户通过应用商店下载
+- `manifest` 在一个 JSON 文本文件中提供有关应用程序的信息（名称，作者，图标和描述等等）
+
 - 传统的 web app 入口
   - 网站
   - 书签，收藏夹
   - 直接搜索
+
 - Web app manifest:
   - 可以添加到桌面，有唯一的图标和名称
   - 有启动时的界面，避免生硬的过渡
   - 隐藏浏览器相关的 UI，比如地址栏等等
-- 适用步骤：
 
+- 使用步骤：
   - 在项目根目录创建一个 manifest.json 文件
   - 在 index.html 引入 manifest.json 文件
   - 在 manifest.json 文件中提供常见的配置
   - 需要在 https 协议或者在 http://localhost 下访问项目
   - `<link rel="manifest" href="manifest.json" />`
 
-- 常见配置清单
+- `manifest.json`常见配置清单
   - name：应用的指定名称，安装横幅的文字，启动画面的文字
   - short_name：应用的短名称，用于主屏幕显示
   - start_url：指定用户从设备启动应用程序时加载的 URL。可以是绝对路径和相对路径
   - icons：用于指定可在各种环境中用作应用程序图标的图像
   - background_color：用户启动时的背景色
   - theme_color:用于配置应用程序的主题颜色
-  - display：用于指定 web app 的显示模式
-    - fullscreen：全屏显示
+  - display：用于指定 web app 的显示模式(具体可以自行设置体验)
+    - fullscreen
     - standalone
     - minimal-ui
 
+示例：
+ 
+```html   index.html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PWA测试</title>
+    <link rel="manifest" href="manifest.json" />
+</head>
+<body>
+    <h1>PWA测试</h1>
+</body>
+</html>
+```
+```json  manifest.json
+{
+    "lang": "zh-cn",
+    "name": "PWA测试",
+    "short_name": "PWA测试",
+    "description": "PWA测试",
+    "start_url": "/",
+    "background_color": "#2f3d58",
+    "theme_color": "#2f3d58",
+    "orientation": "any",
+    "display": "standalone",
+    "icons": [
+        {
+            "src": "/logo.png",
+            "sizes": "144x144"
+        }
+    ]
+}
+```
+`manifest.json`中的icons属性记得配置，不然可能没有安装到桌面图标。
+
+![alt text](image.png)
+
+可以在启动台查看
+
+![alt text](image-1.png)
+
 ## service worker
 
-- 基本介绍
+基本介绍
 - 标准的 PWA 程序，包括 3 个部分
   - https 服务器或者 `http://localhost`
   - manifest.json
   - service worker
-- service worker 和 web worker
+
+service worker 和 web worker
 - web worker 的使用
   - 创建：web worker  `var worker = new Worker('work.js')`
   - 在 web work 中进行复杂的计算
@@ -69,7 +120,7 @@ permalink: /JavaScript/3xe7gql0/
   - 离线内容开发者可控
   - 必需在 HTTPS 环境下才能工作
   - 异步实现，内部大都是 Promise 实现
-- sevice worker 适用对象
+- sevice worker 使用
   - 在 window.onload 中注册 service worker，防止与其他资源竞争
   - navigator 对象中内置了 serviceWorker 属性
   - service worker 在老版本的浏览器中不支持，需要进行浏览器兼容
@@ -91,7 +142,7 @@ permalink: /JavaScript/3xe7gql0/
 </script>
 ```
 
-- service worker 声明周期
+- service worker 生命周期事件
 
   - install 事件会在 service worker 注册成功时候触发，主要用于缓存资源
   - activate 事件会在 service worker 激活的时候触发，主要用于删除旧的资源
@@ -99,8 +150,7 @@ permalink: /JavaScript/3xe7gql0/
   - 如果 sw.js 发生了改变，install 事件会重新触发
   - activate 事件会在 install 事件后触发，但是如果现在已经存在 service worker，就会处于等待状态直到 service worker 终止
   - 可以通过`self.skipWaiting()`方法跳过等待，返回一个 promise 对象
-  - 可以通过`event.WautUntil()`方法扩的参数是一个 promise 对象，会在 promise 结束后才会结束当前生命周期函数，防止浏览器在一步操作之前就停止了生命周期
-  - service worker 激活后，会在下一次刷新页面的时候生效，可以通过`self.clients.claim()`立即活的控制权
+  - service worker 激活后，会在下一次刷新页面的时候生效，可以通过`self.clients.claim()`立即获得控制权
 
 ```javascript
 self.addEventListener("install", (event) => {
@@ -123,7 +173,7 @@ self.addEventListener("install", (event) => {
 });
 self.addEventListener("activate", (event) => {
   console.log("activate", event);
-  // 表示service worker激活后，立即活的控制权
+  // 表示service worker激活后，立即获得控制权
   event.waitUntil(self.clients.claim());
 }); //fetch事件会在请求发送的时候触发
 self.addEventListener("fetch", (event) => {
@@ -153,7 +203,7 @@ self.addEventListener("fetch", (event) => {
 
 ## fetch api
 
-> 在 service worker 如果想要发送请求，必需适用 fetch api
+> 在 service worker 如果想要发送请求，必需使用 fetch api
 
 基本使用：
 
@@ -224,7 +274,7 @@ self.addEventListener("activate", async (event) => {
       caches.delete(key);
     }
   });
-  // 表示service worker激活后，立即活的控制权
+  // 表示service worker激活后，立即获得控制权
   await self.clients.claim();
 });
 
