@@ -163,8 +163,32 @@ cacheFun()
 打印输出如下
 ![alt text](image-9.png)
 ### Cache.add()
-
+Cache接口的 add() 方法接受一个 URL 作为参数，请求参数指定的 URL，并将返回的 response 对象添加到给定的 cache 中。 
+```js
+async function cacheFun() {
+    const cache = await caches.open('cache_v1')
+    await cache.add('/logo.png')
+    await cache.add('/manifest.json')
+    const data = await cache.keys()
+    console.log('data:',data)
+}
+cacheFun()
+```
+打印输出如下
+![alt text](image-4.png)
 ### Cache.addAll()
+Cache 接口的 addAll() 方法接受一个 URL 数组，检索它们，并将生成的 response 对象添加到给定的缓存中。在检索期间创建的 request 对象成为存储的 response 操作的 key。
+```js
+async function cacheFun() {
+    const cache = await caches.open('cache_v1')
+    await cache.addAll(['/logo.png','/manifest.json'])
+    const data = await cache.keys()
+    console.log('data:',data)
+}
+cacheFun()
+```
+打印输出如下
+![alt text](image-4.png)
 ### Cache.put()
 
 Cache 接口的 put() 方法 允许将键/值对添加到当前的 Cache 对象中。

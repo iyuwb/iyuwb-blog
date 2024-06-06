@@ -255,7 +255,7 @@ self.addEventListener("install", async (event) => {
 });
 ```
 
-### IndexedDB
+### 3. IndexedDB
 
 ::: tip
 需要的话，可以在 service worker 中使用 IndexedDB 来做数据存储
