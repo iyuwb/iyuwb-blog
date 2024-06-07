@@ -187,9 +187,19 @@ export default defineUserConfig({
                     link: '/Vue/', // 声明笔记的链接前缀
                     sidebar: [ // 配置侧边栏
                         {
+                            text: 'Vue基础',
+                            icon: 'ic:baseline-dashboard',
+                            items: []
+                        },
+                        {
+                            text: 'Vue问题',
+                            icon: 'icon-park-outline:file-question',
+                            items: []
+                        },
+                        {
                             text: 'Vue方案',
                             icon: 'icon-park-outline:plan',
-                            items: ['Vue组件自我调用','Vue事件总线使用']
+                            items: ['Vue2&Vue3项目创建','Vite&Vue3项目创建','Vue组件自我调用','Vue事件总线使用']
                         },
                     ]
                 },
