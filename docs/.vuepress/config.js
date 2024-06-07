@@ -128,7 +128,7 @@ export default defineUserConfig({
                         {
                             text: 'HTML问题',
                             icon: 'icon-park-outline:file-question',
-                            items: ['移动端H5-相关问题']
+                            items: ['移动端H5-相关问题','移动端H5-点击异常背景色']
                         },
                         {
                             text: 'HTML方案',
