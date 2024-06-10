@@ -235,6 +235,11 @@ export default defineUserConfig({
                     link: '/Node.js/', 
                     sidebar: [ 
                         {
+                            text: '相关问题',
+                            icon: 'icon-park-outline:file-question',
+                            items: ['node-sass安装报错python相关']
+                        },
+                        {
                             text: '解决方案',
                             icon: 'ic:baseline-dashboard',
                             items: ['Node版本管理-n','Node版本管理-nvm']
