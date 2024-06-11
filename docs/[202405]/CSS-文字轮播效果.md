@@ -6,7 +6,6 @@ tags:
   - 文字轮播
   - CSS
   - animation
-  - 动画
 permalink: /article/25reh9dk/
 ---
 # CSS-文字轮播效果

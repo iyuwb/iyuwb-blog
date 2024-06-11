@@ -1,17 +1,11 @@
 ---
-title: GIT相关操作方法
+title: Git基础命令
 author: 耶温
-createTime: 2024/05/11 16:02:44
-permalink: /article/7hxqltjh/
+createTime: 2024/05/11 21:16:42
+permalink: /Git/h8hjd37u/
 ---
-# Git 日常使用
+# Git 基础命令
 
-
-## 拉取远程仓库指定分支到本地
-
-```git
-git clone -b 远程分支名  仓库地址
-```
 ## Git 忽略文件
 
 - 在仓库的根目录下创建一个 .gitignore 文件
@@ -173,6 +167,13 @@ git merge 分支名称
  git clone 远程仓库地址
 ```
 
+### 克隆远程指定分支到本地
+
+```git
+// 克隆远程仓库指定分支到本地
+git clone -b 远程分支名  仓库地址
+```
+
 ### 远程仓库操作
 
 ```git
@@ -263,3 +264,47 @@ git reset --hard  原来提交commit-id
 ```
 
 后续，切换分支，在新建分支上修改代码
+
+## stash 储藏
+
+Git 储藏（stashing）是一种将当前工作进度保存起来的方法，以便可以切换到其他分支进行其他工作，而不会丢失当前的工作进度。
+
+### 储藏当前更改
+
+```git
+git stash
+```
+### 最近储藏
+1. 展示所有储藏
+```git
+git stash list
+```
+
+2. 应用最近的储藏
+
+```git
+git stash apply
+```
+
+3. 删除最近的储藏
+```git
+git stash drop
+```
+4. 应用并删除最近的储藏
+```git
+git stash pop
+```
+
+### 指定储藏
+1. 应用指定的储藏
+```git
+git stash apply stash@{储藏编号}
+```
+2. 删除指定的储藏
+```git
+git stash drop stash@{储藏编号}
+```
+3. 应用并删除指定的储藏
+```git
+git stash pop stash@{储藏编号}
+```

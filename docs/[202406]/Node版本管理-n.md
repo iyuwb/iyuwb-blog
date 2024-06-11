@@ -4,7 +4,7 @@ author: 耶温
 createTime: 2024/06/04 20:20:08
 permalink: /article/1pw2suef/
 tags:
-  - nvm
+  - n
   - node
 ---
 # Node版本管理 - n【Mac】

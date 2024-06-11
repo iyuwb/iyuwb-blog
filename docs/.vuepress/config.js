@@ -99,6 +99,11 @@ export default defineUserConfig({
                 icon: 'icon-park-outline:other',
                 items: [
                     {
+                        text: '计算机基础',
+                        icon: 'fa6-solid:computer',
+                        link: '/notes/Computer/计算机基础-浏览器是运作原理.md',
+                    },
+                    {
                         text: 'Node.js',
                         icon: 'devicon-plain:nodejs-wordmark',
                         link: '/notes/Node.js/Node版本管理-n.md',
@@ -133,7 +138,7 @@ export default defineUserConfig({
                         {
                             text: 'HTML方案',
                             icon: 'icon-park-outline:plan',
-                            items: ['移动端H5-响应布局', 'Canvas-图片合成']
+                            items: ['网站SEO','移动端H5-响应布局', 'Canvas-图片合成']
                         },
                     ]
                 },
@@ -220,13 +225,24 @@ export default defineUserConfig({
                     ]
                 },
                 {
+                    dir: 'Computer', 
+                    link: '/Computer/', 
+                    sidebar: [ 
+                        {
+                            text: '计算机基础',
+                            icon: 'ic:baseline-dashboard',
+                            items: ['计算机基础-浏览器是运作原理','计算机基础-HTTPS原理解析']
+                        },
+                    ]
+                },
+                {
                     dir: 'Git', 
                     link: '/Git/', 
                     sidebar: [ 
                         {
-                            text: 'Git',
+                            text: 'Git相关',
                             icon: 'ic:baseline-dashboard',
-                            items: ['Git Commit Message规范','Git常用命令']
+                            items: ['Git基础命令','Git Commit Message规范']
                         }
                     ]
                 },

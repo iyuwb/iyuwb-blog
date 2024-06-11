@@ -1,8 +1,12 @@
 ---
-title: HTTPS原理解析
+title: 计算机基础-HTTPS原理解析
 author: 耶温
-createTime: 2024/05/11 16:02:55
+createTime: 2024/05/10 16:02:55
 permalink: /article/lfb2eosp/
+tags:
+  - 计算机基础
+  - 网络安全
+  - HTTPS
 ---
 # HTTPS 原理解析
 
