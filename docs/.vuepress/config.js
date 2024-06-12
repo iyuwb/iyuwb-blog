@@ -279,22 +279,28 @@ export default defineUserConfig({
     // 标题
     title: '耶温笔记',
     // 介绍
-    description: '耶温学习笔记，包括内容：前端笔记,问题记录,HTML,CSS,JavaScript,Vue,Node.js,NPM',
+    description: '耶温笔记，包括内容：日常记录|前端学习|前端笔记|问题记录，HTML，CSS，JavaScript，Vue，Node.js，NPM。',
     head: [
         ['link', {
             rel: 'icon',
             href: '/icon.png'
         }],
-        ['link', {
-            rel: 'stylesheet',
-            href: '/index.css'
+        ['meta', {
+            name: 'keywords',
+            href: '耶温笔记,日常记录,前端学习,前端笔记,问题记录,HTML,CSS,JavaScript,Vue,Node.js'
         }],
+        // 去掉字体
+        // ['link', {
+        //     rel: 'stylesheet',
+        //     href: '/index.css'
+        // }],
         // 开启PWA
-        ['link', {
-            rel: 'manifest',
-            href: '/manifest.json'
-        }]
+        // ['link', {
+        //     rel: 'manifest',
+        //     href: '/manifest.json'
+        // }]
     ],
-    serviceWorker:true
+    // 开启PWA
+    // serviceWorker:true
 })
 
