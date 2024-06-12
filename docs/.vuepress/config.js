@@ -1,7 +1,7 @@
 import { defineUserConfig } from 'vuepress'
 import { viteBundler } from '@vuepress/bundler-vite'
 import { plumeTheme } from 'vuepress-theme-plume'
-
+import { VitePWA } from 'vite-plugin-pwa'
 export default defineUserConfig({
     base: '/',
     // 请不要忘记设置默认语言
@@ -128,17 +128,17 @@ export default defineUserConfig({
                         {
                             text: 'HTML基础',
                             icon: 'ic:baseline-dashboard',
-                            items: ['HTML元素','HTML属性','HTML事件','HTML-input','HTML元素属性相关', 'HTML5新增内容']
+                            items: ['HTML元素', 'HTML属性', 'HTML事件', 'HTML-input', 'HTML元素属性相关', 'HTML5新增内容']
                         },
                         {
                             text: 'HTML问题',
                             icon: 'icon-park-outline:file-question',
-                            items: ['移动端H5-相关问题','移动端H5-点击异常背景色']
+                            items: ['移动端H5-相关问题', '移动端H5-点击异常背景色']
                         },
                         {
                             text: 'HTML方案',
                             icon: 'icon-park-outline:plan',
-                            items: ['网站SEO','移动端H5-响应布局', 'Canvas-图片合成']
+                            items: ['网站SEO', '移动端H5-响应布局', 'Canvas-图片合成']
                         },
                     ]
                 },
@@ -149,7 +149,7 @@ export default defineUserConfig({
                         {
                             text: 'CSS基础',
                             icon: 'ic:baseline-dashboard',
-                            items: ['CSS选择器', 'CSS3新增内容','CSS-滚动条-Scrollbar', '样式滤镜 Filter', '网格布局 Grid']
+                            items: ['CSS选择器', 'CSS3新增内容', 'CSS-滚动条-Scrollbar', '样式滤镜 Filter', '网格布局 Grid']
                         },
                         {
                             text: 'CSS问题',
@@ -159,7 +159,7 @@ export default defineUserConfig({
                         {
                             text: 'CSS方案',
                             icon: 'icon-park-outline:plan',
-                            items: ['CSS-文字轮播效果','响应式布局方案']
+                            items: ['CSS-文字轮播效果', '响应式布局方案']
                         },
                     ]
                 },
@@ -170,9 +170,9 @@ export default defineUserConfig({
                         {
                             text: 'JavaScript基础',
                             icon: 'ic:baseline-dashboard',
-                            items: ['Service Worker-服务进程','Cache-浏览器缓存','JavaScript-作用域和闭包','[JavaScript高级程序设计]读书笔记','WebSocket', '内置对象方法', '原型链',
-                             '正则表达式','ECMAScript6','H5离线储存',
-                            'Promise','Set、Map、WeakSet和WeakMap'
+                            items: ['Service Worker-服务进程', 'Cache-浏览器缓存', 'JavaScript-作用域和闭包', '[JavaScript高级程序设计]读书笔记', 'WebSocket', '内置对象方法', '原型链',
+                                '正则表达式', 'ECMAScript6', 'H5离线储存',
+                                'Promise', 'Set、Map、WeakSet和WeakMap'
                             ]
                         },
                         {
@@ -183,7 +183,7 @@ export default defineUserConfig({
                         {
                             text: 'JavaScript方案',
                             icon: 'icon-park-outline:plan',
-                            items: ['PWA-渐进式应用','常用方法']
+                            items: ['PWA-渐进式应用', 'Vue3开启器PWA', '常用方法']
                         },
                     ]
                 },
@@ -204,14 +204,14 @@ export default defineUserConfig({
                         {
                             text: 'Vue方案',
                             icon: 'icon-park-outline:plan',
-                            items: ['Vue2&Vue3项目创建','Vite&Vue3项目创建','Vue组件自我调用','Vue事件总线使用']
+                            items: ['Vue2&Vue3项目创建', 'Vite&Vue3项目创建', 'Vue3开启PWA', 'Vue组件自我调用', 'Vue事件总线使用']
                         },
                     ]
                 },
                 {
-                    dir: 'Plugins', 
-                    link: '/Plugins/', 
-                    sidebar: [ 
+                    dir: 'Plugins',
+                    link: '/Plugins/',
+                    sidebar: [
                         {
                             text: '插件封装',
                             icon: 'ic:baseline-dashboard',
@@ -225,31 +225,31 @@ export default defineUserConfig({
                     ]
                 },
                 {
-                    dir: 'Computer', 
-                    link: '/Computer/', 
-                    sidebar: [ 
+                    dir: 'Computer',
+                    link: '/Computer/',
+                    sidebar: [
                         {
                             text: '计算机基础',
                             icon: 'ic:baseline-dashboard',
-                            items: ['计算机基础-浏览器是运作原理','计算机基础-HTTPS原理解析']
+                            items: ['计算机基础-浏览器是运作原理', '计算机基础-HTTPS原理解析']
                         },
                     ]
                 },
                 {
-                    dir: 'Git', 
-                    link: '/Git/', 
-                    sidebar: [ 
+                    dir: 'Git',
+                    link: '/Git/',
+                    sidebar: [
                         {
                             text: 'Git相关',
                             icon: 'ic:baseline-dashboard',
-                            items: ['Git基础命令','Git Commit Message规范']
+                            items: ['Git基础命令', 'Git Commit Message规范']
                         }
                     ]
                 },
                 {
-                    dir: 'Node.js', 
-                    link: '/Node.js/', 
-                    sidebar: [ 
+                    dir: 'Node.js',
+                    link: '/Node.js/',
+                    sidebar: [
                         {
                             text: '相关问题',
                             icon: 'icon-park-outline:file-question',
@@ -258,7 +258,7 @@ export default defineUserConfig({
                         {
                             text: '解决方案',
                             icon: 'ic:baseline-dashboard',
-                            items: ['Node版本管理-n','Node版本管理-nvm']
+                            items: ['Node版本管理-n', 'Node版本管理-nvm']
                         }
                     ]
                 },

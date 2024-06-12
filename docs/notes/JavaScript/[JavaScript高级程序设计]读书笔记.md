@@ -3106,7 +3106,7 @@ let fn=(data)=>{
 - 箭头函数没有 prototy 属性
   :::
 
-```JS
+```js
 //箭头函数
 let fn = (data)=>{
  onsole.log('hello'，data)
@@ -3115,7 +3115,7 @@ let fn = (data)=>{
 
 只有一个参数时，可以不使用括号：
 
-```JS
+```js
 let fn = data=>{
  onsole.log('hello'，data)
 };
@@ -3123,7 +3123,7 @@ let fn = data=>{
 
 当没有参数，可以使用空括号表示：
 
-```JS
+```js
 let fn = ()=>{
  onsole.log('hello'，data)
 };

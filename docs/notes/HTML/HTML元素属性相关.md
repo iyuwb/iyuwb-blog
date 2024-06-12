@@ -165,7 +165,7 @@ permalink: /HTML/bx4noavf/
 
 字幕格式
 
-```vtt
+```txt
 WEBVTT
 
 1
