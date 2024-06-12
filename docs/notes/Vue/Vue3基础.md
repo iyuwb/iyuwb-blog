@@ -6,7 +6,7 @@ permalink: /Vue/wr2boutf/
 ---
 # Vue3基础
 
-## Vue3简介
+## 概述简介
 
 > Vue3.0 发布于2020年9月18日，代号：One Piece
 
@@ -21,7 +21,7 @@ permalink: /Vue/wr2boutf/
 -   4. 新的特性(组合API等等)
 
 
-## Vue3项目创建
+## 项目创建
 
 ### Vue-cli
 
@@ -78,6 +78,65 @@ Vue.js - The Progressive JavaScript Framework
 
 ```
 
+## 项目目录
 
-## Vue3 项目目录
 
+```js
+|-- vue3_hello                        // Vue3 总文件夹
+    |-- .vscode                       // vscode 编译器配置文件夹
+    |-- node_modules                  // 依赖包 文件夹
+    |-- public                        // Vue 静态资源文件夹，可以放logo、图片等资源
+    |-- src                           // Vue 主体文件夹  源代码文件
+        |-- assets                    // 项目资产文件夹
+        |-- components                // 项目组件文件夹
+        |-- App.vue                   // Vue入口vue文件
+        |-- main.ts                   // Vue项目主ts文件，加载Vue
+    |-- .gitignore                    // git忽略文件配置
+    |-- env.d.ts                      // ts配置文件，可以让ts引入和识别各种文件
+    |-- index.html                    // Vue入口文件 html文件，文件中引入main.ts
+    |-- package-lock.json             // 依赖包声明文件
+    |-- package.json                  // 依赖包声明文件
+    |-- README.md                     // README 项目说明工程介绍
+    |-- tsconfig.app.json             // ts配置文件
+    |-- tsconfig.json                 // ts配置文件
+    |-- tsconfig.node.json            // ts配置文件
+    |-- vite.config.ts                // vite 配置文件，项目配置文件，使用插件配置代理等
+```
+
+### `main.ts`
+```ts
+import './assets/main.css'          // 样式引入
+
+import { createApp } from 'vue'     // 引入Vue创建方法
+import App from './App.vue'         // 引入组件 根组件
+
+// 创建应用实例
+createApp(App).mount('#app')        // 创建Vue根组件App，挂载在(index.html中)id为app的元素上
+```
+
+### `index.vue`
+Vue文件，总体结构
+```vue
+<template>
+  <div class="app"></div>
+</template>
+<script setup lang="ts">
+  export default {
+
+  }
+</script>
+<style scoped>
+  .app{
+
+  }
+</style>
+```
+
+## 实例演示
+
+### 选项式-OptionAPI(vue2)
+原vue2语法
+
+
+
+### 组合式-CompositionAPI(vue3)

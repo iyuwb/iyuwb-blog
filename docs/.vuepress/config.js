@@ -6,7 +6,7 @@ export default defineUserConfig({
     // 请不要忘记设置默认语言
     lang: 'zh-CN',
     theme: plumeTheme({
-        hostname: 'https://wwww.yuwb.cn',
+        hostname: 'https://www.yuwb.cn',
         logo: '/logo.png',
         // 作者
         avatar: {
@@ -58,7 +58,7 @@ export default defineUserConfig({
                     {
                         text: 'Vue',
                         icon: 'ph:file-vue',
-                        link: '/notes/Vue/Vue组件自我调用.md',
+                        link: '/notes/Vue/Vue3基础.md',
                     },
                     {
                         text: 'React',
@@ -83,13 +83,18 @@ export default defineUserConfig({
                 items: [
                     {
                         text: 'NPM',
-                        icon: 'ph:file-vue',
+                        icon: 'teenyicons:npm-solid',
                         link: '/notes/Plugins/教程-Vue封装组件并发布到npm.md',
                     },
                     {
                         text: 'Element',
-                        icon: 'mdi:react',
+                        icon: 'ep:element-plus',
                         link: '/notes/Plugins/Element-Table表头顺序错乱问题',
+                    },
+                    {
+                        text: 'vite-plugin-pwa',
+                        icon: 'tabler:brand-vite',
+                        link: '/notes/Plugins/VitePluginPWA',
                     }
                 ],
             },
@@ -238,7 +243,7 @@ export default defineUserConfig({
                     link: '/Plugins/',
                     sidebar: [
                         {
-                            text: '插件封装',
+                            text: 'NPM',
                             icon: 'ic:baseline-dashboard',
                             items: ['教程-Vue封装组件并发布到npm']
                         },
@@ -246,6 +251,11 @@ export default defineUserConfig({
                             text: 'Element',
                             icon: 'ic:baseline-dashboard',
                             items: ['Element-Table表头顺序错乱问题']
+                        },
+                        {
+                            text: 'vite-plugin-pwa',
+                            icon: 'ic:baseline-dashboard',
+                            items: ['VitePluginPWA']
                         },
                     ]
                 },
@@ -294,7 +304,7 @@ export default defineUserConfig({
                         {
                             text: 'Vite',
                             icon: 'ic:baseline-dashboard',
-                            items: ['Vite基础','Vite基础']
+                            items: ['Vite基础']
                         },
                     ]
                 },
