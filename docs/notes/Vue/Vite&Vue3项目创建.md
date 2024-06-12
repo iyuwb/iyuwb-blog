@@ -25,6 +25,8 @@ Vite 将会使用 esbuild 预构建依赖。Esbuild 使用 Go 编写，并且比
 vite创建Vue3项目需要Node.js版本10以上
 :::
 
+
+
 ## Vite创建Vue3
 
 1. 创建命令
@@ -44,6 +46,9 @@ Ok to proceed? (y)
 2. 创建项目
 
 输入`y`,然后输入项目名称
+:::tip
+所有项目名称推荐使用字母数字下划线的组合命名，避免使用中文。
+:::
 ```shell
 npm init vite@latest
 
@@ -122,3 +127,41 @@ Done. Now run:
 ![alt text](image-11.png)
 
 
+
+## Vue创建Vue3
+1. 创建命令
+
+根据提示步骤进行创建
+
+```shell
+npm create vue@latest
+```
+输出：
+
+```shell
+Need to install the following packages:
+  create-vue@3.10.3
+Ok to proceed? (y) y
+
+Vue.js - The Progressive JavaScript Framework
+
+✔ 请输入项目名称： … vue3_hello
+✔ 是否使用 TypeScript 语法？ … 否 / 是
+✔ 是否启用 JSX 支持？ … 否 / 是
+✔ 是否引入 Vue Router 进行单页面应用开发？ … 否 / 是
+✔ 是否引入 Pinia 用于状态管理？ … 否 / 是
+✔ 是否引入 Vitest 用于单元测试？ … 否 / 是
+✔ 是否要引入一款端到端（End to End）测试工具？ › 不需要
+✔ 是否引入 ESLint 用于代码质量检测？ … 否 / 是
+✔ 是否引入 Vue DevTools 7 扩展用于调试? (试验阶段) … 否 / 是
+
+正在初始化项目 /Applications/前端开发/前端学习/vue3_hello...
+
+项目初始化完成，可执行以下命令：
+
+  cd vue3_hello
+  npm install
+  npm run dev
+
+```
+如上图所示，根据需求选择对应的选项创建项目。

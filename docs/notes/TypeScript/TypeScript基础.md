@@ -2,8 +2,9 @@
 title: TypeScript基础
 author: 耶温
 createTime: 2024/05/11 16:03:17
-permalink: /article/k5ibpk34/
+permalink: /TypeScript/xgndo7cj/
 ---
+
 # TypeScript 基础
 > JavaScript的超集，在JS的基础上，做了一些限制并添加了类型。
 - 所有`TypeScript`需要被转换成`js`执行

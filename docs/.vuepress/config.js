@@ -1,7 +1,6 @@
 import { defineUserConfig } from 'vuepress'
 import { viteBundler } from '@vuepress/bundler-vite'
 import { plumeTheme } from 'vuepress-theme-plume'
-import { VitePWA } from 'vite-plugin-pwa'
 export default defineUserConfig({
     base: '/',
     // 请不要忘记设置默认语言
@@ -48,7 +47,7 @@ export default defineUserConfig({
                     {
                         text: 'TypeScript',
                         icon: 'ph:file-ts',
-                        link: '/前端基础/TypeScript',
+                        link: '/notes/TypeScript/TypeScript基础',
                     },
                 ],
             },
@@ -113,6 +112,11 @@ export default defineUserConfig({
                         icon: 'teenyicons:git-outline',
                         link: '/notes/Git/Git Commit Message规范.md',
                     },
+                    {
+                        text: 'Vite',
+                        icon: 'tabler:brand-vite',
+                        link: '/notes/Vite/Vite基础.md',
+                    },
                 ],
             }
         ],
@@ -170,9 +174,9 @@ export default defineUserConfig({
                         {
                             text: 'JavaScript基础',
                             icon: 'ic:baseline-dashboard',
-                            items: ['Service Worker-服务进程', 'Cache-浏览器缓存', 'JavaScript-作用域和闭包', '[JavaScript高级程序设计]读书笔记', 'WebSocket', '内置对象方法', '原型链',
+                            items: ['Service Worker-服务进程', 'Cache-浏览器缓存', 'JavaScript-作用域和闭包', 'WebSocket', '内置对象方法', '原型链',
                                 '正则表达式', 'ECMAScript6', 'H5离线储存',
-                                'Promise', 'Set、Map、WeakSet和WeakMap'
+                                'Promise', 'Set、Map、WeakSet和WeakMap', '[JavaScript高级程序设计]读书笔记'
                             ]
                         },
                         {
@@ -183,7 +187,28 @@ export default defineUserConfig({
                         {
                             text: 'JavaScript方案',
                             icon: 'icon-park-outline:plan',
-                            items: ['PWA-渐进式应用', 'Vue3开启器PWA', '常用方法']
+                            items: ['PWA-渐进式应用', 'JavaScript-常用方法']
+                        },
+                    ]
+                },
+                {
+                    dir: 'TypeScript', // 声明笔记的目录，相对于 `notes.dir`
+                    link: '/TypeScript/', // 声明笔记的链接前缀
+                    sidebar: [ // 配置侧边栏
+                        {
+                            text: 'TypeScript基础',
+                            icon: 'ic:baseline-dashboard',
+                            items: ['TypeScript基础','TypeScript进阶']
+                        },
+                        {
+                            text: 'TypeScript问题',
+                            icon: 'icon-park-outline:file-question',
+                            items: []
+                        },
+                        {
+                            text: 'TypeScript方案',
+                            icon: 'icon-park-outline:plan',
+                            items: []
                         },
                     ]
                 },
@@ -194,7 +219,7 @@ export default defineUserConfig({
                         {
                             text: 'Vue基础',
                             icon: 'ic:baseline-dashboard',
-                            items: []
+                            items: ['Vue3基础']
                         },
                         {
                             text: 'Vue问题',
@@ -260,6 +285,17 @@ export default defineUserConfig({
                             icon: 'ic:baseline-dashboard',
                             items: ['Node版本管理-n', 'Node版本管理-nvm']
                         }
+                    ]
+                },
+                {
+                    dir: 'Vite',
+                    link: '/Vite/',
+                    sidebar: [
+                        {
+                            text: 'Vite',
+                            icon: 'ic:baseline-dashboard',
+                            items: ['Vite基础','Vite基础']
+                        },
                     ]
                 },
             ]

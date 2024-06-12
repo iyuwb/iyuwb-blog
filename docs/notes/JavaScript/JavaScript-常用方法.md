@@ -1,5 +1,5 @@
 ---
-title: 常用方法
+title: JavaScript-常用方法
 author: 耶温
 createTime: 2024/05/11 15:05:45
 permalink: /JavaScript/ud9nzk83/
