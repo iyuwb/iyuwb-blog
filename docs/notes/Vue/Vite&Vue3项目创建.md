@@ -6,17 +6,6 @@ permalink: /Vue/gsq2pijn/
 ---
 # Vite&Vue3项目创建
 
-## 概述
-
-Vite+Vue3项目创建 两种方式：
-
-```shell
-npm init vite@latest   //vite工具
-```
-```shell
-npm create vue@latest  //vue本身
-```
-
 ## Vite简介
 vite是新一代前端开发与构建工具，能够显著提升前端开发体验。
 
@@ -40,15 +29,75 @@ vite创建Vue3项目需要Node.js版本10以上
 
 ## Vite创建Vue3
 
-创建命令
+1. 创建命令
 
 ```shell
 npm init vite@latest
 
 ```
+输出：
+```shell
+npm init vite@latest
 
-后续步骤
+Need to install the following packages:
+  create-vite@5.2.3
+Ok to proceed? (y) 
+```
+2. 创建项目
 
+输入`y`,然后输入项目名称
+:::tip
+所有项目名称推荐使用字母数字下划线的组合命名，避免使用中文。
+:::
+```shell
+npm init vite@latest
+
+Need to install the following packages:
+  create-vite@5.2.3
+Ok to proceed? (y) y
+? Project name: › vite-project
+```
+
+3. 选择使用框架
+
+上下键选择使用框架，回车选择
+```shell
+npm init vite@latest
+
+Need to install the following packages:
+  create-vite@5.2.3
+Ok to proceed? (y) y
+✔ Project name: … vite-project
+? Select a framework: › - Use arrow-keys. Return to submit.
+❯   Vanilla
+    Vue
+    React
+    Preact
+    Lit
+    Svelte
+    Solid
+    Qwik
+    Others
+```
+4. 选择使用语言
+
+上下键选择使用语言，回车选择
+```shell
+npm init vite@latest
+
+Need to install the following packages:
+  create-vite@5.2.3
+Ok to proceed? (y) y
+✔ Project name: … vite-project
+✔ Select a framework: › Vue
+? Select a variant: › - Use arrow-keys. Return to submit.
+❯   TypeScript
+    JavaScript
+    Customize with create-vue ↗
+    Nuxt ↗
+```
+
+5. 创建成功
 ```shell
 npm init vite@latest
 
@@ -68,7 +117,7 @@ Done. Now run:
   npm run dev
 ```
 
-启动项目
+6. 启动项目
 
 进入项目文件，打开终端，
 
@@ -80,16 +129,14 @@ Done. Now run:
 
 
 ## Vue创建Vue3
+1. 创建命令
 
 根据提示步骤进行创建
-
-创建命令
 
 ```shell
 npm create vue@latest
 ```
-
-后续步骤
+输出：
 
 ```shell
 Need to install the following packages:
