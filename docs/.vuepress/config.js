@@ -224,7 +224,7 @@ export default defineUserConfig({
                         {
                             text: 'Vue基础',
                             icon: 'ic:baseline-dashboard',
-                            items: ['Vue3基础']
+                            items: ['Vue3基础','Vue3-setup','Vue3-ref&reactive']
                         },
                         {
                             text: 'Vue问题',
@@ -234,7 +234,7 @@ export default defineUserConfig({
                         {
                             text: 'Vue方案',
                             icon: 'icon-park-outline:plan',
-                            items: ['Vue2&Vue3项目创建', 'Vite&Vue3项目创建', 'Vue3开启PWA', 'Vue组件自我调用', 'Vue事件总线使用']
+                            items: ['Vite&Vue3项目创建', 'Vue3开启PWA','Vue2&Vue3项目创建', 'Vue2组件自我调用', 'Vue2事件总线使用']
                         },
                     ]
                 },
