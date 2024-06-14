@@ -525,7 +525,7 @@ Object.assign(data,{id: 100, name: "wenbo", msg: "wenbo" })
 - 作用：将一个响应式对象中的每一个属性，转换为`ref`对象。
 - 备注：`toRefs`与`toRef`功能一致，但`toRefs`可以批量转换。
 
-### 使用场景
+### 使用演示
 
 ```vue
 <template>
@@ -628,3 +628,45 @@ let msgData = toRef(data.value, "msg");
 ```
 
 ## computed
+
+### 概述
+**作用：** 根据已有数据计算出新数据（和`Vue2`中的`computed`作用一致）。
+
+**特点：** 多次使用计算属性时，如果依赖数据没有变化，计算属性不会重新执行计算。只会返回最后一次计算的数据。
+::: tip
+注意：计算属性使用自定义方法也可以实现，但是每次调用都会重新计算。（计算属性可以避免这种多次计算）
+:::
+
+
+### 使用演示
+```vue
+<template>
+  <div class="hello">
+    <h1>实时计算器</h1>
+    <input type="number" v-model="num1" /> +
+    <input type="number" v-model="num2" /> = {{ total }}
+  </div>
+</template>
+<script setup  lang="ts" name="demo">
+import { ref, computed } from "vue";
+let num1 = ref(0);
+let num2 = ref(0);
+let total = computed(() => {
+  return num1.value + num2.value;
+});
+</script>
+```
+打印输出：
+```shell
+ComputedRefImpl {dep: undefined, __v_isRef: true, __v_isReadonly: true, getter: ƒ, _setter: ƒ, …}
+```
+
+### getter 和 setter
+
+如果计算属性不设置`getter`和 `setter`，计算属性是一个只读属性，不能进行赋值操作。
+
+使用演示
+```vue
+
+
+```

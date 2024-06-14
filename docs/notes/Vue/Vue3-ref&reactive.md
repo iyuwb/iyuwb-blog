@@ -163,3 +163,106 @@ Object.assign(data,{id: 100, name: "wenbo", msg: "wenbo" })
 ## toRef 与 toRefs
 - 作用：将一个响应式对象中的每一个属性，转换为`ref`对象。
 - 备注：`toRefs`与`toRef`功能一致，但`toRefs`可以批量转换。
+
+
+### 使用场景
+
+```vue
+<template>
+  <div class="hello">
+    {{ name }}{{ data.msg }}
+    <button @click="clickChange">Click</button>
+    {{ id}}
+  </div>
+</template>
+<script setup  lang="ts" name="demo">
+import { reactive } from "vue";
+let data = reactive({ id: 1, name: "yevin", msg: "hello, everyone!" });
+let { id, name } = data;
+function clickChange() {
+  console.log(id,name) // 1,yevin
+  id = 100;
+  name = "wenbo";
+  console.log(id,name) // 100,wenbo
+}
+</script>
+```
+在上述代码中，解构一个响应式的数据后，更改数据，可以看到数据更改了但是页面并没有更新。
+
+原因：
+
+解构代码中相当于 单独定义了 id 和 name数据，并且没有绑定响应式。
+```js
+let { id, name } = data; 
+// 上述代码相当于 单独定义了 id 和 name数据，并且没有绑定响应式。
+let id = data.id
+let name = data.name
+```
+
+使用`toRefs`优化代码：
+```vue
+<template>
+  <div class="hello">
+    {{ name }}{{ data.msg }}
+    <button @click="clickChange">Click</button>
+    {{ id}}
+  </div>
+</template>
+<script setup  lang="ts" name="demo">
+import { reactive ,toRefs} from "vue";
+let data = reactive({ id: 1, name: "yevin", msg: "hello, everyone!" });
+let obj = toRefs(data);
+console.log(obj)
+let { id, name } = obj
+function clickChange() {
+  id.value = 100;
+  name.value = "wenbo";
+  console.log(id,name) 
+  console.log(id.value,name.value) 
+  console.log(data)
+}
+</script>
+```
+点击按钮输出如下：
+
+```shell
+{id: ObjectRefImpl, name: ObjectRefImpl, msg: ObjectRefImpl}
+
+ObjectRefImpl {_object: Proxy(Object), _key: 'id', _defaultValue: undefined, __v_isRef: true} 
+ObjectRefImpl {_object: Proxy(Object), _key: 'name', _defaultValue: undefined, __v_isRef: true}
+
+100 'wenbo'
+
+Proxy(Object) {id: 100, name: 'wenbo', msg: 'hello, everyone!'}
+```
+通过上述代码可以看到：`toRefs`将一个响应式对象中的每一个属性，转换为`ref`对象，因此解构获得是对应的`ref`对象，都有绑定响应式。
+
+所以，改变通过解构获取的值之后，页面会同步更新，原数据也会同步更新。
+::: tip
+注意：通过`toRefs`和`toRef`操作之后，获取值或者更改数据需要使用`.value`。
+:::
+
+### toRef与toRefs
+
+使用`reactive`定义对象类型响应
+```vue
+<script setup  lang="ts" name="demo">
+import { reactive ,toRefs,toRef} from "vue";
+let data = reactive({ id: 1, name: "yevin", msg: "hello, everyone!" });
+// toRefs使用
+let { id, name } = toRefs(data)
+// toRef使用
+let msgData = toRef(data,'msg')
+</script>
+```
+使用`ref`定义对象类型响应
+```vue
+<script setup  lang="ts" name="demo">
+import { ref, toRefs, toRef } from "vue";
+let data = ref({ id: 1, name: "yevin", msg: "hello, everyone!" });
+// toRefs使用
+let { id, name } = toRefs(data.value);
+// toRef使用
+let msgData = toRef(data.value, "msg");
+</script>
+```
