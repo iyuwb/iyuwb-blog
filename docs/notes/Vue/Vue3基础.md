@@ -637,23 +637,25 @@ let msgData = toRef(data.value, "msg");
 注意：计算属性使用自定义方法也可以实现，但是每次调用都会重新计算。（计算属性可以避免这种多次计算）
 :::
 
+- 不要在计算属性中，操作DOM和做异步操作。推荐只做数据处理。
+- 避免直接修改计算属性值。
 
 ### 使用演示
 ```vue
 <template>
   <div class="hello">
-    <h1>实时计算器</h1>
-    <input type="number" v-model="num1" /> +
-    <input type="number" v-model="num2" /> = {{ total }}
+    <h1>名字计算</h1>
+    <input type="text" v-model="firstName" /> +
+    <input type="text" v-model="lastName" /> = {{ fullName }}
   </div>
 </template>
-<script setup  lang="ts" name="demo">
-import { ref, computed } from "vue";
-let num1 = ref(0);
-let num2 = ref(0);
-let total = computed(() => {
-  return num1.value + num2.value;
-});
+<script setup>
+import { ref, computed } from 'vue'
+const firstName = ref('John')
+const lastName = ref('Doe')
+const fullName = computed(()=>{
+	return firstName.value + ' ' + lastName.value
+})
 </script>
 ```
 打印输出：
@@ -665,8 +667,216 @@ ComputedRefImpl {dep: undefined, __v_isRef: true, __v_isReadonly: true, getter:
 
 如果计算属性不设置`getter`和 `setter`，计算属性是一个只读属性，不能进行赋值操作。
 
+- 注意如果设置`get`,也需要设置`set`,不能单独设置。
+
 使用演示
 ```vue
+<script setup>
+import { ref, computed } from 'vue'
 
+const firstName = ref('John')
+const lastName = ref('Doe')
 
+const fullName = computed({
+  // getter
+  get() {
+    return firstName.value + ' ' + lastName.value
+  },
+  // setter
+  set(newValue) {
+    // 注意：我们这里使用的是解构赋值语 当设置fullName时，会同时改变firstName和lastName
+    [firstName.value, lastName.value] = newValue.split(' ')
+  }
+})
+</script>
 ```
+
+## watch
+
+### 概述
+
+作用：监视数据的变化（和`Vue2`中的`watch`作用一致）
+
+`watch`：
+
+第一个参数可以是不同形式的“数据源”（即为所监听的属性或对象）：
+
+- 一个 ref (包括计算属性)
+- 一个响应式对象
+- 一个 getter 函数（一个能返回值的函数）
+- 多个数据源组成的数组：
+
+第二个参数是一个同调函数（数据改变的回调函数）：
+
+-  函数第一个参数 是新的数据。根据`watch`传的第一个参数，可能是一个数据，也可能是包括多个数据的数据。
+-  函数第二个参数 是旧的数据。同上。
+
+第三个参数是一个配置对象：
+
+- `deep`：是否开启深度监听
+- `immediate`： 立即执行一次
+- `once`：只监听一次
+
+```js
+const x = ref(0)
+const y = ref(0)
+
+// 单个 ref
+watch(x, (newX) => {
+  console.log(`x is ${newX}`)
+})
+
+// getter 函数
+watch(
+  () => x.value + y.value,
+  (sum) => {
+    console.log(`sum of x + y is: ${sum}`)
+  }
+)
+
+// 多个来源组成的数组
+watch([x, () => y.value], ([newX, newY]) => {
+  console.log(`x is ${newX} and y is ${newY}`)
+})
+```
+
+
+
+### ref数据
+
+#### 监视【ref】定义的【基本类型数据】：
+:::tip
+注意：监听ref定义的基本类型数据时，不用写`.value`
+:::
+
+```js
+const x = ref(0)
+
+// 单个 ref
+watch(x, (newX,oldX) => {
+  console.log(`x is ${newX}, old: ${oldX}`,)
+})
+```
+
+#### 监视【ref】定义的【对象数据类型】：
+
+监听对象地址改变：
+
+```js
+let x = ref({ id: 1, name: 'wenbo' })
+watch(x, (newX, oldX) => {
+	console.log('newX:', newX, 'oldX:', oldX)
+})
+function fun() {
+	x.value.name += '~'  // 监听不到
+}
+function fun2() {
+	x.value = { id: 2, name: 'iyuwb' } // 可以监听到
+}
+```
+
+设置深度监听，可以监听到对象内部属性的变化，也可以监听到对象地址的改变：
+```js
+let x = ref({ id: 1, name: 'wenbo' })
+watch(x, (newX, oldX) => {
+	console.log('newX:', newX, 'oldX:', oldX)
+}, {
+	deep: true
+})
+function fun() {
+	x.value.name += '~'  // 可以监听到
+}
+function fun2() {
+	x.value = { id: 2, name: 'iyuwb' } // 可以监听到
+}
+```
+
+:::tip
+注意：上述代码中，当对象属性改变时，回调函数的`newX`和`oldX`是相等的，因为它们是同一个对象，对象的地址并没有改变！
+:::
+> 注意：
+>
+> * 若修改的是`ref`定义的对象中的属性，`newValue` 和 `oldValue` 都是新值，因为它们是同一个对象。
+>
+> * 若修改整个`ref`定义的对象，`newValue` 是新值， `oldValue` 是旧值，因为不是同一个对象了。
+
+### reactive数据
+
+reactive只能定义对象数据类型。
+
+#### 监视【reactive】定义的【对象数据类型】：
+
+当监视【reactive】定义的【对象数据类型】时，默认开启深度监听（现在可以关闭深度监听，早期不可更改）。
+
+```js
+let x = reactive({ id: 1, name: 'wenbo' })
+watch(x, (newX, oldX) => {
+	console.log('newX:', newX, 'oldX:', oldX)
+})
+function fun() {
+	x.name += '~'  // 可以监听到
+}
+function fun2() {
+	Object.assign(x, { id: 2, name: 'iyuwb' })  // 可以监听到
+}
+```
+::: tip
+`Object.assign`只覆盖值，没有个更改对象地址。
+
+注意：上述代码操作中，`x`数据地址都没有改变，`newValue` 和 `oldValue`是同一个对象，两个值相等。
+:::
+
+### 监听对象属性
+
+
+#### 对象属性：基本类型
+
+监听reactive创建的对象类型数据属性：
+```javascript
+let x = reactive({ id: 1, name: 'wenbo' })
+watch(() => x.name, (newX, oldX) => {
+	console.log('newX:', newX, 'oldX:', oldX)
+})
+function fun() {
+	x.name += '~'  // 可以监听到
+}
+function fun2() {
+	Object.assign(x, { id: 2, name: 'iyuwb' })  // 可以监听到
+}
+```
+
+监听ref创建的对象类型数据属性：
+```javascript
+let x = ref({ id: 1, name: 'wenbo' })
+watch(() => x.value.name, (newX, oldX) => {
+	console.log('newX:', newX, 'oldX:', oldX)
+})
+function fun() {
+	x.value.name += '~'  // 可以监听到
+}
+function fun2() {
+	x.value = { id: 2, name: 'iyuwb' } // 可以监听到
+}
+```
+
+#### 对象属性：对象类型
+
+监听reactive创建的对象类型数据属性：
+
+```javascript
+let x = reactive({
+	id: 1,
+	name: 'wenbo',
+	car: { name: '比亚迪', price: '79800' }
+})
+watch(() => x.car, (newX, oldX) => {
+	console.log('newX:', newX, 'oldX:', oldX)
+}, { deep: true })
+function fun() {
+	x.car.name += '~'  // 可以监听到
+}
+function fun2() {
+	x.car = { name: '奔驰', price: '279800' }// 可以监听到
+}
+```
+或者
