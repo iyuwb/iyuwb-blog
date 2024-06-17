@@ -828,6 +828,12 @@ function fun2() {
 
 ### 监听对象属性
 
+监听`ref`或者`reactive`定义的对象类型数据中的某个属性，需要注意：
+
+- 属性值为【基本类型】：需要写成函数形式`()=>data.key`
+- 属性值为【对象类型】：可以写成函数形式`()=>data.key`，可以直接监听`data.key`,推荐写成函数。
+
+总结：监听对象的属性时，使用函数形式。
 
 #### 对象属性：基本类型
 
@@ -871,12 +877,127 @@ let x = reactive({
 })
 watch(() => x.car, (newX, oldX) => {
 	console.log('newX:', newX, 'oldX:', oldX)
-}, { deep: true })
+}, { deep: true })   // 如果不设置 deep 只能监听到地址变换
 function fun() {
-	x.car.name += '~'  // 可以监听到
+	x.car.name += '~'  // 可以监听到    其他：如果不设置deep，监听不到
 }
 function fun2() {
-	x.car = { name: '奔驰', price: '279800' }// 可以监听到
+	x.car = { name: '奔驰', price: '279800' }// 可以监听到   其他：设置不设置deep，都能监听听到
 }
 ```
-或者
+监听ref创建的对象类型数据属性：
+```js
+let x = ref({
+	id: 1,
+	name: 'wenbo',
+	car: { name: '比亚迪', price: '79800' }
+})
+watch(() => x.value.car, (newX, oldX) => {
+	console.log('newX:', newX, 'oldX:', oldX)
+}, { deep: true })  // 如果不设置 deep 只能监听到地址变换
+function fun() {
+	x.value.car.name += '~'  // 可以监听到    如果不设置deep  监听不到
+}
+function fun2() {
+	x.value.car = { name: '奔驰', price: '279800' } // 可以监听到   设置不设置deep 都能监听听到
+}
+```
+以上两种为最佳解决方案。
+
+以下的方式仅供参考，不推荐使用。
+
+当属性是对象时，可以直接写所需要监听属性。但是监听有问题，不能监听到属性地址的变化，只能监听到属性值的变化。
+
+::: details   点击查看代码（这种方法会导致不可估计的问题，不推荐使用）
+
+监听reactive创建的对象类型数据属性：
+
+```javascript
+let x = reactive({
+	id: 1,
+	name: 'wenbo',
+	car: { name: '比亚迪', price: '79800' }
+})
+watch(x.car, (newX, oldX) => {
+	console.log('newX:', newX, 'oldX:', oldX)
+}, { deep: true })  
+function fun() {
+	x.car.name += '~'  // 可以监听到  
+}
+function fun2() {
+  // 监听不到 , 但是会x.car地址，导致fun中的属性更改也将监听不到
+	x.car = { name: '奔驰', price: '279800' } 
+}
+```
+
+监听ref创建的对象类型数据属性：
+```js
+let x = ref({
+	id: 1,
+	name: 'wenbo',
+	car: { name: '比亚迪', price: '79800' }
+})
+watch(x.value.car, (newX, oldX) => {
+	console.log('newX:', newX, 'oldX:', oldX)
+}, { deep: true }) 
+function fun() {
+	x.value.car.name += '~'  // 可以监听到 
+}
+function fun2() {
+   // 监听不到 , 但是会x.car地址，导致fun中的属性更改也将监听不到
+	x.value.car = { name: '奔驰', price: '279800' } 
+}
+
+```
+:::
+
+### 监听多个属性
+
+`watch`：
+
+- 第一个参数 可以传一个数组，数组中包括多个属性函数
+- 第二个参数 回调函数
+    - 回调函数 第一个参数为新的数据，为一个数组，数组中为每一项监听属性的新数据
+    - 回调函数 第二个参数为新的数据，为一个数组，数组中为每一项监听属性的旧数据
+
+```js
+let x = reactive({
+	id: 1,
+	name: 'wenbo',
+	car: { name: '比亚迪', price: '79800' }
+})
+watch([()=>x.car,()=>x.name], (newX, oldX) => {
+	console.log('newX:', newX, 'oldX:', oldX)
+}, { deep: true })  
+function fun() {
+  x.name += '~' 
+	x.car.name += '~' 
+}
+function fun2() {
+  x.name += '-' 
+	x.car = { name: '奔驰', price: '279800' } 
+}
+
+```
+或者为：
+```js
+let x = ref({
+	id: 1,
+	name: 'wenbo',
+	car: { name: '比亚迪', price: '79800' }
+})
+watch([()=>x.value.car,()=>x.value.name], (newX, oldX) => {
+	console.log('newX:', newX, 'oldX:', oldX)
+}, { deep: true })  
+function fun() {
+  x.value.name += '~' 
+	x.value.car.name += '~' 
+}
+function fun2() {
+  x.value.name += '-' 
+	x.value.car = { name: '奔驰', price: '279800' } 
+}
+```
+
+## watchEffect
+
