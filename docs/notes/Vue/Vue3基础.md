@@ -1003,6 +1003,37 @@ function fun2() {
 
 ## watchEffect
 
+
+### 概述
+
+>   立即运行一个函数，同时响应式的追踪其依赖，并在依赖更改时重新执行该函数。不需要明确指出监听的数据，函数中用到哪些数据，就监听哪些数据。
+
+#### 基本语法
+```js
+import { watchEffect } from 'vue'
+watchEffect(()=>{
+    
+})
+```
+#### 具体演示
+```js
+let msg = ref('未成年')
+let person = reactive({
+    name: 'wenbo',
+    age: 16,
+})
+watchEffect(() => {
+    if (person.age >= 18) {  // 自动监听 person.age 属性
+        msg = '成年啦~'
+        person.name = 'WENBO'
+    }
+})
+function ageChange() {
+    person.age += 1
+}
+```
+
+
 ### watch & watchEffect
 
 `watch` 和 `watchEffect` 都能响应式地执行有副作用的回调。它们之间的主要区别是追踪响应式依赖的方式：
@@ -1031,12 +1062,61 @@ tips:
 
 ::: tip
 watchEffect 仅会在其同步执行期间，才追踪依赖。在使用异步回调时，只有在第一个 await 正常工作前访问到的属性才会被追踪。
-
 :::
 
+### 停止监听
+
+在 `setup()` 或 `<script setup>` 中用同步语句创建的侦听器，会自动绑定到宿主组件实例上，并且会在宿主组件卸载时自动停止。
+
+
+注意：如果异步回调创建监听器，需要手动停止。（尽量避免这种情况）
 ```js
+let unwatch = null
+// 异步创建 不会自动停止
+setTimeout(() => {
+    unwatch =  watchEffect(() => {})
+    // or  nwatch =  watch([],() => {})
+}, 100)
+// ...当该侦听器不再需要时，手动卸载
+unwatch()
+```
 
+## ref属性
+内置的特殊Attributes，用于注册模板引用。
 
+-   选项式API，引用将被注册在组件`this.$refs`对象。
+-   组合式API，引用将被存储在与名字匹配的`ref`里。
+
+::: tip 
+组合式API中，定义在组件上的`ref`，不能直接获取子组件内的数据和方法，需要子组件暴漏数据或方法给父组件。
+:::
+
+###  选项式API
+```html
+<p ref="p"> hello Vue3</p>
+```
+```js
+methods:{
+    clickChange(){
+        // 获取ref
+        console.log(this.$refs.p)
+    }
+}
+```
+
+###  组合式API
+```vue
+<template>
+  <p ref="p"> hello Vue3</p>
+  <button @click="clickFun">Click</button>
+</template>
+<script setup>
+  import {ref} from 'vue'
+  let p = ref()
+  function clickFun() {
+    console.log(p.value)  // 输出为：p元素    <p> hello Vue3</p>
+  }
+</script>
 ```
 
 
