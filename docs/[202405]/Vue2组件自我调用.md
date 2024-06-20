@@ -1,5 +1,5 @@
 ---
-title: Vue组件自我调用
+title: Vue2组件自我调用
 author: 耶温
 createTime: 2024/05/15 22:17:02
 permalink: /article/xep5tis5/
@@ -8,7 +8,7 @@ tags:
   - 组件
 ---
 
-# Vue组件自我调用.md
+# Vue2组件自我调用.md
 
 - Vue组件自我调用时，无需再次引用组件。只需要设置当前组件的`name`属性。并与自定义组件元素名称一致，即可调用。
 

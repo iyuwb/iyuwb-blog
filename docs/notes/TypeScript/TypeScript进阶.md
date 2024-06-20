@@ -18,7 +18,8 @@ permalink: /TypeScript/cmpe7vpb/
 export interface PersonInter {
     id: string,
     name: string,
-    age: number
+    age: number,
+    love?:string, // ? 代表可有 可没有
 }
 
 // 在PersonInter基础上，自定义一个类型

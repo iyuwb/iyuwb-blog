@@ -1239,6 +1239,45 @@ methods:{
 </script>
 ```
 
+## Props
+
+传递数据
+
+```vue
+
+<Son :persons="persons"></Son>
+```
+
+子组件接受数据
+
+```vue
+<template>
+  <p ref="p">Son hello Vue3</p>
+  <div>Persons:{{ props.persons }}</div>
+</template>
+<script setup lang="ts" name="Son">
+  import {defineProps} from 'vue'
+
+  let props = defineProps(['persons'])  // 接受并保存
+  console.log(props.persons) // 可以打印
+</script>
+```
+或者简写为：
+```vue
+<template>
+  <p ref="p">Son hello Vue3</p>
+  <div>Persons:{{ persons }}</div>
+</template>
+<script setup lang="ts" name="Son">
+import {defineProps} from 'vue'
+
+defineProps(['persons']) // 只接受不保存, `console.log(persons)`会报错
+</script>
+```
+
+
+
+
 
 
 
