@@ -224,7 +224,7 @@ export default defineUserConfig({
                         {
                             text: 'Vue基础',
                             icon: 'ic:baseline-dashboard',
-                            items: ['Vue3基础','Vue3-setup','Vue3-ref&reactive']
+                            items: ['Vue3基础','Vue3-setup','Vue3-ref&reactive','Vue3-computed&watch']
                         },
                         {
                             text: 'Vue问题',

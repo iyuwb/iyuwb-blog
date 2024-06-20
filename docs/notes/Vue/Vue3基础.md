@@ -4,6 +4,7 @@ author: 耶温
 createTime: 2024/06/12 16:54:01
 permalink: /Vue/wr2boutf/
 ---
+
 # Vue3基础
 
 > Vue3 官方中文文档 https://cn.vuejs.org/
@@ -14,16 +15,19 @@ permalink: /Vue/wr2boutf/
 
 > Vue3.0 发布于2020年9月18日，代号：One Piece
 
--   1. 性能提升
-        -   打包大小减少
-        -   初次渲染、更新渲染加快
-        -   使用内存减少
--   2. 源码升级(响应式原理)
-        -   使用`Proxy`代替Vue2的`defineProperty`实现响应式
-        -   虚拟DOM优化
--   3. 支持TypeScript
--   4. 新的特性(组合API等等)
-
+-
+    1. 性能提升
+        - 打包大小减少
+        - 初次渲染、更新渲染加快
+        - 使用内存减少
+-
+    2. 源码升级(响应式原理)
+        - 使用`Proxy`代替Vue2的`defineProperty`实现响应式
+        - 虚拟DOM优化
+-
+    3. 支持TypeScript
+-
+    4. 新的特性(组合API等等)
 
 ## 项目创建
 
@@ -37,22 +41,26 @@ Vue-cli创建Vue方法，可以参考其他笔记。
 
 ### Vite(官方推荐)
 
->   Vite是新一代前端开发与构建工具，能够显著提升前端开发体验。
+> Vite是新一代前端开发与构建工具，能够显著提升前端开发体验。
 
--   轻量快速热重载，能够极速启动项目。
--   支持TypeScript JSX 等，可以直接使用
--   按钮编译，不用等待编译整个项目。
+- 轻量快速热重载，能够极速启动项目。
+- 支持TypeScript JSX 等，可以直接使用
+- 按钮编译，不用等待编译整个项目。
 
->  [Vite中文文档：点击跳转](https://cn.vitejs.dev/)
+> [Vite中文文档：点击跳转](https://cn.vitejs.dev/)
 
 创建命令，根据提示步骤创建，可以选择使用框架Vue和选择语言TypeScript。
+
 ```shell
 npm init vite@latest
 ```
+
 或者用以下命令也可以创建
+
 ```shell
 npm create vue@latest
 ```
+
 使用`npm create vue@latest`创建输出：
 
 ```shell
@@ -84,34 +92,34 @@ Vue.js - The Progressive JavaScript Framework
 
 ## 项目目录
 
-
-```js
-|-- vue3_hello                        // Vue3 总文件夹
-    |-- .vscode                       // vscode 编译器配置文件夹
-    |-- node_modules                  // 依赖包 文件夹
-    |-- public                        // Vue 静态资源文件夹，可以放logo、图片等资源
-    |-- src                           // Vue 主体文件夹  源代码文件
-        |-- assets                    // 项目资产文件夹
-        |-- components                // 项目组件文件夹
-        |-- App.vue                   // Vue入口vue文件
-        |-- main.ts                   // Vue项目主ts文件，加载Vue
-    |-- .gitignore                    // git忽略文件配置
-    |-- env.d.ts                      // ts配置文件，可以让ts引入和识别各种文件
-    |-- index.html                    // Vue入口文件 html文件，文件中引入main.ts
-    |-- package-lock.json             // 依赖包声明文件
-    |-- package.json                  // 依赖包声明文件
-    |-- README.md                     // README 项目说明工程介绍
-    |-- tsconfig.app.json             // ts配置文件
-    |-- tsconfig.json                 // ts配置文件
-    |-- tsconfig.node.json            // ts配置文件
-    |-- vite.config.ts                // vite 配置文件，项目配置文件，使用插件配置代理等
+```txt
+|--vue3_hello                        // Vue3 总文件夹
+    | --.vscode                       // vscode 编译器配置文件夹
+    | --node_modules                  // 依赖包 文件夹
+    | --public                        // Vue 静态资源文件夹，可以放logo、图片等资源
+    | --src                           // Vue 主体文件夹  源代码文件
+        | --assets                    // 项目资产文件夹
+        | --components                // 项目组件文件夹
+        | --App.vue                   // Vue入口vue文件
+        | --main.ts                   // Vue项目主ts文件，加载Vue
+    | --.gitignore                    // git忽略文件配置
+    | --env.d.ts                      // ts配置文件，可以让ts引入和识别各种文件
+    | --index.html                    // Vue入口文件 html文件，文件中引入main.ts
+    | --package - lock.json           // 依赖包声明文件
+    | --package.json                  // 依赖包声明文件
+    | --README.md                     // README 项目说明工程介绍
+    | --tsconfig.app.json             // ts配置文件
+    | --tsconfig.json                 // ts配置文件
+    | --tsconfig.node.json            // ts配置文件
+| --vite.config.ts                // vite 配置文件，项目配置文件，使用插件配置代理等
 ```
 
 ### `main.ts`
+
 ```ts
 import './assets/main.css'          // 样式引入
 
-import { createApp } from 'vue'     // 引入Vue创建方法
+import {createApp} from 'vue'     // 引入Vue创建方法
 import App from './App.vue'         // 引入组件 根组件
 
 // 创建应用实例
@@ -119,8 +127,11 @@ createApp(App).mount('#app')        // 创建Vue根组件App，挂载在(index.h
 ```
 
 ### `index.vue`
+
 Vue文件，总体结构
+
 ```vue
+
 <template>
 
 </template>
@@ -135,31 +146,33 @@ Vue文件，总体结构
 ## 实例演示
 
 ### OptionAPI
+
 原vue2语法
 
 ```vue
+
 <script>
-export default {
-  // data() 返回的属性将会成为响应式的状态
-  // 并且暴露在 `this` 上
-  data() {
-    return {
-      count: 0
+  export default {
+    // data() 返回的属性将会成为响应式的状态
+    // 并且暴露在 `this` 上
+    data() {
+      return {
+        count: 0
+      }
+    },
+    // methods 是一些用来更改状态与触发更新的函数
+    // 它们可以在模板中作为事件处理器绑定
+    methods: {
+      increment() {
+        this.count++
+      }
+    },
+    // 生命周期钩子会在组件生命周期的各个不同阶段被调用
+    // 例如这个函数就会在组件挂载完成后被调用
+    mounted() {
+      console.log(`The initial count is ${this.count}.`)
     }
-  },
-  // methods 是一些用来更改状态与触发更新的函数
-  // 它们可以在模板中作为事件处理器绑定
-  methods: {
-    increment() {
-      this.count++
-    }
-  },
-  // 生命周期钩子会在组件生命周期的各个不同阶段被调用
-  // 例如这个函数就会在组件挂载完成后被调用
-  mounted() {
-    console.log(`The initial count is ${this.count}.`)
   }
-}
 </script>
 
 <template>
@@ -168,24 +181,26 @@ export default {
 
 ```
 
-
-
 ### CompositionAPI
+
 Vue3新语法
 
 ```vue
+
 <script setup>
-import { ref, onMounted } from 'vue'
-// 响应式状态
-const count = ref(0)
-// 用来修改状态、触发更新的函数
-function increment() {
-  count.value++
-}
-// 生命周期钩子
-onMounted(() => {
-  console.log(`The initial count is ${count.value}.`)
-})
+  import {ref, onMounted} from 'vue'
+  // 响应式状态
+  const count = ref(0)
+
+  // 用来修改状态、触发更新的函数
+  function increment() {
+    count.value++
+  }
+
+  // 生命周期钩子
+  onMounted(() => {
+    console.log(`The initial count is ${count.value}.`)
+  })
 </script>
 
 <template>
@@ -199,31 +214,40 @@ onMounted(() => {
 
 一个页面包含多个功能，每个功能都有自己的`data `,`methods`,`computed`等。特定的数据或者方法，需要写到特定的位置。
 
--   1. 新增或者修改某个功能，需要修改该功能对应的`data `,`methods`,`computed`等。
--   2. 随着业务增多，代码量加大，业务逻辑变的复杂，导致后续维护不易。代码复用性降低。
+-
+    1. 新增或者修改某个功能，需要修改该功能对应的`data `,`methods`,`computed`等。
+-
+    2. 随着业务增多，代码量加大，业务逻辑变的复杂，导致后续维护不易。代码复用性降低。
 
 ```js
 export default {
-  data() {
-    return {
-      data1:'',// 功能1
-      data2:'',// 功能2
-    };
-  },
-  methods:{
-    methods1(){},// 功能1
-    methods2(){},// 功能2
-  },
-  computed:{
-    computed1(){},// 功能1
-    computed2(){},// 功能2
-  },
-  watch:{
-    data1(){},// 功能1
-    data2(){},// 功能2
-  },
+    data() {
+        return {
+            data1: '',// 功能1
+            data2: '',// 功能2
+        };
+    },
+    methods: {
+        methods1() {
+        },// 功能1
+        methods2() {
+        },// 功能2
+    },
+    computed: {
+        computed1() {
+        },// 功能1
+        computed2() {
+        },// 功能2
+    },
+    watch: {
+        data1() {
+        },// 功能1
+        data2() {
+        },// 功能2
+    },
 };
 ```
+
 如下演示图，不同颜色代表不同的功能或者模块
 <center>
   <img src="@source/notes/Vue/gif.gif" style="zoom:90%;border-radius:20px" />
@@ -233,7 +257,6 @@ export default {
 ### CompositionAPI
 
 可以用函数的方式，更加优雅的组织代码，让相关功能的代码更加有序的组织在一起。方便后期维护复用。
-
 
 如下演示图，不同颜色代表不同的功能或者模块
 
@@ -245,7 +268,6 @@ export default {
 </center>
 
 > 演示图出自于掘金作者[大帅老猿](https://juejin.cn/post/6890545920883032071)
-
 
 ## setup
 
@@ -260,6 +282,7 @@ export default {
 ### 基本使用
 
 ```vue
+
 <template>
   <div class="hello">
     {{ msg }} {{total}}
@@ -267,38 +290,41 @@ export default {
   </div>
 </template>
 
-<script  lang="ts">
-export default {
-  name: "demo",
-  setup() {
-    let msg = "Hello Vue3"; // 直接定义的数据不是响应式
-    let total = 1;          // 直接定义的数据不是响应式
-    function clickChange() {        // 直接定义的数据不是响应式
-      msg = "hello Vue3, change!";
-      total++;
-      console.log(total,msg)        // 输出 2，hello Vue3, change! ；3，hello Vue3, change!；
-    }
-    return { msg, total, clickChange }; // 需要把模板使用的数据返回
-  },
-};
+<script lang="ts">
+  export default {
+    name: "demo",
+    setup() {
+      let msg = "Hello Vue3"; // 直接定义的数据不是响应式
+      let total = 1;          // 直接定义的数据不是响应式
+      function clickChange() {        // 直接定义的数据不是响应式
+        msg = "hello Vue3, change!";
+        total++;
+        console.log(total, msg)        // 输出 2，hello Vue3, change! ；3，hello Vue3, change!；
+      }
+
+      return {msg, total, clickChange}; // 需要把模板使用的数据返回
+    },
+  };
 </script>
 
 <style scoped>
 </style>
 ```
+
 ::: tip
-注意：上面示例中，点击按钮发现页面没有改变，如果打印数据，会发现数据已经改变。因为直接定义的数据不是响应式的，需要使用ref()定义响应式。
+注意：上面示例中，点击按钮发现页面没有改变，如果打印数据，会发现数据已经改变。因为直接定义的数据不是响应式的，需要使用ref()
+定义响应式。
 :::
-
-
 
 ### 返回值
 
 - 若返回一个**对象**：则对象中的：属性、方法等，在模板中均可以直接使用。
 - 若返回一个**函数**：则可以自定义渲染内容(很少使用)，代码如下：
+
 ```jsx
-setup(){
-  return ()=> 'Hello Vue3'  //页面会直接显示 Hello Vue3
+setup()
+{
+    return () => 'Hello Vue3'  //页面会直接显示 Hello Vue3
 }
 ```
 
@@ -306,8 +332,8 @@ setup(){
 
 OptionAPI中的`data`和`methods`能和`setup`同时存在，换句话说，OptionAPI与CompositionAPI可以存在使用。
 
-
-- `data`和`methods`能够通过`this`读取到`setup`中定义的数据和方法，因为`setup`函数会在`beforeCreate`之前调用，比`data`执行要早(只能获取`setup`暴露出来的数据和方法)。
+- `data`和`methods`能够通过`this`读取到`setup`中定义的数据和方法，因为`setup`函数会在`beforeCreate`之前调用，比`data`
+  执行要早(只能获取`setup`暴露出来的数据和方法)。
 - 相反，在`setup`中获取不到`data`和`methods`的数据和方法。
 
 总结
@@ -319,21 +345,24 @@ OptionAPI中的`data`和`methods`能和`setup`同时存在，换句话说，Opti
 ### setup 简写
 
 `setup`函数有一个语法糖，这个语法糖，可以让我们把`setup`独立出去。
+
 - 不用在写`setup`方法
 - 不用自己`return`各个数据和方法。
+
 ```vue
+
 <template>
   <div class="hello">
     {{ msg }}
   </div>
 </template>
 <script lang="ts">
-export default {
-  name: "demo",
-};
+  export default {
+    name: "demo",
+  };
 </script>
-<script setup  lang="ts">
-let msg = "Hello Vue3";
+<script setup lang="ts">
+  let msg = "Hello Vue3";
 </script>
 ```
 
@@ -344,39 +373,46 @@ let msg = "Hello Vue3";
 ```shell
 npm install vite-plugin-vue-setup-extend -D
 ```
+
 配置插件
 
 ```ts
-import { defineConfig } from 'vite'
+import {defineConfig} from 'vite'
 import VueSetupExtend from 'vite-plugin-vue-setup-extend'
 
 export default defineConfig({
-  plugins: [ VueSetupExtend() ]
+    plugins: [VueSetupExtend()]
 })
 ```
+
 简写优化
 
 ```vue
+
 <template>
   <div class="hello">
     {{ msg }}
   </div>
 </template>
-<script setup  lang="ts" name="demo">
-let msg = "Hello Vue3";
+<script setup lang="ts" name="demo">
+  let msg = "Hello Vue3";
 </script>
 ```
+
 ## ref 与 reactive
+
 ### ref 基础类型响应式
 
 - **作用：** 定义响应式变量。
 - **语法：** `let xxx = ref(初始值)`。
 - **返回值：** 一个`RefImpl`的实例对象，简称`ref对象`或`ref`，`ref`对象的`value`属性是响应式的。
-:::tip
-   - `JS`中操作数据需要：`xxx.value`，但模板中不需要`.value`，直接使用即可。
-   - 对于`let total = ref(1)`来说，`total`不是响应式的，`total.value`是响应式的。
-:::
+  :::tip
+    - `JS`中操作数据需要：`xxx.value`，但模板中不需要`.value`，直接使用即可。
+    - 对于`let total = ref(1)`来说，`total`不是响应式的，`total.value`是响应式的。
+      :::
+
 ```vue
+
 <template>
   <div class="hello">
     {{ msg }}
@@ -384,17 +420,20 @@ let msg = "Hello Vue3";
     {{total}}
   </div>
 </template>
-<script setup  lang="ts" name="demo">
-import {ref} from 'vue'
-let msg = "Hello Vue3";
-let total = ref(1);
-console.log(total)
-console.log(total.value)
-function clickChange(){
-  total.value++
-}
+<script setup lang="ts" name="demo">
+  import {ref} from 'vue'
+
+  let msg = "Hello Vue3";
+  let total = ref(1);
+  console.log(total)
+  console.log(total.value)
+
+  function clickChange() {
+    total.value++
+  }
 </script>
 ```
+
 打印输出
 
 ```shell
@@ -402,14 +441,18 @@ RefImpl {__v_isShallow: false, dep: undefined, __v_isRef: true, _rawValue: 1, _
 
 1
 ```
-点击按钮是 页面也会改变 `total` 数据变化
+
+点击按钮时 页面也会改变 `total` 数据变化
 
 ### reactive 对象类型响应式
+
 - **作用：** 定义一个**响应式对象**（基本类型不要用它，要用`ref`，否则报错）
 - **语法：** `let 响应式对象= reactive(源对象)`。
 - **返回值：** 一个`Proxy`的实例对象，简称：响应式对象。
 - **注意点：** `reactive`定义的响应式数据是“深层次”的。
+
 ```vue
+
 <template>
   <div class="hello">
     {{ data.name }}{{data.msg}}
@@ -420,22 +463,26 @@ RefImpl {__v_isShallow: false, dep: undefined, __v_isRef: true, _rawValue: 1, _
     </ul>
   </div>
 </template>
-<script setup  lang="ts" name="demo">
-import { reactive } from "vue";
-let data = reactive({ id: 1, name: "yevin", msg: "hello, everyone!" });
-let list = reactive([
-  { id: 1, name: "wenbo", msg: "ni hao" },
-  { id: 2, name: "yiran", msg: "hello" },
-]);
-function clickChange() {
-  data.id++;
-  list[0].msg += ' yevin '
-  console.log(data);
-  console.log(list);
-}
+<script setup lang="ts" name="demo">
+  import {reactive} from "vue";
+
+  let data = reactive({id: 1, name: "yevin", msg: "hello, everyone!"});
+  let list = reactive([
+    {id: 1, name: "wenbo", msg: "ni hao"},
+    {id: 2, name: "yiran", msg: "hello"},
+  ]);
+
+  function clickChange() {
+    data.id++;
+    list[0].msg += ' yevin '
+    console.log(data);
+    console.log(list);
+  }
 </script>
 ```
+
 点击按钮，页面id数据更新，控制台打印如下：
+
 ```shell
 Proxy(Object) {id: 2, name: 'yevin', msg: 'hello, everyone!'}
 
@@ -454,7 +501,9 @@ Proxy(Array) {0: {…}, 1: {…}}
 :::tip
 `ref`定义的数据，需要通过`.value`获取
 :::
+
 ```vue
+
 <template>
   <div class="hello">
     {{ data.name }}{{data.msg}}
@@ -465,22 +514,26 @@ Proxy(Array) {0: {…}, 1: {…}}
     </ul>
   </div>
 </template>
-<script setup  lang="ts" name="demo">
-import { ref } from "vue";
-let data = ref({ id: 1, name: "yevin", msg: "hello, everyone!" });
-let list = ref([
-  { id: 1, name: "wenbo", msg: "ni hao" },
-  { id: 2, name: "yiran", msg: "hello" },
-]);
-function clickChange() {
-  data.value.id++;
-  list.value[0].msg += ' yevin '
-  console.log(data);
-  console.log(list);
-}
+<script setup lang="ts" name="demo">
+  import {ref} from "vue";
+
+  let data = ref({id: 1, name: "yevin", msg: "hello, everyone!"});
+  let list = ref([
+    {id: 1, name: "wenbo", msg: "ni hao"},
+    {id: 2, name: "yiran", msg: "hello"},
+  ]);
+
+  function clickChange() {
+    data.value.id++;
+    list.value[0].msg += ' yevin '
+    console.log(data);
+    console.log(list);
+  }
 </script>
 ```
+
 点击按钮，页面id数据更新，控制台打印如下：
+
 ```shell
 RefImpl {__v_isShallow: false, dep: Map(1), __v_isRef: true, _rawValue: {…}, _value: Proxy(Object)}
 RefImpl {__v_isShallow: false, dep: Map(1), __v_isRef: true, _rawValue: Array(2), _value: Proxy(Array)}
@@ -502,23 +555,22 @@ RefImpl {__v_isShallow: false, dep: Map(1), __v_isRef: true, _rawValue: Array(2
 
 > 2. `reactive`重新分配一个新对象，会**失去**响应式（可以使用`Object.assign`去整体替换）。
 
-
 ```js
-let data = reactive({ id: 1, name: "yevin", msg: "hello, everyone!" })
+let data = reactive({id: 1, name: "yevin", msg: "hello, everyone!"})
 // 错误示例
 // data = {id: 100, name: "wenbo", msg: "wenbo" } // 失去响应式
 // data = reactive({id: 100, name: "wenbo", msg: "wenbo" }) // 不行 XXXX
 // 正确示例
-Object.assign(data,{id: 100, name: "wenbo", msg: "wenbo" })
+Object.assign(data, {id: 100, name: "wenbo", msg: "wenbo"})
 ```
 
 - 使用原则：
+
 > 1. 若需要一个基本类型的响应式数据，必须使用`ref`。
 
 > 2. 若需要一个响应式对象，层级不深，`ref`、`reactive`都可以。
 
 > 3. 若需要一个响应式对象，且层级较深，推荐使用`reactive`。
-
 
 ## toRef 与 toRefs
 
@@ -528,6 +580,7 @@ Object.assign(data,{id: 100, name: "wenbo", msg: "wenbo" })
 ### 使用演示
 
 ```vue
+
 <template>
   <div class="hello">
     {{ name }}{{ data.msg }}
@@ -535,32 +588,38 @@ Object.assign(data,{id: 100, name: "wenbo", msg: "wenbo" })
     {{ id}}
   </div>
 </template>
-<script setup  lang="ts" name="demo">
-import { reactive } from "vue";
-let data = reactive({ id: 1, name: "yevin", msg: "hello, everyone!" });
-let { id, name } = data;
-function clickChange() {
-  console.log(id,name) // 1,yevin
-  id = 100;
-  name = "wenbo";
-  console.log(id,name) // 100,wenbo
-}
+<script setup lang="ts" name="demo">
+  import {reactive} from "vue";
+
+  let data = reactive({id: 1, name: "yevin", msg: "hello, everyone!"});
+  let {id, name} = data;
+
+  function clickChange() {
+    console.log(id, name) // 1,yevin
+    id = 100;
+    name = "wenbo";
+    console.log(id, name) // 100,wenbo
+  }
 </script>
 ```
+
 在上述代码中，解构一个响应式的数据后，更改数据，可以看到数据更改了但是页面并没有更新。
 
 原因：
 
 解构代码中相当于 单独定义了 id 和 name数据，并且没有绑定响应式。
+
 ```js
-let { id, name } = data; 
+let {id, name} = data;
 // 上述代码相当于 单独定义了 id 和 name数据，并且没有绑定响应式。
 let id = data.id
 let name = data.name
 ```
 
 使用`toRefs`优化代码：
+
 ```vue
+
 <template>
   <div class="hello">
     {{ name }}{{ data.msg }}
@@ -568,21 +627,24 @@ let name = data.name
     {{ id}}
   </div>
 </template>
-<script setup  lang="ts" name="demo">
-import { reactive ,toRefs} from "vue";
-let data = reactive({ id: 1, name: "yevin", msg: "hello, everyone!" });
-let obj = toRefs(data);
-console.log(obj)
-let { id, name } = obj
-function clickChange() {
-  id.value = 100;
-  name.value = "wenbo";
-  console.log(id,name) 
-  console.log(id.value,name.value) 
-  console.log(data)
-}
+<script setup lang="ts" name="demo">
+  import {reactive, toRefs} from "vue";
+
+  let data = reactive({id: 1, name: "yevin", msg: "hello, everyone!"});
+  let obj = toRefs(data);
+  console.log(obj)
+  let {id, name} = obj
+
+  function clickChange() {
+    id.value = 100;
+    name.value = "wenbo";
+    console.log(id, name)
+    console.log(id.value, name.value)
+    console.log(data)
+  }
 </script>
 ```
+
 点击按钮输出如下：
 
 ```shell
@@ -595,6 +657,7 @@ ObjectRefImpl {_object: Proxy(Object), _key: 'name', _defaultValue: undefined, 
 
 Proxy(Object) {id: 100, name: 'wenbo', msg: 'hello, everyone!'}
 ```
+
 通过上述代码可以看到：`toRefs`将一个响应式对象中的每一个属性，转换为`ref`对象，因此解构获得是对应的`ref`对象，都有绑定响应式。
 
 所以，改变通过解构获取的值之后，页面会同步更新，原数据也会同步更新。
@@ -605,31 +668,39 @@ Proxy(Object) {id: 100, name: 'wenbo', msg: 'hello, everyone!'}
 ### toRef与toRefs
 
 使用`reactive`定义对象类型响应
+
 ```vue
-<script setup  lang="ts" name="demo">
-import { reactive ,toRefs,toRef} from "vue";
-let data = reactive({ id: 1, name: "yevin", msg: "hello, everyone!" });
-// toRefs使用
-let { id, name } = toRefs(data)
-// toRef使用
-let msgData = toRef(data,'msg')
+
+<script setup lang="ts" name="demo">
+  import {reactive, toRefs, toRef} from "vue";
+
+  let data = reactive({id: 1, name: "yevin", msg: "hello, everyone!"});
+  // toRefs使用
+  let {id, name} = toRefs(data)
+  // toRef使用
+  let msgData = toRef(data, 'msg')
 </script>
 ```
+
 使用`ref`定义对象类型响应
+
 ```vue
-<script setup  lang="ts" name="demo">
-import { ref, toRefs, toRef } from "vue";
-let data = ref({ id: 1, name: "yevin", msg: "hello, everyone!" });
-// toRefs使用
-let { id, name } = toRefs(data.value);
-// toRef使用
-let msgData = toRef(data.value, "msg");
+
+<script setup lang="ts" name="demo">
+  import {ref, toRefs, toRef} from "vue";
+
+  let data = ref({id: 1, name: "yevin", msg: "hello, everyone!"});
+  // toRefs使用
+  let {id, name} = toRefs(data.value);
+  // toRef使用
+  let msgData = toRef(data.value, "msg");
 </script>
 ```
 
 ## computed
 
 ### 概述
+
 **作用：** 根据已有数据计算出新数据（和`Vue2`中的`computed`作用一致）。
 
 **特点：** 多次使用计算属性时，如果依赖数据没有变化，计算属性不会重新执行计算。只会返回最后一次计算的数据。
@@ -641,24 +712,29 @@ let msgData = toRef(data.value, "msg");
 - 避免直接修改计算属性值。
 
 ### 使用演示
+
 ```vue
+
 <template>
   <div class="hello">
     <h1>名字计算</h1>
-    <input type="text" v-model="firstName" /> +
-    <input type="text" v-model="lastName" /> = {{ fullName }}
+    <input type="text" v-model="firstName"/> +
+    <input type="text" v-model="lastName"/> = {{ fullName }}
   </div>
 </template>
 <script setup>
-import { ref, computed } from 'vue'
-const firstName = ref('John')
-const lastName = ref('Doe')
-const fullName = computed(()=>{
-	return firstName.value + ' ' + lastName.value
-})
+  import {ref, computed} from 'vue'
+
+  const firstName = ref('John')
+  const lastName = ref('Doe')
+  const fullName = computed(() => {
+    return firstName.value + ' ' + lastName.value
+  })
 </script>
 ```
+
 打印输出：
+
 ```shell
 ComputedRefImpl {dep: undefined, __v_isRef: true, __v_isReadonly: true, getter: ƒ, _setter: ƒ, …}
 ```
@@ -670,24 +746,26 @@ ComputedRefImpl {dep: undefined, __v_isRef: true, __v_isReadonly: true, getter:
 - 注意如果设置`get`,也需要设置`set`,不能单独设置。
 
 使用演示
+
 ```vue
+
 <script setup>
-import { ref, computed } from 'vue'
+  import {ref, computed} from 'vue'
 
-const firstName = ref('John')
-const lastName = ref('Doe')
+  const firstName = ref('John')
+  const lastName = ref('Doe')
 
-const fullName = computed({
-  // getter
-  get() {
-    return firstName.value + ' ' + lastName.value
-  },
-  // setter
-  set(newValue) {
-    // 注意：我们这里使用的是解构赋值语 当设置fullName时，会同时改变firstName和lastName
-    [firstName.value, lastName.value] = newValue.split(' ')
-  }
-})
+  const fullName = computed({
+    // getter
+    get() {
+      return firstName.value + ' ' + lastName.value
+    },
+    // setter
+    set(newValue) {
+      // 注意：我们这里使用的是解构赋值语 当设置fullName时，会同时改变firstName和lastName
+      [firstName.value, lastName.value] = newValue.split(' ')
+    }
+  })
 </script>
 ```
 
@@ -708,8 +786,8 @@ const fullName = computed({
 
 第二个参数是一个同调函数（数据改变的回调函数）：
 
--  函数第一个参数 是新的数据。根据`watch`传的第一个参数，可能是一个数据，也可能是包括多个数据的数据。
--  函数第二个参数 是旧的数据。同上。
+- 函数第一个参数 是新的数据。根据`watch`传的第一个参数，可能是一个数据，也可能是包括多个数据的数据。
+- 函数第二个参数 是旧的数据。同上。
 
 第三个参数是一个配置对象：
 
@@ -717,36 +795,36 @@ const fullName = computed({
 - `immediate`： 立即执行一次
 - `once`：只监听一次
 - `flush`：回调触发时机
-  - `post`：Vue 更新之后，DOM更新之后触发回调函数，可以访问到DOM。简写为：`watchPostEffect`
-  - `sync`：Vue 更新之前，DOM更新之前触发回调函数，不可以访问DOM。简写为：`watchSyncEffect`
+    - `post`：Vue 更新之后，DOM更新之后触发回调函数，可以访问到DOM。简写为：`watchPostEffect`
+    - `sync`：Vue 更新之前，DOM更新之前触发回调函数，不可以访问DOM。简写为：`watchSyncEffect`
+
 ```js
 const x = ref(0)
 const y = ref(0)
 
 // 单个 ref
 watch(x, (newX) => {
-  console.log(`x is ${newX}`)
+    console.log(`x is ${newX}`)
 })
 
 // getter 函数
 watch(
-  () => x.value + y.value,
-  (sum) => {
-    console.log(`sum of x + y is: ${sum}`)
-  }
+    () => x.value + y.value,
+    (sum) => {
+        console.log(`sum of x + y is: ${sum}`)
+    }
 )
 
 // 多个来源组成的数组
 watch([x, () => y.value], ([newX, newY]) => {
-  console.log(`x is ${newX} and y is ${newY}`)
+    console.log(`x is ${newX} and y is ${newY}`)
 })
 ```
-
-
 
 ### ref数据
 
 #### 监视【ref】定义的【基本类型数据】：
+
 :::tip
 注意：监听ref定义的基本类型数据时，不用写`.value`
 :::
@@ -755,8 +833,8 @@ watch([x, () => y.value], ([newX, newY]) => {
 const x = ref(0)
 
 // 单个 ref
-watch(x, (newX,oldX) => {
-  console.log(`x is ${newX}, old: ${oldX}`,)
+watch(x, (newX, oldX) => {
+    console.log(`x is ${newX}, old: ${oldX}`,)
 })
 ```
 
@@ -765,31 +843,36 @@ watch(x, (newX,oldX) => {
 监听对象地址改变：
 
 ```js
-let x = ref({ id: 1, name: 'wenbo' })
+let x = ref({id: 1, name: 'wenbo'})
 watch(x, (newX, oldX) => {
-	console.log('newX:', newX, 'oldX:', oldX)
+    console.log('newX:', newX, 'oldX:', oldX)
 })
+
 function fun() {
-	x.value.name += '~'  // 监听不到
+    x.value.name += '~'  // 监听不到
 }
+
 function fun2() {
-	x.value = { id: 2, name: 'iyuwb' } // 可以监听到
+    x.value = {id: 2, name: 'iyuwb'} // 可以监听到
 }
 ```
 
 设置深度监听，可以监听到对象内部属性的变化，也可以监听到对象地址的改变：
+
 ```js
-let x = ref({ id: 1, name: 'wenbo' })
+let x = ref({id: 1, name: 'wenbo'})
 watch(x, (newX, oldX) => {
-	console.log('newX:', newX, 'oldX:', oldX)
+    console.log('newX:', newX, 'oldX:', oldX)
 }, {
-	deep: true
+    deep: true
 })
+
 function fun() {
-	x.value.name += '~'  // 可以监听到
+    x.value.name += '~'  // 可以监听到
 }
+
 function fun2() {
-	x.value = { id: 2, name: 'iyuwb' } // 可以监听到
+    x.value = {id: 2, name: 'iyuwb'} // 可以监听到
 }
 ```
 
@@ -811,17 +894,20 @@ reactive只能定义对象数据类型。
 当监视【reactive】定义的【对象数据类型】时，默认开启深度监听（现在可以关闭深度监听，早期不可更改）。
 
 ```js
-let x = reactive({ id: 1, name: 'wenbo' })
+let x = reactive({id: 1, name: 'wenbo'})
 watch(x, (newX, oldX) => {
-	console.log('newX:', newX, 'oldX:', oldX)
+    console.log('newX:', newX, 'oldX:', oldX)
 })
+
 function fun() {
-	x.name += '~'  // 可以监听到
+    x.name += '~'  // 可以监听到
 }
+
 function fun2() {
-	Object.assign(x, { id: 2, name: 'iyuwb' })  // 可以监听到
+    Object.assign(x, {id: 2, name: 'iyuwb'})  // 可以监听到
 }
 ```
+
 ::: tip
 `Object.assign`只覆盖值，没有个更改对象地址。
 
@@ -840,30 +926,36 @@ function fun2() {
 #### 对象属性：基本类型
 
 监听reactive创建的对象类型数据属性：
+
 ```javascript
-let x = reactive({ id: 1, name: 'wenbo' })
+let x = reactive({id: 1, name: 'wenbo'})
 watch(() => x.name, (newX, oldX) => {
-	console.log('newX:', newX, 'oldX:', oldX)
+    console.log('newX:', newX, 'oldX:', oldX)
 })
+
 function fun() {
-	x.name += '~'  // 可以监听到
+    x.name += '~'  // 可以监听到
 }
+
 function fun2() {
-	Object.assign(x, { id: 2, name: 'iyuwb' })  // 可以监听到
+    Object.assign(x, {id: 2, name: 'iyuwb'})  // 可以监听到
 }
 ```
 
 监听ref创建的对象类型数据属性：
+
 ```javascript
-let x = ref({ id: 1, name: 'wenbo' })
+let x = ref({id: 1, name: 'wenbo'})
 watch(() => x.value.name, (newX, oldX) => {
-	console.log('newX:', newX, 'oldX:', oldX)
+    console.log('newX:', newX, 'oldX:', oldX)
 })
+
 function fun() {
-	x.value.name += '~'  // 可以监听到
+    x.value.name += '~'  // 可以监听到
 }
+
 function fun2() {
-	x.value = { id: 2, name: 'iyuwb' } // 可以监听到
+    x.value = {id: 2, name: 'iyuwb'} // 可以监听到
 }
 ```
 
@@ -873,84 +965,95 @@ function fun2() {
 
 ```javascript
 let x = reactive({
-	id: 1,
-	name: 'wenbo',
-	car: { name: '比亚迪', price: '79800' }
+    id: 1,
+    name: 'wenbo',
+    car: {name: '比亚迪', price: '79800'}
 })
 watch(() => x.car, (newX, oldX) => {
-	console.log('newX:', newX, 'oldX:', oldX)
-}, { deep: true })   // 如果不设置 deep 只能监听到地址变换
+    console.log('newX:', newX, 'oldX:', oldX)
+}, {deep: true})   // 如果不设置 deep 只能监听到地址变换
 function fun() {
-	x.car.name += '~'  // 可以监听到    其他：如果不设置deep，监听不到
+    x.car.name += '~'  // 可以监听到    其他：如果不设置deep，监听不到
 }
+
 function fun2() {
-	x.car = { name: '奔驰', price: '279800' }// 可以监听到   其他：设置不设置deep，都能监听听到
+    x.car = {name: '奔驰', price: '279800'}// 可以监听到   其他：设置不设置deep，都能监听听到
 }
 ```
+
 监听ref创建的对象类型数据属性：
+
 ```js
 let x = ref({
-	id: 1,
-	name: 'wenbo',
-	car: { name: '比亚迪', price: '79800' }
+    id: 1,
+    name: 'wenbo',
+    car: {name: '比亚迪', price: '79800'}
 })
 watch(() => x.value.car, (newX, oldX) => {
-	console.log('newX:', newX, 'oldX:', oldX)
-}, { deep: true })  // 如果不设置 deep 只能监听到地址变换
+    console.log('newX:', newX, 'oldX:', oldX)
+}, {deep: true})  // 如果不设置 deep 只能监听到地址变换
 function fun() {
-	x.value.car.name += '~'  // 可以监听到    如果不设置deep  监听不到
+    x.value.car.name += '~'  // 可以监听到    如果不设置deep  监听不到
 }
+
 function fun2() {
-	x.value.car = { name: '奔驰', price: '279800' } // 可以监听到   设置不设置deep 都能监听听到
+    x.value.car = {name: '奔驰', price: '279800'} // 可以监听到   设置不设置deep 都能监听听到
 }
 ```
+
 以上两种为最佳解决方案。
 
 以下的方式仅供参考，不推荐使用。
 
 当属性是对象时，可以直接写所需要监听属性。但是监听有问题，不能监听到属性地址的变化，只能监听到属性值的变化。
 
-::: details   点击查看代码（这种方法会导致不可估计的问题，不推荐使用）
+::: details 点击查看代码（这种方法会导致不可估计的问题，不推荐使用）
 
 监听reactive创建的对象类型数据属性：
 
 ```javascript
 let x = reactive({
-	id: 1,
-	name: 'wenbo',
-	car: { name: '比亚迪', price: '79800' }
+    id: 1,
+    name: 'wenbo',
+    car: {name: '比亚迪', price: '79800'}
 })
 watch(x.car, (newX, oldX) => {
-	console.log('newX:', newX, 'oldX:', oldX)
-}, { deep: true })  
+    console.log('newX:', newX, 'oldX:', oldX)
+}, {deep: true})
+
 function fun() {
-	x.car.name += '~'  // 可以监听到  
+    x.car.name += '~'  // 可以监听到  
 }
+
 function fun2() {
-  // 监听不到 , 但是会x.car地址，导致fun中的属性更改也将监听不到
-	x.car = { name: '奔驰', price: '279800' } 
+    // 监听不到 , 但是会x.car地址，导致fun中的属性更改也将监听不到
+    x.car = {name: '奔驰', price: '279800'}
 }
 ```
 
 监听ref创建的对象类型数据属性：
+
 ```js
 let x = ref({
-	id: 1,
-	name: 'wenbo',
-	car: { name: '比亚迪', price: '79800' }
+    id: 1,
+    name: 'wenbo',
+    car: {name: '比亚迪', price: '79800'}
 })
 watch(x.value.car, (newX, oldX) => {
-	console.log('newX:', newX, 'oldX:', oldX)
-}, { deep: true }) 
+    console.log('newX:', newX, 'oldX:', oldX)
+}, {deep: true})
+
 function fun() {
-	x.value.car.name += '~'  // 可以监听到 
+    x.value.car.name += '~'  // 可以监听到 
 }
+
 function fun2() {
-   // 监听不到 , 但是会x.car地址，导致fun中的属性更改也将监听不到
-	x.value.car = { name: '奔驰', price: '279800' } 
+    // 监听不到 , 但是会x.car地址，导致fun中的属性更改也将监听不到
+    x.value.car = {name: '奔驰', price: '279800'}
 }
 
 ```
+
 :::
 
 ### 监听多个属性
@@ -964,58 +1067,67 @@ function fun2() {
 
 ```js
 let x = reactive({
-	id: 1,
-	name: 'wenbo',
-	car: { name: '比亚迪', price: '79800' }
+    id: 1,
+    name: 'wenbo',
+    car: {name: '比亚迪', price: '79800'}
 })
-watch([()=>x.car,()=>x.name], (newX, oldX) => {
-	console.log('newX:', newX, 'oldX:', oldX)
-}, { deep: true })  
+watch([() => x.car, () => x.name], (newX, oldX) => {
+    console.log('newX:', newX, 'oldX:', oldX)
+}, {deep: true})
+
 function fun() {
-  x.name += '~' 
-	x.car.name += '~' 
+    x.name += '~'
+    x.car.name += '~'
 }
+
 function fun2() {
-  x.name += '-' 
-	x.car = { name: '奔驰', price: '279800' } 
+    x.name += '-'
+    x.car = {name: '奔驰', price: '279800'}
 }
 
 ```
+
 或者为：
+
 ```js
 let x = ref({
-	id: 1,
-	name: 'wenbo',
-	car: { name: '比亚迪', price: '79800' }
+    id: 1,
+    name: 'wenbo',
+    car: {name: '比亚迪', price: '79800'}
 })
-watch([()=>x.value.car,()=>x.value.name], (newX, oldX) => {
-	console.log('newX:', newX, 'oldX:', oldX)
-}, { deep: true })  
+watch([() => x.value.car, () => x.value.name], (newX, oldX) => {
+    console.log('newX:', newX, 'oldX:', oldX)
+}, {deep: true})
+
 function fun() {
-  x.value.name += '~' 
-	x.value.car.name += '~' 
+    x.value.name += '~'
+    x.value.car.name += '~'
 }
+
 function fun2() {
-  x.value.name += '-' 
-	x.value.car = { name: '奔驰', price: '279800' } 
+    x.value.name += '-'
+    x.value.car = {name: '奔驰', price: '279800'}
 }
 ```
 
 ## watchEffect
 
-
 ### 概述
 
->   立即运行一个函数，同时响应式的追踪其依赖，并在依赖更改时重新执行该函数。不需要明确指出监听的数据，函数中用到哪些数据，就监听哪些数据。
+> 立即运行一个函数，同时响应式的追踪其依赖，并在依赖更改时重新执行该函数。不需要明确指出监听的数据，函数中用到哪些数据，就监听哪些数据。
 
 #### 基本语法
+
 ```js
-import { watchEffect } from 'vue'
-watchEffect(()=>{
-    
+import {watchEffect} from 'vue'
+
+watchEffect(() => {
+
 })
 ```
+
 #### 具体演示
+
 ```js
 let msg = ref('未成年')
 let person = reactive({
@@ -1028,11 +1140,11 @@ watchEffect(() => {
         person.name = 'WENBO'
     }
 })
+
 function ageChange() {
     person.age += 1
 }
 ```
-
 
 ### watch & watchEffect
 
@@ -1041,7 +1153,6 @@ function ageChange() {
 ::: tip 函数副作用
 
 在计算机科学中，函数副作用指当调用函数时，除了返回函数值之外，还对主调用函数产生附加的影响。例如修改全局变量（函数外的变量）或修改参数。
-
 
 tips:
 
@@ -1068,13 +1179,14 @@ watchEffect 仅会在其同步执行期间，才追踪依赖。在使用异步�
 
 在 `setup()` 或 `<script setup>` 中用同步语句创建的侦听器，会自动绑定到宿主组件实例上，并且会在宿主组件卸载时自动停止。
 
-
 注意：如果异步回调创建监听器，需要手动停止。（尽量避免这种情况）
+
 ```js
 let unwatch = null
 // 异步创建 不会自动停止
 setTimeout(() => {
-    unwatch =  watchEffect(() => {})
+    unwatch = watchEffect(() => {
+    })
     // or  nwatch =  watch([],() => {})
 }, 100)
 // ...当该侦听器不再需要时，手动卸载
@@ -1082,42 +1194,52 @@ unwatch()
 ```
 
 ## ref属性
+
 内置的特殊Attributes，用于注册模板引用。
 
--   选项式API，引用将被注册在组件`this.$refs`对象。
--   组合式API，引用将被存储在与名字匹配的`ref`里。
+- 选项式API，引用将被注册在组件`this.$refs`对象。
+- 组合式API，引用将被存储在与名字匹配的`ref`里。
 
-::: tip 
+::: tip
 组合式API中，定义在组件上的`ref`，不能直接获取子组件内的数据和方法，需要子组件暴漏数据或方法给父组件。
 :::
 
-###  选项式API
+### 选项式API
+
 ```html
 <p ref="p"> hello Vue3</p>
 ```
+
 ```js
 methods:{
-    clickChange(){
+    clickChange()
+    {
         // 获取ref
         console.log(this.$refs.p)
     }
 }
-```
+``` 
 
-###  组合式API
+### 组合式API
+
 ```vue
+
 <template>
   <p ref="p"> hello Vue3</p>
   <button @click="clickFun">Click</button>
 </template>
 <script setup>
   import {ref} from 'vue'
+
   let p = ref()
+
   function clickFun() {
     console.log(p.value)  // 输出为：p元素    <p> hello Vue3</p>
   }
 </script>
 ```
+
+
 
 
 
