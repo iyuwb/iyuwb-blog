@@ -58,7 +58,7 @@ export default defineUserConfig({
                     {
                         text: 'Vue',
                         icon: 'ph:file-vue',
-                        link: '/notes/Vue/Vue3基础.md',
+                        link: '/notes/Vue/Vue3-简介概述',
                     },
                     {
                         text: 'React',
@@ -224,7 +224,7 @@ export default defineUserConfig({
                         {
                             text: 'Vue基础',
                             icon: 'ic:baseline-dashboard',
-                            items: ['Vue3基础','Vue3-setup','Vue3-ref&reactive','Vue3-computed&watch']
+                            items: ['Vue3-简介概述','Vue3-setup','Vue3-ref&reactive','Vue3-computed&watch','Vue3-ref&props','Vue3-生命周期']
                         },
                         {
                             text: 'Vue问题',
