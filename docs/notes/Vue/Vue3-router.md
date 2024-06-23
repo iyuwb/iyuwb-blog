@@ -232,24 +232,17 @@ routes:[ // 配置组件和路径
 
 `components/blog.vue`
 
-```ts
+```vue
+
 <template>
-    <h1>Blog < /h1>
-< RouterLink
-:
-to = "{path:'/blog/article'}" > Article < /RouterLink>
-    < RouterLink
-:
-to = "{name:'Article'}" > Article < /RouterLink>
-    < RouterLink
-to = "/blog/article" > Article < /RouterLink>
-    < RouterView > </RouterView>
-    < /template>
-    < script
-setup
-lang = "ts"
-name = "Blog" >
-import {RouterLink, RouterView} from "vue-router";
+  <h1>Blog < /h1>
+    <RouterLink : to="{path:'/blog/article'}"> Article</RouterLink>
+    <RouterLink : to="{name:'Article'}"> Article</RouterLink>
+    <RouterLink to="/blog/article"> Article</RouterLink>
+    <RouterView></RouterView>
+</template>
+<script setup lang="ts" name="Blog">
+  import {RouterLink, RouterView} from "vue-router";
 
 </script>
 ```
@@ -262,23 +255,131 @@ import {RouterLink, RouterView} from "vue-router";
 ### query传参
 
 路由query传参有两种方式：
+
 - 字符串拼接：`to="/blog/article?name=yuwb&articleid=123`
 
 ```vue
 
-<RouterLink to="/blog/article?name=yuwb&articleid=123">Article</RouterLink>
+<RouterLink to="/blog/article?name=yuwb&articleId=123">Article</RouterLink>
 ```
 
--   query
+- query
 
 ```vue
-<RouterLink :to="{path:'/blog/article',query:{name:'wenbo',articleid:'123'}}">Article</RouterLink>
-<!-- 或者 -->
-<RouterLink :to="{name:'Article',query:{name:'wenbo',articleid:'123'}}">Article</RouterLink>
+
+<RouterLink :to="{path:'/blog/article',query:{name:'wenbo',articleId:'111'}}">Article</RouterLink>
+<RouterLink :to="{name:'Article',query:{name:'yiran',articleId:'222'}}">Article</RouterLink>
 ```
 
 ### 接收query参数
+
+```vue
+
+<template>
+  <h1>Article</h1>
+  <p>{{route.query.name}}</p>
+  <p>{{route.query.articleId}}</p>
+</template>
+<script setup lang="ts" name="Article">
+  import {useRoute} from "vue-router";
+
+  let route = useRoute()
+</script>
+```
+
+### parmas传参
+
+#### 传递参数
+
+::: tip
+1：传递`params`参数时，若使用`to`的对象写法，必须使用`name`配置项，不能用`path`。
+
+2：传递`params`参数时，需要提前在规则中占位。
+
+:::
+路由占位
+
 ```ts
+......
+routes:[ // 配置组件和路径
+    {
+        name: 'Blog',
+        path: '/blog',
+        component: Home
+        children: [
+            {
+                name: "Article",
+                path: 'article/:name/:articleId',  // params 占位
+                component: Article,
+            }
+        ]
+    },
+]
+......
 
 ```
-### parmas传参
+
+传递数据
+
+```vue
+
+<RouterLink to="/blog/article/yuwb/111">Article</RouterLink>
+<RouterLink :to="{name:'Article',params:{name:'yiran',articleId:'222'}}">Article</RouterLink>
+```
+
+### 接受parmas参数
+
+```vue
+<template>
+  <h1>Article</h1>
+  <p>name:{{params.name}}</p>
+  <p>articleId:{{params.articleId}}</p>
+</template>
+<script setup lang="ts" name="Article">
+  import {toRefs} from "vue";
+  import {useRoute} from "vue-router";
+  let route = useRoute() // route.params.name
+  // or
+  let {params} = toRefs(route)
+  console.log(params) // 可以直接使用params.name
+</script>
+```
+
+### params传参问题
+
+在我们日常实际开发中，会发现我们传参数据经常会有空值的存在。这是我们处理做一些特殊处理，不然跳转页面会报错，影响程序影响。具体如下设置在占位符后添加`?`。
+例如`path: 'article/:name?/:articleId?'`,意味这`name`和`articleId`字段不是必须的，不传参数不会影响程序的运行。
+
+:::tip
+需要注意的是，当有某些是不是必须的时，我们传参建议全部使用`name`加`params`传参方法。
+-   `:to="{name:'Article',params:{name:'yiran',articleId:'222'}}"`
+
+不要再使用path拼接方式了。
+-   `to="/blog/article/yuwb/111"`
+
+因为path拼接参数时我们在使用时无法判断具体时哪些值没有传。
+:::
+```ts
+......
+routes:[ // 配置组件和路径
+    {
+        name: 'Blog',
+        path: '/blog',
+        component: Home
+        children: [
+            {
+                name: "Article",
+                path: 'article/:name?/:articleId?',  // params 占位
+                component: Article,
+            }
+        ]
+    },
+]
+......
+
+```
+
+### props传参
+
+使用路由props传参，可以让路由组件更方便的收到参数。推荐我们在日常工作中使用。
+
