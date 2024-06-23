@@ -327,7 +327,7 @@ routes:[ // 配置组件和路径
 <RouterLink :to="{name:'Article',params:{name:'yiran',articleId:'222'}}">Article</RouterLink>
 ```
 
-### 接受parmas参数
+### 接收params参数
 
 ```vue
 <template>
@@ -383,3 +383,87 @@ routes:[ // 配置组件和路径
 
 使用路由props传参，可以让路由组件更方便的收到参数。推荐我们在日常工作中使用。
 
+```ts
+......
+routes:[ // 配置组件和路径
+    {
+        name: 'Blog',
+        path: '/blog',
+        component: Home
+        children: [
+            {
+                name: "Article",
+                path: 'article/:name?/:articleId?',  // params 占位
+                component: Article,
+                // props的对象写法，作用：把对象中的每一组key-value作为props传给Detail组件
+                // props:{a:1,b:2,c:3},
+                // props的布尔值写法，作用：把收到了每一组params参数，作为props传给Detail组件
+                // props:true
+                // props的函数写法，作用：把返回的对象中每一组key-value作为props传给Detail组件
+                props(route){
+                    return route.params  // or  return route.query
+                }
+            }
+        ]
+    },
+]
+......
+```
+```vue
+<RouterLink to="/blog/article/yuwb/111">Article</RouterLink>
+<RouterLink :to="{name:'Article',params:{name:'yiran',articleId:'222'}}">Article</RouterLink>
+```
+### props接受参数
+使用`defineProps`可以接收参数直接使用。
+```vue
+<template>
+  <h1>Article</h1>
+  <p>name:{{name}}</p>
+  <p>articleId:{{articleId}}</p>
+</template>
+<script setup lang="ts" name="Article">
+import {toRefs} from "vue";
+defineProps(['name','articleId'])
+</script>
+```
+
+## 路由替换-replace
+
+1. 作用：控制路由跳转时操作浏览器历史记录的模式。
+
+2. 浏览器的历史记录有两种写入方式：分别为```push```和```replace```：
+
+    - ```push```是追加历史记录（默认值）。
+    - `replace`是替换当前记录。
+
+3. 开启`replace`模式：
+
+   ```vue
+   <RouterLink replace .......>News</RouterLink>
+   ```
+## 编程式导航
+
+vue2中可以使用获取路由和跳转页面。在Vue3中可以引入``来获取路由和跳转页面。
+
+```js
+import {useRoute,useRouter} from 'vue-router'
+
+const route = useRoute()
+const router = useRouter()
+
+console.log(route) // 所有route信息
+console.log(router.push) // 与Vue2 方法一致
+console.log(router.replace) // 与Vue2 方法一致
+```
+## 路由重定向
+
+1. 作用：将特定的路径，重新定向到已有路由。
+
+2. 具体编码：
+
+```js
+{
+   path:'/',
+   redirect:'/about'
+}
+```
