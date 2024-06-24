@@ -250,8 +250,8 @@ export default {
 
 如下演示图，不同颜色代表不同的功能或者模块
 <center>
-  <img src="@source/notes/Vue/gif.gif" style="zoom:90%;border-radius:20px" />
-  <img src="@source/notes/Vue/gif2.gif" style="zoom:90%;border-radius:20px" />
+  <img src="@source/notes/Vue/images/gif.gif" style="zoom:90%;border-radius:20px" />
+  <img src="@source/notes/Vue/images/gif2.gif" style="zoom:90%;border-radius:20px" />
 </center>
 
 ### CompositionAPI
@@ -261,9 +261,9 @@ export default {
 如下演示图，不同颜色代表不同的功能或者模块
 
 <center>
-  <img src="@source/notes/Vue/gif3.gif" style="width:90%;border-radius:20px" />
+  <img src="@source/notes/Vue/images/gif3.gif" style="width:90%;border-radius:20px" />
   <div>OptionAPI和CompositionAPI 对比</div><br/>
-  <img src="@source/notes/Vue/gif4.gif" style="width:90%;border-radius:20px" />
+  <img src="@source/notes/Vue/images/gif4.gif" style="width:90%;border-radius:20px" />
   <div> 函数方式组织代码</div><br/>
 </center>
 
