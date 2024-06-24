@@ -12,7 +12,7 @@ DOM。在此过程中，它也会运行被称为生命周期钩子的函数，�
 
 ## 图例演示
 
-![alt text](image-16.png)
+![alt text](images/image-16.png)
 
 ## Vue2生命周期
 

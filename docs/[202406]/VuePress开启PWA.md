@@ -66,5 +66,5 @@ export default defineUserConfig({
 ```
 
 ## 测试结果
-![alt text](image-3.png)
+![alt text](images/image-3.png)
 

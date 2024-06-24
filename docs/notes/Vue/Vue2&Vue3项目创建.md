@@ -102,7 +102,7 @@ npm run serve
   To create a production build, run npm run build.
 ```
 访问项目
-![alt text](image-1.png)
+![alt text](images/image-1.png)
 ## Vue UI 创建
 
 1. Vue UI 启动
@@ -119,23 +119,23 @@ PS E:\前端开发> vue ui
 🌠  Ready on http://localhost:8000
 ```
 启动成功会自动打开浏览器
-![alt text](image-2.png)
+![alt text](images/image-2.png)
 
 2. 界面创建
 
 点击 再此创建新项目
-![alt text](image-3.png)
+![alt text](images/image-3.png)
 输入项目名，点击下一步
-![alt text](image-4.png)
+![alt text](images/image-4.png)
 点击选择预设，或者自己手动配置项目，创建项目
-![alt text](image-5.png)
+![alt text](images/image-5.png)
 创建成功
 
 3. 运行项目
 
 点击下图所示，运行项目
-![alt text](image-6.png)
+![alt text](images/image-6.png)
 点击启动APP，跳转到新建项目页面
-![alt text](image-7.png)
+![alt text](images/image-7.png)
 创建运行成功
-![alt text](image-8.png)
+![alt text](images/image-8.png)

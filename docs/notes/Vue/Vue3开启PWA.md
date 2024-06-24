@@ -122,11 +122,11 @@ export default defineConfig({
 ## 效果展示
 1.  本地测试环境
 
-![alt text](image-12.png)
+![alt text](images/image-12.png)
 
 2.  正式环境
 
-![alt text](image-13.png)
+![alt text](images/image-13.png)
 
 ## 更多设置
 ::: tip

@@ -215,4 +215,4 @@ export default {
   <style>
 </style>
 ```
-![alt text](image.png)
+![alt text](images/image.png)

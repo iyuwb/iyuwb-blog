@@ -182,7 +182,7 @@ export default {
   <style>
 </style>
 ```
-![alt text](image-2.png)
+![alt text](images/image-2.png)
 
 
 
@@ -341,4 +341,4 @@ export default {
 };
 </script>
 ```
-![alt text](image-3.png)
+![alt text](images/image-3.png)

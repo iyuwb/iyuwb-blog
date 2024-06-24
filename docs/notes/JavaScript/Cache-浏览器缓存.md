@@ -25,7 +25,7 @@ async function cacheFun() {
 cacheFun()
 ```
 打印输出如下
-![alt text](image-2.png)
+![alt text](images/image-2.png)
 ### `CacheStorage.keys()`
 
 返回一个 Promise ，它将使用一个包含与 CacheStorage 追踪的所有命名 Cache 对象对应字符串的数组来 resolve. 使用该方法迭代所有 Cache 对象的列表。
@@ -113,7 +113,7 @@ true
 cacheFun()
 ```
 打印输出如下
-![alt text](image-3.png)
+![alt text](images/image-3.png)
 
 
 ## Cache简介
@@ -145,7 +145,7 @@ Cache 接口的 match() 方法，返回一个 Promise 解析为 (resolve to) 与
 cacheFun()
 ```
 打印输出如下
-![alt text](image-8.png)
+![alt text](images/image-8.png)
 ### Cache.matchAll()
 
 Cache 接口的 matchAll() 方法返回一个 Promise ，其 resolve 为 Cache 对象中所有匹配请求的数组。
@@ -161,7 +161,7 @@ async function cacheFun() {
 cacheFun()
 ```
 打印输出如下
-![alt text](image-9.png)
+![alt text](images/image-9.png)
 ### Cache.add()
 Cache接口的 add() 方法接受一个 URL 作为参数，请求参数指定的 URL，并将返回的 response 对象添加到给定的 cache 中。 
 ```js
@@ -175,7 +175,7 @@ async function cacheFun() {
 cacheFun()
 ```
 打印输出如下
-![alt text](image-4.png)
+![alt text](images/image-4.png)
 ### Cache.addAll()
 Cache 接口的 addAll() 方法接受一个 URL 数组，检索它们，并将生成的 response 对象添加到给定的缓存中。在检索期间创建的 request 对象成为存储的 response 操作的 key。
 ```js
@@ -188,7 +188,7 @@ async function cacheFun() {
 cacheFun()
 ```
 打印输出如下
-![alt text](image-4.png)
+![alt text](images/image-4.png)
 ### Cache.put()
 
 Cache 接口的 put() 方法 允许将键/值对添加到当前的 Cache 对象中。
@@ -206,7 +206,7 @@ async function cacheFun() {
 cacheFun()
 ```
 打印输出如下
-![alt text](image-6.png)
+![alt text](images/image-6.png)
 ### Cache.keys()
 
 返回一个Promise对象，resolve 的结果是Cache对象 key 值组成的数组。
@@ -222,7 +222,7 @@ async function cacheFun() {
 cacheFun()
 ```
 打印输出如下
-![alt text](image-4.png)
+![alt text](images/image-4.png)
 
 ### Cache.delete()
 
@@ -242,8 +242,8 @@ cacheFun()
 cacheFun()
 ```
 打印输出如下
-![alt text](image-5.png)
+![alt text](images/image-5.png)
 
 ## 浏览器查看
 浏览器查看cache，可以通过F12，控制台查看。
-![alt text](image-7.png)
+![alt text](images/image-7.png)

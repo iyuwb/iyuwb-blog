@@ -11,16 +11,16 @@ mac的Node版本管理器可以用n管理器，更加简单方便。
 ## 下载
 
 > github： https://github.com/coreybutler/nvm-windows/releases
-![alt text](image-1.png)
+![alt text](images/image-1.png)
 
 ## 安装
 
 下载exe安装程序，一直点击下一步安装。
-![alt text](image.png)
+![alt text](images/image.png)
 
 安装完成之后，查看环境变量是否有以下设置：
 
-![alt text](image-2.png)
+![alt text](images/image-2.png)
 
 ## 常用命令
 

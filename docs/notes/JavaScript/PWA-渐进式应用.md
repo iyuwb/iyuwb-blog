@@ -92,11 +92,11 @@ permalink: /JavaScript/3xe7gql0/
 ```
 `manifest.json`中的icons属性记得配置，不然可能没有安装到桌面图标。
 
-![alt text](image.png)
+![alt text](images/image.png)
 
 可以在启动台查看
 
-![alt text](image-1.png)
+![alt text](images/image-1.png)
 
 ## service worker
 

@@ -24,7 +24,7 @@ vue create my-app
 新建`package/vueTimeAxisDemo.vue`
 
 
-![创建组件](image.png)
+![创建组件](images/image.png)
 
 ## 加载组件 - Vue插件模式
 
@@ -75,7 +75,7 @@ npm run build:package
 ```shell
 npm init -y
 ```
-![alt text](image-1.png)
+![alt text](images/image-1.png)
 
 注册`npmjs`官网账号
 

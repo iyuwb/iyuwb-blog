@@ -29,9 +29,9 @@ Vite 将会使用 esbuild 预构建依赖。Esbuild 使用 Go 编写，并且比
 
 -   Vite 以 原生 ESM 方式提供源码。这实际上是让浏览器接管了打包程序的部分工作：Vite 只需要在浏览器请求源码时进行转换并按需提供源码。根据情景动态导入代码，即只在当前屏幕上实际使用时才会被处理。
 
-![alt text](image-9.png)
+![alt text](images/image-9.png)
 
-![alt text](image-10.png)
+![alt text](images/image-10.png)
 ::: tip
 vite创建Vue3项目需要Node.js版本10以上
 :::
@@ -75,7 +75,7 @@ Done. Now run:
 -   `npm install`：下载依赖包
 -   `npm run dev`：启动项目
 
-![alt text](image-11.png)
+![alt text](images/image-11.png)
 
 
 
