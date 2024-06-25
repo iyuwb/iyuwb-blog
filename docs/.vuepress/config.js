@@ -321,6 +321,19 @@ export default defineUserConfig({
             markdownEnhance: {
                 demo: true,
             },
+            // 评论模块
+            comment: {
+                provider: 'Giscus', 
+                comment: true,
+                repo: 'iyuwb/blog-comments', 
+                repoId: 'R_kgDOMNskgg', 
+                category: 'General', 
+                categoryId: 'DIC_kwDOMNskgs4CgWpV', 
+            },
+            // 百度统计
+            baiduTongji: {
+                key: '1e0d8df993b41bd5b0888ca70a3b9aac'
+            }
         }
     }),
     bundler: viteBundler(),
