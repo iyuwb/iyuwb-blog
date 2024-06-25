@@ -158,7 +158,7 @@ export default defineUserConfig({
                         {
                             text: 'CSS基础',
                             icon: 'ic:baseline-dashboard',
-                            items: ['CSS选择器', 'CSS3新增内容', 'CSS-滚动条-Scrollbar','CSS-自定义属性','样式滤镜 Filter', '网格布局 Grid']
+                            items: ['CSS选择器', 'CSS3新增内容', 'CSS滚动条-Scrollbar','CSS自定义属性','样式滤镜 Filter', '网格布局 Grid']
                         },
                         {
                             text: 'CSS问题',
