@@ -125,3 +125,184 @@ function changeData() {
 </script>
 ```
 我们可以借助Pinia的内置方法`$patch()`,快速修改多个属性的值。
+
+
+### `actions`修改
+
+使用`actions`方法修改数据，需要在对应的store文件中提前定义。
+
+`store/useUserStore.ts`：
+
+```ts
+// 引入pinia
+import { defineStore } from "pinia";
+// 定义 store 的状态类型
+interface MyState {
+    activeMenuId: number;
+    searchEngine: number;
+}
+// 创建 store
+export const useUserStoreHook = defineStore({
+    id: "myStore", // 必须是唯一的字符串 ID
+    state: (): MyState => ({
+        activeMenuId: 0,
+        searchEngine: 0,
+    }),
+    getters: {},
+    actions: {
+        changeActiveMenuId(value: number) {
+            if (this.activeMenuId < 10) {
+                this.activeMenuId = value
+            }
+        },
+        async initData(){
+            // 请求接口
+            const res = await new Promise<{activeMenuId: number, searchEngine: number}>((resolve, reject) => {
+                setTimeout(()=>{
+                    resolve({
+                        activeMenuId:1,
+                        searchEngine:1,
+                    })
+                },1000)
+              })
+            if(res){
+                this.activeMenuId = res.activeMenuId
+                this.searchEngine = res.searchEngine
+            }
+        },
+    },
+});
+```
+我们在上面文件中actions中定义了两个方法，`initData`用来调用接口初始化数据,`changeActiveMenuId`用来实时更改数据，并且可以做一些处理和限制。方法的具体使用方法如下：
+
+```vue
+<template>
+  <div>当前 activeMenuId:{{ userStore.activeMenuId }}</div>
+  <div>当前 searchEngine:{{ userStore.searchEngine }}</div>
+  <button @click="changeData">改变数据</button>
+</template>
+<script setup lang="ts" name="demo">
+import { useUserStoreHook } from "@/store/useUserStore";
+import { watchEffect } from "vue";
+const userStore = useUserStoreHook();
+// 初始化数据
+userStore.initData()
+// 按钮修改数据
+function changeData() {
+  userStore.changeActiveMenuId(5)
+}
+</script>
+
+```
+
+
+## `ToRefs`和`storeToRefs`
+
+在上文中我们有提到，在使用store中数据时，可以通过解构获取特定的数据（`let { activeMenuId, searchEngine } = useUserStoreHook()`），但是会丢失响应式状态。
+
+我们现在可以借助`ToRefs`和`storeToRefs`方法，使其重新获取响应式状态。
+
+具体使用如下：
+
+```vue
+<template>
+  <div>当前 activeMenuId:{{ activeMenuId }}</div>
+  <div>当前 searchEngine:{{ searchEngine }}</div>
+  <button @click="changeData">改变数据</button>
+</template>
+<script setup lang="ts" name="demo">
+import { useUserStoreHook } from "@/store/useUserStore";
+import { storeToRefs } from "pinia";
+import { toRefs } from "vue";
+const userStore = useUserStoreHook();
+let { activeMenuId, searchEngine } = storeToRefs(userStore)
+// or let { activeMenuId, searchEngine } = toRefs(userStore)
+let num = 0
+function changeData() {
+  num++
+  userStore.changeActiveMenuId(num)
+}
+</script>
+```
+如上文代码所示，虽然`ToRefs`和`storeToRefs`都能使其重新获取响应式状态。但是在我们日常使用中，更推荐使用`storeToRefs`。
+
+这是因为：`pinia`提供的`storeToRefs`只会将数据（`state`）做转换，而`Vue`的`toRefs`会转换`store`中所有数据和方法（`state`、`actions`等）。包括而我们往往只需要数据的响应式状态。
+
+
+## `getters`
+
+当`state`中的数据，需要经过处理后再使用时，可以使用`getters`配置。一般我们用作对于数据的加工改造，类似于Vue中的计算属性。具体使用如下文示例：
+
+`store/useUserStore.ts`：
+
+```ts
+// 引入pinia
+import { defineStore } from "pinia";
+// 定义 store 的状态类型
+interface MyState {
+    activeMenuId: number;
+    searchEngine: number;
+}
+// 创建 store
+export const useUserStoreHook = defineStore({
+    id: "myStore", // 必须是唯一的字符串 ID
+    state: (): MyState => ({
+        activeMenuId: 0,
+        searchEngine: 0,
+    }),
+    getters: {
+        // 不使用this的话 可以直接使用箭头函数
+        activeMenuIdStr:state=>('当前选择：' + state.activeMenuId),
+        activeEngineStr():string{
+            return '当前引擎：' + this.activeMenuId
+        }
+    },
+    actions: {
+    },
+});
+
+```
+
+使用：
+
+```vue
+<template>
+  <div>{{ userStore.activeMenuIdStr }}</div>
+  <div>{{ userStore.activeEngineStr }}</div>
+  <button @click="changeData">改变数据</button>
+</template>
+<script setup lang="ts" name="demo">
+import { useUserStoreHook } from "@/store/useUserStore";
+const userStore = useUserStoreHook();
+function changeData() {
+  userStore.activeMenuId++
+  userStore.searchEngine++
+}
+</script>
+```
+
+## `$subscribe`
+
+`$subscribe`方法，相当于vue中的watch，可以监听store中数据的变化。该方法接受一个回调函数参数。回调函数有两个参数，第一个参数为本次修改的信息，第二个参数为当前的数据。
+
+具体使用方式如下：
+
+```vue
+<template>
+  <div>{{ userStore.activeMenuIdStr }}</div>
+  <div>{{ userStore.activeEngineStr }}</div>
+  <button @click="changeData">改变数据</button>
+</template>
+<script setup lang="ts" name="demo">
+import { useUserStoreHook } from "@/store/useUserStore";
+const userStore = useUserStoreHook();
+function changeData() {
+  userStore.activeMenuId++
+  userStore.searchEngine++
+}
+
+userStore.$subscribe((mutate,state) => {
+  console.log('数据发生改变')
+})
+</script>
+```
