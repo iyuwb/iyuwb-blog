@@ -302,7 +302,57 @@ function changeData() {
 }
 
 userStore.$subscribe((mutate,state) => {
+  console.log(mutate)
+  console.log(state)
   console.log('数据发生改变')
 })
 </script>
 ```
+打印输出：
+![alt text](images/images-17.png)
+
+## 组合式示例
+
+```ts
+// 引入pinia
+import { defineStore } from "pinia";
+import { ref, computed } from "vue";
+
+
+// 创建 store
+export const useUserStoreHook = defineStore('myStore', () => {
+    let activeMenuId = ref(0);
+    let searchEngine = ref(0);
+    // 数据处理
+    let activeMenuIdStr = computed(() => {
+        return '当前引擎：' + activeMenuId.value
+    })
+    let searchEngineStr = computed(() => {
+        return '当前引擎：' + searchEngine.value
+    })
+    // 初始化数据
+    async function initData() {
+        // 请求接口
+        const res = await new Promise<{ activeMenuId: number, searchEngine: number }>((resolve, reject) => {
+            setTimeout(() => {
+                resolve({
+                    activeMenuId: 1,
+                    searchEngine: 1,
+                })
+            }, 1000)
+        })
+        if (res) {
+            activeMenuId.value = res.activeMenuId
+            searchEngine.value = res.searchEngine
+        }
+    }
+    return {
+        activeMenuId,
+        searchEngine,
+        activeMenuIdStr,
+        searchEngineStr,
+        initData
+    }
+});
+```
+如上面代码所示，我们可以使用更符合Vue3语法的组合式API来定义Store。我们不再需要在state中定义数据，可以在回调函数中直接定义数据和方法。需要注意的是，我们需要`return`出我们需要的数据和方法。对于Store中的`getter`方法，我们可以使用vue3中的计算属性（`computed`）代替。
