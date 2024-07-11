@@ -160,6 +160,26 @@ Object.assign(data,{id: 100, name: "wenbo", msg: "wenbo" })
 > 3. 若需要一个响应式对象，且层级较深，推荐使用`reactive`。
 
 
+### `ref` 和 `.value`
+
+1. 当我们直接使用ref定义数据时，获取数据需要 `.value`
+```js
+let num = ref(1)
+let obj = ref({name:'yuwb'})
+console.log(num.value)
+console.log(obj.value)
+```
+2. 当ref定义的数据，外面有ractive包裹时，不需要使用`.value`。因为ractive定义的响应式对象里面的属性在被访问的时候自动接解包。
+
+```js
+const data = reactive({
+  name:"yuwb",
+  age:ref(18)
+})
+
+console.log(data.age)
+```
+
 ## toRef 与 toRefs
 - 作用：将一个响应式对象中的每一个属性，转换为`ref`对象。
 - 备注：`toRefs`与`toRef`功能一致，但`toRefs`可以批量转换。
