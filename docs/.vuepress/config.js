@@ -56,7 +56,12 @@ export default defineUserConfig({
                 icon: 'ph:file-vue-duotone',
                 items: [
                     {
-                        text: 'Vue',
+                        text: 'Vue2',
+                        icon: 'ph:file-vue',
+                        link: '/notes/Vue/Vue3-简介概述',
+                    },
+                    {
+                        text: 'Vue3',
                         icon: 'ph:file-vue',
                         link: '/notes/Vue/Vue3-简介概述',
                     },
