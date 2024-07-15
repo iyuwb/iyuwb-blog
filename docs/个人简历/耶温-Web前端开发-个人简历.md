@@ -29,8 +29,8 @@ tags:
 ### 开源项目
 
 - [个人博客](http://yuwb.cn/)：个人博客，使用 Vuepress 实现，记录日常工作问题和学习看书笔记。
+- [快捷导航页](http://yuwb.cn/nav)：浏览器导航页，包含：快捷导航、备忘录、笔记、新闻事件。
 - [时间轴插件](https://github.com/iyuwb/vue-time-axis)：个人封装插件，根据数据配置，实现视频类配置项拖拽移动滚动条时间轴。
-- [画布配置插件]()：个人实现配置画布分享，实现元素拖拽创建以及建移动缩放等功能。
 - [ElementTablePlus](https://github.com/iyuwb/element-table-plus)：数据驱动的表格组件，根据数据配置，实现多级表头等。
 
 ### 技术文章
