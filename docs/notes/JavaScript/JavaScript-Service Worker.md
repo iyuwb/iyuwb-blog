@@ -1,11 +1,11 @@
 ---
-title: Service Worker-服务进程
+title: JavaScript-Service Worker
 author: 耶温
 createTime: 2024/06/06 11:32:15
 permalink: /JavaScript/oo65290p/
 ---
 
-# Service Worker-服务进程
+# JavaScript-Service Worker-服务进程
 
 
 ## 概念简介

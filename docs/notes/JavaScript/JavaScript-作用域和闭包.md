@@ -93,7 +93,7 @@ foo(1) // RHS查找，调用函数时，只会获取函数foo的值，而不会�
 
 ```js
 function foo(a){
-    console.log(a + b)
+    console.log(a + b)  // 4
 }
 var b = 2
 foo(2)
@@ -207,6 +207,94 @@ ReferenceError同作用域判别失败相关，而TypeError则代表作用域判
 -   动态作用域
 
 
-> 什么是词法作用域：简单来说，词法作用域就是定义在词法阶段的作用域。
-> 
-> 换句话说：词法作用域是由你在写代码时将变量和块作用域写在哪里来决定的，因此当词法分析器处理代码时会保持作用域不变（大部分情况下是这样的）。
+ ### 什么是词法作用域
+ 
+ 简单来说，词法作用域就是定义在词法阶段的作用域。
+ 
+ 换句话说：词法作用域是由你在写代码时将变量和块作用域写在哪里来决定的，因此当词法分析器处理代码时会保持作用域不变（大部分情况下是这样的）。
+
+例如：
+
+```js
+
+
+function test(a){
+    console.log(a)
+    funtion fun(b){
+        console.log(b)
+    }
+    fun(a*3)
+}
+test(2)
+```
+在上述代码中，变量的作用域是在写代码的时候，就已经确定下来的。作用域嵌套如下图所示：
+
+![alt text](images/image10.png)
+
+一共有三层作用域逐级包括，最里层函数 `fun` 所创建的作用域包含标识符 `b`。函数 `test` 创建的作用域包括两个标识符 `fun` 和 `a`。最外层作用域包括标识符 `test` 。
+
+
+注意：
+
+1. 无论函数在哪里被调用，也无论它如何被调用，它的词法作用域都只由函数被声明时所处的位置决定。
+
+2. 词法作用域只会查找一级标识符,例如`obj.a.b`，词法作用域只会查找 `obj` 标识符。在找到这个变量后，对象属性访问规则会分别接管对 `a` 和 `b` 属性的访问。
+
+### 遮蔽效应
+
+可以在嵌套的不同作用域定义相同的变量使用，不会报错。但是不建议这样使用。会导致代码缺乏可读性，变量混乱。
+
+示例：
+
+```js
+var a = 'hello'
+var b = 'js'
+function test(a) {
+    console.log(a) // 1
+    var b = 1
+    function fun(b) {
+        b = b + 1
+        console.log(b) // 4
+        console.log(a + b) //5
+    }
+    console.log(b) //1
+    fun(3)
+    
+}
+console.log(a) // hello
+console.log(b) // js
+test(1)
+```
+
+需要注意的是，因为遮蔽效应的存在，如果我们想要使用外层的同名变量或者全局的同名变量需要进行额外的操作：
+
+-   外层同名变量：可以设置额外变量储存使用。
+```js
+var a = 'hello'
+var _a = a
+
+function test(){
+    var a = 1
+    console.log(a) // 1
+    console.log(_a)// hello
+}
+
+test()
+```
+
+-   全局的同名变量：可以使用`window`直接获取。
+```js
+var a = 'hello'
+
+function test(){
+    var a = 1
+    console.log(a) // 1
+    console.log(window.a) // hello
+}
+
+test()
+```
+
+ ### 欺骗词法
+
+欺骗词法，可以在代码运行的时候

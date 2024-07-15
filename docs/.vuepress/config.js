@@ -179,10 +179,15 @@ export default defineUserConfig({
                         {
                             text: 'JavaScript基础',
                             icon: 'ic:baseline-dashboard',
-                            items: ['Service Worker-服务进程', 'Cache-浏览器缓存', 'JavaScript-作用域和闭包', 'WebSocket', '内置对象方法', '原型链',
+                            items: ['JavaScript-基础', 'Cache-浏览器缓存', 'WebSocket', '内置对象方法', '原型链',
                                 '正则表达式', 'ECMAScript6', 'H5离线储存',
-                                'Promise', 'Set、Map、WeakSet和WeakMap', '[JavaScript高级程序设计]读书笔记'
+                                'Promise', 'Set、Map、WeakSet和WeakMap','JavaScript-Service Worker'
                             ]
+                        },
+                        {
+                            text: 'JavaScript进阶',
+                            icon: 'solar:graph-up-broken',
+                            items: ['JavaScript-作用域和闭包']
                         },
                         {
                             text: 'JavaScript问题',
