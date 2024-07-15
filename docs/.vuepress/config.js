@@ -56,12 +56,7 @@ export default defineUserConfig({
                 icon: 'ph:file-vue-duotone',
                 items: [
                     {
-                        text: 'Vue2',
-                        icon: 'ph:file-vue',
-                        link: '/notes/Vue/Vue3-简介概述',
-                    },
-                    {
-                        text: 'Vue3',
+                        text: 'Vue',
                         icon: 'ph:file-vue',
                         link: '/notes/Vue/Vue3-简介概述',
                     },
@@ -227,21 +222,21 @@ export default defineUserConfig({
                     link: '/Vue/', // 声明笔记的链接前缀
                     sidebar: [ // 配置侧边栏
                         {
-                            text: 'Vue基础',
+                            text: 'Vue3基础',
                             icon: 'ic:baseline-dashboard',
                             items: ['Vue3-简介概述','Vue3-setup','Vue3-ref&reactive','Vue3-computed&watch','Vue3-ref&props','Vue3-生命周期'
                                 ,'Vue3-自定义hook','Vue3-router','Vue3-Pinia','Vue3-组件通信','Vue3-Slot插槽'
                             ]
                         },
                         {
-                            text: 'Vue问题',
-                            icon: 'icon-park-outline:file-question',
-                            items: []
+                            text: 'Vue3方案',
+                            icon: 'icon-park-outline:plan',
+                            items: ['Vite&Vue3项目创建', 'Vue3开启PWA']
                         },
                         {
-                            text: 'Vue方案',
+                            text: 'Vue2方案',
                             icon: 'icon-park-outline:plan',
-                            items: ['Vite&Vue3项目创建', 'Vue3开启PWA','Vue2&Vue3项目创建', 'Vue2组件自我调用', 'Vue2事件总线使用']
+                            items: ['Vue2&Vue3项目创建', 'Vue2组件自我调用', 'Vue2事件总线使用']
                         },
                     ]
                 },
