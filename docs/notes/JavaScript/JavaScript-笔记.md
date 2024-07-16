@@ -1,5 +1,5 @@
 ---
-title: 笔记
+title: JavaScript-笔记
 author: 耶温
 createTime: 2024/05/11 15:05:45
 permalink: /JavaScript/939ygm7w/

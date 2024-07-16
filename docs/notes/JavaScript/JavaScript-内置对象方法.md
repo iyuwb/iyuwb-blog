@@ -1,10 +1,10 @@
 ---
-title: 内置对象方法
+title: JavaScript-内置对象方法
 author: 耶温
 createTime: 2024/05/11 15:05:45
 permalink: /JavaScript/0jfs3kpo/
 ---
-# JavaScript 深入理解-内置对象方法
+# JavaScript-内置对象方法
 
 ## Array 对象属性
 

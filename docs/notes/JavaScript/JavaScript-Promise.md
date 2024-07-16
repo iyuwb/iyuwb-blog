@@ -1,11 +1,11 @@
 ---
-title: Promise
+title: JavaScript-Promise
 author: 耶温
 createTime: 2024/05/11 15:05:45
 permalink: /JavaScript/e6uvtokj/
 ---
 
-# JavaScript 深入理解之 Promise
+# JavaScript-Promise
 
 ## Promise 介绍
 

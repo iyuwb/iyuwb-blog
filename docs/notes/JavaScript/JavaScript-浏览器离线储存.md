@@ -1,11 +1,11 @@
 ---
-title: H5离线储存
+title: JavaScript-浏览器离线储存
 author: 耶温
 createTime: 2024/05/11 15:05:45
 permalink: /JavaScript/u2gug9dp/
 ---
 
-# JavaScript 深入理解-H5 离线储存
+# JavaScript-浏览器离线储存
 
 ## 离线存储所用技术
 

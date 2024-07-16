@@ -1,11 +1,11 @@
 ---
-title: 正则表达式
+title: JavaScript-正则表达式
 author: 耶温
 createTime: 2024/05/11 15:05:45
 permalink: /JavaScript/yclbjiod/
 ---
 
-# JavaScript 深入理解之正则表达式
+# JavaScript-正则表达式
 
 ## 正则表达式
 

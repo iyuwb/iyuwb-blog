@@ -1,10 +1,10 @@
 ---
-title: Cache-浏览器缓存
+title: JavaScript-Cache
 author: 耶温
 createTime: 2024/06/06 11:30:10
 permalink: /JavaScript/wm68edzn/
 ---
-# Cache-浏览器缓存
+# JavaScript-Cache-浏览器缓存
 
 ## CacheStorage简介
 

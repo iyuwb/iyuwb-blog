@@ -1,11 +1,11 @@
 ---
-title: Set、Map、WeakSet和WeakMap
+title: JavaScript-Set、Map、WeakSet和WeakMap
 author: 耶温
 createTime: 2024/05/11 15:05:45
 permalink: /JavaScript/aesr75yu/
 ---
 
-# JavaScript 深入理解之 Set、Map、WeakSet 和 WeakMap
+# JavaScript-Set、Map、WeakSet 和 WeakMap
 
 ## Set
 

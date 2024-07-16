@@ -42,7 +42,7 @@ export default defineUserConfig({
                     {
                         text: 'JavaScript',
                         icon: 'ph:file-js',
-                        link: '/notes/JavaScript/WebSocket',
+                        link: '/notes/JavaScript/JavaScript-基础',
                     },
                     {
                         text: 'TypeScript',
@@ -179,9 +179,8 @@ export default defineUserConfig({
                         {
                             text: 'JavaScript基础',
                             icon: 'ic:baseline-dashboard',
-                            items: ['JavaScript-基础', 'Cache-浏览器缓存', 'WebSocket', '内置对象方法', '原型链',
-                                '正则表达式', 'ECMAScript6', 'H5离线储存',
-                                'Promise', 'Set、Map、WeakSet和WeakMap','JavaScript-Service Worker'
+                            items: ['JavaScript-基础', 'JavaScript-内置对象方法','JavaScript-Promise','JavaScript-ECMAScript6','JavaScript-原型链',
+                                'JavaScript-Set、Map、WeakSet和WeakMap','JavaScript-正则表达式','JavaScript-WebSocket','JavaScript-Service Worker','JavaScript-Cache'
                             ]
                         },
                         {
@@ -192,12 +191,12 @@ export default defineUserConfig({
                         {
                             text: 'JavaScript问题',
                             icon: 'icon-park-outline:file-question',
-                            items: ['笔记']
+                            items: ['JavaScript-笔记']
                         },
                         {
                             text: 'JavaScript方案',
                             icon: 'icon-park-outline:plan',
-                            items: ['PWA-渐进式应用', 'JavaScript-常用方法']
+                            items: ['PWA-渐进式应用', 'JavaScript-常用方法','JavaScript-浏览器离线储存']
                         },
                     ]
                 },
