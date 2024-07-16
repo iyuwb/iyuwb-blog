@@ -23,6 +23,7 @@ CSS 的 zoom 属性是一个非标准的、浏览器特定的属性，主要用�
   <img src="@source/[202407]/images/image-3.png" style="width:60%;border-radius:20px" />
   <div>浏览器缩放选项</div><br/>
 </center>
+
 ## 兼容性
 可以从MDN看到，在2024年5月份已经把`zoom`设置为标准属性。
 
