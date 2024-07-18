@@ -362,9 +362,58 @@ let isShow = ref(false)
 可以看到我们的提示是在body的最下面。而不是在我们的组件中。在`<teleport to="body">`中指定的位置，也可以是选择器名字，例如`#app `等。
 
 ## suspense
+> `<Suspense>` is an experimental feature and its API will likely change.
 
 -  等待异步组件时渲染一些额外内容，让应用有更好的用户体验 
 -  使用步骤： 
    -  异步引入组件
    -  使用`Suspense`包裹组件，并配置好`default` 与 `fallback`
+
+
+示例：
+
+父组件
+```vue
+<template>
+  <div class="father">
+    I am father
+    <!--  <Son></Son> -->
+    <suspense>
+      <template #default>
+        <Son></Son>
+      </template>
+      <template #fallback>
+        <div>Loading...</div>
+      </template>
+    </suspense>
+  </div>
+</template>
+```
+子组件
+```vue
+<template>
+  <h1>I am Son</h1>
+  {{ msg }}
+</template>
+<script setup lang="ts" name="son">
+import { ref } from 'vue';
+let msg = ref('')
+// 模拟网络请求
+await new Promise((resolve, reject) => {
+  setTimeout(() => {
+    resolve('Hello, World!');
+  }, 2000);
+}).then((data) => {
+  msg.value = data as string
+})
+</script>
+```
+如上图，当我们直接在子组件中的setup函数中使用异步网络请求时并添加`await`时，会导致子组件整体未被加载，控制台报警告。
+
+```txt
+ [Vue warn]: Component <son>: setup function returned a promise, but no <Suspense> boundary was found in the parent component tree. A component with async setup() must be nested in a <Suspense> in order to be rendered. 
+  at <Son> 
+  at <Father>
+```
+对于这种情况，所以我们需要使用`Suspense`包裹组件，并配置好`default` 与 `fallback`。`Suspense`实际上是基于插槽 Slot 实现的， `default`是我们加载组件的默认出口。`fallback`则是我们组件异步请求过程中的加载提示出口。
 

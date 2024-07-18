@@ -233,9 +233,24 @@ export default defineUserConfig({
                             ]
                         },
                         {
+                            text: 'Vue3进阶',
+                            icon: 'solar:graph-up-broken',
+                            items: ['Vue3-全局API','Vue3-组合式API','Vue3-非兼容性改变']
+                        },
+                        {
                             text: 'Vue3方案',
                             icon: 'icon-park-outline:plan',
                             items: ['Vite&Vue3项目创建', 'Vue3开启PWA']
+                        },
+                        {
+                            text: 'Vue2基础',
+                            icon: 'ic:baseline-dashboard',
+                            items: ['Vue2数据响应原理解析']
+                        },
+                        {
+                            text: 'Vue2问题',
+                            icon: 'ic:baseline-dashboard',
+                            items: ['Vue2相关问题']
                         },
                         {
                             text: 'Vue2方案',

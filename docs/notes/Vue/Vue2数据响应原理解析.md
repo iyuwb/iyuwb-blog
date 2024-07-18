@@ -1,8 +1,8 @@
 ---
-title: Vue数据响应原理解析
+title: Vue2数据响应原理解析
 author: 耶温
-createTime: 2024/05/11 16:03:14
-permalink: /article/6o69wujr/
+createTime: 2024/07/15 09:59:05
+permalink: /Vue/phlmn6jn/
 ---
 # Vue 数据响应原理解析
 

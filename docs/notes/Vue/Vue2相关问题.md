@@ -1,10 +1,10 @@
 ---
-title: Vue相关问题
+title: Vue2相关问题
 author: 耶温
-createTime: 2024/05/11 16:03:14
-permalink: /article/g9ulmamz/
+createTime: 2024/07/15 09:59:05
+permalink: /Vue/s9eupkio/
 ---
-# Vue 进阶之旅
+# Vue2相关问题
 
 ## 直接访问打包文件`index.html`
 
