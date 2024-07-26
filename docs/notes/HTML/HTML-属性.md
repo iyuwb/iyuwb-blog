@@ -1,5 +1,5 @@
 ---
-title: HTML属性
+title: HTML-属性
 author: 耶温
 createTime: 2024/05/13 16:07:12
 permalink: /HTML/5yqunq5r/
@@ -53,7 +53,7 @@ permalink: /HTML/5yqunq5r/
 | `for` | 该标签所描述的表单元素  |  相关的表单元素的id 或者 是一个空格分隔的列表 |`<label>`、`<output>` |
 | `rel` |  所链接的资源与当前文档的关系 |  一组无序的、唯一的、用空格隔开的关键字  | `<a>`、`<area>` 、 `<link>` |
 
-## input专有属性
+## Input属性
 
 `<input> `元素包含的属性包含全局的 HTML 属性和以下这些额外属性：
 
@@ -91,9 +91,12 @@ permalink: /HTML/5yqunq5r/
 | `value` | 所有类型| 表单控件的初始值 |
 | `width` | `image`| 元素宽度 |
 
-## 自动填充：`autocomplete`
 
-## 输入建议：`list`
+## 属性详情示例：
+
+### 自动填充：`autocomplete`
+
+### 输入建议：`list`
 
 给输入框提供一个预先定义的输入建议列表和`datalist`一起使用
 
@@ -118,7 +121,7 @@ permalink: /HTML/5yqunq5r/
 :::
 
 
-## 正则匹配：`pattern`
+### 正则匹配：`pattern`
 规定一个表单控件的值应该匹配正则表达式,如果`value`不满足正则匹配,`patternMismatch` 将为 `true`。当为 `true` 时，该元素与 `:invalid` CSS 伪类匹配。为`false`时与 `:valid `匹配
 
 示例如下：

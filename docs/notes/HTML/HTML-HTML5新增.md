@@ -1,16 +1,15 @@
 ---
-title: HTML5新增内容
+title: HTML-HTML5新增
 author: 耶温
 createTime: 2024/05/09 15:36:30
 permalink: /HTML/ypylogam/
 ---
 
-## HTML5 新增内容
-### HTML5 和 HTML 事件
+## HTML5 和 HTML 事件
 
 注意：行内代码的为 H5 新增事件
 
-#### Window 事件：
+### Window 事件
 
 > 针对 window 对象触发的事件（应用到 `<body>` 标签）
 
@@ -33,7 +32,7 @@ permalink: /HTML/ypylogam/
 | `onundo`         | 在文档执行 undo 时运行的脚本                     |
 | `onunload`       | 一旦页面已下载时触发（或者浏览器窗口已被关闭）。 |
 
-#### Form 事件
+### Form 事件
 
 > 由 HTML 表单内的动画触发的时间，应用到几乎所有 HTML 元素，但最常用在 form 元素中
 
@@ -50,14 +49,14 @@ permalink: /HTML/ypylogam/
 | onselect        | 在元素中文本被选中后触发       |
 | onsubmit        | 在提交表单时触发               |
 
-#### Keyboard 事件
+### Keyboard 事件
 
 | onkeydown  | 按下按键时触发     |
 | ---------- | ------------------ |
 | onkeypress | 用户敲击按钮是触发 |
 | onkeyup    | 释放按键时触发     |
 
-#### Mouse 事件
+### Mouse 事件
 
 > 由鼠标或类似用户动作触发
 
@@ -79,7 +78,7 @@ permalink: /HTML/ypylogam/
 | `onmousewheel` | 当鼠标滚轮正在被滚动式运行               |
 | `onscroll`     | 当元素滚动条被滚动时运行的脚本           |
 
-#### Media 事件
+### Media 事件
 
 > 有媒介，比如视频图像和音频处罚的事件，适用于所有 HTML 元素，但常见于媒介元素中
 
@@ -107,9 +106,9 @@ permalink: /HTML/ypylogam/
 | `onvolumechange`     | 当音量改变时运行                                         |
 | `onwaiting`          | 当媒介已停止播放但打算继续播放时                         |
 
-### input 的 type 属性
+## input 的 type 属性
 
-#### HTML
+### HTML
 
 | button   | 按钮                   |
 | -------- | ---------------------- |
@@ -123,7 +122,7 @@ permalink: /HTML/ypylogam/
 | submit   | 提交按钮               |
 | text     | 输入字段               |
 
-#### HTML5
+### HTML5
 
 | `color`          | 拾色器                               |
 | ---------------- | ------------------------------------ |
@@ -140,11 +139,11 @@ permalink: /HTML/ypylogam/
 | `tel`            | 定义用于电话号码的文本字段           |
 | `url`            | 定义用于 URL 的文本字段              |
 
-### HTML5 离线储存
+## HTML5 离线储存
 
 
 
-### 拖拽释放 ondrag
+## 拖拽释放 ondrag
 
 > 拖拽是 H5 中非常常见的功能。为了让元素可以拖动需要添加`draggable`属性
 > 注意：链接和图片是默认可拖动的 不需要额外添加`draggable`属性
@@ -160,7 +159,7 @@ permalink: /HTML/ypylogam/
   - `ondragleave`：当被鼠标拖动的对象离开其容器范围内触发
   - `ondrop`：在一个拖动过程中，释放鼠标时触发
 
-### 自定义属性 data-id
+## 自定义属性 data-id
 
 > 方便的保存并适用数据
 
@@ -180,7 +179,7 @@ one.dataset.wenbo = "wenbo";
 console.log(one.dataset.wenbo); //wenbo
 ```
 
-### 语义化标签
+## 语义化标签
 
 - `header`：section 或 page 页眉
 - `nav`：导航连接
@@ -189,14 +188,14 @@ console.log(one.dataset.wenbo); //wenbo
 - `article`：文章
 - `section`：section，部分
 
-### 音频视频
+## 音频视频
 
 **`audio`和`video`**
 
 - 自动播放：在标签属性中添加 autoplay
 - [音频视频相关方法，属性以及事件](https://www.w3school.com.cn/tags/html_ref_audio_video_dom.asp)
 
-### 画布 Canvas
+## 画布 Canvas
 
 > canvas 标签定义图片
 > canvas 本身是没有绘图能力的，所有的绘制工作必需在 JavaScript 内部完成
@@ -220,7 +219,7 @@ console.log(one.dataset.wenbo); //wenbo
 
 [Canvas 相关方法，属性](https://www.w3school.com.cn/tags/html_ref_canvas.asp)
 
-### 地理位置 Geolocation
+## 地理位置 Geolocation
 
 `navigator.geolocation.getCurrentPosition()`：获取用户当前位置，传参是两个回调函数，一个成功时，一个失败时
 
@@ -239,12 +238,12 @@ navigator.geolocation.getCurrentPosition(
 );
 ```
 
-### LocalStorage 和 SessionStorage
+## LocalStorage 和 SessionStorage
 
 - `localStorage`：存储大小 5M 左右，数据可长期保存在本地。同源域名窗口中共享数据。
 - `sessionStorage`：存储大小 5M 左右，与`localStorage`类似，但是储存数据仅当前窗口有效，关闭窗口自动删除。
 
-### H5浏览器存储 
+## H5浏览器存储 
 
 - `cookie`
 - `localStorage`
@@ -253,7 +252,7 @@ navigator.geolocation.getCurrentPosition(
 - `WebSQL`
 - `window变量`
 
-### 表单控件
+## 表单控件
 
 - `email`：邮箱
 - `url`：连接
@@ -264,10 +263,10 @@ navigator.geolocation.getCurrentPosition(
 - `search`：搜索
 - `color`：颜色选择
 
-### Web Worker和Web Socket
+## Web Worker
 
-**Web Worker**
-**[Web Worker 适用教程](http://www.ruanyifeng.com/blog/2018/07/web-worker.html)**
+## Web Socket
+
 
 > 为 JavaScript 创造多线程环境，允许在主线程穿件 worker 线程，将一些任务分配给后者运行。在主线程运行的同时，Worker 线程在后台运行，两者互不干扰。当 Worker 线程完成计算任务，再把结果返回给主线程。
 > 注意：Worker 线程一旦新建成功，就会始终运行，不会被主线程上的活动打断。在使用完毕后，需要及时关闭。

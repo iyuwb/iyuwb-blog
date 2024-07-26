@@ -1,10 +1,10 @@
 ---
-title: HTML-input
+title: HTML-Input
 author: 耶温
 createTime: 2024/05/13 16:08:58
 permalink: /HTML/4nvq330q/
 ---
-# HTML-input
+# HTML-Input
 
 ## input类型列表
 

@@ -32,7 +32,7 @@ export default defineUserConfig({
                     {
                         text: 'HTML',
                         icon: 'ph:file-html',
-                        link: '/notes/HTML/HTML元素.md',
+                        link: '/notes/HTML/HTML-Elements.md',
                     },
                     {
                         text: 'CSS',
@@ -137,7 +137,7 @@ export default defineUserConfig({
                         {
                             text: 'HTML基础',
                             icon: 'ic:baseline-dashboard',
-                            items: ['HTML-Elements','HTML-Events','HTML元素', 'HTML属性', 'HTML事件', 'HTML-input', 'HTML元素属性相关', 'HTML5新增内容']
+                            items: ['HTML-Elements','HTML-Attribute','HTML-Events', 'HTML-Input', 'HTML-HTML5新增','HTML-元素', 'HTML-属性', 'HTML-事件','HTML-元素属性相关',]
                         },
                         {
                             text: 'HTML问题',
