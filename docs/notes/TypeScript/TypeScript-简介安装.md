@@ -9,6 +9,7 @@ permalink: /TypeScript/xgndo7cj/
 
 > TypeScript 是一种由微软开发的开源静态类型检查的编程语言，它构建在 JavaScript 之上，并且完全符合 ECMAScript 6 标准。TypeScript 添加了可选的类型注解和接口定义，使得开发者可以在编写代码时就发现类型错误，从而提高代码质量和可维护性。
 
+
 ::: tip 
 
 1. 所有的 TypeScript  的代码，最终都会转成 JavaScript 运行。 
@@ -20,6 +21,22 @@ permalink: /TypeScript/xgndo7cj/
 4. 实际上所有的功能都是 JavaScript 引擎实现的。
 
 :::
+也就是说，TypeScript 没有单独的运行环境，只是提供编译器把 TypeScript 编译为 JavaScript 。编译时，会将类型声明和类型相关的代码全部删除，只留下能运行的 JavaScript 代码，并且不会改变 JavaScript 的运行结果。
+
+
+:::tip
+什么是类型？类型是人为添加的一种编程约束和用法提示。
+:::
+
+***动态类型和静态类型***
+
+-    JavaScript 的类型系统非常弱，而且没有使用限制，运算符可以接受各种类型的值。在语法上，JavaScript 属于动态类型语言。
+
+-    TypeScript 引入了一个更强大、更严格的类型系统，属于静态类型语言。
+
+<hr>
+
+***TypeScript 优缺点***
 
 ***优点***
 
@@ -42,7 +59,9 @@ permalink: /TypeScript/xgndo7cj/
 
 ***缺点***
 
-学习成本；额外编译步骤；类型声明文件；灵活性受限；
+学习成本；额外编译步骤；类型声明文件；增加编程工作量；灵活性受限；兼容性问题。
+
+
 
 ## 基础配置
 
