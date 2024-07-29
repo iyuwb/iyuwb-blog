@@ -38,3 +38,14 @@ permalink: /TypeScript/n7di7t58/
 | `generic`       | 泛型类型，允许创建可重用的组件。                               |    
 
 
+
+## Any类型
+
+any 类型是一种特殊的类型，表示任何类型的值。它允许你在编写代码时忽略类型检查，从而提高代码的灵活性和可维护性。
+
+```typescript
+let anyVar: any = 42; // 可以赋值为任意类型的值
+anyVar = "Hello, TypeScript!"; // 可以重新赋值为不同类型的值
+anyVar = true; // 可以重新赋值为布尔值
+```
+需要注意的是，不再迫不得已的时候，尽可能不使用any类型。使用过多的any类型，会使TypeScript变得更加难以理解和维护。
