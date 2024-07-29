@@ -111,7 +111,7 @@ Vue.js - The Progressive JavaScript Framework
     | --tsconfig.app.json             // ts配置文件
     | --tsconfig.json                 // ts配置文件
     | --tsconfig.node.json            // ts配置文件
-| --vite.config.ts                // vite 配置文件，项目配置文件，使用插件配置代理等
+    | --vite.config.ts                // vite 配置文件，项目配置文件，使用插件配置代理等
 ```
 
 ### `main.ts`

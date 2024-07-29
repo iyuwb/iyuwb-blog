@@ -47,7 +47,7 @@ export default defineUserConfig({
                     {
                         text: 'TypeScript',
                         icon: 'ph:file-ts',
-                        link: '/notes/TypeScript/TypeScript基础',
+                        link: '/notes/TypeScript/TypeScript-简介安装',
                     },
                 ],
             },
@@ -137,7 +137,7 @@ export default defineUserConfig({
                         {
                             text: 'HTML基础',
                             icon: 'ic:baseline-dashboard',
-                            items: ['HTML-Elements','HTML-Attribute','HTML-Events', 'HTML-Input', 'HTML-HTML5新增','HTML-元素', 'HTML-属性', 'HTML-事件','HTML-元素属性相关',]
+                            items: ['HTML-Elements', 'HTML-Attribute', 'HTML-Events', 'HTML-Input', 'HTML-HTML5新增', 'HTML-元素', 'HTML-属性', 'HTML-事件', 'HTML-元素属性相关',]
                         },
                         {
                             text: 'HTML问题',
@@ -158,7 +158,7 @@ export default defineUserConfig({
                         {
                             text: 'CSS基础',
                             icon: 'ic:baseline-dashboard',
-                            items: ['CSS选择器', 'CSS3新增内容', 'CSS滚动条-Scrollbar','CSS自定义属性','样式滤镜 Filter', '网格布局 Grid']
+                            items: ['CSS选择器', 'CSS3新增内容', 'CSS滚动条-Scrollbar', 'CSS自定义属性', '样式滤镜 Filter', '网格布局 Grid']
                         },
                         {
                             text: 'CSS问题',
@@ -179,8 +179,8 @@ export default defineUserConfig({
                         {
                             text: 'JavaScript基础',
                             icon: 'ic:baseline-dashboard',
-                            items: ['JavaScript-基础', 'JavaScript-内置对象方法','JavaScript-Promise','JavaScript-ECMAScript6','JavaScript-原型链',
-                                'JavaScript-Set、Map、WeakSet和WeakMap','JavaScript-正则表达式','JavaScript-WebSocket','JavaScript-Service Worker','JavaScript-Cache'
+                            items: ['JavaScript-基础', 'JavaScript-内置对象方法', 'JavaScript-Promise', 'JavaScript-ECMAScript6', 'JavaScript-原型链',
+                                'JavaScript-Set、Map、WeakSet和WeakMap', 'JavaScript-正则表达式', 'JavaScript-WebSocket', 'JavaScript-Service Worker', 'JavaScript-Cache'
                             ]
                         },
                         {
@@ -196,7 +196,7 @@ export default defineUserConfig({
                         {
                             text: 'JavaScript方案',
                             icon: 'icon-park-outline:plan',
-                            items: ['PWA-渐进式应用', 'JavaScript-常用方法','JavaScript-浏览器离线储存']
+                            items: ['PWA-渐进式应用', 'JavaScript-常用方法', 'JavaScript-浏览器离线储存']
                         },
                     ]
                 },
@@ -207,7 +207,7 @@ export default defineUserConfig({
                         {
                             text: 'TypeScript基础',
                             icon: 'ic:baseline-dashboard',
-                            items: ['TypeScript基础','TypeScript进阶']
+                            items: ['TypeScript-简介安装', 'TypeScript-数据类型', 'TypeScript-基本语法','TypeScript进阶']
                         },
                         {
                             text: 'TypeScript问题',
@@ -228,14 +228,14 @@ export default defineUserConfig({
                         {
                             text: 'Vue3基础',
                             icon: 'ic:baseline-dashboard',
-                            items: ['Vue3-简介概述','Vue3-setup','Vue3-ref&reactive','Vue3-computed&watch','Vue3-ref&props','Vue3-生命周期'
-                                ,'Vue3-自定义hook','Vue3-router','Vue3-Pinia','Vue3-组件通信','Vue3-Slot插槽','Vue3-其他API'
+                            items: ['Vue3-简介概述', 'Vue3-setup', 'Vue3-ref&reactive', 'Vue3-computed&watch', 'Vue3-ref&props', 'Vue3-生命周期'
+                                , 'Vue3-自定义hook', 'Vue3-router', 'Vue3-Pinia', 'Vue3-组件通信', 'Vue3-Slot插槽', 'Vue3-其他API'
                             ]
                         },
                         {
                             text: 'Vue3进阶',
                             icon: 'solar:graph-up-broken',
-                            items: ['Vue3-全局API','Vue3-组合式API','Vue3-非兼容性改变']
+                            items: ['Vue3-全局API', 'Vue3-组合式API', 'Vue3-非兼容性改变']
                         },
                         {
                             text: 'Vue3方案',
@@ -342,12 +342,12 @@ export default defineUserConfig({
             },
             // 评论模块
             comment: {
-                provider: 'Giscus', 
+                provider: 'Giscus',
                 comment: true,
-                repo: 'iyuwb/blog-comments', 
-                repoId: 'R_kgDOMNskgg', 
-                category: 'General', 
-                categoryId: 'DIC_kwDOMNskgs4CgWpV', 
+                repo: 'iyuwb/blog-comments',
+                repoId: 'R_kgDOMNskgg',
+                category: 'General',
+                categoryId: 'DIC_kwDOMNskgs4CgWpV',
             },
             // 百度统计
             baiduTongji: {
