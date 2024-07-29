@@ -4,8 +4,6 @@ author: 耶温
 createTime: 2024/05/13 16:07:12
 permalink: /HTML/5yqunq5r/
 ---
-# HTML属性
-
 ## 全局属性
 
 |   属性   | 描述 | 值 |
@@ -92,7 +90,7 @@ permalink: /HTML/5yqunq5r/
 | `width` | `image`| 元素宽度 |
 
 
-## 属性详情示例：
+## 详细示例
 
 ### 自动填充：`autocomplete`
 

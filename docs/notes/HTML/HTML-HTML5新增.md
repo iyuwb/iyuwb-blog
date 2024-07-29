@@ -4,6 +4,23 @@ author: 耶温
 createTime: 2024/05/09 15:36:30
 permalink: /HTML/ypylogam/
 ---
+## 语义化标签
+
+
+| 标签       | 描述                                                         |
+|------------|--------------------------------------------------------------|
+| `<article>` | 用于表示文档、页面或应用程序中的独立部分。                   |
+| `<aside>`   | 用于定义与页面主要内容相关但可独立分离的内容，如侧边栏或注释。 |
+| `<details>` | 用于创建可以显示或隐藏详细信息的可折叠小部件。               |
+| `<figcaption>` | 为 `<figure>` 元素定义标题。                                 |
+| `<figure>`  | 用于标记图片、图表、照片等元素。                             |
+| `<footer>`  | 定义一个页面或区域的底部。                                   |
+| `<header>`  | 定义一个页面或区域的头部。                                   |
+| `<main>`    | 代表文档或应用的主要内容。                                   |
+| `<mark>`    | 用于高亮显示文本。                                           |
+| `<nav>`     | 用于定义页面导航链接的部分。                                 |
+| `<section>` | 定义文档中的独立部分，如章节、页眉、页脚或文档中的其他部分。 |
+
 
 ## HTML5 和 HTML 事件
 
@@ -179,14 +196,6 @@ one.dataset.wenbo = "wenbo";
 console.log(one.dataset.wenbo); //wenbo
 ```
 
-## 语义化标签
-
-- `header`：section 或 page 页眉
-- `nav`：导航连接
-- `footer`：section 或 page 页脚
-- `aside`：页面内容之外的内容
-- `article`：文章
-- `section`：section，部分
 
 ## 音频视频
 
@@ -275,4 +284,55 @@ navigator.geolocation.getCurrentPosition(
 
 > HTML5 提供的一种在单个 TCP 连接上进行全双工通讯的协议。
 
-> Web Socket 使得客户端和服务器之间的数据交换变得更加简单，允许服务器端主动向客户端推送数据。在 WebSocket API 中，浏览器和服务器只需要完成一次握手，两者之间就直接可以创建持续性的连接，并进行双向数据传输。\*\*
+> Web Socket 使得客户端和服务器之间的数据交换变得更加简单，允许服务器端主动向客户端推送数据。在 WebSocket API 中，浏览器和服务器只需要完成一次握手，两者之间就直接可以创建持续性的连接，并进行双向数据传输。
+
+
+## Cache 浏览器缓存
+
+:::tip
+关于Cache 浏览器缓存的详细内容可以查看：[Cache 浏览器缓存](/JavaScript/wm68edzn/)
+:::
+
+Cache 浏览器缓存主要包括两部分，Cache 和 CacheStorage 。
+
+Cache 接口为缓存的 Request / Response 对象对提供存储机制，例如，作为ServiceWorker 生命周期的一部分。请注意，Cache 接口像 workers 一样，是暴露在 window 作用域下的。尽管它被定义在 service worker 的标准中，但是它不必一定要配合 service worker 使用。
+
+
+CacheStorage 接口表示 Cache 对象的存储。它提供了一个 ServiceWorker 、其他类型 worker 或者 window 范围内可以访问到的所有命名 cache 的主目录（它并不是一定要和 service workers 一起使用，即使它是在 service workers 规范中定义的），并维护一份字符串名称到相应 Cache 对象的映射。
+
+
+
+### Cache (单个缓存对象)
+
+***定义：***
+
+- Cache 是一个单个的缓存实例，它可以存储多个请求（Request）及其响应（Response）。
+- 当你想要为特定的请求存储一个响应时，你需要与一个具体的 Cache 对象交互。
+
+***方法：***
+
+- Cache 对象提供了一些方法来管理缓存中的条目，如 add(), match(), put(), delete() 和 keys() 等。
+
+***用途：***
+- 用于离线访问资源，比如在网络不可用时仍能加载页面。
+- 用于提高性能，减少服务器负载和减少用户的等待时间。
+
+### CacheStorage (缓存存储接口)
+
+***定义：***
+
+- CacheStorage 是一个接口，它允许你管理多个 Cache 对象。
+- 它可以被视为一个全局的缓存存储空间，你可以通过它打开、关闭或操作多个缓存实例。
+
+***方法：***
+
+- CacheStorage 提供了几个方法来管理和获取 Cache 实例，例如 open(), has(), delete(), keys() 等。
+
+***用途：***
+
+- 用于创建、删除和查找 Cache 实例。
+- 允许开发者组织不同版本的应用程序资源到不同的 Cache 中。
+
+
+
+
