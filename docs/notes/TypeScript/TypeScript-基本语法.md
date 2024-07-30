@@ -127,3 +127,89 @@ console.log(person2.age);  // 输出: 30
 ```
 
 ## 类型缩小
+
+在 TypeScript 中，类型缩小（Type Narrowing）是指通过特定的检查或条件，缩小一个变量的类型范围，从而使得 TypeScript 能够更准确地推断出该变量的具体类型。这种特性可以提高代码的类型安全性，减少运行时错误。
+
+常见方式
+
+-   使用 `typeof` 进行类型检查
+-   使用 `instanceof` 进行类型检查
+-   使用自定义类型保护
+-   使用联合类型的特性
+
+1. 使用`typeof` 
+
+```typescript
+function example(value: string | number) {
+    if (typeof value === "string") {
+        // 在这里，TypeScript 知道 value 是 string 类型
+        console.log(value.toUpperCase());
+    } else {
+        // 在这里，TypeScript 知道 value 是 number 类型
+        console.log(value.toFixed(2));
+    }
+}
+
+example("hello"); // 输出: HELLO
+example(123.456); // 输出: 123.46
+```
+2. 使用`instanceof` 
+```typescript
+class Dog {
+    bark() {
+        console.log("Woof!");
+    }
+}
+
+class Cat {
+    meow() {
+        console.log("Meow!");
+    }
+}
+
+function makeSound(animal: Dog | Cat) {
+    if (animal instanceof Dog) {
+        // 在这里，TypeScript 知道 animal 是 Dog 类型
+        animal.bark();
+    } else {
+        // 在这里，TypeScript 知道 animal 是 Cat 类型
+        animal.meow();
+    }
+}
+
+makeSound(new Dog()); // 输出: Woof!
+makeSound(new Cat()); // 输出: Meow!
+
+```
+3. 自定义类型保护
+
+```typescript
+function isString(value: any): value is string {
+    return typeof value === "string";
+}
+
+function example(value: string | number) {
+    if (isString(value)) {
+        // 在这里，TypeScript 知道 value 是 string 类型
+        console.log(value.toUpperCase());
+    } else {
+        // 在这里，TypeScript 知道 value 是 number 类型
+        console.log(value.toFixed(2));
+    }
+}
+
+example("hello"); // 输出: HELLO
+example(123.456); // 输出: 123.46
+
+```
+
+4. 联合类型的特性
+
+```typescript
+function printId(id: number | string) {
+    console.log("Your ID is: " + id);
+}
+
+printId(101); // 输出: Your ID is: 101
+printId("202"); // 输出: Your ID is: 202
+```
