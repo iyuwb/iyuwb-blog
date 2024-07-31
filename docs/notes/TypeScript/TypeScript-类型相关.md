@@ -1,5 +1,5 @@
 ---
-title: TypeScript-基本语法
+title: TypeScript-类型相关
 author: 耶温
 createTime: 2024/07/27 15:20:17
 permalink: /TypeScript/jkrsnple/

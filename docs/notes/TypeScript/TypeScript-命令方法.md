@@ -14,3 +14,5 @@ permalink: /TypeScript/sa54awwt/
 ```typescript
 type 类型别名 = 类型;
 ```
+
+## typeof 运算符

@@ -207,7 +207,7 @@ export default defineUserConfig({
                         {
                             text: 'TypeScript基础',
                             icon: 'ic:baseline-dashboard',
-                            items: ['TypeScript-简介安装', 'TypeScript-数据类型', 'TypeScript-基本语法', 'TypeScript-命令方法','TypeScript进阶']
+                            items: ['TypeScript-简介安装', 'TypeScript-基础数据类型', 'TypeScript-特有数据类型','TypeScript-类型相关', 'TypeScript-命令方法']
                         },
                         {
                             text: 'TypeScript问题',
