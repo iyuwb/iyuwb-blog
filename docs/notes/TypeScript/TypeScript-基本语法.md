@@ -213,3 +213,15 @@ function printId(id: number | string) {
 printId(101); // 输出: Your ID is: 101
 printId("202"); // 输出: Your ID is: 202
 ```
+
+## 类型别名
+
+在 TypeScript 中，类型别名（Type Alias）是一种为现有类型创建新名称的方式。它可以使代码更具可读性和可维护性，同时也提高了代码的类型安全性。
+
+
+***基本语法***
+
+```typescript
+type 类型别名 = 类型;
+```
+

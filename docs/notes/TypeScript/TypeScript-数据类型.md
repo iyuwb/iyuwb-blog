@@ -447,3 +447,44 @@ printId("202"); // 输出: Your ID is a string: 202
 ```
 
 ## 交叉类型
+
+TypeScript 的交叉类型（Intersection Types）允许我们将多个类型合并为一个类型。这种类型的主要用途是组合多个类型的属性，使得新类型同时具有所有组合类型的特性。
+
+***注意事项***：
+
+-   交叉类型只能用于对象类型，不能用于基础类型。
+-   交叉类型的属性不能有同名的属性，除非它们的类型相同，否则会导致类型冲突。
+
+***应用场景***：
+
+-   合并多个接口。当需要一个对象同时符合多个接口时，可以使用交叉类型。
+
+示例：
+
+```typescript
+// 定义两个接口
+interface Person {
+    name: string;
+    age: number;
+}
+
+interface Address {
+    street: string;
+    city: string;
+}
+
+// 使用交叉类型将两个接口合并
+type PersonWithAddress = Person & Address;
+
+// 创建一个符合 PersonWithAddress 类型的对象
+const person: PersonWithAddress = {
+    name: "Alice",
+    age: 30,
+    street: "123 Main St",
+    city: "Wonderland"
+};
+
+console.log(person);
+```
+ 
+
