@@ -4,7 +4,7 @@
     "short_name": "耶温笔记",
     "description": "耶温学习笔记",
     "start_url": "/",
-    "theme_color": "#2f3d58",
+    "theme_color": "#ccc",
     "orientation": "any",
     "display": "standalone",
     "icons": [
