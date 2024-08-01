@@ -1,0 +1,17 @@
+{
+    "lang": "zh-cn",
+    "name": "耶温笔记",
+    "short_name": "耶温笔记",
+    "description": "耶温学习笔记",
+    "start_url": "/",
+    "background_color": "#2f3d58",
+    "theme_color": "#2f3d58",
+    "orientation": "any",
+    "display": "standalone",
+    "icons": [
+        {
+            "src": "/pwa.png",
+            "sizes": "512x512"
+        }
+    ]
+}

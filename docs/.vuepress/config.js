@@ -375,12 +375,12 @@ export default defineUserConfig({
         //     href: '/index.css'
         // }],
         // 开启PWA
-        // ['link', {
-        //     rel: 'manifest',
-        //     href: '/manifest.json'
-        // }]
+        ['link', {
+            rel: 'manifest',
+            href: '/manifest.json'
+        }]
     ],
     // 开启PWA
-    // serviceWorker:true
+    serviceWorker:true
 })
 

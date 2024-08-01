@@ -218,10 +218,38 @@ printId("202"); // 输出: Your ID is: 202
 
 在 TypeScript 中，类型别名（Type Alias）是一种为现有类型创建新名称的方式。它可以使代码更具可读性和可维护性，同时也提高了代码的类型安全性。
 
+:::tip
+关于类型别名的详细内容可以查看：[Type 命令](/TypeScript/sa54awwt/#type-命令)
+:::
 
-***基本语法***
+## 类型兼容
+
+在 TypeScript 中，如果一个类型的结构与另一个类型的结构相匹配，那么这两个类型是兼容的。也就是说，只要一个类型包含了另一个类型的所有属性，它就可以被视为兼容。
+
+示例：
 
 ```typescript
-type 类型别名 = 类型;
+type Person = {
+    name: string;
+    age: number;
+};
+
+type Employee = {
+    name: string;
+    age: number;
+    position: string;
+};
+
+// Employee 兼容 Person，因为 Employee 包含了 Person 的所有属性
+const employee: Employee = {
+    name: "Alice",
+    age: 30,
+    position: "Developer",
+};
+
+const person: Person = employee; // 合法
 ```
+
+如上，由于 `Employee` 包含了 `Person` 的所有属性，因此 `Employee` 类型是 `Person` 类型的子类型。因此，我们可以将 `Employee` 赋值给 `Person` 类型的变量。相反，则不行，会报错。
+
 

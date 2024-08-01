@@ -349,3 +349,9 @@ console.log(person);
 ```
  
 ## 类型别名
+
+在 TypeScript 中，类型别名（Type Alias）是一种为现有类型创建新名称的方式。它可以使代码更具可读性和可维护性，同时也提高了代码的类型安全性。
+
+:::tip
+关于类型别名的详细内容可以查看：[Type 命令](/TypeScript/sa54awwt/#type-命令)
+:::
