@@ -253,3 +253,16 @@ const person: Person = employee; // 合法
 如上，由于 `Employee` 包含了 `Person` 的所有属性，因此 `Employee` 类型是 `Person` 类型的子类型。因此，我们可以将 `Employee` 赋值给 `Person` 类型的变量。相反，则不行，会报错。
 
 
+```typescript
+type T = number | string;
+
+let a: number = 1; 
+let b: T = a;  // 正确
+```
+```typescript
+let a: "hi" = "hi";
+let b: string = "hello";
+
+b = a; // 正确
+a = b; // 报错
+```

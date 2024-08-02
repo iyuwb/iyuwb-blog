@@ -15,6 +15,7 @@ permalink: /TypeScript/puill05i/
 | `never` | 代表永远不会出现的值，例如抛出异常的函数返回类型。 |
 | `void` | 通常用于表示函数无返回值或值不存在。 |
 | `enum` | 枚举类型，定义一组相关的值，可以是数字或字符串。 |
+| `Array`| 数量不确定的数组 |
 | 泛型 (Generics) | 一种机制，允许创建可重用的组件，这些组件能够操作任意类型的参数。 |
 | 联合类型 (Union Types) | 定义一个变量可以是多种类型之一。 |
 | 交集类型 (Intersection Types) | 定义一个变量同时具有多种类型的所有特征。 |
@@ -259,6 +260,38 @@ document.getElementById("myButton")?.addEventListener("click", function(): void 
     console.log("Button clicked!");
 });
 ```
+
+## Array 类型
+
+Array 数组是一个可以存储多个相同类型的值的集合。你可以使用 Array 类型或简写的 [] 语法来定义数组。数组的成员数量是可以动态变化的。
+
+***定义数组***
+
+```typescript
+// 使用 Array 类型
+let numbers: Array<number> = [1, 2, 3];
+
+// 使用 [] 语法
+let names: string[] = ["Alice", "Bob", "Charlie"];
+
+// 数组有多种类型
+let mixed: (number | string)[] = [1, "two", 3];
+let mixed2: Array<number | string> = [1, "two", 3];
+```
+***动态成员***
+数组数量可以动态变化，TypeScript 不会对数组边界进行检查，越界访问数组并不会报错。
+
+***类型读取***
+
+***类型推断***
+
+***只读数组***
+
+
+***多位数组***
+
+
+
 
 
 ## 联合类型

@@ -107,19 +107,38 @@ console.log(typeof []); // "object"
 console.log(typeof {}); // "object"
 console.log(typeof 123n) // "bigint"
 console.log(typeof Symbol("name")) // "symbol"
+console.log(typeof parseInt); // "function"
 ```
 
 2. TypeScript 中的 `typeof` 运算符
 
--   类型查询
-
 ```typescript
 let myValue = 10;
-type MyValueType = typeof myValue; // MyValueType 将会是 number 类型
-```
+type MyValueType = typeof myValue; //  number 
 
--   类型定义
+const a = { x: 0 };
+type T0 = typeof a; // { x: number }
+type T1 = typeof a.x; // number
+```
 
 ```typescript
+let a = 1;
+let b: typeof a;
 
+if (typeof a === "number") {
+  b = a;
+}
+
+// 上面转成JS后
+let a = 1;
+let b;
+if (typeof a === "number") {
+  b = a;
+}
 ```
+
+从上面的示例可以看出：
+
+-   typeof 运算符可以在运行时获取变量的类型。转成Javascript后，typeof 运算符会保留。
+-   在 TypeScript 中，typeof 还可以用于获取变量的类型并在类型注解中使用，增强了类型的复用性和代码的可读性。用于TypeScript 类型相关的代码，会在转成Javascript后，typeof 运算符会被删除。
+
