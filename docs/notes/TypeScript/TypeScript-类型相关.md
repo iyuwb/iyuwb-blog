@@ -266,3 +266,38 @@ let b: string = "hello";
 b = a; // 正确
 a = b; // 报错
 ```
+
+## 类型读取
+
+在 TypeScript 中，类型读取（Type Lookup）是指通过特定的语法来获取某个类型的属性或方法的类型。这种特性可以帮助我们在编写代码时更好地利用已有的类型信息，提高代码的可读性和可维护性。
+
+1. 使用 keyof 操作符
+
+keyof 操作符可以获取一个对象类型的所有键，并返回一个联合类型。
+
+```typescript
+interface Person {
+    name: string;
+    age: number;
+}
+type PersonKeys = keyof Person; // "name" | "age"
+```
+2. 使用索引访问类型
+
+```typescript
+interface Person {
+    name: string;
+    age: number;
+}
+type NameType = Person["name"]; // string
+type AgeType = Person["age"];   // number
+```
+
+3. 使用条件类型
+
+```typescript
+type IsString<T> = T extends string ? "Yes" : "No";
+
+type Test1 = IsString<string>; // "Yes"
+type Test2 = IsString<number>; // "No"
+```

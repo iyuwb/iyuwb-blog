@@ -94,10 +94,107 @@ let bigintVar3: bigint = 123.14; // 报错
 
 ## symbol类型
 
+Symbol 是 ES2015 新引入的一种原始类型的值。它类似于字符串，但是每一个 Symbol 值都是独一无二的，与其他任何值都不相等。
+
 symbol 类型用于创建唯一的键，通常用于对象的键。可以通过 `Symbol()` 函数创建。
+
 ```typescript
-let symbolVar: symbol = Symbol("mySymbol");
+let x: symbol = Symbol();
+let y: symbol = Symbol();
+
+x === y; // false
 ```
+
+***unique symbol***
+
+symbol类型包含所有的 Symbol 值，但是无法表示某一个具体的 Symbol 值。为了解决这个问题，TypeScript 设计了symbol的一个子类型unique symbol，它表示单个的、某个具体的 Symbol 值。
+因为unique symbol表示单个值，所以这个类型的变量是不能修改值的，只能用const命令声明，不能用let声明。
+
+```typescript
+let b: unique symbol = Symbol();  // 报错，类型为 "unique symbol" 的变量必须为 "const"。
+const a: unique symbol = Symbol(); // 正确
+```
+
+在使用`const`定义Symbol类型的变量时，变量类型默认就是`unique symbol`。所以类型可以省略。
+
+```typescript
+const x:unique symbol = Symbol();
+// 等同于
+const x = Symbol();
+```
+每个声明为unique symbol类型的变量，它们的值都是不一样的，其实属于不同的值类型。
+
+```typescript
+const a: unique symbol = Symbol();
+const b: unique symbol = Symbol();
+a === b; // 报错 此比较似乎是无意的，因为类型“typeof a”和“typeof b”没有重叠。
+const c:unique symbol = a ; // 报错 不能将类型“typeof a”分配给类型“typeof c”。
+```
+其实上面的例子转成下面代码可能更好理解：
+```typescript
+const a:'yuwb'= 'yuwb';
+const b:'yewen' = 'yewen';
+a === b; 
+const c:'wenbo' = a ; 
+```
+由此可以看出，`a`、`b`和`c`的类型都是不同。因为不能相互赋值，相互比较。如果需要把`a`的值赋值给`c`，可以使用 `typeof`。
+
+```typescript
+const a: unique symbol = Symbol();
+
+const c:typeof a = a ; 
+
+a===c // true
+```
+
+unique symbol 类型是 symbol 类型的子类型，所以可以将前者赋值给后者，但是反过来就不行。
+
+```typescript
+const a: unique symbol = Symbol();
+const b: symbol = a; // 正确
+const c: unique symbol = b; // 报错
+```
+
+***作为属性名***
+
+unique symbol 类型的一个作用，就是用作属性名，这可以保证不会跟其他属性名冲突。如果要把某一个特定的 Symbol 值当作属性名，那么它的类型只能是 unique symbol，不能是 symbol。
+
+```typescript
+const x: unique symbol = Symbol();
+const y: symbol = Symbol();
+
+interface Foo {
+  [x]: string; // 正确
+  [y]: string; // 报错
+}
+
+```
+
+
+
+***类型推断***
+
+`let` 命令声明的变量，推断类型为 symbol。 `const` 命令声明的变量，推断类型为 unique symbol。
+
+```typescript
+// 类型为 symbol
+let x = Symbol();
+
+// 类型为 unique symbol
+const x = Symbol();
+```
+需要注意的是， `const` 命令声明的变量，如果赋值为另一个 symbol 类型的变量，则推断类型为 symbol。 `let` 命令声明的变量，如果赋值为另一个 unique symbol 类型的变量，则推断类型还是 symbol。 
+
+```typescript
+let x = Symbol();
+// 类型为 symbol
+const y = x;
+// -----------------------------
+const a = Symbol();
+// 类型为 symbol
+let b = a;
+```
+
 
 ## object类型
 
