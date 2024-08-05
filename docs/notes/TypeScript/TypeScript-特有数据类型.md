@@ -241,9 +241,10 @@ let v3: boolean = f(); // 不报错
 
 因为在typescript中，never类型是所有类型的子类型，所以可以赋值给任何类型。我们把never类型叫做底层类型。同理还有顶层类型 any 和 unknown。
 
-## void 类型
+## void类型
 
 在 TypeScript 中，void 是一种特殊的类型，表示没有任何类型。它通常用于函数的返回类型，表示该函数不返回任何值。使用 void 可以清楚地表明函数的意图，即该函数执行某些操作但不返回结果。
+
 
 ***应用场景***
 -   ***函数返回类型***: 当一个函数不返回任何值时，可以将其返回类型指定为 void。
@@ -262,7 +263,41 @@ document.getElementById("myButton")?.addEventListener("click", function(): void 
 });
 ```
 
-## Array 类型
+void 类型表示函数没有返回值，如果设置了 void 类型的函数，却返回了一个值，就会报错。但是需要注意的是，void 类型的函数可以返回 undefined 或 null。
+
+但是如果开启 `strictNullChecks` 编辑选下锅，那么 void 类型的函数就只允许返回undefined 。JavaScript 规定，如果函数没有返回值，就等同于返回undefined。
+
+```typescript
+// 正常
+function f(): void {
+  console.log("hello");
+}
+// 报错
+function f(): void {
+  return 123; // 报错
+}
+
+function f(): void {
+  return undefined; // 正确
+}
+
+function f(): void {
+  return null; // 正确   
+}
+```
+需要特别注意的是，如果变量、对象方法、函数参数的类型是 void 类型的函数，那么并不代表不能赋值为有返回值的函数。恰恰相反，该变量、对象方法和函数参数可以接受返回任意值的函数，这时并不会报错。换句话说，只要不用到这里的返回值，就不会报错。一旦使用就会报错。
+
+```typescript
+type voidFunc = () => void;
+
+const f: voidFunc = () => {
+  return 123;
+};
+f() // 正确
+f() * 2 // 报错
+```
+
+## Array类型
 
 Array 数组是一个可以存储多个相同类型的值的集合。你可以使用 Array 类型或简写的 [] 语法来定义数组。数组的成员数量是可以动态变化的。
 
@@ -756,6 +791,155 @@ function add({x, y = 1}: Point): number {
 ```
 
 ***...(rest)参数***
+
+在 TypeScript 中，rest 参数（剩余参数）允许我们将不定数量的参数作为数组传递给函数。这在处理可变数量的参数时非常有用。使用 rest 参数时，需要在参数前加上三个点（...），并且它必须是函数参数列表中的最后一个参数。
+
+需要注意的是 ，它可以适用于数组和元祖。
+
+```typescript
+function add(x: number,...y: number[]): number {
+  return x + y.reduce((acc, cur) => acc + cur, 0);
+}
+
+
+function add(x: number,...y: [number, number]): number {
+  return x + y.reduce((acc, cur) => acc + cur, 0);
+}
+```
+如果是元组，则需要我门声明每一个剩余参数的类型。元祖里面的参数可以使用可选参数。
+```typescript
+function add(x: number,...y: [number, number?, number?]): number {
+  return x + y.reduce((acc, cur) => acc + cur, 0);
+}
+```
+rest参数可以嵌套使用。也可以与变量解构一起使用。
+```typescript
+function add(x: number,...y: [number,...number[]]): number {
+  return x + y.reduce((acc, cur) => acc + cur, 0);
+}
+
+function repeat(...[str, times]: [string, number]): string {
+  return str.repeat(times);
+}
+// 等同于
+function repeat(str: string, times: number): string {
+  return str.repeat(times);
+}
+```
+
+***只读参数***
+
+在 TypeScript 中，如果你想要定义一个函数，使其参数为只读（即在函数内部不允许修改这些参数），可以使用 readonly 修饰符。这个修饰符通常用于数组和对象类型，以确保它们的内容在函数内部不会被修改。
+
+```typescript
+function printNumbers(numbers: readonly number[]): void {
+    // numbers.push(4); // 这行代码会报错，因为 numbers 是只读的
+    numbers.forEach(num => console.log(num));
+}
+
+const nums: number[] = [1, 2, 3];
+printNumbers(nums); // 输出: 1, 2, 3
+```
+对于对象参数，可以使用 readonly 修饰符来确保对象的属性在函数内部不会被修改。
+
+```typescript
+interface User {
+    readonly id: number;
+    readonly name: string;
+}
+
+function printUser(user: User): void {
+    // user.id = 2; // 这行代码会报错，因为 id 是只读的
+    console.log(`ID: ${user.id}, Name: ${user.name}`);
+}
+
+const user: User = { id: 1, name: "Alice" };
+printUser(user); // 输出: ID: 1, Name: Alice
+```
+
+***void类型***
+
+void 类型表示函数没有返回值。如果设置了 void 类型的函数，却返回了一个值，就会报错。但是需要注意的是，void 类型的函数可以返回 undefined 或 null。
+
+:::tip
+关于void类型的详细内容可以查看：[void类型](/TypeScript/puill05i/#void类型)
+:::
+
+***never类型***
+
+never类型表示肯定不会出现的值。它用在函数的返回值，就表示某个函数肯定不会返回值，即函数不会正常执行结束。
+:::tip
+关于never类型的详细内容可以查看：[never类型](/TypeScript/puill05i/#never类型)
+:::
+
+::: tip
+注意，never类型不同于void类型。前者表示函数没有执行结束，不可能有返回值；后者表示函数正常执行结束，但是不返回值，或者说返回undefined。
+:::
+
+***局部类型***
+
+在 TypeScript 中，我们可以使用类型别名来定义一个局部类型，即在某个作用域内使用的类型。
+
+```typescript
+function hello(txt: string) {
+  type message = string;
+  let newTxt: message = "hello " + txt;
+  return newTxt;
+}
+
+const newTxt: message = hello("world"); // 报错
+```
+上面示例中，类型message是在函数hello()内部定义的，只能在函数内部使用。在函数外部使用，就会报错。
+
+***高阶函数***
+
+一个函数的返回值还是一个函数，那么前一个函数就称为高阶函数（higher-order function）。
+
+```typescript
+(someValue: number) => (multiplier: number) => someValue * multiplier;
+```
+
+***函数重载***
+
+在 TypeScript 中，函数重载允许我们为同一个函数定义多个不同的调用签名。这意味着你可以根据传入参数的类型和数量来实现不同的行为。函数重载的实现通常包括多个重载签名和一个实现签名。
+
+```typescript
+function greet(person: string): string;
+function greet(person: string, age: number): string;
+function greet(person: string, age?: number): string {
+    if (age !== undefined) {
+        return `Hello, ${person}. You are ${age} years old.`;
+    } else {
+        return `Hello, ${person}.`;
+    }
+}
+// 使用重载
+console.log(greet("Alice"));          // 输出: Hello, Alice.
+console.log(greet("Bob", 30));        // 输出: Hello, Bob. You are 30 years old.
+```
+如上，前两行代码为重载签名，定义了函数可以接受的不同参数组合，第三行为实现签名，定义了函数的具体实现逻辑。
+
+多种参数类型
+
+```typescript
+function combine(input1: number, input2: number): number;
+function combine(input1: string, input2: string): string;
+function combine(input1: number, input2: string): string;
+function combine(input1: string, input2: number): string;
+function combine(input1: any, input2: any): any {
+    return input1.toString() + input2.toString();
+}
+
+// 使用重载
+console.log(combine(1, 2));            // 输出: 3
+console.log(combine("Hello, ", "World!")); // 输出: Hello, World!
+console.log(combine(1, " apples"));     // 输出: 1 apples
+console.log(combine("Number: ", 42));   // 输出: Number: 42
+```
+
+***构造函数***
+
+
 
 
 
