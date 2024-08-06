@@ -939,6 +939,40 @@ console.log(combine("Number: ", 42));   // 输出: Number: 42
 
 ***构造函数***
 
+JavaScript 语言使用构造函数，生成对象的实例。
+
+构造函数的最大特点，就是必须使用new命令调用。
+
+内置构造函数
+```typescript
+ const date = new Date() 
+```
+自定义构造函数
+
+```typescript
+  class Animal {
+  numLegs: number = 4;
+}
+
+type AnimalConstructor = new () => Animal;
+
+function create(c: AnimalConstructor): Animal {
+  return new c();
+}
+const a = create(Animal);
+```
+采用对象形式的构造函数，如下F既可以当构造函数使用，又可以当普通函数使用。
+
+```typescript
+type F = {
+  new (s: string): object;
+  (n?: number): number;
+};
+```
+
+## 对象类型
+
+
 
 
 
