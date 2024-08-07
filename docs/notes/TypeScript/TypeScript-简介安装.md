@@ -159,7 +159,7 @@ tsc --watch // 持续监听，监听文件改变，实时更新
 npm install -g nodemon
 ```
 
-5. 运行生成的 js 文件
+6. 运行生成的 js 文件
 
 使用`nodemon` 运行生成的 js 文件，当文件改变，会自动重新运行生成的 js 文件。不再需要我们手动运行生成的js文件。
 
@@ -167,9 +167,17 @@ npm install -g nodemon
 nodemon  dist/index.js --watch
 ```
 
+## 其他方式
 
+也可以通过命令持续监听ts输出到固定的文件。
+```sh
+tsc --watch // 持续监听，监听文件改变，实时更新
+```
+然后在开发的项目中引入生成的js。开启所需服务即可。 比如 VS code中的 `Live Server` 插件。
 
-
+::: tip
+我们在日常工作开发中，一般都会使用框架来搭建项目。很多框架使用TypeScript，一般都会需要专门配置。我们按照要求配置即可。
+:::
 
 
 

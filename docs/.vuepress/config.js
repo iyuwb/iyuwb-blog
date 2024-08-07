@@ -207,18 +207,18 @@ export default defineUserConfig({
                         {
                             text: 'TypeScript基础',
                             icon: 'ic:baseline-dashboard',
-                            items: ['TypeScript-简介安装', 'TypeScript-基础数据类型', 'TypeScript-特有数据类型','TypeScript-类型相关', 'TypeScript-命令方法']
+                            items: ['TypeScript-简介安装', 'TypeScript-基础数据类型', 'TypeScript-特有数据类型','TypeScript-any与unknown','TypeScript-never与void','TypeScript-数组与元组','TypeScript-函数','TypeScript-类型相关', 'TypeScript-命令方法']
                         },
-                        {
-                            text: 'TypeScript问题',
-                            icon: 'icon-park-outline:file-question',
-                            items: []
-                        },
-                        {
-                            text: 'TypeScript方案',
-                            icon: 'icon-park-outline:plan',
-                            items: []
-                        },
+                        // {
+                        //     text: 'TypeScript问题',
+                        //     icon: 'icon-park-outline:file-question',
+                        //     items: []
+                        // },
+                        // {
+                        //     text: 'TypeScript方案',
+                        //     icon: 'icon-park-outline:plan',
+                        //     items: []
+                        // },
                     ]
                 },
                 {
