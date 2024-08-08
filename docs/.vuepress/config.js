@@ -363,7 +363,7 @@ export default defineUserConfig({
     head: [
         ['link', {
             rel: 'icon',
-            href: '/icon1.png'
+            href: '/favicon.ico'
         }],
         ['meta', {
             name: 'keywords',
@@ -375,12 +375,12 @@ export default defineUserConfig({
         //     href: '/index.css'
         // }],
         // 开启PWA
-        ['link', {
-            rel: 'manifest',
-            href: '/manifest.json'
-        }]
+        // ['link', {
+        //     rel: 'manifest',
+        //     href: '/manifest.json'
+        // }]
     ],
     // 开启PWA
-    serviceWorker:true
+    // serviceWorker:true
 })
 
