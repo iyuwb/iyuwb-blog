@@ -9,15 +9,15 @@
     "display": "standalone",
     "icons": [
         {
-            "src": "/pwa1.png",
+            "src": "/pwa1.ico",
             "sizes": "256x256"
         },
         {
-            "src": "/pwa2.png",
+            "src": "/pwa2.ico",
             "sizes": "512x512"
         },
         {
-            "src": "/pwa.png",
+            "src": "/pwa.ico",
             "sizes": "1024x1024"
         }
     ]
