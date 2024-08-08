@@ -9,8 +9,16 @@
     "display": "standalone",
     "icons": [
         {
-            "src": "/pwa.png",
+            "src": "/pwa1.png",
+            "sizes": "256x256"
+        },
+        {
+            "src": "/pwa2.png",
             "sizes": "512x512"
+        },
+        {
+            "src": "/pwa.png",
+            "sizes": "1024x1024"
         }
     ]
 }

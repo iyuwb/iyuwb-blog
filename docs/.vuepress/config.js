@@ -363,7 +363,7 @@ export default defineUserConfig({
     head: [
         ['link', {
             rel: 'icon',
-            href: '/icon.png'
+            href: '/icon1.png'
         }],
         ['meta', {
             name: 'keywords',
