@@ -32,31 +32,35 @@ config:
         icon:
           src: /html.svg
           wrap: true
-        link: /notes/HTML/HTML元素.md
+        link: /notes/HTML/HTML-Elements.md
         details: HTML与HTML5相关笔记
       -
         title: CSS
         icon:
           src: /css.svg
           wrap: true
+        link: /notes/CSS/CSS选择器.md
         details: CSS与CSS3相关笔记
       -
         title: JavaScript
         icon:
           src: /javascript.svg
           wrap: true
+        link: /notes/JavaScript/JavaScript-基础
         details: JavaScript相关笔记
       -
         title: TypeScript
         icon:
           src: /typescript.svg
           wrap: true
+        link: /notes/TypeScript/TypeScript-简介安装
         details: TypeScript相关笔记
       -
         title: Vue
         icon:
           src: /vue.svg
           wrap: true
+        link: /notes/Vue/Vue3-简介概述
         details: Vue相关笔记
       -
         title: React

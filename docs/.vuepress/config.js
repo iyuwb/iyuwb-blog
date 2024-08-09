@@ -207,7 +207,7 @@ export default defineUserConfig({
                         {
                             text: 'TypeScript基础',
                             icon: 'ic:baseline-dashboard',
-                            items: ['TypeScript-简介安装', 'TypeScript-基础数据类型', 'TypeScript-特有数据类型','TypeScript-any与unknown','TypeScript-never与void','TypeScript-数组与元组','TypeScript-函数','TypeScript-类型相关', 'TypeScript-命令方法']
+                            items: ['TypeScript-简介安装', 'TypeScript-基础数据类型', 'TypeScript-特有数据类型', 'TypeScript-any与unknown', 'TypeScript-never与void', 'TypeScript-数组与元组', 'TypeScript-函数', 'TypeScript-对象', 'TypeScript-类型相关', 'TypeScript-命令方法']
                         },
                         // {
                         //     text: 'TypeScript问题',
@@ -381,6 +381,6 @@ export default defineUserConfig({
         }]
     ],
     // 开启PWA
-    serviceWorker:true
+    serviceWorker: true
 })
 
