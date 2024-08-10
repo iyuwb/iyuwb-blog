@@ -179,14 +179,14 @@ export default defineUserConfig({
                         {
                             text: 'JavaScript基础',
                             icon: 'ic:baseline-dashboard',
-                            items: ['JavaScript-基础', 'JavaScript-内置对象方法', 'JavaScript-Promise', 'JavaScript-ECMAScript6', 'JavaScript-原型链',
+                            items: ['JavaScript-基础', 'JavaScript-内置对象方法', 'JavaScript-Promise', 'JavaScript-原型链',
                                 'JavaScript-Set、Map、WeakSet和WeakMap', 'JavaScript-正则表达式', 'JavaScript-WebSocket', 'JavaScript-Service Worker', 'JavaScript-Cache'
                             ]
                         },
                         {
                             text: 'JavaScript进阶',
                             icon: 'solar:graph-up-broken',
-                            items: ['JavaScript-作用域和闭包']
+                            items: ['JavaScript-作用域和闭包','JavaScript-ECMAScript6']
                         },
                         {
                             text: 'JavaScript问题',
