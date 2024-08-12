@@ -186,7 +186,7 @@ export default defineUserConfig({
                         {
                             text: 'JavaScript进阶',
                             icon: 'solar:graph-up-broken',
-                            items: ['JavaScript-作用域和闭包','JavaScript-ECMAScript6']
+                            items: ['JavaScript-作用域和闭包','JavaScript-ECMAScript1-4','JavaScript-ECMAScript6','JavaScript-ECMAScript7']
                         },
                         {
                             text: 'JavaScript问题',

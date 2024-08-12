@@ -4,12 +4,24 @@ author: 耶温
 createTime: 2024/05/11 15:05:45
 permalink: /JavaScript/5z5x37f8/
 ---
+> 
 
 # JavaScript-ECMAScript6
 
-ECMAScript（简称 ES）是一种由 ECMA 国际组织制定的脚本语言标准。它是 JavaScript 的基础，定义了语言的语法、类型、语句、关键字、保留字、操作符、内置对象等。ECMAScript 的目标是提供一种通用的脚本语言，使得不同的实现（如浏览器、服务器等）能够遵循相同的标准，从而实现跨平台的兼容性。
+> ECMAScript（简称 ES）是一种由 ECMA 国际组织制定的脚本语言标准。它是 JavaScript 的基础，定义了语言的语法、类型、语句、关键字、保留字、操作符、内置对象等。ECMAScript 的目标是提供一种通用的脚本语言，使得不同的实现（如浏览器、服务器等）能够遵循相同的标准，从而实现跨平台的兼容性。
 
-ES6 (2015)：又称 ECMAScript 2015，引入了大量新特性，如类、模块、箭头函数、Promise、解构赋值等。
+-   ECMAScript 6 (ES2015) - 2015
+    -   引入了 let 和 const 关键字 以及 块级作用域。
+    -   新增了箭头函数（arrow functions）。
+    -   增加了模板字符串（template literals）。
+    -   引入了默认参数、解构赋值和扩展运算符。
+    -   引入了类（class）和模块（module）。
+    -   新增了 Promise 对象。
+    -   引入了生成器和迭代器。
+    -   引入了 Map、Set、WeakMap 和 WeakSet 数据结构。
+    -   引入了新的原始数据类型 Symbol。
+    -   新增了一些方法。
+
 
 ## let 与 const
 
@@ -410,6 +422,82 @@ class ClassName {
 }
 ```
 
+1. 类的定义
+```js
+class Person {
+    constructor(name, age) {
+        this.name = name;
+        this.age = age;
+    }
+
+    sayHello() {
+        console.log(`Hello, my name is ${this.name} and I am ${this.age} years old.`);
+    }
+}
+```
+2. 类的实例化
+```js
+const person = new Person('Alice', 25);
+person.sayHello(); // Hello, my name is Alice and I am 25 years old.
+```
+3. 继承。ES6 类支持继承，可以通过 extends 关键字来实现：
+```js
+class Student extends Person {
+    constructor(name, age, grade) {
+        super(name, age);
+        this.grade = grade;
+    }
+
+    sayGrade() {
+        console.log(`I am in grade ${this.grade}.`);
+    }
+}
+
+const student = new Student('Bob', 20, 'A');
+student.sayHello(); // Hello, my name is Bob and I am 20 years old.
+student.sayGrade(); // I am in grade A.
+```
+4. 静态属性和方法。这些方法是属于类本身而不是类的实例。
+```js
+class MathUtils {
+    static PI = 3.14159;
+
+    static square(x) {
+        return x * x;
+    }
+}
+
+console.log(MathUtils.PI); // 输出: 3.14159
+console.log(MathUtils.square(5)); // 输出: 25
+```
+5. 私有属性和方法。ES6 类本身并不支持访问修饰符（如 private 和 protected），但可以通过一些约定（如前缀 _）来表示私有属性。ES2022 引入了私有字段的概念，可以使用 # 前缀来定义私有属性和方法。
+```js
+class Person {
+    #name;
+    #age;
+
+    constructor(name, age) {
+        this.#name = name;
+        this.#age = age;
+    }
+
+    #sayHello() {
+        console.log(`Hello, my name is ${this.#name} and I am ${this.#age} years old.`);
+    }
+
+    sayHello() {
+        this.#sayHello();
+    }
+}
+
+const person = new Person('Alice', 25);
+person.sayHello(); // Hello, my name is Alice and I am 25 years old.
+// console.log(person.#name); // 报错: #name 是私有的属性
+```
+
+
+
+
 ## 模块（import/export）
 
 ECMAScript 模块（ES Modules）是 ECMAScript 6（ES6）引入的一种模块化机制，旨在使 JavaScript 代码的组织和管理更加清晰和高效。ES 模块允许开发者将代码分割成多个文件，并在这些文件之间进行导入和导出，从而实现代码的重用和维护。
@@ -484,7 +572,7 @@ myModule.greet(); // Hello, Alice
 
 
 **动态导入**
-可以使用 import() 函数动态导入模块，返回一个 Promise。
+可以使用 `import()` 函数动态导入模块，返回一个 Promise。
 ```js
 async function loadModule() {
     const module = await import('./myModule.js');
@@ -505,6 +593,56 @@ Promise 是 ECMAScript 6（ES6）引入的一种用于处理异步操作的对�
 :::
 
 ## 生成器（generator）和迭代器（iterator）
+
+在 ECMAScript 6（ES6）中，生成器（Generators）和迭代器（Iterators）是用于处理可迭代对象的重要概念。它们使得在 JavaScript 中处理序列数据变得更加灵活和强大。
+
+**迭代器（Iterator）**
+迭代器是一种对象，它定义了访问集合中元素的方式。迭代器必须实现一个 next() 方法，该方法返回一个对象，该对象包含两个属性：
+
+-   `done`：一个布尔值，表示迭代是否完成。
+-   `value`：迭代返回的值。
+
+```js
+function createIterator(array) {
+    let index = 0;
+    return {
+        next: function() {
+            if (index < array.length) {
+                return { value: array[index++], done: false };
+            } else {
+                return { done: true };
+            }
+        }
+    };
+}
+const iterator = createIterator([1, 2, 3]);
+
+console.log(iterator.next()); // { value: 1, done: false }
+console.log(iterator.next()); // { value: 2, done: false }
+console.log(iterator.next()); // { value: 3, done: false }
+console.log(iterator.next()); // { done: true }
+```
+**生成器（Generator）**
+
+生成器是一种特殊类型的函数，可以暂停和恢复执行。生成器函数使用 function* 语法定义，并且可以使用 `yield` 关键字来返回值。每次调用生成器的 `next()` 方法时，生成器会执行到下一个 `yield` 表达式，并返回一个对象，包含 `value` 和 `done` 属性。
+
+```js
+function* createGenerator() {
+    yield 1;
+    yield 2;
+    yield 3;
+}
+
+const generator = createGenerator();
+
+console.log(generator.next()); // { value: 1, done: false }
+console.log(generator.next()); // { value: 2, done: false }
+console.log(generator.next()); // { value: 3, done: false }
+console.log(generator.next()); // { done: true }
+```
+
+
+
 
 ## Map 和 Set
 ECMAScript 6（ES6）引入了 Set、Map、WeakSet 和 WeakMap 数据结构，它们提供了更灵活和高效的方式来存储和管理数据。
