@@ -412,77 +412,373 @@ class ClassName {
 
 ## 模块（import/export）
 
+ECMAScript 模块（ES Modules）是 ECMAScript 6（ES6）引入的一种模块化机制，旨在使 JavaScript 代码的组织和管理更加清晰和高效。ES 模块允许开发者将代码分割成多个文件，并在这些文件之间进行导入和导出，从而实现代码的重用和维护。
+
+**基本概念**
+
+-   模块：每个模块都是一个独立的文件，默认情况下，模块中的变量和函数是私有的，外部无法直接访问。
+-   导出: 使用 `export` 关键字将模块中的变量、函数或类导出，使其可以在其他模块中使用。
+-   导入: 使用 `import` 关键字从其他模块中导入导出的内容。
+
+**导出模块**
+
+1. 默认导出。每个模块可以有一个默认导出，使用 export default 关键字。
+```js
+// 默认导出
+export default function greet(name) {
+    console.log(`Hello, ${name}`);
+}
+```
+2. 命名导出。可以导出多个变量、函数或类，使用 `export` 关键字。
+```js
+// 命名导出
+// myModule.js
+export const name = 'Alice';
+export const age = 25;
+
+export function greet() {
+    console.log(`Hello, ${name}`);
+}
+```
+
+**导入模块**
+
+1. 默认导入。使用 `import` 关键字导入默认导出的内容。
+```js
+// 默认导入
+import greet from './myModule.js';
+
+greet('Alice'); // Hello, Alice
+```
+2. 命名导入。使用 `import` 关键字导入命名导出的内容。
+```js
+// 命名导入
+import { name, age, greet } from './myModule.js';
+
+console.log(name); // Alice
+console.log(age); // 25
+greet(); // Hello, Alice
+```
+3. 重命名导入。使用 `as` 关键字重命名导入的变量、函数或类。
+```js
+// 重命名导入
+import { name as myName, age as myAge } from './myModule.js';
+
+console.log(myName); // Alice
+console.log(myAge); // 25
+```
+4. 导入全部。使用 `*` 导入模块中的所有内容。
+```js
+// 导入全部
+import * as myModule from './myModule.js';
+
+console.log(myModule.name); // Alice
+console.log(myModule.age); // 25
+myModule.greet(); // Hello, Alice
+```
+
+**注意事项**
+-   模块是惰性加载的: 模块在第一次被导入时执行，后续的导入不会再次执行模块代码。
+-   模块的作用域: 每个模块都有自己的作用域，模块内的变量和函数不会污染全局作用域。
+-   使用模块：在浏览器中使用 ES 模块时，需要在 `<script>` 标签中添加 `type="module"` 属性。
+
+
+**动态导入**
+可以使用 import() 函数动态导入模块，返回一个 Promise。
+```js
+async function loadModule() {
+    const module = await import('./myModule.js');
+    console.log(module.name); // Alice
+}
+
+loadModule();
+```
+
+
+
 ## Promise
+
+Promise 是 ECMAScript 6（ES6）引入的一种用于处理异步操作的对象。它代表一个可能在未来某个时间点完成或失败的操作，并允许你以更清晰的方式处理异步代码，避免了回调地狱（callback hell）的问题。
+
+:::tip
+关于 Promise 的详细内容可以查看：[JavaScript-Promise](/JavaScript/e6uvtokj/)
+:::
 
 ## 生成器（generator）和迭代器（iterator）
 
 ## Map 和 Set
+ECMAScript 6（ES6）引入了 Set、Map、WeakSet 和 WeakMap 数据结构，它们提供了更灵活和高效的方式来存储和管理数据。
+
+-   `Set` 是一种集合类型，允许存储唯一的值。它的主要特性是每个值只能出现一次。
+-   `Map`  是一种键值对集合，允许使用任何类型的值作为键。它的主要特性是键的顺序是有序的。
+-   `WeakSet` 是一种类似于 `Set` 的集合，但它只允许对象作为成员，并且对其成员的引用是弱引用。这意味着如果没有其他引用指向 `WeakSet` 中的对象，它们可以被垃圾回收。
+-   `WeakMap` 是一种类似于 `Map` 的集合，但它的键是弱引用。这意味着如果没有其他引用指向 `WeakMap` 中的键，它们可以被垃圾回收。
+
+:::tip
+关于 JavaScript-Set、Map、WeakSet和WeakMap 的详细内容可以查看：[JavaScript-Set、Map、WeakSet和WeakMap](/JavaScript/aesr75yu/)
+:::
 
 ## Symbol
+在 ECMAScript 6（ES6）中，引入了 Symbol 数据类型，它是一种新的原始数据类型，用于创建唯一的标识符。Symbol 的主要用途是为对象的属性提供唯一性，避免属性名的冲突。
+
+-   唯一性: Symbol 的主要用途是为对象的属性提供唯一性，避免属性名冲突。
+-   隐私属性: 使用 Symbol 作为对象的属性名，可以创建隐私属性，因为 Symbol 不会被常规的属性枚举方法（如 `for...in `或 `Object.keys()`）列出。
+
+**创建使用**
+1. 创建 Symbol。可以使用 Symbol() 函数创建一个新的 Symbol。每个 Symbol 都是唯一的，即使它们的描述相同。
+```js
+
+const symbol1 = Symbol();
+const symbol2 = Symbol('description');
+const symbol3 = Symbol('description');
+
+console.log(symbol1 === symbol2); // false
+console.log(symbol2 === symbol3); // false
+```
+2. 使用 Symbol 作为属性名。可以使用 Symbol 作为对象的属性名，从而避免属性名的冲突。
+```js
+const symbol = Symbol('description');
+
+const obj = {};
+obj[symbol] = 'value';
+console.log(obj[symbol]); // 'value'
+```
+
+**内置Symbol**
+
+-   `Symbol.iterator`: 用于定义对象的默认迭代器，使对象可以使用 for...of 循环。
+```js
+const myIterable = {
+    *[Symbol.iterator]() {
+        yield 1;
+        yield 2;
+        yield 3;
+    }
+};
+
+for (const value of myIterable) {
+    console.log(value); // 1, 2, 3
+}
+```
+-   `Symbol.asyncIterator`: 用于创建一个异步迭代器对象，用于遍历异步可迭代对象。
+```js
+const asyncIterable = {
+    async *[Symbol.asyncIterator]() {
+        yield 1;
+        yield 2;
+        yield 3;
+    }
+};
+
+(async () => {
+    for await (const value of asyncIterable) {
+        console.log(value); // 1, 2, 3
+    }
+})();
+```
+-   `Symbol.toStringTag`: 用于定义一个对象的字符串描述。
+```js
+const myObject = {
+    [Symbol.toStringTag]: 'MyCustomObject'
+};
+
+console.log(Object.prototype.toString.call(myObject)); // '[object MyCustomObject]'
+```
+-   `Symbol.hasInstance`:  用于自定义 instanceof 操作符的行为。
+```js
+class MyClass {
+    static [Symbol.hasInstance](instance) {
+        return instance.customProperty === true;
+    }
+}
+
+const obj = { customProperty: true };
+console.log(obj instanceof MyClass); // true
+```
+-   `Symbol.isConcatSpreadable`: 用于指示一个对象是否可以被 `concat()` 方法展开。
+```js
+const myArray = [1, 2];
+const myObject = {
+    [Symbol.isConcatSpreadable]: true,
+    0: 3,
+    1: 4,
+    length: 2
+};
+
+const newArray = myArray.concat(myObject); // [1, 2, 3, 4]
+```
+-   `Symbol.unscopables`:用于定义哪些属性不应被 with 语句访问。
+```js
+const myObject = {
+    a: 1,
+    b: 2,
+    [Symbol.unscopables]: { b: true }
+};
+
+with (myObject) {
+    console.log(a); // 1
+    console.log(b); // ReferenceError: b is not defined
+}
+```
+
+
 
 ## 新增方法
 ECMAScript 2015，引入了许多新的方法和功能，极大地增强了 JavaScript 的能力。
 
-
-
 1. 数组方法
 
 - **`Array.from()`**: 将类数组对象或可迭代对象转换为数组。
+```js
+const arrayLike = { 0: 'a', 1: 'b', length: 2 };
+const arr = Array.from(arrayLike); // ['a', 'b']
+```
 - **`Array.of()`**: 创建一个新的数组实例，使用一组指定的元素。
-- **`Array.prototype.copyWithin()`**: 在数组内部复制指定位置的元素到另一个位置。
+```js
+const arr = Array.of(1, 2, 3); // [1, 2, 3]
+```
 - **`Array.prototype.fill()`**: 用静态值填充数组的所有元素。
+```js
+const arr = new Array(3).fill(0); // [0, 0, 0]
+```
 - **`Array.prototype.find()`**: 返回数组中满足提供的测试函数的第一个元素的值。
+```js
+const numbers = [1, 2, 3, 4, 5];
+const found = numbers.find(num => num > 3); // 4
+```
 - **`Array.prototype.findIndex()`**: 返回数组中满足提供的测试函数的第一个元素的索引。
-- **`Array.prototype.entries()`**: 返回一个新的数组迭代器对象，包含数组中每个索引的键值对。
-- **`Array.prototype.keys()`**: 返回一个新的数组迭代器对象，包含数组中每个索引的键。
-- **`Array.prototype.values()`**: 返回一个新的数组迭代器对象，包含数组中每个索引的值。
-- **`Array.prototype.includes()`**: 判断数组是否包含某个值。
-- **`Array.prototype.flat()`**: 将嵌套数组“拉平”到指定深度。
-- **`Array.prototype.flatMap()`**: 先映射每个元素，然后将结果压缩成一个新数组。
+```js
+const index = numbers.findIndex(num => num > 3); // 3
+```
+- **`Array.prototype.includes()`**: 判断数组是否包含某个值，返回布尔值。
+```js
+const arr = [1, 2, 3];
+const hasTwo = arr.includes(2); // true
+```
+- **`Array.prototype.flat()`**:  将嵌套的数组“扁平化”到指定的深度。
+```js
+const nestedArray = [1, [2, [3, 4]]];
+const flatArray = nestedArray.flat(2); // [1, 2, 3, 4]
+```
+- **`Array.prototype.flatMap()`**:  先映射每个元素，然后将结果扁平化。
+```js
+const arr = [1, 2, 3];
+const result = arr.flatMap(x => [x, x * 2]); // [1, 2, 2, 4, 3, 6]
+```
 
 2. 字符串方法
 
 - **`String.prototype.includes()`**: 判断一个字符串是否包含另一个字符串。
+```js
+const includes = str.includes('world'); // true
+```
 - **`String.prototype.startsWith()`**: 判断一个字符串是否以另一个字符串开头。
+```js
+const str = 'Hello, world!';
+const starts = str.startsWith('Hello'); // true
+```
 - **`String.prototype.endsWith()`**: 判断一个字符串是否以另一个字符串结尾。
+```js
+const ends = str.endsWith('world!'); // true
+```
 - **`String.prototype.repeat()`**: 返回一个新字符串，表示将原字符串重复指定次数。
+```js
+const repeated = 'abc'.repeat(3); // 'abcabcabc'
+```
 - **`String.prototype.padStart()`**: 在当前字符串的开头填充指定的字符。
+```js
+const padded = '5'.padStart(2, '0'); // '05'
+```
 - **`String.prototype.padEnd()`**: 在当前字符串的结尾填充指定的字符。
+```js
+const paddedEnd = '5'.padEnd(2, '0'); // '50'
+```
+- **`String.prototype.trim()`**:  去除字符串两端的空白字符。
+```js
+const str = '   Hello, world!   ';
+const trimmed = str.trim(); // 'Hello, world!'
+```
 - **`String.prototype.trimStart()`**: 去除字符串开头的空白字符。
+```js
+const trimmedStart = str.trimStart(); // 'Hello, world!   '
+```
 - **`String.prototype.trimEnd()`**: 去除字符串结尾的空白字符。
-- **`String.prototype.matchAll()`**: 返回一个包含所有匹配结果的迭代器。
-
+```js
+const trimmedEnd = str.trimEnd(); // '   Hello, world!'
+```
 3. 对象方法
 
 - **`Object.assign()`**: 将所有可枚举的属性从一个或多个源对象复制到目标对象。
-- **`Object.is()`**: 判断两个值是否是相同的值。
+```js
+const target = { a: 1 };
+const source = { b: 2 };
+const returnedTarget = Object.assign(target, source); // { a: 1, b: 2 }
+```
 - **`Object.keys()`**: 返回一个由对象的自身可枚举属性名组成的数组。
+```js
+const obj = { a: 1, b: 2 };
+const keys = Object.keys(obj); // ['a', 'b']
+```
 - **`Object.values()`**: 返回一个由对象的自身可枚举属性值组成的数组。
+```js
+const values = Object.values(obj); // [1, 2]
+```
 - **`Object.entries()`**: 返回一个由对象的自身可枚举属性的键值对数组。
+```js
+const entries = Object.entries(obj); // [['a', 1], ['b', 2]]
+```
+- **`Object.freeze()`**:  冻结一个对象，使其不能被修改。
+```js
+const obj = { a: 1 };
+Object.freeze(obj);
+obj.a = 2; // 无效，obj.a 仍然是 1
+```
+- **`Object.seal()`**: 密封一个对象，防止添加新属性，但可以修改现有属性。
+```js
+const obj = { a: 1 };
+Object.seal(obj);
+obj.a = 2; // 有效
+obj.b = 3; // 无效
+```
 - **`Object.getOwnPropertyDescriptors()`**: 返回一个对象的所有自身属性的描述符。
+```js
+const obj = { a: 1 };
+const descriptors = Object.getOwnPropertyDescriptors(obj);
+// { a: { value: 1, writable: true, enumerable: true, configurable: true } }
+```
+- **`Object.getOwnPropertyNames()`**: 返回一个数组，包含对象自身的所有属性（包括非枚举属性）。
+```js
+const obj = Object.create({ b: 2 }, { a: { value: 1 } });
+const propertyNames = Object.getOwnPropertyNames(obj); // ['a']
+```
+- **`Object.is()`**: 判断两个值是否严格相等，类似于 ===，但处理 NaN 和 -0 的方式不同。
+```js
+Object.is(NaN, NaN); // true
+Object.is(0, -0); // false
+```
 
-4. 数学方法
-
-- **`Math.sign()`**: 返回一个数的符号，正数返回 1，负数返回 -1，零返回 0。
-- **`Math.trunc()`**: 返回一个数的整数部分。
-- **`Math.cbrt()`**: 返回一个数的立方根。
-- **`Math.clz32()`**: 返回一个数的 32 位无符号整数的前导零的数量。
-- **`Math.imul()`**: 返回两个数的整数乘积。
-- **`Math.fround()`**: 返回一个数的单精度浮点数表示。
-- **`Math.hypot()`**: 返回所有参数的平方和的平方根。
-
-5. 其他方法
-
+4. Number 方法
+- **`Number.isFinite()`**: 判断一个值是否是有限的数字。
+```js
+Number.isFinite(2); // true
+Number.isFinite(Infinity); // false
+```
 - **`Number.isNaN()`**: 判断一个值是否是 NaN。
+```js
+Number.isNaN(NaN); // true
+Number.isNaN('NaN'); // false
+```
 - **`Number.isInteger()`**: 判断一个值是否是整数。
+```js
+Number.isInteger(4); // true
+Number.isInteger(4.5); // false
+```
 - **`Number.isSafeInteger()`**: 判断一个值是否是安全整数。
-- **`Number.parseInt()`**: 解析一个字符串并返回一个整数。
-- **`Number.parseFloat()`**: 解析一个字符串并返回一个浮点数。
-- **`JSON.stringify()`**: 将 JavaScript 值转换为 JSON 字符串。
-- **`JSON.parse()`**: 将 JSON 字符串转换为 JavaScript 值。
+```js
+Number.isSafeInteger(10); // true
+Number.isSafeInteger(Math.pow(2, 53)); // false
+```
 
-6. 迭代器和生成器
 
-- **`Generator`**: 使用 `function*` 定义生成器函数，支持 `yield` 关键字。
-- **`Iterator`**: 通过 `Symbol.iterator` 定义可迭代对象。
+
 
