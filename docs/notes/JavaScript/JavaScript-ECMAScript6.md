@@ -10,7 +10,7 @@ permalink: /JavaScript/5z5x37f8/
 
 > ECMAScript（简称 ES）是一种由 ECMA 国际组织制定的脚本语言标准。它是 JavaScript 的基础，定义了语言的语法、类型、语句、关键字、保留字、操作符、内置对象等。ECMAScript 的目标是提供一种通用的脚本语言，使得不同的实现（如浏览器、服务器等）能够遵循相同的标准，从而实现跨平台的兼容性。
 
--   ECMAScript 6 (ES2015) - 2015
+-   ECMAScript 6 (ES6 ，ES2015) - 2015
     -   引入了 let 和 const 关键字 以及 块级作用域。
     -   新增了箭头函数（arrow functions）。
     -   增加了模板字符串（template literals）。
@@ -788,21 +788,12 @@ const found = numbers.find(num => num > 3); // 4
 ```js
 const index = numbers.findIndex(num => num > 3); // 3
 ```
-- **`Array.prototype.includes()`**: 判断数组是否包含某个值，返回布尔值。
+- **`Array.prototype.copyWithin()`**:  在数组内部复制指定位置的元素到另一个位置。
 ```js
-const arr = [1, 2, 3];
-const hasTwo = arr.includes(2); // true
-```
-- **`Array.prototype.flat()`**:  将嵌套的数组“扁平化”到指定的深度。
-```js
-const nestedArray = [1, [2, [3, 4]]];
-const flatArray = nestedArray.flat(2); // [1, 2, 3, 4]
-```
-- **`Array.prototype.flatMap()`**:  先映射每个元素，然后将结果扁平化。
-```js
-const arr = [1, 2, 3];
-const result = arr.flatMap(x => [x, x * 2]); // [1, 2, 2, 4, 3, 6]
-```
+const arr = [1, 2, 3, 4, 5];
+arr.copyWithin(0, 3);
+console.log(arr); // 输出: [4, 5, 3, 4, 5]
+``` 
 
 2. 字符串方法
 
@@ -823,27 +814,6 @@ const ends = str.endsWith('world!'); // true
 ```js
 const repeated = 'abc'.repeat(3); // 'abcabcabc'
 ```
-- **`String.prototype.padStart()`**: 在当前字符串的开头填充指定的字符。
-```js
-const padded = '5'.padStart(2, '0'); // '05'
-```
-- **`String.prototype.padEnd()`**: 在当前字符串的结尾填充指定的字符。
-```js
-const paddedEnd = '5'.padEnd(2, '0'); // '50'
-```
-- **`String.prototype.trim()`**:  去除字符串两端的空白字符。
-```js
-const str = '   Hello, world!   ';
-const trimmed = str.trim(); // 'Hello, world!'
-```
-- **`String.prototype.trimStart()`**: 去除字符串开头的空白字符。
-```js
-const trimmedStart = str.trimStart(); // 'Hello, world!   '
-```
-- **`String.prototype.trimEnd()`**: 去除字符串结尾的空白字符。
-```js
-const trimmedEnd = str.trimEnd(); // '   Hello, world!'
-```
 3. 对象方法
 
 - **`Object.assign()`**: 将所有可枚举的属性从一个或多个源对象复制到目标对象。
@@ -852,18 +822,19 @@ const target = { a: 1 };
 const source = { b: 2 };
 const returnedTarget = Object.assign(target, source); // { a: 1, b: 2 }
 ```
-- **`Object.keys()`**: 返回一个由对象的自身可枚举属性名组成的数组。
+- **`Object.is()`**: 判断两个值是否严格相等，类似于 ===，但处理 NaN 和 -0 的方式不同。
+```js
+Object.is(NaN, NaN); // true
+Object.is(0, -0); // false
+```
+- **`Object.keys()`**: 返回一个数组，包含对象自身可枚举属性的名称。
 ```js
 const obj = { a: 1, b: 2 };
-const keys = Object.keys(obj); // ['a', 'b']
+console.log(Object.keys(obj)); // 输出: ['a', 'b']
 ```
 - **`Object.values()`**: 返回一个由对象的自身可枚举属性值组成的数组。
 ```js
 const values = Object.values(obj); // [1, 2]
-```
-- **`Object.entries()`**: 返回一个由对象的自身可枚举属性的键值对数组。
-```js
-const entries = Object.entries(obj); // [['a', 1], ['b', 2]]
 ```
 - **`Object.freeze()`**:  冻结一个对象，使其不能被修改。
 ```js
@@ -878,21 +849,10 @@ Object.seal(obj);
 obj.a = 2; // 有效
 obj.b = 3; // 无效
 ```
-- **`Object.getOwnPropertyDescriptors()`**: 返回一个对象的所有自身属性的描述符。
-```js
-const obj = { a: 1 };
-const descriptors = Object.getOwnPropertyDescriptors(obj);
-// { a: { value: 1, writable: true, enumerable: true, configurable: true } }
-```
 - **`Object.getOwnPropertyNames()`**: 返回一个数组，包含对象自身的所有属性（包括非枚举属性）。
 ```js
 const obj = Object.create({ b: 2 }, { a: { value: 1 } });
 const propertyNames = Object.getOwnPropertyNames(obj); // ['a']
-```
-- **`Object.is()`**: 判断两个值是否严格相等，类似于 ===，但处理 NaN 和 -0 的方式不同。
-```js
-Object.is(NaN, NaN); // true
-Object.is(0, -0); // false
 ```
 
 4. Number 方法
