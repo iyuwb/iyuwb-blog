@@ -70,43 +70,18 @@ person.name = "female"; //  正确
 console.log(person.age) // 错误
 delete person.name // 错误  
 ```
-
-## 函数属性
-
-## 类型读取
-
-## 可选属性
+对象的方法使用函数类型描述。
 
 ```typescript
-interface User {
-    readonly id: number; // 只读属性
-    name: string;
-    email?: string; // 可选属性
-}
-
-const user: User = {
-    id: 1,
-    name: "Bob",
+const obj: {
+  x: number;
+  y: number;
+  add(x: number, y: number): number; // 或者写成 add: (x:number, y:number) => number;
+} = {
+  x: 1,
+  y: 1,
+  add(x, y) { return x + y; },
 };
-
-// user.id = 2; // 错误：不能修改只读属性
-```
-
-## 只读属性
-
-```typescript
-interface User {
-    readonly id: number; // 只读属性
-    name: string;
-    email?: string; // 可选属性
-}
-
-const user: User = {
-    id: 1,
-    name: "Bob",
-};
-
-// user.id = 2; // 错误：不能修改只读属性
 ```
 
 ## 对象嵌套
@@ -131,4 +106,142 @@ const userProfile: UserProfile = {
     },
 };
 ```
+## 类型读取
+
+对象类型可以使用方括号读取属性的类型。
+
+```typescript
+
+type Person = {
+    name: string;
+    age: number;
+}
+type name = Person["name"]; // 类型为 string
+```
+
+
+## 可选属性
+如果某个属性是可选的（即可以忽略），需要在属性名后面加一个问号。
+```typescript
+interface User {
+    readonly id: number; // 只读属性
+    name: string;
+    email?: string; // 可选属性
+}
+
+const user: User = {
+    id: 1,
+    name: "Bob",
+};
+
+// user.id = 2; // 错误：不能修改只读属性
+```
+在使用可选属性的时候，需要注意对其进行判断是否为undefined。不然直接使用可能会引起报错。
+```typescript
+interface User {
+    readonly id: number; // 只读属性
+    name: string;
+    email?: string; // 可选属性
+}
+
+const user: User = {
+    id: 1,
+    name: "Bob",
+};
+
+user.email.toLocaleLowerCase(); // 错误：属性可能为 undefined
+// 或者可以写成下面形式
+user.email?.toLocaleLowerCase()
+
+if (user.email) {
+    console.log(user.email); // 正确
+} else {
+    console.log("Email not provided");
+}
+```
+
+
+## 只读属性
+属性名前面加上readonly关键字，表示这个属性是只读属性，不能修改。只读属性只能在对象初始化期间赋值，此后就不能修改该属性。
+```typescript
+interface User {
+    readonly id: number; // 只读属性
+    name: string;
+    email?: string; // 可选属性
+}
+
+const user: User = {
+    id: 1,
+    name: "Bob",
+};
+
+// user.id = 2; // 错误：不能修改只读属性
+```
+需要注意的是，如果一属性值是一个对象，那么readonly修饰符并不禁止修改该对象的属性，只是禁止完全替换这个对象。
+
+```typescript
+interface User {
+    readonly id: number; // 只读属性
+    name: string;
+    email?: string; // 可选属性
+    readonly address: {
+        street: string;
+        city: string;
+    };
+}
+
+const user: User = {
+    id: 1,
+    name: "Bob",
+    address: {
+        street: "123 Main St",
+        city: "New York",
+    },
+};
+
+user.address.street = "456 Main St"; // 正确：可以修改嵌套对象的属性
+user.address = { // 错误：不能修改只读属性
+    street: "456 Main St",
+    city: "Los Angeles",
+}; 
+```
+添加只读的另一种方法是使用`as const`关键字。
+```typescript
+const myUser = {
+  name: "Sabrina",
+} as const;
+myUser.name = "Cynthia"; // 报错
+
+// 需要注意以下，当明确了类型之后 会已声明的类型为准
+const myUser: { name: string } = {
+  name: "Sabrina",
+} as const;
+myUser.name = "Cynthia"; // 正确
+```
+
+关于只读属性还有一个注意点，如果一个对象有两个引用，即两个变量对应同一个对象，其中一个变量是可写的，另一个变量是只读的，那么从可写变量修改属性，会影响到只读变量。
+```typescript
+interface Person {
+  name: string;
+  age: number;
+}
+
+interface ReadonlyPerson {
+  readonly name: string;
+  readonly age: number;
+}
+
+let w: Person = {
+  name: "Vicky",
+  age: 42,
+};
+
+let r: ReadonlyPerson = w;
+
+w.age += 1;
+r.age; // 43
+```
+
+## 属性名的索引类型 
+
 
