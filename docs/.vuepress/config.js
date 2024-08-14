@@ -49,6 +49,11 @@ export default defineUserConfig({
                         icon: 'ph:file-ts',
                         link: '/notes/TypeScript/TypeScript-简介安装',
                     },
+                    {
+                        text: 'Web API',
+                        icon: 'icon-park-twotone:web-page',
+                        link: '/notes/WebAPI/Web API-Web Socket',
+                    },
                 ],
             },
             {
@@ -137,7 +142,7 @@ export default defineUserConfig({
                         {
                             text: 'HTML基础',
                             icon: 'ic:baseline-dashboard',
-                            items: ['HTML-Elements', 'HTML-Attribute', 'HTML-Events', 'HTML-Input', 'HTML-HTML5新增', 'HTML-元素', 'HTML-属性', 'HTML-事件', 'HTML-元素属性相关',]
+                            items: ['HTML-Elements', 'HTML-Attribute', 'HTML-Events', 'HTML-Input', 'HTML-HTML5新增']
                         },
                         {
                             text: 'HTML问题',
@@ -180,7 +185,7 @@ export default defineUserConfig({
                             text: 'JavaScript基础',
                             icon: 'ic:baseline-dashboard',
                             items: ['JavaScript-基础', 'JavaScript-内置对象方法', 'JavaScript-Promise', 'JavaScript-原型链',
-                                'JavaScript-Set、Map、WeakSet和WeakMap', 'JavaScript-正则表达式', 'JavaScript-WebSocket', 'JavaScript-Service Worker', 'JavaScript-Cache'
+                                'JavaScript-Set、Map、WeakSet和WeakMap', 'JavaScript-正则表达式', 
                             ]
                         },
                         {
@@ -219,6 +224,17 @@ export default defineUserConfig({
                         //     icon: 'icon-park-outline:plan',
                         //     items: []
                         // },
+                    ]
+                },
+                {
+                    dir: 'WebAPI', // 声明笔记的目录，相对于 `notes.dir`
+                    link: '/WebAPI/', // 声明笔记的链接前缀
+                    sidebar: [ // 配置侧边栏
+                        {
+                            text: 'Web API基础',
+                            icon: 'ic:baseline-dashboard',
+                            items: ['Web API-Web Socket.md','Web API-Cache','Web API-Service Worker','Web API-Web Messaging','Web API-Web Worker']
+                        },
                     ]
                 },
                 {

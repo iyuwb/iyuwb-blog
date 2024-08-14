@@ -4,6 +4,7 @@ author: 耶温
 createTime: 2024/05/13 16:07:12
 permalink: /HTML/5yqunq5r/
 ---
+<!-- 保链接，已废弃 -->
 ## 全局属性
 
 |   属性   | 描述 | 值 |

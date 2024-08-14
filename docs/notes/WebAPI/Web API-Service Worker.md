@@ -1,12 +1,12 @@
 ---
-title: JavaScript-Service Worker
+title: Web API-Service Worker
 author: 耶温
-createTime: 2024/06/06 11:32:15
-permalink: /JavaScript/oo65290p/
+createTime: 2024/08/14 15:24:54
+permalink: /WebAPI/iq2jwke0/
 ---
 
-<!-- 保链接，已废弃 -->
-# JavaScript-Service Worker-服务进程
+
+# Web API-Service Worker
 
 
 ## 概念简介

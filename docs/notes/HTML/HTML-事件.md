@@ -4,6 +4,7 @@ author: 耶温
 createTime: 2024/05/13 16:07:32
 permalink: /HTML/vki4x35o/
 ---
+<!-- 保链接，已废弃 -->
 # HTML事件
 
 ## Docment

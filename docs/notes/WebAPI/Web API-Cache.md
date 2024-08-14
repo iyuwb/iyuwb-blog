@@ -1,11 +1,12 @@
 ---
-title: JavaScript-Cache
+title: Web API-Cache
 author: 耶温
-createTime: 2024/06/06 11:30:10
-permalink: /JavaScript/wm68edzn/
+createTime: 2024/08/14 15:33:06
+permalink: /WebAPI/e9u1vsan/
 ---
-<!-- 保链接，已废弃 -->
-# JavaScript-Cache-浏览器缓存
+
+
+# Web API-Cache-浏览器缓存
 
 ## CacheStorage简介
 
