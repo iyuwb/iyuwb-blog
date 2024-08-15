@@ -1,11 +1,9 @@
 ---
-title: CSS滚动条-Scrollbar
+title: CSS-Scrollbar滚动条
 author: 耶温
 createTime: 2024/05/22 19:53:24
 permalink: /CSS/b3trdf6x/
 ---
-# CSS滚动条-Scrollbar
-
 
 ## 标准方法
 

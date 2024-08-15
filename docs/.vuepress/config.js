@@ -37,7 +37,7 @@ export default defineUserConfig({
                     {
                         text: 'CSS',
                         icon: 'ph:file-css',
-                        link: '/notes/CSS/CSS选择器',
+                        link: '/notes/CSS/CSS-选择器',
                     },
                     {
                         text: 'JavaScript',
@@ -132,13 +132,13 @@ export default defineUserConfig({
         ],
         // aside
         notes: {
-            dir: 'notes', // 声明所有笔记的目录
-            link: '/', // 声明所有笔记默认的链接前缀， 默认为 '/'
+            dir: 'notes',
+            link: '/', 
             notes: [
                 {
-                    dir: 'HTML', // 声明笔记的目录，相对于 `notes.dir`
-                    link: '/HTML/', // 声明笔记的链接前缀
-                    sidebar: [ // 配置侧边栏
+                    dir: 'HTML', 
+                    link: '/HTML/', 
+                    sidebar: [ 
                         {
                             text: 'HTML基础',
                             icon: 'ic:baseline-dashboard',
@@ -157,30 +157,30 @@ export default defineUserConfig({
                     ]
                 },
                 {
-                    dir: 'CSS', // 声明笔记的目录，相对于 `notes.dir`
-                    link: '/CSS/', // 声明笔记的链接前缀
-                    sidebar: [ // 配置侧边栏
+                    dir: 'CSS', 
+                    link: '/CSS/', 
+                    sidebar: [ 
                         {
                             text: 'CSS基础',
                             icon: 'ic:baseline-dashboard',
-                            items: ['CSS选择器', 'CSS3新增内容', 'CSS滚动条-Scrollbar', 'CSS自定义属性', '样式滤镜 Filter', '网格布局 Grid']
+                            items: ['CSS-选择器', 'CSS-Filter样式滤镜','CSS-Grid网格布局','CSS-Scrollbar滚动条', 'CSS-自定义属性（变量）','CSS-CSS3新增']
                         },
                         {
                             text: 'CSS问题',
                             icon: 'icon-park-outline:file-question',
-                            items: ['H5页面点击异常背景色问题']
+                            items: ['移动端H5-点击异常背景色']
                         },
                         {
                             text: 'CSS方案',
                             icon: 'icon-park-outline:plan',
-                            items: ['CSS-文字轮播效果', '响应式布局方案']
+                            items: ['CSS-文字轮播效果', '响应式-常见布局方案']
                         },
                     ]
                 },
                 {
-                    dir: 'JavaScript', // 声明笔记的目录，相对于 `notes.dir`
-                    link: '/JavaScript/', // 声明笔记的链接前缀
-                    sidebar: [ // 配置侧边栏
+                    dir: 'JavaScript', 
+                    link: '/JavaScript/', 
+                    sidebar: [ 
                         {
                             text: 'JavaScript基础',
                             icon: 'ic:baseline-dashboard',
@@ -206,30 +206,20 @@ export default defineUserConfig({
                     ]
                 },
                 {
-                    dir: 'TypeScript', // 声明笔记的目录，相对于 `notes.dir`
-                    link: '/TypeScript/', // 声明笔记的链接前缀
-                    sidebar: [ // 配置侧边栏
+                    dir: 'TypeScript', 
+                    link: '/TypeScript/', 
+                    sidebar: [ 
                         {
                             text: 'TypeScript基础',
                             icon: 'ic:baseline-dashboard',
                             items: ['TypeScript-简介安装', 'TypeScript-基础数据类型', 'TypeScript-特有数据类型', 'TypeScript-any与unknown', 'TypeScript-never与void', 'TypeScript-数组与元组', 'TypeScript-函数', 'TypeScript-对象', 'TypeScript-类型相关', 'TypeScript-命令方法']
-                        },
-                        // {
-                        //     text: 'TypeScript问题',
-                        //     icon: 'icon-park-outline:file-question',
-                        //     items: []
-                        // },
-                        // {
-                        //     text: 'TypeScript方案',
-                        //     icon: 'icon-park-outline:plan',
-                        //     items: []
-                        // },
+                        }
                     ]
                 },
                 {
-                    dir: 'WebAPI', // 声明笔记的目录，相对于 `notes.dir`
-                    link: '/WebAPI/', // 声明笔记的链接前缀
-                    sidebar: [ // 配置侧边栏
+                    dir: 'WebAPI', 
+                    link: '/WebAPI/', 
+                    sidebar: [ 
                         {
                             text: 'Web API基础',
                             icon: 'ic:baseline-dashboard',
@@ -238,9 +228,9 @@ export default defineUserConfig({
                     ]
                 },
                 {
-                    dir: 'Vue', // 声明笔记的目录，相对于 `notes.dir`
-                    link: '/Vue/', // 声明笔记的链接前缀
-                    sidebar: [ // 配置侧边栏
+                    dir: 'Vue', 
+                    link: '/Vue/', 
+                    sidebar: [ 
                         {
                             text: 'Vue3基础',
                             icon: 'ic:baseline-dashboard',

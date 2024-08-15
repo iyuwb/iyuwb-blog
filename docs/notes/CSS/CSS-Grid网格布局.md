@@ -1,10 +1,10 @@
 ---
-title: 网格布局 Grid
+title: CSS-Grid网格布局
 author: 耶温
 createTime: 2024/05/09 17:21:40
 permalink: /CSS/vtf0fbww/
 ---
-# Grid 网格布局
+# CSS-Grid网格布局
 > `display:grid;`  开启Gird布局（现在浏览器内置grid布局，但是存在兼容性问题）
 -   采用 `grid` 布局的区域，称为容器，内部的子元素，称为项目。
 -   比如下面例子中 `div.grid` 为容器，里面的 `div.demo` 为项目

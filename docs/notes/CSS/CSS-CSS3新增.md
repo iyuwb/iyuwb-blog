@@ -1,14 +1,12 @@
 ---
-title: CSS3新增内容
+title: CSS-CSS3新增
 author: 耶温
 createTime: 2024/05/09 17:22:41
 permalink: /CSS/ngcja8zf/
 ---
-# CSS3
 
-## CSS3 新增内容
 
-### 颜色：RGBA，HSLA 模式
+## 颜色：RGBA，HSLA 模式
 
 - RGBA：`background-color: rgba(179, 133, 133, 0.5);`
 - HSLA：`background-color: hsla(120, 60%, 70%, 0.3)`
@@ -18,7 +16,7 @@ permalink: /CSS/ngcja8zf/
   - `lightness`：亮度，增加亮度，颜色会向白色变化，减少会向黑色变化。取值 0-100%，
   - `alpha`：透明度，取值 0-1 之间，代表透明度。
 
-### 文字阴影 text-shadow
+## 文字阴影 text-shadow
 
 - `text-shadow: h-shadow v-shadow blur color;`
   - `h-shadow`：必需。水平阴影的位置，允许负值
@@ -26,19 +24,19 @@ permalink: /CSS/ngcja8zf/
   - `blur`：可选，模糊的距离
   - `color`：可选，阴影的颜色
 
-### 边框阴影 box-shadow
+## 边框阴影 box-shadow
 
 `box-shadow: h-shadow v-shadow blur color;`
 
-### 圆角 border-radius
+## 圆角 border-radius
 
 `border-radius:左上 右上 右下 左下;`
 
-### 盒子模型 Box
+## 盒子模型 Box
 
 盒子模型包括：外边框 margin，边框 border，内边框 padding，和内容 content
 
-### 背景相关
+## 背景相关
 
 - `background-size`：指定背景图片的大小
 - 语法：`background-size: length|percentage|cover|contain;`
@@ -57,7 +55,7 @@ permalink: /CSS/ngcja8zf/
   - `boder-box`：背景被剪切到内边框盒
   - `content-box`：背景被剪切到内容框
 
-### 渐变 linear-gradient
+## 渐变 linear-gradient
 
 线性渐变
 
@@ -91,7 +89,7 @@ background-image: radial-gradient(closest-side at 60% 55%, red, yellow, black);
 background-image: repeating-radial-gradient(red, yellow 10%, green 15%);
 ```
 
-### 过度 Transition
+## 过度 Transition
 
 - `transition`：过渡允许在规定时间内平滑的改变属性值
   - 过渡可以连写，一个`transition`写多个过渡。
@@ -102,7 +100,7 @@ background-image: repeating-radial-gradient(red, yellow 10%, green 15%);
     - `linear` ，`ease`，`ease-in`，`ease-out`，`ease-in-out` ，`cubic-bezoer(n,n,n,n)`
   - `transition-delay`：规定过渡效果何时开始，以秒或者毫秒计
 
-### 自定义动画 Animation
+## 自定义动画 Animation
 
 - `animation`：
 - 语法：`animation: name duration timing-function delay iteration-count direction fill-mode play-state;`
@@ -142,7 +140,7 @@ animation: myfirst 5s;
 -webkit-animation: myfirst 5s; /* Safari 与 Chrome */
 ```
 
-### 媒体查询 Media
+## 媒体查询 Media
 
 - 针对不同的媒体类型(根据屏幕大小)定义不同的样式。
 - 语法：
@@ -163,11 +161,11 @@ animation: myfirst 5s;
 }
 ```
 
-### 边框图片 border-image
+## 边框图片 border-image
 
 语法：`border-image: source slice width outset repeat|initial|inherit;`
 
-### 转换 transform
+## 转换 transform
 
 `transform`：
 **2D 转换：**
@@ -208,13 +206,13 @@ transform 其他相关样式
   - Y 轴
   - Z 轴
 
-### 字体图标 iconfont
+## 字体图标 iconfont
 
 特殊的一种字体，通过这种字体显示给用户的就像一个个图片一样
 优点：不会变形，加载速度快。可以使用 CSS 来控制它的大小和颜色。
 **以 iconfont 为例：**
 
-#### unicode 引用
+### unicode 引用
 
 unicode 是字体再网页端最原始的应用方式
 
@@ -264,7 +262,7 @@ unicode 是字体再网页端最原始的应用方式
 <i class="iconfont">&#x33;</i>
 ```
 
-#### font-class 引用
+### font-class 引用
 
 font-class 是 unicode 使用方式的一种变种，主要是解决 unicode 书写不直观，语意不明确的问题。
 
@@ -287,7 +285,7 @@ font-class 是 unicode 使用方式的一种变种，主要是解决 unicode 书
 <i class="iconfont icon-xxx"></i>
 ```
 
-#### symbol 引用
+### symbol 引用
 
 全新的使用方式，应该说这才是未来的主流，也是平台目前推荐的用法。
 
@@ -326,7 +324,7 @@ font-class 是 unicode 使用方式的一种变种，主要是解决 unicode 书
 </svg>
 ```
 
-### 弹性布局 Flex
+## 弹性布局 Flex
 
 `flex`：CSS3 的一种全新布局
 
