@@ -173,7 +173,7 @@ export default defineUserConfig({
                         {
                             text: 'CSS方案',
                             icon: 'icon-park-outline:plan',
-                            items: ['CSS-文字轮播效果', '响应式-常见布局方案']
+                            items: ['CSS-文字轮播效果','CSS-主题切换方案', '响应式-常见布局方案']
                         },
                     ]
                 },

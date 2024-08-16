@@ -14,6 +14,10 @@ permalink: /CSS/vtf0fbww/
 
 `display:grid`或者`display:inline-gird`表示块级或者行内元素。
 
+-   块级元素：使用 `display: grid`; 的元素是一个块级元素。这意味着它会占据其父元素的全部宽度，并且在其前后产生换行。
+-   行内元素：使用 `display: inline-grid`; 的元素是一个行内元素。这意味着它只会占据其内容所需的宽度，并且不会在其前后产生换行。
+
+
 
 css代码：
 ```css
@@ -50,21 +54,81 @@ html代码：
 
 块级元素：
 
-![块级元素](https://iyuwb.gitee.io/notes/images/grid-01.png)
+::: normal-demo Grid 代码演示
+```html
+<body>
+    <span class="left">left</span>
+    <div class="grid">
+        <div class="demo">1</div>
+        <div class="demo">2</div>
+        <div class="demo">3</div>
+        <div class="demo">4</div>
+        <div class="demo">5</div>
+        <div class="demo">6</div>
+        <div class="demo">7</div>
+        <div class="demo">8</div>
+        <div class="demo">9</div>
+    </div>
+    <span class="right">right</span>
+</body>
+```
+```css
+.grid {
+    display: grid; 
+    /* or display:inline-gird; */
+    grid-template-rows: 100px 100px 100px ;
+    grid-template-columns: 100px 100px 100px ;
+}
+
+.demo {
+    background-color: pink;
+    margin: 10px;
+}
+```
+:::
 
 行内块元素：
 
-![行内级元素](https://iyuwb.gitee.io/notes/images/grid-02.png)
+::: normal-demo Grid 代码演示
+```html
+<body>
+    <span class="left">left</span>
+    <div class="grid">
+        <div class="demo">1</div>
+        <div class="demo">2</div>
+        <div class="demo">3</div>
+        <div class="demo">4</div>
+        <div class="demo">5</div>
+        <div class="demo">6</div>
+        <div class="demo">7</div>
+        <div class="demo">8</div>
+        <div class="demo">9</div>
+    </div>
+    <span class="right">right</span>
+</body>
+```
+```css
+.grid {
+    display:inline-grid;
+    grid-template-rows: 100px 100px 100px ;
+    grid-template-columns: 100px 100px 100px ;
+}
 
+.demo {
+    background-color: pink;
+    margin: 10px;
+}
+```
+:::
 
 
 ### 2. `grid-template-rows`和`grid-template-columns`和`grid-template`
 
--   `grid-template-columns`：定义每一列的列宽(可以使用绝对单位，也可以使用百分比)
+-   `grid-template-columns`：定义网格容器中列的数量和宽度。可以使用绝对单位（如 px、em）、相对单位（如 %）或 fr（分数单位）来指定行的高度。
 
--   `grid-template-rows`：定义每一行的行高
+-   `grid-template-rows`：定义网格容器中行的数量和高度。同样可以使用绝对单位、相对单位或 fr 来指定列的宽度。
 
--   `grid-template`：定义行列，组合
+-   `grid-template`：定义行列数量和高度，上面两个属性的组合写法。
 
 ```css
 //定义三行三列宽高一百的盒子
@@ -85,8 +149,33 @@ html代码：
 }
 ```
 以上两种方式，可以创建一个3*3的宽高100的盒子
+::: normal-demo Grid 代码演示
+```html
+<div class="grid">
+    <div class="demo">1</div>
+    <div class="demo">2</div>
+    <div class="demo">3</div>
+    <div class="demo">4</div>
+    <div class="demo">5</div>
+    <div class="demo">6</div>
+    <div class="demo">7</div>
+    <div class="demo">8</div>
+    <div class="demo">9</div>
+</div>
+```
+```css
+.grid {
+    display:grid;
+    grid-template-rows: repeat(3,100px);
+    grid-template-columns: repeat(3,100px)
+}
 
-![grid盒子项目](https://iyuwb.gitee.io/notes/images/grid-01.png)
+.demo {
+    background-color: pink;
+    margin: 10px;
+}
+```
+:::
 ```css
 .grid {
         display: grid;
@@ -97,11 +186,36 @@ html代码：
 ```
 使用`auto-fill`，创建，会根据屏幕尺寸，自适应列的数目：
 
-![auto-fill](https://iyuwb.gitee.io/notes/images/grid-03.png)
 
 
-![auto-fill](https://iyuwb.gitee.io/notes/images/grid-04.png)
+::: normal-demo Grid 代码演示
+```html
+<div class="grid">
+    <div class="demo">1</div>
+    <div class="demo">2</div>
+    <div class="demo">3</div>
+    <div class="demo">4</div>
+    <div class="demo">5</div>
+    <div class="demo">6</div>
+    <div class="demo">7</div>
+    <div class="demo">8</div>
+    <div class="demo">9</div>
+</div>
+```
+```css
+.grid {
+    height: 500px;
+    display: grid;
+    grid-template-rows: repeat(auto-fill, 100px);
+    grid-template-columns: repeat(auto-fill, 100px) 
+}
 
+.demo {
+    background-color: pink;
+    margin: 10px;
+}
+```
+:::
 
 -   `fr`关键字：表示倍数关系
 ```css
