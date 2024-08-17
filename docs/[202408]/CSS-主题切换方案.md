@@ -2,7 +2,9 @@
 title: CSS-主题切换方案
 author: 耶温
 createTime: 2024/08/16 21:18:57
-permalink: /CSS/glfn0vjv/
+permalink: /article/ra10jqv7/
+tags:
+  - CSS
 ---
 
 我们借助  CSS 变量 、`:root` 和 类名切换来实现主题切换。并且借助 `localStorage` 保存用户的主题选择，以便在页面重新加载时保持一致。
