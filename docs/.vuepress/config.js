@@ -152,7 +152,7 @@ export default defineUserConfig({
                         {
                             text: 'HTML方案',
                             icon: 'icon-park-outline:plan',
-                            items: ['网站SEO', '移动端H5-响应式布局方案', 'Canvas-图片合成']
+                            items: ['网站优化-SEO', '移动端H5-响应式布局方案', 'Canvas-图片合成']
                         },
                     ]
                 },
