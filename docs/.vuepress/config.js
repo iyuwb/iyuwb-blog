@@ -201,7 +201,7 @@ export default defineUserConfig({
                         {
                             text: 'JavaScript方案',
                             icon: 'icon-park-outline:plan',
-                            items: ['PWA-渐进式应用', 'JavaScript-常用方法', 'JavaScript-浏览器离线储存']
+                            items: ['PWA-渐进式应用', 'JavaScript-常用方法', 'JavaScript-浏览器离线储存','JavaScipt-实现nextTick方法']
                         },
                     ]
                 },
@@ -272,7 +272,7 @@ export default defineUserConfig({
                         {
                             text: 'NPM',
                             icon: 'ic:baseline-dashboard',
-                            items: ['教程-Vue封装组件并发布到npm']
+                            items: ['教程-Vue封装组件并发布到npm','包管理器-npm，pnpm，yarn和bun']
                         },
                         {
                             text: 'Element',
