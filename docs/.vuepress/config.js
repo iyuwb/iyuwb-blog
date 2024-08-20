@@ -272,7 +272,7 @@ export default defineUserConfig({
                         {
                             text: 'NPM',
                             icon: 'ic:baseline-dashboard',
-                            items: ['教程-Vue封装组件并发布到npm','包管理器-npm，pnpm，yarn和bun']
+                            items: ['NPM-常见包管理器介绍','NPM-常见依赖安装问题解决方案','NPM-Vue封装组件并发布']
                         },
                         {
                             text: 'Element',

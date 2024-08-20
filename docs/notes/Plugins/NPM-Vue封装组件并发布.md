@@ -1,14 +1,14 @@
 ---
-title: 教程-Vue封装组件并发布到npm
+title: NPM-Vue封装组件并发布
 author: 耶温
 createTime: 2024/05/13 10:32:01
 permalink: /Plugins/u0qxfvz3/
 ---
 
 
-# [教程]Vue封装组件并发布到npm
+# 封装组件并发布到npm
 
- ## 创建Vue项目
+## 创建Vue项目
 
 ```shell
 npm install -g @vue/cli
