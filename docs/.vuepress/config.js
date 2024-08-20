@@ -89,7 +89,7 @@ export default defineUserConfig({
                     {
                         text: 'NPM',
                         icon: 'teenyicons:npm-solid',
-                        link: '/notes/Plugins/教程-Vue封装组件并发布到npm.md',
+                        link: '/notes/Plugins/NPM-常见包管理器介绍.md',
                     },
                     {
                         text: 'Element',
