@@ -90,6 +90,15 @@ const personWithAddress: PersonWithAddress = {
 };
 ```
 
+## interface 命令
+
+在 TypeScript 中，interface 命令用于定义对象类型。它可以用来描述对象的结构和行为，也可以用来定义函数类型。
+
+:::tip
+关于 interface 的详细内容可以查看：[TypeScript-interface](/TypeScript/efqwfrfq/)
+:::
+
+
 ## typeof 运算符
 
 在 TypeScript 中，typeof 运算符用于获取一个值的类型，并返回一个字符串表示该类型的名称。这与 JavaScript 中的行为类似，但在 TypeScript 中这个功能还可以被用来推断变量或表达式的类型。
@@ -141,4 +150,5 @@ if (typeof a === "number") {
 
 -   typeof 运算符可以在运行时获取变量的类型。转成Javascript后，typeof 运算符会保留。
 -   在 TypeScript 中，typeof 还可以用于获取变量的类型并在类型注解中使用，增强了类型的复用性和代码的可读性。用于TypeScript 类型相关的代码，会在转成Javascript后，typeof 运算符会被删除。
+
 
