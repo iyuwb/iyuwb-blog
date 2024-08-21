@@ -237,3 +237,12 @@ console.log(person);
 :::tip
 关于类型别名的详细内容可以查看：[Type 命令](/TypeScript/sa54awwt/#type-命令)
 :::
+
+## 接口（Interfaces）
+
+在 TypeScript 中，接口（Interfaces）是一种强大的工具，用于定义对象的结构和类型。接口可以描述对象的属性、方法以及它们的类型，从而提供类型检查和代码提示。接口在 TypeScript 中的主要作用是增强代码的可读性和可维护性。
+
+:::tip
+关于类型别名的详细内容可以查看：[接口（Interfaces）](/TypeScript/efqwfrfq/)
+:::
+
