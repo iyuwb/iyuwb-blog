@@ -113,6 +113,11 @@ export default defineUserConfig({
                 icon: 'icon-park-outline:other',
                 items: [
                     {
+                        text: '每日积累',
+                        icon: 'lucide:list-todo',
+                        link: '/notes/Everyday/『202408』每日积累.md',
+                    },
+                    {
                         text: '计算机基础',
                         icon: 'fa6-solid:computer',
                         link: '/notes/Computer/计算机基础-浏览器是运作原理.md',
@@ -299,6 +304,17 @@ export default defineUserConfig({
                             text: 'vite-plugin-pwa',
                             icon: 'ic:baseline-dashboard',
                             items: ['VitePluginPWA']
+                        },
+                    ]
+                },
+                {
+                    dir: 'Everyday',
+                    link: '/Everyday/',
+                    sidebar: [
+                        {
+                            text: '每日积累',
+                            icon: 'ic:baseline-dashboard',
+                            items: ['『202408』每日积累']
                         },
                     ]
                 },
