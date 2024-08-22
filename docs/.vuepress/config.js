@@ -92,6 +92,11 @@ export default defineUserConfig({
                         link: '/notes/Plugins/NPM-常见包管理器介绍.md',
                     },
                     {
+                        text: 'Lodash',
+                        icon: 'simple-icons:lodash',
+                        link: '/notes/Plugins/Lodash-JavaScript实用工具库.md',
+                    },
+                    {
                         text: 'Element',
                         icon: 'ep:element-plus',
                         link: '/notes/Plugins/Element-Table表头顺序错乱问题',
@@ -133,12 +138,12 @@ export default defineUserConfig({
         // aside
         notes: {
             dir: 'notes',
-            link: '/', 
+            link: '/',
             notes: [
                 {
-                    dir: 'HTML', 
-                    link: '/HTML/', 
-                    sidebar: [ 
+                    dir: 'HTML',
+                    link: '/HTML/',
+                    sidebar: [
                         {
                             text: 'HTML基础',
                             icon: 'ic:baseline-dashboard',
@@ -157,13 +162,13 @@ export default defineUserConfig({
                     ]
                 },
                 {
-                    dir: 'CSS', 
-                    link: '/CSS/', 
-                    sidebar: [ 
+                    dir: 'CSS',
+                    link: '/CSS/',
+                    sidebar: [
                         {
                             text: 'CSS基础',
                             icon: 'ic:baseline-dashboard',
-                            items: ['CSS-选择器', 'CSS-Filter样式滤镜','CSS-Grid网格布局','CSS-Scrollbar滚动条', 'CSS-自定义属性（变量）','CSS-CSS3新增']
+                            items: ['CSS-选择器', 'CSS-Filter样式滤镜', 'CSS-Grid网格布局', 'CSS-Scrollbar滚动条', 'CSS-自定义属性（变量）', 'CSS-CSS3新增']
                         },
                         {
                             text: 'CSS问题',
@@ -173,25 +178,25 @@ export default defineUserConfig({
                         {
                             text: 'CSS方案',
                             icon: 'icon-park-outline:plan',
-                            items: ['CSS-文字轮播效果','CSS-主题切换方案', '响应式-常见布局方案']
+                            items: ['CSS-文字轮播效果', 'CSS-主题切换方案', '响应式-常见布局方案']
                         },
                     ]
                 },
                 {
-                    dir: 'JavaScript', 
-                    link: '/JavaScript/', 
-                    sidebar: [ 
+                    dir: 'JavaScript',
+                    link: '/JavaScript/',
+                    sidebar: [
                         {
                             text: 'JavaScript基础',
                             icon: 'ic:baseline-dashboard',
                             items: ['JavaScript-基础', 'JavaScript-内置对象方法', 'JavaScript-Promise', 'JavaScript-原型链',
-                                'JavaScript-Set、Map、WeakSet和WeakMap', 'JavaScript-正则表达式', 
+                                'JavaScript-Set、Map、WeakSet和WeakMap', 'JavaScript-正则表达式',
                             ]
                         },
                         {
                             text: 'JavaScript进阶',
                             icon: 'solar:graph-up-broken',
-                            items: ['JavaScript-作用域和闭包','JavaScript-ECMAScript1-4','JavaScript-ECMAScript5','JavaScript-ECMAScript6','JavaScript-ECMAScript7','JavaScript-ECMAScript8','JavaScript-ECMAScript9','JavaScript-ECMAScript10','JavaScript-ECMAScript11','JavaScript-ECMAScript12','JavaScript-ECMAScript13']
+                            items: ['JavaScript-作用域和闭包', 'JavaScript-ECMAScript1-4', 'JavaScript-ECMAScript5', 'JavaScript-ECMAScript6', 'JavaScript-ECMAScript7', 'JavaScript-ECMAScript8', 'JavaScript-ECMAScript9', 'JavaScript-ECMAScript10', 'JavaScript-ECMAScript11', 'JavaScript-ECMAScript12', 'JavaScript-ECMAScript13']
                         },
                         {
                             text: 'JavaScript问题',
@@ -201,18 +206,19 @@ export default defineUserConfig({
                         {
                             text: 'JavaScript方案',
                             icon: 'icon-park-outline:plan',
-                            items: ['PWA-渐进式应用', 'JavaScript-常用方法', 'JavaScript-浏览器离线储存','JavaScipt-实现nextTick方法']
+                            items: ['PWA-渐进式应用', 'JavaScript-常用方法', 'JavaScript-浏览器离线储存', 'JavaScipt-实现nextTick方法']
                         },
                     ]
                 },
                 {
-                    dir: 'TypeScript', 
-                    link: '/TypeScript/', 
-                    sidebar: [ 
+                    dir: 'TypeScript',
+                    link: '/TypeScript/',
+                    sidebar: [
                         {
                             text: 'TypeScript基础',
                             icon: 'ic:baseline-dashboard',
-                            items: ['TypeScript-简介安装', 'TypeScript-基础数据类型', 'TypeScript-特有数据类型', 'TypeScript-any与unknown', 'TypeScript-never与void', 'TypeScript-数组与元组', 'TypeScript-函数', 'TypeScript-对象', 'TypeScript-类型相关', 'TypeScript-命令方法','TypeScript-接口（Interface）']
+                            items: ['TypeScript-简介安装', 'TypeScript-基础数据类型', 'TypeScript-特有数据类型', 'TypeScript-any与unknown', 'TypeScript-never与void', 'TypeScript-数组与元组', 'TypeScript-函数', 'TypeScript-对象', 'TypeScript-类型相关',
+                                'TypeScript-命令方法', 'TypeScript-接口（Interface）', 'TypeScript-类（Class）']
                         },
                         {
                             text: 'TypeScript方案',
@@ -222,20 +228,20 @@ export default defineUserConfig({
                     ]
                 },
                 {
-                    dir: 'WebAPI', 
-                    link: '/WebAPI/', 
-                    sidebar: [ 
+                    dir: 'WebAPI',
+                    link: '/WebAPI/',
+                    sidebar: [
                         {
                             text: 'Web API基础',
                             icon: 'ic:baseline-dashboard',
-                            items: ['Web API-Web Socket.md','Web API-Cache','Web API-Service Worker','Web API-Web Messaging','Web API-Web Worker']
+                            items: ['Web API-Web Socket.md', 'Web API-Cache', 'Web API-Service Worker', 'Web API-Web Messaging', 'Web API-Web Worker']
                         },
                     ]
                 },
                 {
-                    dir: 'Vue', 
-                    link: '/Vue/', 
-                    sidebar: [ 
+                    dir: 'Vue',
+                    link: '/Vue/',
+                    sidebar: [
                         {
                             text: 'Vue3基础',
                             icon: 'ic:baseline-dashboard',
@@ -277,7 +283,12 @@ export default defineUserConfig({
                         {
                             text: 'NPM',
                             icon: 'ic:baseline-dashboard',
-                            items: ['NPM-常见包管理器介绍','NPM-常见依赖安装问题解决方案','NPM-Vue封装组件并发布']
+                            items: ['NPM-常见包管理器介绍', 'NPM-常见依赖安装问题解决方案', 'NPM-Vue封装组件并发布']
+                        },
+                        {
+                            text: 'Lodash',
+                            icon: 'ic:baseline-dashboard',
+                            items: ['Lodash-JavaScript实用工具库']
                         },
                         {
                             text: 'Element',

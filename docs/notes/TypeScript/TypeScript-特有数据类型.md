@@ -23,7 +23,6 @@ permalink: /TypeScript/puill05i/
 | 交集类型 (Intersection Types) | 定义一个变量同时具有多种类型的所有特征。 |
 | 类型别名 (Type Aliases) | 用于给现有的类型起一个新的名字，使复杂类型更易于理解。 |
 | 接口 (Interfaces) | 用来定义对象的形状，包括属性、方法等，并且可以扩展其他接口。 |
-| 字面量类型 (Literal Types) | 允许你指定特定的值作为类型，例如 `"red" | "green" | "blue"`。 |
 | 类型断言 (Type Assertions) | 告诉编译器某个值的类型，即使编译器无法自动推断出来。 |
 | 条件类型 (Conditional Types) | 根据类型是否满足某些条件来选择不同的类型。 |
 | 映射类型 (Mapped Types) | 基于现有类型创建新的类型，并对属性进行修改。 |
@@ -31,7 +30,7 @@ permalink: /TypeScript/puill05i/
 
 ## 值类型
 
-TypeScript 规定，单个值也是一种类型，称为“值类型”。
+TypeScript 规定，单个值也是一种类型，称为“值类型”。又称字面量类型。
 
 ```typescript
 let x: "hello"; //只能赋值给"hello"

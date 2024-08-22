@@ -152,3 +152,94 @@ if (typeof a === "number") {
 -   在 TypeScript 中，typeof 还可以用于获取变量的类型并在类型注解中使用，增强了类型的复用性和代码的可读性。用于TypeScript 类型相关的代码，会在转成Javascript后，typeof 运算符会被删除。
 
 
+## implements 命令
+
+在 TypeScript 中，implements 关键字用于实现接口（interface）。当一个类实现一个接口时，它必须提供接口中定义的所有属性和方法的具体实现。这种机制使得 TypeScript 支持面向对象编程中的多态性和接口的概念。
+
+1. 基本用法
+
+```typescript
+// 定义一个接口
+interface Animal {
+    name: string;
+    sound(): void;
+}
+
+// 实现接口的类
+class Dog implements Animal {
+    name: string;
+
+    constructor(name: string) {
+        this.name = name;
+    }
+
+    sound() {
+        console.log(`${this.name} says Woof!`);
+    }
+}
+
+// 创建实例
+const dog = new Dog('Buddy');
+dog.sound(); // 输出: Buddy says Woof!
+```
+
+2. 多个接口实现。一个类可以实现多个接口，类必须提供所有接口中定义的属性和方法。
+
+```typescript
+interface CanRun {
+    run(): void;
+}
+
+interface CanBark {
+    bark(): void;
+}
+
+class Dog implements CanRun, CanBark {
+    name: string;
+
+    constructor(name: string) {
+        this.name = name;
+    }
+
+    run() {
+        console.log(`${this.name} is running.`);
+    }
+
+    bark() {
+        console.log(`${this.name} says Woof!`);
+    }
+}
+
+const dog = new Dog('Buddy');
+dog.run(); // 输出: Buddy is running.
+dog.bark(); // 输出: Buddy says Woof!
+```
+
+3. 接口的继承
+
+接口可以继承其他接口，类在实现时需要实现所有继承的接口中的属性和方法。
+
+```typescript
+interface Animal {
+    name: string;
+}
+
+interface Dog extends Animal {
+    bark(): void;
+}
+
+class Beagle implements Dog {
+    name: string;
+
+    constructor(name: string) {
+        this.name = name;
+    }
+
+    bark() {
+        console.log(`${this.name} says Woof!`);
+    }
+}
+
+const beagle = new Beagle('Max');
+beagle.bark(); // 输出: Max says Woof!
+```
