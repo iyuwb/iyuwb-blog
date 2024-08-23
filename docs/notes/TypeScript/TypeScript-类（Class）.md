@@ -156,7 +156,9 @@ class Person {
 
 interface 接口或 type 别名，可以用对象的形式，为 class 指定一组检查条件。然后，类使用 implements 关键字，表示当前类满足这些外部类型条件的限制。
 
-
+::: tip  implements
+关于implements更多信息请查看[TypeScript-命令方法](/TypeScript/sa54awwt/#implements-命令)
+:::
 
 需要注意的是，interface 只是指定检查条件，如果不满足这些条件就会报错。它并不能代替 class 自身的类型声明。包括类的属性和方法。
 ```typescript
@@ -225,6 +227,44 @@ class MyCar implements Car {
   id = 2; // 不可省略
   move(): void {} // 不可省略
 }
+```
+
+## 类与接口的合并
+
+同名的类和接口可以同时存在，并且会被合并成一个类。
+
+```typescript
+class Person {
+  name: string = 'yuwb';
+}
+
+class Person {
+  age: number;
+}
+
+let person = new Person();
+person.age = 10;
+
+console.log(person.name)  // yuwb
+console.log(person.age)  // 10
+
+```
+
+## Class 类型
+
+在 TypeScript 中，类本身就是一种类型，但是它代表该类的实例类型，而不是类本身的类型。
+
+```typescript
+class Person {
+  name: string;
+  age: number;
+  constructor(name: string, age: number) {
+    this.name = name;
+    this.age = age;
+  }
+}
+
+const person: Person = new Person('yuwb', 10);
 ```
 
 

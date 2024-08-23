@@ -80,6 +80,11 @@ export default defineUserConfig({
                         icon: 'ri:wechat-2-line',
                         link: '/前端框架/WeChatApp',
                     },
+                    {
+                        text: 'Nestjs',
+                        icon: 'simple-icons:nestjs',
+                        link: '/前端框架/UNIAPP',
+                    },
                 ],
             },
             {
@@ -131,6 +136,11 @@ export default defineUserConfig({
                         text: 'Git',
                         icon: 'teenyicons:git-outline',
                         link: '/notes/Git/Git Commit Message规范.md',
+                    },
+                    {
+                        text: 'Webpack',
+                        icon: 'simple-icons:webpack',
+                        link: '/notes/Webpack/Webpack基础.md',
                     },
                     {
                         text: 'Vite',
