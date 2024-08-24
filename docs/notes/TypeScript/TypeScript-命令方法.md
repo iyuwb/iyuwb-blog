@@ -152,6 +152,52 @@ if (typeof a === "number") {
 -   在 TypeScript 中，typeof 还可以用于获取变量的类型并在类型注解中使用，增强了类型的复用性和代码的可读性。用于TypeScript 类型相关的代码，会在转成Javascript后，typeof 运算符会被删除。
 
 
+
+## as 命令
+
+在 TypeScript 中，as 关键字用于类型断言（Type Assertion），它允许开发者告诉编译器某个值的具体类型。它可以将一个值的类型断言为另一个类型。
+
+1. 基本用法
+
+```typescript
+let myValue: any = 10;
+let myNumber: number = myValue as number; // 类型断言
+```
+
+2. 断言接口
+
+```typescript
+interface Person {
+    name: string;
+    age: number;
+}
+
+let person: any = { name: "John", age: 30 };
+let john = person as Person;
+```
+
+需要注意的是，除了 as 关键字外，TypeScript 还支持另一种类型断言的语法，即使用尖括号。
+
+-   不过在 JSX 中，尖括号语法可能会与 HTML 标签冲突，因此推荐使用 as 语法。
+
+```typescript
+let myValue: any = 10;
+let myNumber: number = <number>myValue; // 类型断言
+
+interface Person {
+    name: string;
+    age: number;
+}
+
+let person: any = { name: "John", age: 30 };
+let john = <Person>person;
+```
+
+
+
+
+
+
 ## implements 命令
 
 在 TypeScript 中，implements 关键字用于实现接口（interface）。当一个类实现一个接口时，它必须提供接口中定义的所有属性和方法的具体实现。这种机制使得 TypeScript 支持面向对象编程中的多态性和接口的概念。

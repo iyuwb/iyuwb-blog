@@ -21,9 +21,8 @@ permalink: /TypeScript/puill05i/
 | 泛型 (Generics) | 一种机制，允许创建可重用的组件，这些组件能够操作任意类型的参数。 |
 | 联合类型 (Union Types) | 定义一个变量可以是多种类型之一。 |
 | 交集类型 (Intersection Types) | 定义一个变量同时具有多种类型的所有特征。 |
-| 类型别名 (Type Aliases) | 用于给现有的类型起一个新的名字，使复杂类型更易于理解。 |
 | 接口 (Interfaces) | 用来定义对象的形状，包括属性、方法等，并且可以扩展其他接口。 |
-| 类型断言 (Type Assertions) | 告诉编译器某个值的类型，即使编译器无法自动推断出来。 |
+| 类 (Class) | 类可以用来创建对象，并可以包含属性和方法。 |
 | 条件类型 (Conditional Types) | 根据类型是否满足某些条件来选择不同的类型。 |
 | 映射类型 (Mapped Types) | 基于现有类型创建新的类型，并对属性进行修改。 |
 
@@ -142,6 +141,13 @@ never类型表示肯定不会出现的值。它用在函数的返回值，就表
 
 ## 对象类型
 
+在 TypeScript 中，对象是一个非常重要的概念。对象可以用来表示复杂的数据结构，通常由键值对组成。TypeScript 提供了多种方式来定义和使用对象。
+
+:::tip
+关于对象类型的详细内容可以查看：[对象类型](/TypeScript/78auqnpo/)
+:::
+
+
 ## 联合类型
 
 在 TypeScript 中，联合类型（Union Types）允许将多个类型组合在一起，使得一个变量可以是其中的任意一个类型。可以使用竖线 | 来定义联合类型。
@@ -229,13 +235,7 @@ const person: PersonWithAddress = {
 console.log(person);
 ```
  
-## 类型别名
 
-在 TypeScript 中，类型别名（Type Alias）是一种为现有类型创建新名称的方式。它可以使代码更具可读性和可维护性，同时也提高了代码的类型安全性。
-
-:::tip
-关于类型别名的详细内容可以查看：[Type 命令](/TypeScript/sa54awwt/#type-命令)
-:::
 
 ## 接口（Interfaces）
 
@@ -245,3 +245,12 @@ console.log(person);
 关于类型别名的详细内容可以查看：[接口（Interfaces）](/TypeScript/efqwfrfq/)
 :::
 
+
+
+## 类（Class）
+
+在 TypeScript 中，类（Class）是一种面向对象的编程方式。类可以定义属性、方法和构造函数，并且可以继承和实现其他类。类在 TypeScript 中的主要作用是提供了一种组织和封装代码的方式，使得代码更加模块化和可维护。
+
+:::tip
+关于类（Class）的详细内容可以查看：[类（Class）](/TypeScript/wy5zf1gm/)
+:::

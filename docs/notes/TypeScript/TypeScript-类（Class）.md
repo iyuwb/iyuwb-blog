@@ -267,5 +267,184 @@ class Person {
 const person: Person = new Person('yuwb', 10);
 ```
 
+类作用类型使用时，只能表示实例类型，不能表示类本身的类型。我们需要使用 typeof 获取类自身的类型。
+
+```typescript
+class Person {
+  name: string;
+  age: number;
+  constructor(name: string, age: number) {
+    this.name = name;
+    this.age = age;
+  }
+}
+
+function createPerson(PersonClass: Person,name:string,age:number): Person {  // 错误
+  return new PersonClass(name, age);
+}
+
+// 需要使用 typeof 获取类的类型
+function createPerson(PersonClass: typeof Person,name:string,age:number): Person{  // 正确
+  return new PersonClass(name, age);
+}
+```
+
+Class 也遵循 结构类型原则，一个对象只要满足Class实例结构，就跟该Class一个类型。
+::: tip
+结构类型原则是指 TypeScript 的类型系统是基于对象的结构而不是名称。也就是说，两个不同的类型如果具有相同的结构（属性和方法），那么它们就可以互相替代。
+:::
+```typescript
+class Foo {
+  id!: number;
+}
+
+function fn(arg: Foo) {
+  // ...
+}
+
+const bar = {  // 有Class Foo的全部属性
+  id: 10,
+  amount: 100,
+};
+
+fn(bar); // 正确
+```
+同样的，如果两个Class类结构完全一致，那么它们也可以互相赋值。不仅是类，如果对象和类的结构完全一致，Type
+```typescript
+class Foo {
+  id!: number;
+}
+
+class Bar {
+  id!: number;
+}
+
+// 类
+let foo = new Foo();
+let bar = new Bar();
+
+foo = bar; // 正确
+bar = foo; // 正确
+
+// 对象
+foo = { id: 10 }; // 正确
+let foo2: Foo = { id: 10 } // 正确
+console.log(foo2 instanceof Foo); // false
+```
+需要注意的是，由于上面这种情况，因此`instanceof`不适用于判断某个对象是否跟某个 class 属于同一类型。
+## Class类型兼容
+如果两个类结构不完全一致，但是一个类包含了另一个类的所有属性。我们就会说这两个类符合类型兼容。 
+```typescript
+class Foo {
+  id!: number;
+}
+
+class Bar {
+  id!: number;
+  amount!: number;
+}
+
+const foo:Bar = new Foo(); // 错误
+const bar:Foo = new Bar();  // 正确
+```
+如上例中，Bar类包含了Foo类的所有属性，根据类型兼容原则，Bar类可以赋值给Foo类。反之则不行。
+
+空类不包括任何属性，因此空类与任何类以及对象都符合类型兼容。
+
+```typescript
+class Empty {}
+
+function fn(x: Empty) { // 这里的x可以是任何对象
+  // ...
+}
+
+fn({});
+fn(window);
+fn(fn);
+```
+关于类的类型兼容，还有一点需要注意的是，只检查实例成员，不考虑静态成员和构造方法。
+```typescript
+class Point {
+  x: number;
+  y: number;
+  static t: number; // 静态成员
+  constructor(x: number) {} // 构造方法
+}
+
+class Position {
+  x: number;
+  y: number;
+  z: number;
+  constructor(x: string) {} // 构造方法
+}
+
+const point: Point = new Position("");
+```
+
+
+## 类的继承
+
+类的继承是指一个类可以继承另一个类的属性和方法。通过extends关键字实现。
+
+```typescript
+class Person { // 父类
+  name: string;
+  age: number;
+  constructor(name: string, age: number) {
+    this.name = name;
+    this.age = age;
+  }
+  sayHello(): void {
+    console.log(`Hello, my name is ${this.name}`);
+  }
+}
+class Student extends Person { // 子类继承父类
+  constructor(name: string, age: number) {
+    super(name, age);// 调用父类的构造方法
+  }
+  sayHello(): void { // 重写父类的方法
+    // super.sayHello(); // 该写法可以调用父类的方法
+    console.log(`Hello, my name is ${this.name} and I am a student`);
+  }
+}
+
+const student = new Student("yuwb", 10);
+student.sayHello(); // Hello, my name is yuwb and I am a student
+
+// 根据类型兼容性原则，Student也可以赋值给Person类型
+const student2:Person = new Student("yuwb2", 12);
+student2.sayHello(); // Hello, my name is yuwb2 and I am a student
+```
+如上例中，Student类继承了Person类的属性和方法，并且重写了sayHello方法。需要注意的是在重写父类方法时，子类的同名方法不能与父类的类型定义相冲突，不然会报错。
+
+子类继承父类是，如果父类包括保护成员（protected），那么子类也可以继承这些保护成员。并且可以将访问权限设置为公开（public）。但是不能修改为私有成员（private）。
+
+```typescript
+class Person {
+  protected name: string;
+  protected age: number;
+}
+class Student extends Person {
+  // 正确
+  public name: string;
+  // 正确
+  protected name: string;
+  // 错误
+  private name: string;
+}
+```
+
+在使用类的继承时，`extends`关键字后面不一定是一个类，也可以一个表达式。
+
+```typescript
+
+// 例一
+class MyArray extends Array<number> {}
+
+// 例二
+class MyError extends Error {}
+
+```
+
 
 
