@@ -200,6 +200,7 @@ let john = <Person>person;
 
 ## implements 命令
 
+
 在 TypeScript 中，implements 关键字用于实现接口（interface）。当一个类实现一个接口时，它必须提供接口中定义的所有属性和方法的具体实现。这种机制使得 TypeScript 支持面向对象编程中的多态性和接口的概念。
 
 1. 基本用法
@@ -289,3 +290,38 @@ class Beagle implements Dog {
 const beagle = new Beagle('Max');
 beagle.bark(); // 输出: Max says Woof!
 ```
+## namespace 命令
+
+在 TypeScript 中，namespace 关键字用于定义命名空间。命名空间是一种组织和隔离代码的方式，它可以将相关的代码组织到一个范围内。
+
+
+
+## declare 命令
+
+在 TypeScript 中，declare 关键字用于声明全局变量、全局函数、全局类型等。它可以帮助编译器识别这些声明，从而提供更好的类型检查和代码补全功能。换句话说 declare 关键字用来告诉编译器，某个类型是存在的，可以在当前文件中使用。
+
+> 它的主要作用，就是让当前文件可以使用其他文件声明的类型。举例来说，自己的脚本使用外部库定义的函数，编译器会因为不知道外部函数的类型定义而报错，这时就可以在自己的脚本里面使用declare关键字，告诉编译器外部函数的类型。这样的话，编译单个脚本就不会因为使用了外部类型而报错。
+
+**基础示例**
+
+```typescript
+// 直接使用其他文件定义的类型会报错
+globalVariable = 'Hello' // 报错
+
+// 可以使用declare 命令给出它的类型，就不会报错。
+declare const globalVariable: string;
+globalVariable = 'Hello'; // 正确
+```
+如上所示，使用declare 命令可以告诉编译器，某个类型是存在的，可以在当前文件中使用。
+
+
+**描述类型**
+
+-   变量
+-   type或者 interface声明的类型
+-   class
+-   enum
+-   函数（function）
+-   模块（module）
+-   命名空间（namespace）
+

@@ -434,8 +434,7 @@ class Student extends Person {
 }
 ```
 
-在使用类的继承时，`extends`关键字后面不一定是一个类，也可以一个表达式。
-
+在使用类的继承时，`extends`关键字后面不一定是一个类，也可以一个表达式。需要返回类型符合某个接口或类的结构或者返回一个构造函数。
 ```typescript
 
 // 例一
@@ -445,6 +444,10 @@ class MyArray extends Array<number> {}
 class MyError extends Error {}
 
 ```
+
+## 可访问行修饰符
+
+在TypeScript中，可访问行修饰符是指在类的属性或方法上使用的修饰符。可访问行修饰符可以控制属性或方法的访问权限，包括公有（public）、私有（private）、保护（protected）。
 
 
 

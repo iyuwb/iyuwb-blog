@@ -204,7 +204,7 @@ export default defineUserConfig({
                         {
                             text: 'JavaScript基础',
                             icon: 'ic:baseline-dashboard',
-                            items: ['JavaScript-基础', 'JavaScript-内置对象方法', 'JavaScript-Promise', 'JavaScript-原型链',
+                            items: ['JavaScript-基础', 'JavaScript-内置对象方法','JavaScript-类（Class）','JavaScript-Promise', 'JavaScript-原型链',
                                 'JavaScript-Set、Map、WeakSet和WeakMap', 'JavaScript-正则表达式',
                             ]
                         },
