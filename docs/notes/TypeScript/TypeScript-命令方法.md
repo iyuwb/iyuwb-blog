@@ -314,6 +314,11 @@ globalVariable = 'Hello'; // 正确
 ```
 如上所示，使用declare 命令可以告诉编译器，某个类型是存在的，可以在当前文件中使用。
 
+需要注意的是：
+
+-   declare 关键字，它只是通知编译器某个类型是存在的，不用给出具体实现。比如，只描述函数的类型，不给出函数的实现，如果不使用declare，这是做不到的。
+
+-   declare 只能用来描述已经存在的变量和数据结构，不能用来声明新的变量和数据结构。另外，所有 declare 语句都不会出现在编译后的文件里面。
 
 **描述类型**
 
@@ -324,4 +329,62 @@ globalVariable = 'Hello'; // 正确
 -   函数（function）
 -   模块（module）
 -   命名空间（namespace）
+
+**变量**
+
+declare 关键字可以给出外部变量的类型描述。例如：当前的脚本中使用了其他文件定义的全局变量，但是编译器不知道这个变量的类型，这时可以使用declare 关键字来描述这个变量的类型。
+
+```typescript
+declare var globalVariable: string;
+globalVariable = 'Hello';
+```
+**函数**
+
+declare 关键字可以给出外部函数的类型描述。
+
+```typescript
+declare function greet(name: string): void;
+greet('Alice');
+```
+**类（Class）**
+
+declare 关键字可以给出外部类的类型描述。
+
+```typescript
+declare class Person {
+    name: string;
+    age: number;
+    constructor(name: string, age: number);
+    sayHello(): void;
+}
+```
+**模块和命名空间**
+
+declare 关键字可以给出外部模块和命名空间的类型描述。下面示例中的`export`关键字可以省略。
+
+```typescript
+declare module 'moduleName' {
+    export interface MyInterface {
+        property: string;
+        method(): void;
+    }
+}
+
+declare namespace MyNamespace {
+    export const myConstant: number;
+    export function myFunction(): void;
+}
+```
+举例说明，下面例子中使用了 `myDemoLib` 外部库定义的类型，但是编译器不知道这个类型的具体实现，这时可以使用declare 关键字来描述这个类型。
+
+```typescript
+// 类型描述
+declare namespace myDemoLib {
+    export function sayHello(message: string): string;
+    export const count: number;
+}
+// 外部库使用
+let result = myDemoLib.sayHello("你好");
+let count = myDemoLib.count;
+```
 
