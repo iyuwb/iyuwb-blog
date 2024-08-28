@@ -535,6 +535,164 @@ if('age' in person){
   // 是
 }
 ```
+ES6后续版本，JavaScript的类已经支持私有成员，以我们可以使用`#`来定义私有成员。不再推荐使用private来定义私有成员。
+
+```typescript
+class Person {
+  #age = 0;
+}
+
+const person = new Person();
+person["#age"]; // undefined
+```
+
+在Class中，不止属性和方法可以使用可访问性修饰符，构造函数也可以使用private修饰符。
+
+```typescript
+class Person {
+  name: string;
+  private constructor(name: string) {
+    this.name = name;
+  }
+  static create(name: string) {
+    return new Person(name);
+  }
+}
+
+const person = Person.create("yuwb");
+person.name; // "yuwb"
+```
+如上所示，我们使用private修饰符，将构造函数设置为私有，那么我们无法通过new关键字来创建实例。但是我们可以通过静态方法来创建实例。
+
+
+
+**`protected`**
+
+protected 修饰符表示保护成员，只能在类的内部和子类中访问，类的实例不能使用该成员。
+
+```typescript
+class Person {
+  protected name: string;
+  constructor(name: string) {
+    this.name = name;
+  }
+}
+
+class Student extends Person {
+  constructor(name: string) {
+    super(name);
+  }
+  sayHello(): void {
+    console.log(`Hello, my name is ${this.name}`);
+  }
+}
+
+const student = new Student("yuwb");
+student.sayHello(); // Hello, my name is yuwb
+student.name; // 属性“name”受保护，只能在类“Person”及其子类中访问。
+```
+如上所示，子类可以继承父类的保护成员，并且可以在子类中访问。但是类的实例不能访问保护成员。
+
+同时，我们也可以在子类中，将父类的保护成员，修改为公开成员。
+```typescript
+class Person {
+  protected name: string;
+  constructor(name: string) {
+    this.name = name;
+  }
+}
+
+class Student extends Person {
+  constructor(name: string) {
+    super(name);
+  }
+  public name: string;
+  sayHello(): void {
+    console.log(`Hello, my name is ${this.name}`);
+  }
+}
+
+const student = new Student("yuwb");
+student.sayHello(); // Hello, my name is yuwb
+student.name; // "yuwb"
+```
+
+
+## 实例属性简写
+
+在TypeScript中，我们可以使用实例属性简写来定义类的属性。实例属性简写是在类的构造函数中，直接定义属性。
+
+```typescript
+class Person {
+  constructor(public name: string, public age: number) {}
+}
+
+const person = new Person("yuwb", 18);
+console.log(person.name); // "yuwb"
+console.log(person.age); // 18
+```
+如上所示，我们在构造函数中，直接定义了两个属性，并且使用了public修饰符，表示是公开成员，外部可以自由访问。
+
+同时，readonly修饰符也可以使用在实例属性简写中。并且可以和可访问性修饰符一起使用。
+```typescript
+class Person {
+  constructor(public readonly name: string, public age: number) {}
+}
+
+const person = new Person("yuwb", 18);
+console.log(person.name); // "yuwb"
+console.log(person.age); // 18
+person.name = "yuwb1"; // 报错 属性“name”是只读的。
+```
+
+## 静态成员
+
+在TypeScript中，我们可以使用 `static` 关键字来定义静态成员，包括属性和方法。静态成员是类级别的成员，可以通过类名直接访问，而不是通过实例来访问。
+
+```typescript
+class Person {
+  static name: string = "yuwb";
+  static sayHello(): void {
+    console.log(`Hello, my name is ${this.name}`);
+  }
+}
+
+Person.name; // "yuwb"
+Person.sayHello(); // Hello, my name is yuwb
+```
+如上所示，我们使用 `static` 关键字，定义了两个静态成员，一个静态属性 `name` 和静态方法 `sayHello` 。我们可以通过类名直接访问这两个静态成员。
+
+`stacic` 也可以和访问性修饰符一起使用。但是需要注意的是，修饰符需要放到 `static` 关键字之前。
+```typescript
+class Person {
+  public static  aname: string = "yuwb";
+  private static  sayHello(): void {
+    console.log(`Hello, my name is ${this.aname}`);
+  }
+}
+
+Person.aname; // "yuwb"
+Person.sayHello(); // 报错 属性“sayHello”为私有属性，只能在类“Person”中访问。
+```
+
+其中 `public` 和 `protected` 的静态成员，可以被继承类访问。
+```typescript
+class Person {
+  public static  aname: string = "yuwb";
+  protected static  sayHello(): void {
+    console.log(`Hello, my name is ${this.aname}`);
+  }
+}
+
+class Student extends Person {
+  static sayHello(): void {
+    super.sayHello();
+  }
+}
+
+Student.sayHello(); // Hello, my name is yuwb
+```
+## 泛型类
 
 
 
