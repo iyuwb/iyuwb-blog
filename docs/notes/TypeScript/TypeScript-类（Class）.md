@@ -6,6 +6,7 @@ permalink: /TypeScript/wy5zf1gm/
 ---
 在 TypeScript 中，类（class）是面向对象编程的一个重要概念。类可以用来创建对象，并可以包含属性和方法。
 
+
 ## 定义类
 
 要定义一个类，使用 `class` 关键字。类的属性可以在顶层声明，也可以在构造方法内部中声明。
@@ -445,7 +446,7 @@ class MyError extends Error {}
 
 ```
 
-## 可访问行修饰符
+## 可访问性修饰符
 
 在TypeScript中，可访问行修饰符是指在类的属性或方法上使用的修饰符。可访问行修饰符可以控制属性或方法的访问权限，包括公有（public）、私有（private）、保护（protected）。
 
@@ -456,4 +457,84 @@ class MyError extends Error {}
 -    protected：保护属性或方法，只能在类的内部和子类中访问，类的实力不能使用该成员。
 
 **`public`**
+
+public 修饰符是默认的，可以省略不写。表示是公开成员，外部可以自由访问。
+
+```typescript
+class Person {
+  public name: string;
+  constructor(name: string) {
+    this.name = name;
+  }
+  public sayHello(): void {
+    console.log(`Hello, my name is ${this.name}`);
+  }
+}
+
+const person = new Person("yuwb");
+person.sayHello(); // Hello, my name is yuwb
+```
+
+**`private`**
+
+private 修饰符表示私有成员，只能在类的内部访问，类的实例和子类都不能使用该成员。
+
+```typescript
+class Person {
+  private name: string;
+  constructor(name: string, age: number) {
+    this.name = name;
+  }
+}
+const person = new Person("yuwb");
+person.name; // 属性“name”为私有属性，只能在类“Person”中访问。
+  
+class Student extends Person {
+  constructor(name: string) {
+    super(name);
+  }
+}
+
+const student = new Student("yuwb");
+student.name; // 属性“name”为私有属性，只能在类“Person”中访问。
+```
+如上所示，子类不能继承父类的私有成员，类的实例也不能访问私有成员。同样的子类不能重新定义父类的私有成员。
+
+```typescript
+class Person {
+  private age = 0;
+}
+
+class Student extends Person {
+  age = 1; // 报错
+}
+```
+我们可以在类的内容，用当前类的实例来获取私有成员。
+```typescript
+class Person {
+  private age = 0;
+  getAge(data:Person){
+    return data.age;
+  }
+}
+const person = new Person();
+person.getAge(person); // 0
+```
+::: tip
+需要注意的是，private定义的成员，并不是真正的私有成员，而是编译时的私有成员。在编译后的代码中，仍然可以访问到该成员。而且在Typescript中我们也可以通过`[]`方括号写法，直接获取实例对象的私有成员。
+:::
+```typescript
+class Person {
+  private age = 0;
+}
+
+const person = new Person();
+person["age"]; // 0
+
+if('age' in person){
+  // 是
+}
+```
+
+
 
