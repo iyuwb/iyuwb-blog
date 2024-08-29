@@ -64,7 +64,7 @@ const toString = (num: number): string => {
 
 ## 类型污染
 
-在使用 any 类型的变量时，有一点特别需要注意的是，它会污染其他特定类型的变量，使其失去特定的类型。并且还不会提醒报错。如下图：
+在使用 `any` 类型的变量时，有一点特别需要注意的是，它会污染其他特定类型的变量，使其失去特定的类型。并且还不会提醒报错。如下图：
 <img src="@source/notes/TypeScript/images/image-05.png" style="width:80%;margin:0 10%" />
 
 我们把 `any` 类型的 `str` 赋值给 `num`，并没有报错。此时我们打印 `num` 。输出为 字符串`Hello，World！` 。可见此时的 `num` 变量已经变成了字符串类型。但是在下面接着调用数字的 toFixed 方法时。也没有相关错误提示。
@@ -79,12 +79,12 @@ TypeError: num.toFixed is not a function
 
 ## 类型断言
 
-在TypeScript中，类型断言（Type Assertion）可以告诉编译器某个值被视为特定类型。它并不会改变运行时的行为，而只是告诉 TypeScript 编译器如何处理这个值。
+在 TypeScript 中，类型断言（Type Assertion）可以告诉编译器某个值被视为特定类型。它并不会改变运行时的行为，而只是告诉 TypeScript 编译器如何处理这个值。
 
 换句话说，它可以帮助你告诉编译器：“我知道这个值实际上是某种类型，请信任我。”
 :::tip
 - 类型断言不会进行任何类型检查或结构验证，因此在使用时要确保你对数据的结构有足够的了解。
-- 尖括号语法在 JSX 中会与 React 的语法冲突，因此在使用 React 时推荐使用 as 语法。
+- 尖括号语法在 JSX 中会与 React 的语法冲突，因此在使用 React 时推荐使用 `as` 语法。
 :::
 
 语法形式:
@@ -271,9 +271,9 @@ a = b; // 报错
 
 在 TypeScript 中，类型读取（Type Lookup）是指通过特定的语法来获取某个类型的属性或方法的类型。这种特性可以帮助我们在编写代码时更好地利用已有的类型信息，提高代码的可读性和可维护性。
 
-1. 使用 keyof 操作符
+1. 使用 `keyof` 操作符
 
-keyof 操作符可以获取一个对象类型的所有键，并返回一个联合类型。
+`keyof` 操作符可以获取一个对象类型的所有键，并返回一个联合类型。
 
 ```typescript
 interface Person {

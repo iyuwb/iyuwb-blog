@@ -70,7 +70,7 @@ permalink: /TypeScript/xgndo7cj/
 
     > [Node.js官网](https://nodejs.org/zh-cn)
 
-2.  安装`TypeScript`
+2.  安装`typeScript`
 ```sh
 npm install typescript -g
 ```
@@ -113,7 +113,7 @@ ts-node demo.ts
 
 ## 进阶配置
 
-使用上面基础配置方法，我们每次改变ts文件，都需要重新运行命令，很不友好，下面介绍一个ts文件改变之后实时更新的方式。需要先装好Node.js 和 typescript 。
+使用上面基础配置方法，我们每次改变 ts 文件，都需要重新运行命令，很不友好，下面介绍一个 ts 文件改变之后实时更新的方式。需要先装好 Node.js 和 Typescript 。
  
 
 1. 创建项目
@@ -173,7 +173,7 @@ nodemon  dist/index.js --watch
 ```sh
 tsc --watch // 持续监听，监听文件改变，实时更新
 ```
-然后在开发的项目中引入生成的js。开启所需服务即可。 比如 VS code中的 `Live Server` 插件。
+然后在开发的项目中引入生成的 js。开启所需服务即可。 比如 VS code中的 `Live Server` 插件。
 
 ::: tip
 我们在日常工作开发中，一般都会使用框架来搭建项目。很多框架使用TypeScript，一般都会需要专门配置。我们按照要求配置即可。

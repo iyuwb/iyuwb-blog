@@ -114,7 +114,7 @@ class Person {
 }
 ```
 注意点：
--   如果某一个属性只有get方法，没有set方法，那么该属性自动成为只读属性。
+-   如果某一个属性只有 `get` 方法，没有 `set` 方法，那么该属性自动成为只读属性。
 ```typescript
 class Person {
   _name: string = 'Mark';
@@ -137,7 +137,7 @@ class Person {
   }
 }
 ```
--   get方法与set方法的可访问性必须一致，要么都为公开方法，要么都为私有方法。
+-   `get` 方法与 `set` 方法的可访问性必须一致，要么都为公开方法，要么都为私有方法。
 
 ## 属性索引
 类允许定义属性索引。
@@ -153,15 +153,15 @@ class Person {
 }
 ```
 
-## 类的interface接口
+## 类的 `interface` 接口
 
-interface 接口或 type 别名，可以用对象的形式，为 class 指定一组检查条件。然后，类使用 implements 关键字，表示当前类满足这些外部类型条件的限制。
+`interface` 接口或 `type` 别名，可以用对象的形式，为 `class` 指定一组检查条件。然后，类使用 `implements` 关键字，表示当前类满足这些外部类型条件的限制。
 
 ::: tip  implements
 关于implements更多信息请查看[TypeScript-命令方法](/TypeScript/sa54awwt/#implements-命令)
 :::
 
-需要注意的是，interface 只是指定检查条件，如果不满足这些条件就会报错。它并不能代替 class 自身的类型声明。包括类的属性和方法。
+需要注意的是， `interface` 只是指定检查条件，如果不满足这些条件就会报错。它并不能代替 `class` 自身的类型声明。包括类的属性和方法。
 ```typescript
 interface Person {
   name: string;
@@ -216,7 +216,7 @@ class Person implements Person {
   }
 }
 ```
-implements关键字还可以是另一个类。只不过会把后面的类将被当作接口使用。不能省略属性和方法。
+`implements` 关键字还可以是另一个类。只不过会把后面的类将被当作接口使用。不能省略属性和方法。
 
 ```typescript
 class Car {
@@ -268,7 +268,7 @@ class Person {
 const person: Person = new Person('yuwb', 10);
 ```
 
-类作用类型使用时，只能表示实例类型，不能表示类本身的类型。我们需要使用 typeof 获取类自身的类型。
+类作用类型使用时，只能表示实例类型，不能表示类本身的类型。我们需要使用 `typeof` 获取类自身的类型。
 
 ```typescript
 class Person {
@@ -290,7 +290,7 @@ function createPerson(PersonClass: typeof Person,name:string,age:number): Person
 }
 ```
 
-Class 也遵循 结构类型原则，一个对象只要满足Class实例结构，就跟该Class一个类型。
+Class 也遵循 结构类型原则，一个对象只要满足 Class 实例结构，就跟该 Class 一个类型。
 ::: tip
 结构类型原则是指 TypeScript 的类型系统是基于对象的结构而不是名称。也就是说，两个不同的类型如果具有相同的结构（属性和方法），那么它们就可以互相替代。
 :::
@@ -310,7 +310,8 @@ const bar = {  // 有Class Foo的全部属性
 
 fn(bar); // 正确
 ```
-同样的，如果两个Class类结构完全一致，那么它们也可以互相赋值。不仅是类，如果对象和类的结构完全一致，Type
+同样的，如果两个 Class 类结构完全一致，那么它们也可以互相赋值。不仅是类，如果对象和类的结构完全一致,也可以互相赋值。
+
 ```typescript
 class Foo {
   id!: number;
@@ -332,7 +333,7 @@ foo = { id: 10 }; // 正确
 let foo2: Foo = { id: 10 } // 正确
 console.log(foo2 instanceof Foo); // false
 ```
-需要注意的是，由于上面这种情况，因此`instanceof`不适用于判断某个对象是否跟某个 class 属于同一类型。
+需要注意的是，由于上面这种情况，因此 `instanceof` 不适用于判断某个对象是否跟某个 Class 属于同一类型。
 ## Class类型兼容
 如果两个类结构不完全一致，但是一个类包含了另一个类的所有属性。我们就会说这两个类符合类型兼容。 
 ```typescript
@@ -348,7 +349,7 @@ class Bar {
 const foo:Bar = new Foo(); // 错误
 const bar:Foo = new Bar();  // 正确
 ```
-如上例中，Bar类包含了Foo类的所有属性，根据类型兼容原则，Bar类可以赋值给Foo类。反之则不行。
+如上例中， `Bar` 类包含了 `Foo` 类的所有属性，根据类型兼容原则， `Bar` 类可以赋值给 `Foo` 类。反之则不行。
 
 空类不包括任何属性，因此空类与任何类以及对象都符合类型兼容。
 
@@ -385,7 +386,7 @@ const point: Point = new Position("");
 
 ## 类的继承
 
-类的继承是指一个类可以继承另一个类的属性和方法。通过extends关键字实现。
+类的继承是指一个类可以继承另一个类的属性和方法。通过 `extends` 关键字实现。
 
 ```typescript
 class Person { // 父类
@@ -416,9 +417,9 @@ student.sayHello(); // Hello, my name is yuwb and I am a student
 const student2:Person = new Student("yuwb2", 12);
 student2.sayHello(); // Hello, my name is yuwb2 and I am a student
 ```
-如上例中，Student类继承了Person类的属性和方法，并且重写了sayHello方法。需要注意的是在重写父类方法时，子类的同名方法不能与父类的类型定义相冲突，不然会报错。
+如上例中， `Student` 类继承了 `Person` 类的属性和方法，并且重写了 `sayHello` 方法。需要注意的是在重写父类方法时，子类的同名方法不能与父类的类型定义相冲突，不然会报错。
 
-子类继承父类是，如果父类包括保护成员（protected），那么子类也可以继承这些保护成员。并且可以将访问权限设置为公开（public）。但是不能修改为私有成员（private）。
+子类继承父类是，如果父类包括保护成员（ `protected` ），那么子类也可以继承这些保护成员。并且可以将访问权限设置为公开（ `public` ）。但是不能修改为私有成员（ `private` ）。
 
 ```typescript
 class Person {
@@ -448,17 +449,17 @@ class MyError extends Error {}
 
 ## 可访问性修饰符
 
-在TypeScript中，可访问行修饰符是指在类的属性或方法上使用的修饰符。可访问行修饰符可以控制属性或方法的访问权限，包括公有（public）、私有（private）、保护（protected）。
+在TypeScript中，可访问行修饰符是指在类的属性或方法上使用的修饰符。可访问行修饰符可以控制属性或方法的访问权限，包括公有（ `public` ）、私有（ `private` ）、保护（ `protected` ）。
 
 在使用定义时，三个修饰符的位置，都写在属性或方法的最前面。
 
--    public：公有属性或方法，在类的外部和子类中都可以访问。
--    private：私有属性或方法，只能在类的内部访问，类的实例和子类都不能使用该成员。
--    protected：保护属性或方法，只能在类的内部和子类中访问，类的实力不能使用该成员。
+-    `public` ：公有属性或方法，在类的外部和子类中都可以访问。
+-    `private` ：私有属性或方法，只能在类的内部访问，类的实例和子类都不能使用该成员。
+-    `protected` ：保护属性或方法，只能在类的内部和子类中访问，类的实力不能使用该成员。
 
 **`public`**
 
-public 修饰符是默认的，可以省略不写。表示是公开成员，外部可以自由访问。
+`public` 修饰符是默认的，可以省略不写。表示是公开成员，外部可以自由访问。
 
 ```typescript
 class Person {
@@ -477,7 +478,7 @@ person.sayHello(); // Hello, my name is yuwb
 
 **`private`**
 
-private 修饰符表示私有成员，只能在类的内部访问，类的实例和子类都不能使用该成员。
+`private` 修饰符表示私有成员，只能在类的内部访问，类的实例和子类都不能使用该成员。
 
 ```typescript
 class Person {
@@ -521,7 +522,7 @@ const person = new Person();
 person.getAge(person); // 0
 ```
 ::: tip
-需要注意的是，private定义的成员，并不是真正的私有成员，而是编译时的私有成员。在编译后的代码中，仍然可以访问到该成员。而且在Typescript中我们也可以通过`[]`方括号写法，直接获取实例对象的私有成员。
+需要注意的是，private定义的成员，并不是真正的私有成员，而是编译时的私有成员。在编译后的代码中，仍然可以访问到该成员。而且在Typescript中我们也可以通过 `[]` 方括号写法，直接获取实例对象的私有成员。
 :::
 ```typescript
 class Person {
@@ -535,7 +536,7 @@ if('age' in person){
   // 是
 }
 ```
-ES6后续版本，JavaScript的类已经支持私有成员，以我们可以使用`#`来定义私有成员。不再推荐使用private来定义私有成员。
+ES6后续版本， JavaScript 的类已经支持私有成员，以我们可以使用 `#` 来定义私有成员。不再推荐使用 `private` 来定义私有成员。
 
 ```typescript
 class Person {
@@ -546,7 +547,7 @@ const person = new Person();
 person["#age"]; // undefined
 ```
 
-在Class中，不止属性和方法可以使用可访问性修饰符，构造函数也可以使用private修饰符。
+在 Class 中，不止属性和方法可以使用可访问性修饰符，构造函数也可以使用 `private` 修饰符。
 
 ```typescript
 class Person {
@@ -562,13 +563,13 @@ class Person {
 const person = Person.create("yuwb");
 person.name; // "yuwb"
 ```
-如上所示，我们使用private修饰符，将构造函数设置为私有，那么我们无法通过new关键字来创建实例。但是我们可以通过静态方法来创建实例。
+如上所示，我们使用 `private` 修饰符，将构造函数设置为私有，那么我们无法通过 `new` 关键字来创建实例。但是我们可以通过静态方法来创建实例。
 
 
 
 **`protected`**
 
-protected 修饰符表示保护成员，只能在类的内部和子类中访问，类的实例不能使用该成员。
+`protected` 修饰符表示保护成员，只能在类的内部和子类中访问，类的实例不能使用该成员。
 
 ```typescript
 class Person {
@@ -620,7 +621,7 @@ student.name; // "yuwb"
 
 ## 实例属性简写
 
-在TypeScript中，我们可以使用实例属性简写来定义类的属性。实例属性简写是在类的构造函数中，直接定义属性。
+在 TypeScript 中，我们可以使用实例属性简写来定义类的属性。实例属性简写是在类的构造函数中，直接定义属性。
 
 ```typescript
 class Person {
@@ -631,9 +632,9 @@ const person = new Person("yuwb", 18);
 console.log(person.name); // "yuwb"
 console.log(person.age); // 18
 ```
-如上所示，我们在构造函数中，直接定义了两个属性，并且使用了public修饰符，表示是公开成员，外部可以自由访问。
+如上所示，我们在构造函数中，直接定义了两个属性，并且使用了 `public` 修饰符，表示是公开成员，外部可以自由访问。
 
-同时，readonly修饰符也可以使用在实例属性简写中。并且可以和可访问性修饰符一起使用。
+同时， `readonly` 修饰符也可以使用在实例属性简写中。并且可以和可访问性修饰符一起使用。
 ```typescript
 class Person {
   constructor(public readonly name: string, public age: number) {}
@@ -647,7 +648,7 @@ person.name = "yuwb1"; // 报错 属性“name”是只读的。
 
 ## 静态成员
 
-在TypeScript中，我们可以使用 `static` 关键字来定义静态成员，包括属性和方法。静态成员是类级别的成员，可以通过类名直接访问，而不是通过实例来访问。
+在 TypeScript 中，我们可以使用 `static` 关键字来定义静态成员，包括属性和方法。静态成员是类级别的成员，可以通过类名直接访问，而不是通过实例来访问。
 
 ```typescript
 class Person {

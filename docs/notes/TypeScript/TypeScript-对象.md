@@ -9,7 +9,7 @@ permalink: /TypeScript/78auqnpo/
 
 ## 对象定义
 
-直接定义，在定义对象属性类型的时候，可以使用`;`或者`,`
+直接定义，在定义对象属性类型的时候，可以使用 `;` 或者 `,` 。
 
 ```typescript
 const person: {
@@ -36,6 +36,7 @@ type Car = {
 };
 ```
 需要注意的是，如果对象声明了类型，在赋值时，就不能缺少或增加指定的属性，也不能改变对象属性的类型，否则会报错。
+
 ```typescript
 type Person = {
     name: string;
@@ -136,7 +137,7 @@ const user: User = {
 
 // user.id = 2; // 错误：不能修改只读属性
 ```
-在使用可选属性的时候，需要注意对其进行判断是否为undefined。不然直接使用可能会引起报错。
+在使用可选属性的时候，需要注意对其进行判断是否为 `undefined` 。不然直接使用可能会引起报错。
 ```typescript
 interface User {
     readonly id: number; // 只读属性
@@ -162,7 +163,7 @@ if (user.email) {
 
 
 ## 只读属性
-属性名前面加上readonly关键字，表示这个属性是只读属性，不能修改。只读属性只能在对象初始化期间赋值，此后就不能修改该属性。
+属性名前面加上 `readonly` 关键字，表示这个属性是只读属性，不能修改。只读属性只能在对象初始化期间赋值，此后就不能修改该属性。
 ```typescript
 interface User {
     readonly id: number; // 只读属性
@@ -177,7 +178,7 @@ const user: User = {
 
 // user.id = 2; // 错误：不能修改只读属性
 ```
-需要注意的是，如果一属性值是一个对象，那么readonly修饰符并不禁止修改该对象的属性，只是禁止完全替换这个对象。
+需要注意的是，如果一属性值是一个对象，那么 `readonly` 修饰符并不禁止修改该对象的属性，只是禁止完全替换这个对象。
 
 ```typescript
 interface User {
@@ -205,7 +206,7 @@ user.address = { // 错误：不能修改只读属性
     city: "Los Angeles",
 }; 
 ```
-添加只读的另一种方法是使用`as const`关键字。
+添加只读的另一种方法是使用 `as const` 关键字。
 ```typescript
 const myUser = {
   name: "Sabrina",
@@ -258,7 +259,7 @@ const obj: MyObj = {
     baz: "c",
 };
 ```
-在上面的例子中，我们定义了一个 MyObj 类型，其中的属性名可以是字符串或数字，属性类型可以是字符串或数字。我们还定义了一个 obj 对象，其中的属性名和属性类型都是符合 MyObj 类型的。
+在上面的例子中，我们定义了一个 `MyObj` 类型，其中的属性名可以是字符串或数字，属性类型可以是字符串或数字。我们还定义了一个 `obj` 对象，其中的属性名和属性类型都是符合 `MyObj` 类型的。
 
 需要注意的是`property`属性名是可以随意起的。
 
@@ -301,9 +302,9 @@ const { name, age }:Person = person;
 console.log(name); // 输出 "Alice"
 console.log(age); // 输出 25
 ```
-上面的例子中，我们定义了一个 Person 类型，其中包含了 name 和 age 属性。然后，我们使用解构赋值将对象 person 中的属性值赋值给变量 name 和 age。
+上面的例子中，我们定义了一个 `Person` 类型，其中包含了 `name` 和 `age` 属性。然后，我们使用解构赋值将对象 `person` 中的属性值赋值给变量 `name` 和 `age` 。
 
-需要注意的是，目前不能给解构变量添加指定类型。因为解构赋值的冒号，在JavaScript有其他用途。
+需要注意的是，目前不能给解构变量添加指定类型。因为解构赋值的冒号，在 JavaScript 有其他用途。
 
 ```typescript
 type Person = {
@@ -321,7 +322,7 @@ const { name:userName, age:userAge }= person;
 // const userName = person.name;
 // const userAge = person.age;
 ```
-上面的例子中，我们使用了对象的解构赋值，将对象 person 中的 name 和 age 属性赋值给变量 userName 和 userAge。实现了 解构赋值的重命名。
+上面的例子中，我们使用了对象的解构赋值，将对象 `person` 中的 `name` 和 `age` 属性赋值给变量 `userName` 和 `userAge` 。实现了 解构赋值的重命名。
 
 我们可以给解构变量添加默认值。
 ```typescript
@@ -333,7 +334,7 @@ function fun({name:userName = 'yuwb', age:userAge = 20}) {
     console.loh(userAge)
 }
 ```
-需要注意，在解构赋值中冒号`:`为变量重命名，不是指定类型，在开发中要避免弄错。
+需要注意，在解构赋值中冒号 `:` 为变量重命名，不是指定类型，在开发中要避免弄错。
 
 ## 结构类型原则
 
@@ -380,7 +381,7 @@ const person: {
     car: 'BMW'
 }; // 报错
 ```
-如上例中，person对象使用了字面量创建，但是属性car是不存在的，所以会报错。
+如上例中， `person` 对象使用了字面量创建，但是属性 `car` 是不存在的，所以会报错。
 
 我们可以根据结构类型原则，将字面量等号右边的字面量改成一个变量，就不会报错了。
 ```typescript
@@ -410,7 +411,7 @@ const person1: {
 
 ## 空对象
 
-在 TypeScript 中，空对象是一种特殊的对象类型，表示没有任何属性。空对象的类型是`{}`。
+在 TypeScript 中，空对象是一种特殊的对象类型，表示没有任何属性。空对象的类型是 `{}` 。
 
 ```typescript
 const obj = {}
@@ -419,7 +420,7 @@ const obj = {}
 const obj:{} = {}
 ```
 
-因此我们应该避免直接使用`{}`来创建空对象。
+因此我们应该避免直接使用 `{}` 来创建空对象。
 
 ```typescript
 const obj = {}

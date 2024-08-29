@@ -7,7 +7,7 @@ permalink: /TypeScript/6a3kyjf9/
 
 函数的类型声明，需要在声明函数时，给出参数的类型和返回值的类型。
 
-如果函数没有具体的返回值，可以使用`void`表示没有返回值。返回值的类型也可以不写，因为 TypeScript 自己会根据 有无`return`和返回值的类型推断出来。
+如果函数没有具体的返回值，可以使用 `void` 表示没有返回值。返回值的类型也可以不写，因为 TypeScript 自己会根据 有无 `return` 和返回值的类型推断出来。
 
 ## 函数定义
 ```typescript
@@ -27,7 +27,7 @@ const hello: (txt: string) => void = function (txt) {
 
 ## 函数类型定义
 
-可以使用 type 或 interface 来定义函数类型。
+可以使用 `type` 或 `interface` 来定义函数类型。
 ```typescript
 // 使用 type 定义函数类型
 type Add = (a: number, b: number) => number;
@@ -38,7 +38,7 @@ interface Subtract {
 }
 const subtract: Subtract = (x, y) => x - y;
 ```
-函数的类型还可以使用对象写法。需要注意的时，这种写法的函数参数与返回值之间，间隔符是冒号:，而不是正常写法的箭头=>，因为这里采用的是对象类型的写法，对象的属性名与属性值之间使用的是冒号。
+函数的类型还可以使用对象写法。需要注意的时，这种写法的函数参数与返回值之间，间隔符是冒号 `:` ，而不是正常写法的箭头 `=>` ，因为这里采用的是对象类型的写法，对象的属性名与属性值之间使用的是冒号。
 ```typescript
 type Add = {
     (a: number, b: number): number;
@@ -58,7 +58,7 @@ console.log(subtract) // (x, y) => x - y
 console.log(subtract.version) // 1.0.1
 ```
 
-需要注意的是函数类型里的参数名也是必要的，如果没有，会导致Typescript任务参数类型都是any。
+需要注意的是函数类型里的参数名也是必要的，如果没有，会导致 Typescript 认为参数类型都是 `any`。
 ```typescript
 type Add = (number, number) => number; //  type Add = (number: any, number: any) => number
 const add: Add = (x, y) => x + y;
@@ -98,7 +98,7 @@ function add(x: number, f: Function):Function  {
   return f()
 }
 ```
-需要注意的时，Function 类型的函数可以接受任意数量的参数，每个参数的类型都是any，返回值的类型也是any，代表没有任何约束，所以不建议使用这个类型，给出函数详细的类型声明会更好。
+需要注意的时，Function 类型的函数可以接受任意数量的参数，每个参数的类型都是 `any` ，返回值的类型也是 `any` ，代表没有任何约束，所以不建议使用这个类型，给出函数详细的类型声明会更好。
 
 ## 箭头函数
 
@@ -110,7 +110,7 @@ const add = (x: number, y: number): number => x + y;
 // 使用箭头函数表示函数类型
 const add: (x: number, y: number) => number = (x, y) => x + y;
 ```
-如上面示例，类型写在箭头函数的定义里面，与使用箭头函数表示函数类型，写法有所不同，一个写在参数后面，一个写在 => 箭头后面吗，但结果是一样的。
+如上面示例，类型写在箭头函数的定义里面，与使用箭头函数表示函数类型，写法有所不同，一个写在参数后面，一个写在  `=>` 箭头后面，但结果是一样的。
 
 ## 可选参数
 
@@ -138,7 +138,7 @@ function add(x: number, y:number = 1): number {
 add(1, 2); // 3
 add(1); // 2
 ```
-需要注意的是可选参数与默认值不能同时使用。以及设有默认值的参数，如果传入`undefined`也会触发默认值，因此具有默认值的参数如果不位于参数列表的末尾，调用时不能省略，如果要触发默认值，可以显式传入 `undefined` 。
+需要注意的是可选参数与默认值不能同时使用。以及设有默认值的参数，如果传入 `undefined` 也会触发默认值，因此具有默认值的参数如果不位于参数列表的末尾，调用时不能省略，如果要触发默认值，可以显式传入 `undefined` 。
 ```typescript
 function add(x: number, y?:number = 1): number { // 报错 参数不能包含问号和初始化表达式。
   return x + y;
@@ -176,7 +176,7 @@ function add({x, y = 1}: Point): number {
 
 ## ...(rest)参数
 
-在 TypeScript 中，rest 参数（剩余参数）允许我们将不定数量的参数作为数组传递给函数。这在处理可变数量的参数时非常有用。使用 rest 参数时，需要在参数前加上三个点（...），并且它必须是函数参数列表中的最后一个参数。
+在 TypeScript 中， `rest` 参数（剩余参数）允许我们将不定数量的参数作为数组传递给函数。这在处理可变数量的参数时非常有用。使用 `rest` 参数时，需要在参数前加上三个点（ `...` ），并且它必须是函数参数列表中的最后一个参数。
 
 需要注意的是 ，它可以适用于数组和元祖。
 
@@ -196,7 +196,7 @@ function add(x: number,...y: [number, number?, number?]): number {
   return x + y.reduce((acc, cur) => acc + cur, 0);
 }
 ```
-rest参数可以嵌套使用。也可以与变量解构一起使用。
+`rest` 参数可以嵌套使用。也可以与变量解构一起使用。
 ```typescript
 function add(x: number,...y: [number,...number[]]): number {
   return x + y.reduce((acc, cur) => acc + cur, 0);
@@ -213,7 +213,7 @@ function repeat(str: string, times: number): string {
 
 ## 只读参数
 
-在 TypeScript 中，如果你想要定义一个函数，使其参数为只读（即在函数内部不允许修改这些参数），可以使用 readonly 修饰符。这个修饰符通常用于数组和对象类型，以确保它们的内容在函数内部不会被修改。
+在 TypeScript 中，如果你想要定义一个函数，使其参数为只读（即在函数内部不允许修改这些参数），可以使用 `readonly` 修饰符。这个修饰符通常用于数组和对象类型，以确保它们的内容在函数内部不会被修改。
 
 ```typescript
 function printNumbers(numbers: readonly number[]): void {
@@ -224,7 +224,7 @@ function printNumbers(numbers: readonly number[]): void {
 const nums: number[] = [1, 2, 3];
 printNumbers(nums); // 输出: 1, 2, 3
 ```
-对于对象参数，可以使用 readonly 修饰符来确保对象的属性在函数内部不会被修改。
+对于对象参数，可以使用 `readonly` 修饰符来确保对象的属性在函数内部不会被修改。
 
 ```typescript
 interface User {
@@ -243,7 +243,7 @@ printUser(user); // 输出: ID: 1, Name: Alice
 
 ## void类型
 
-void 类型表示函数没有返回值。如果设置了 void 类型的函数，却返回了一个值，就会报错。但是需要注意的是，void 类型的函数可以返回 undefined 或 null。
+`void` 类型表示函数没有返回值。如果设置了 `void` 类型的函数，却返回了一个值，就会报错。但是需要注意的是，void 类型的函数可以返回 `undefined` 或 `null` 。
 
 :::tip
 关于void类型的详细内容可以查看：[void类型](/TypeScript/e9ystght/#void类型)
@@ -251,13 +251,13 @@ void 类型表示函数没有返回值。如果设置了 void 类型的函数，
 
 ## never类型
 
-never类型表示肯定不会出现的值。它用在函数的返回值，就表示某个函数肯定不会返回值，即函数不会正常执行结束。
+`never` 类型表示肯定不会出现的值。它用在函数的返回值，就表示某个函数肯定不会返回值，即函数不会正常执行结束。
 :::tip
 关于never类型的详细内容可以查看：[never类型](/TypeScript/e9ystght/#never类型)
 :::
 
 ::: tip
-注意，never类型不同于void类型。前者表示函数没有执行结束，不可能有返回值；后者表示函数正常执行结束，但是不返回值，或者说返回undefined。
+注意， `never` 类型不同于 `void` 类型。前者表示函数没有执行结束，不可能有返回值；后者表示函数正常执行结束，但是不返回值，或者说返回 `undefined` 。
 :::
 
 ## 局部类型
@@ -273,7 +273,7 @@ function hello(txt: string) {
 
 const newTxt: message = hello("world"); // 报错
 ```
-上面示例中，类型message是在函数hello()内部定义的，只能在函数内部使用。在函数外部使用，就会报错。
+上面示例中，类型 `message` 是在函数 `hello()` 内部定义的，只能在函数内部使用。在函数外部使用，就会报错。
 
 ## 高阶函数
 
@@ -325,7 +325,7 @@ console.log(combine("Number: ", 42));   // 输出: Number: 42
 
 JavaScript 语言使用构造函数，生成对象的实例。
 
-构造函数的最大特点，就是必须使用new命令调用。
+构造函数的最大特点，就是必须使用 `new` 命令调用。
 
 内置构造函数
 ```typescript

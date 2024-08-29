@@ -33,7 +33,7 @@ const obj: Person = {
 
 ## 类型读取
 
-和其他类型一样，可以使用方括号`[]`读取接口某个属性的类型。
+和其他类型一样，可以使用方括号 `[]` 读取接口某个属性的类型。
 
 ```typescript
 interface Person {
@@ -44,10 +44,10 @@ type nameType = Person['name']; // string
 ```
 
 ## 接口表示对象语法
-interface 可以表示对象的各种语法，主要有对象属性，对象的属性索引，对象方法，函数，构造函数等。
+`interface` 可以表示对象的各种语法，主要有对象属性，对象的属性索引，对象方法，函数，构造函数等。
 
 
-1. 对象属性。可以使用`?`表示属性是可选的。使用`readonly`表示属性是只读的。
+1. 对象属性。可以使用 `?` 表示属性是可选的。使用 `readonly` 表示属性是只读的。
 
 ```typescript
 interface Person {
@@ -57,7 +57,7 @@ interface Person {
 }
 ```
 
-2. 对象的属性索引。可以使用`[]`表示属性是索引的。需要注意属性索引共有三种类型：`string`, `number`, `symbol`。
+2. 对象的属性索引。可以使用`[]`表示属性是索引的。需要注意属性索引共有三种类型： `string` ,  `number` , `symbol` 。
 
 ```typescript
 interface Person {
@@ -96,7 +96,7 @@ interface Person {
   greet(name:string, age:number): void;
 }
 ```
-interface 里定义的函数重载，不需要具体实现。由于对象内部定义方法时，无法使用函数重载的语法，所以需要额外在对象外部给出函数方法的实现。如下面例子中，MyFunc函数的实现需要在对象外部给出。
+`interface` 里定义的函数重载，不需要具体实现。由于对象内部定义方法时，无法使用函数重载的语法，所以需要额外在对象外部给出函数方法的实现。如下面例子中， `MyFunc` 函数的实现需要在对象外部给出。
 
 ```typescript
 
@@ -122,7 +122,7 @@ const a: A = {
 ```
 
 
-4. 函数。interface 可以声明对立的函数类型。
+4. 函数。 `interface` 可以声明对立的函数类型。
 
 ```typescript
 interface Person {
@@ -134,7 +134,7 @@ const person: Person = (name:string) => {
   console.log(name);
 }
 ```
-5. 构造函数。interface 内部可以使用 `new` 关键字来表示构造函数。
+5. 构造函数。 `interface` 内部可以使用 `new` 关键字来表示构造函数。
 
 ```typescript
 
@@ -148,7 +148,7 @@ interface Person {
 
 接口可以继承其他类型。
 
-1. interface 继承 interface。使用 `extends` 关键字。
+1. `interface` 继承 `interface` 。使用 `extends` 关键字。
 
 ```typescript
 interface Person {
@@ -177,7 +177,7 @@ interface Circle extends Style, Shape {
 ```
 需要注意的事，多重继承时，如果多个父接口存在同名属性，那么这些同名属性不能有类型冲突，否则会报错。
 
-2. interface 继承 type。使用 `extends` 关键字。
+2. `interface` 继承 `type` 。使用 `extends` 关键字。
 
 ```typescript
 type Person = {
@@ -189,7 +189,7 @@ interface Student extends Person {
   grade: string;
 }
 ```
-3. interface 继承 class。使用 `extends` 关键字。
+3. `interface` 继承 `class` 。使用 `extends` 关键字。
 
 ```typescript
 class Person {
@@ -228,11 +228,11 @@ interface Person {
   address: string;
 }
 ```
-合并后的接口会保留所有属性的类型。如上例中，合并后的接口会保留 `name` 和 `age` 属性，以及`address` 属性。
+合并后的接口会保留所有属性的类型。如上例中，合并后的接口会保留 `name` 和 `age` 属性，以及 `address` 属性。
 
 接口合并，可以方便我们在使用外部库或者全局对象时，添加自定义属性。
 
-举例来说，Web 网页开发经常会对windows对象和document对象添加自定义属性，但是 TypeScript 会报错，因为原始定义没有这些属性。解决方法就是把自定义属性写成 interface，合并进原始定义。
+举例来说，Web 网页开发经常会对 `windows` 对象和 `document` 对象添加自定义属性，但是 `TypeScript` 会报错，因为原始定义没有这些属性。解决方法就是把自定义属性写成 `interface` ，合并进原始定义。
 
 ```typescript
 interface Document {
@@ -241,7 +241,7 @@ interface Document {
 
 document.foo = "hello";
 ```
-如上，如果我们直接使用 `document.foo = "hello"` 会报错，因为 `document` 是一个全局对象，没有 `foo` 属性。但是如果我们把 `foo` 写成 interface，合并进原始定义，就不会报错了。
+如上，如果我们直接使用 `document.foo = "hello"` 会报错，因为 `document` 是一个全局对象，没有 `foo` 属性。但是如果我们把 `foo` 写成 `interface` ，合并进原始定义，就不会报错了。
 
 
 同名接口合并时，如果有同名属性，那么这些同名属性不能有类型冲突，否则会报错。如果有同名方法，那么会发生函数重载。而且，后面的定义比前面的定义具有更高的优先级。
@@ -296,7 +296,7 @@ interface A {
 }
 ```
 
-如果两个 interface 组成的联合类型存在同名属性，那么该属性的类型也是联合类型。
+如果两个 `interface` 组成的联合类型存在同名属性，那么该属性的类型也是联合类型。
 
 ```typescript
 interface Circle {
@@ -315,11 +315,11 @@ s.area; // bigint | number
 
 ## interface 与 type 的区别
 
-interface 与 type 命令，都可以表示对象类型。
+`interface` 与 `type` 命令，都可以表示对象类型。
 
 
-1. type 能够表示非对象类型，interface 只能够表示对象类型。
-2. interface 可以继承其他接口，type 不止能继承，但是可以使用`&`实现继承效果。
+1. `type` 能够表示非对象类型， `interface` 只能够表示对象类型。
+2. `interface` 可以继承其他接口， `type` 不止能继承，但是可以使用 `&` 实现继承效果。
 ```typescript
 // interface 使用 extends
 interface Person {
@@ -339,7 +339,7 @@ type Student = Person &  {
   grade: string;
 }
 ```
-在继承时，type和interface的是可以相互继承的。
+在继承时， `type` 和 `interface` 的是可以相互继承的。
 
 ```typescript
 type Person = {
@@ -360,7 +360,7 @@ type Student = Person &  {
 }
 ```
 
-3. 同名的 interface 会合并成一个 interface，而同名的 type 会报错，在TypeScript 中不允许同名的 type。
+3. 同名的 `interface` 会合并成一个 `interface` ，而同名的 `type` 会报错，在 TypeScript 中不允许同名的 `type` 。
 
 ```typescript
 type Person = {
@@ -371,7 +371,7 @@ type Person = {
   address: string;
 } // 报错
 ```
-4. type 可以使用 `keyof` 关键字获取对象的属性名。interface 不能使用 `keyof` 关键字获取对象的属性名，会导致报错。
+4. `type` 可以使用 `keyof` 关键字获取对象的属性名。 `interface` 不能使用 `keyof` 关键字获取对象的属性名，会导致报错。
 
 
 ```typescript
@@ -391,7 +391,7 @@ interface PersonCopy {
 }; // 报错
 
 ```
-5. this 关键字只能在 interface 中使用。
+5. `this` 关键字只能在 `interface` 中使用。
 
 ```typescript
 // 正确
@@ -404,7 +404,7 @@ type Foo = {
   add(num: number): this;
 };
 ```
-6. type 可以扩展原始数据类型，interface 不行。
+6. `type` 可以扩展原始数据类型， `interface` 不行。
 
 ```typescript
 // 正确
@@ -418,7 +418,7 @@ interface MyStr extends string {
 }
 ```
 
-7. interface无法表达某些复杂类型（比如交叉类型和联合类型），但是type可以。
+7. `interface` 无法表达某些复杂类型（比如交叉类型和联合类型），但是 `type` 可以。
 
 ```typescript
 type A = {
