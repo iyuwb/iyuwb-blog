@@ -324,7 +324,7 @@ export default defineUserConfig({
                         {
                             text: '每日积累',
                             icon: 'ic:baseline-dashboard',
-                            items: ['『202408』每日积累']
+                            items: ['『202408』每日积累','『202409』每日积累']
                         },
                     ]
                 },
