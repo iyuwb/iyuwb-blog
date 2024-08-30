@@ -1,8 +1,8 @@
 ---
-title: JavaScript-ESM与CommonJS
+title: ESM 模块 与 CommonJS 模块
 author: 耶温
 createTime: 2024/08/29 22:00:42
-permalink: /JavaScript/uf75hg8s/
+permalink: /article/cprm0p8o/
 ---
 # JavaScript-ESM 与 CommonJS 模块
 
