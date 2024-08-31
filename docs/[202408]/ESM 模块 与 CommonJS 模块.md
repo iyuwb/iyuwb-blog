@@ -1,5 +1,5 @@
 ---
-title: ESM 模块 与 CommonJS 模块
+title: JavaScript-ESM 模块 与 CommonJS 模块
 author: 耶温
 createTime: 2024/08/29 22:00:42
 permalink: /article/cprm0p8o/

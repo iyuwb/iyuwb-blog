@@ -1,9 +1,10 @@
 ---
-title: JavaScript-Event Loop
+title: JavaScript-事件循环机制（Event Loop）
 author: 耶温
-createTime: 2024/08/30 15:53:33
-permalink: /JavaScript/3n85m43u/
+createTime: 2024/08/31 14:37:32
+permalink: /article/wt16uq57/
 ---
+
 # JavaScript-事件循环机制（Event Loop）
 
 JavaScript 的事件循环机制（Event Loop）是其异步编程模型的核心部分。它允许 JavaScript 在单线程环境中处理异步操作，确保代码的执行顺序和响应性。
