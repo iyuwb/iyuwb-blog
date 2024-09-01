@@ -695,5 +695,57 @@ Student.sayHello(); // Hello, my name is yuwb
 ```
 ## 泛型类
 
+类可以写成泛型，使用类型参数。类型参数可以在类的属性、方法、构造函数中使用。
+
+```typescript
+class Person<T> {
+  cname: T;
+  constructor(cname: T) {
+    this.cname = cname;
+  }
+  sayHello(): void {
+    console.log(`Hello, my name is ${this.cname}`);
+  }
+}
+
+const person = new Person<string>("yuwb");
+person.sayHello(); // Hello, my name is yuwb
+
+const person1 = new Person<number>(18);
+person1.sayHello(); // Hello, my name is 18
+```
+
+需要注意，静态成员不能使用类型参数。
+```typescript
+class Person<T> {
+    static cname: T; // 报错 静态成员不能引用类类型参数。
+}
+```
+
+## 抽象类与抽象成员
+
+在 TypeScript 中，我们可以使用 `abstract` 关键字来定义抽象类和抽象成员。抽象类是不能被实例化的类，只能被继承。抽象成员是抽象类中定义的成员，必须在子类中实现。
+
+```typescript
+abstract class Person {
+  abstract name: string;
+  abstract sayHello(): void;
+}
+
+class Student extends Person {
+  name: string = "yuwb";
+  sayHello(): void {
+    console.log(`Hello, my name is ${this.name}`);
+  }
+}
+
+const student = new Student();
+student.sayHello(); // Hello, my name is yuwb
+```
+
+注意点：
+- 抽象类不能被实例化，只能被继承。
+- 抽象成员只能存在于抽象类，不能存在于普通类。
+- 抽象成员必须在子类中实现，否则子类也必须被声明为抽象类。
 
 

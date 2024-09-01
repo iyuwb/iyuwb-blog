@@ -385,3 +385,23 @@ let result = myDemoLib.sayHello("你好");
 let count = myDemoLib.count;
 ```
 
+
+## abstract 命令
+在 TypeScript 中， `abstract` 关键字用于定义抽象类和抽象方法。抽象类是不能被实例化的类，只能被继承。抽象成员是抽象类中定义的成员，必须在子类中实现。
+
+```typescript
+abstract class Person {
+  abstract name: string;
+  abstract sayHello(): void;
+}
+
+class Student extends Person {
+  name: string = "yuwb";
+  sayHello(): void {
+    console.log(`Hello, my name is ${this.name}`);
+  }
+}
+
+const student = new Student();
+student.sayHello(); // Hello, my name is yuwb
+```

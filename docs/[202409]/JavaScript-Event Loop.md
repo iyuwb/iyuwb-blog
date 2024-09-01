@@ -3,6 +3,8 @@ title: JavaScript-事件循环机制（Event Loop）
 author: 耶温
 createTime: 2024/08/31 14:37:32
 permalink: /article/wt16uq57/
+tags:
+  - JavaScript
 ---
 
 # JavaScript-事件循环机制（Event Loop）
