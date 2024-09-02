@@ -748,4 +748,48 @@ student.sayHello(); // Hello, my name is yuwb
 - 抽象成员只能存在于抽象类，不能存在于普通类。
 - 抽象成员必须在子类中实现，否则子类也必须被声明为抽象类。
 
+## 类中的 this
+
+在 TypeScript 中，我们可以使用 `this` 关键字来引用类的实例。
+
+```typescript
+class Person {
+  name: string;
+  constructor(name: string) {
+    this.name = name;
+  }
+  sayHello(): void {
+    console.log(`Hello, my name is ${this.name}`);
+  }
+}
+
+const person = new Person("yuwb");
+person.sayHello(); // Hello, my name is yuwb
+```
+
+如下所示，当我们将 `sayHello` 方法赋值给另一个对象时，`this` 的指向就发生了变化，指向了新的对象，而不是原来的对象。
+```js
+class A {
+  constructor() {
+    this.name = "yuwb";
+  }
+  sayHello(): void {
+    console.log(`Hello, my name is ${this.name}`);
+  }
+}
+
+const a = new A();
+a.sayHello(); // Hello, my name is yuwb
+
+const b = {
+  name:'yevin',
+  sayHello: a.sayHello
+}
+b.sayHello(); // Hello, my name is yevin
+```
+
+
+
+
+
 
