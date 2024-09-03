@@ -101,6 +101,148 @@ y = x; // 正确
 
 枚举类型（`enum`）是一种特殊的类型，TypeScript 允许我们为一组数值赋予友好的名字。枚举类型可以用于表示一组相关的常量，例如星期、月份、颜色等。
 
+1. 定义常量
+
+我们可以使用 `enum` 关键字来定义一个枚举类型。枚举类型中的每个成员都有一个对应的数字值，默认从 `0` 开始递增。
+```typescript
+enum Direction {
+  Up,
+  Down,
+  Left,
+  Right,
+}
+
+// 相当于  js
+const Direction = {
+  Up: 0,
+  Down: 1,
+  Left: 2,
+  Right: 3,
+}
+
+// 使用
+const direction = Direction.Up; // 0
+// 相当于 js
+const direction = Direction["Up"]; // 0
+```
+需要注意的是，Enum 成员值都是只读的，不能修改。
+```typescript
+Direction.Up = 1; // 报错 无法为“Up”赋值，因为它是只读属性。
+```
+2. 定义常量值
+
+我们也可以为枚举类型中的每个成员指定一个具体的值。例如：
+```typescript
+enum Direction {
+  Up = "UP",
+  Down = "DOWN",
+  Left = "LEFT",
+  Right = "RIGHT",
+}
+// 相当于 js
+const Direction = {
+  Up: "UP",
+  Down: "DOWN",
+  Left: "LEFT",
+  Right: "RIGHT",
+}
+// 使用
+const direction = Direction.Up; // Up
+// 相当于 js
+const direction = Direction["Up"]; // Up
+```
+3. Enum 类型
+
+Enum本身就是一种类型。
+
+```typescript
+enum Direction {
+  Up,
+  Down,
+  Left,
+  Right,
+}
+let direction: Direction = Direction.Up; // 正确
+let direction: number = Direction.Up; // 正确
+let direction: string = Direction.Up; // 报错 不能将类型“Direction”分配给类型“string”。
+```
+如上所示，变量 `direction` 的类型写成 `Direction` 或 `number` 都是可以的。
+
+4. 适用场景
+
+枚举比较适合不关注具体值，只关注值名字。
+```typescript
+enum Direction {
+  Up,
+  Down,
+  Left,
+  Right,
+}
+
+function move(direction: Direction) {
+  switch (direction) {
+    case Direction.Up:
+      // ...
+      break;
+    case Direction.Down:
+      // ...
+      break;
+    case Direction.Left:
+      // ...
+      break;
+    case Direction.Right:
+  // ...
+}
+move(Direction.Up); // 正确
+move(0); // 正确
+move(123); // 正确
+move("Up"); // 报错
+```
+如上所示，枚举类型有一个缺点就是输入任何数值都不会报错。
+
+5. 枚举的值
+
+（1）数值
+
+Enum成员默认不必手动赋值，系统会从 `0` 按照顺序开始递增。当然也可以手动指定枚举的值。
+
+```typescript
+enum Direction {
+  Up = 10,
+  Down,
+  Left,
+  Right,
+}
+// 相当于 js
+const Direction = {
+  Up: 10,
+  Down: 11,
+  Left: 12,
+  Right: 13,
+}
+```
+如上，如果设置了 `Up` 的值为 `10`，那么 `Down` 的值就是 `11`，以此类推。需要注意的是，当枚举的值是数值是，可以为整数和小数，不能为 `bigint`。 也可以是计算表达式或者是有返回值的函数调用。
+```typescript
+
+enum Direction {
+    Up = 10,
+    Down = Up + 1,
+    Left = Math.PI,
+    Right = Math.random(),
+}
+```
+
+（2）字符串
+
+枚举的值也可以是字符串。
+
+```typescript
+enum Direction {
+  Up = "UP",
+  Down = "DOWN",
+  Left = "LEFT",
+  Right = "RIGHT",
+}
 
 ## 数组类型
 
