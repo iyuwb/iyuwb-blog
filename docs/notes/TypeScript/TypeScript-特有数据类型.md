@@ -97,6 +97,10 @@ y = x; // 正确
 :::tip
 关于 `void` 类型的详细内容可以查看：[TypeScript-never与void](/TypeScript/e9ystght/#void类型)
 :::
+## 枚举类型
+
+枚举类型（`enum`）是一种特殊的类型，TypeScript 允许我们为一组数值赋予友好的名字。枚举类型可以用于表示一组相关的常量，例如星期、月份、颜色等。
+
 
 ## 数组类型
 

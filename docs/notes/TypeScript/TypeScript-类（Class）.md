@@ -788,8 +788,43 @@ const b = {
 b.sayHello(); // Hello, my name is yevin
 ```
 
+在TypeScript中，允许函数增加 `this` 参数，放在参数列表的第一位，用于指定函数内部的 `this` 指向。如下所示，我们给 `sayHello` 方法增加了一个 `this` 参数，指定了 `this` 指向 `Person` 类的实例。
 
+```typescript
+class Person {
+  name: string;
+  constructor(name: string) {
+    this.name = name;
+  }
+  sayHello(this: Person): void {
+    console.log(`Hello, my name is ${this.name}`);
+  }
+}
 
+const person = new Person("yuwb");
+person.sayHello(); // Hello, my name is yuwb
 
+const b = {
+  name:'yevin',
+  sayHello: person.sayHello
+}
+b.sayHello(); // 报错 类型“{ name: string; sayHello: (this: Person) => void; }”的参数不能赋给类型“Person”的参数。
+```
+`this` 作为参数时，可以声明为对象。
+```typescript
+function sayHello(this: { name: string }): void {
+  this.name = "yuwb";
+  this.name = 0; // 报错 不能将类型“number”分配给类型“string”。
+}
+```
 
-
+在类的内部，`this` 可以直接当做类型使用，表示当前类的实例对象。
+```typescript
+class Person {
+  name: string;
+  set(value: string): this {
+    this.name = value;
+    return this;
+  }
+}
+```
