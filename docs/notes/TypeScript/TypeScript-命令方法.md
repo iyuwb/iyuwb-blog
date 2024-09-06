@@ -153,6 +153,41 @@ if (typeof a === "number") {
 
 
 
+## keyof 运算符
+
+在 TypeScript 中， `keyof` 运算符用于获取一个对象类型的所有键，并返回一个联合类型。它可以用于类型推断和类型检查。
+
+1. 基本用法
+
+```typescript
+interface Person {
+    name: string;
+    age: number;
+}
+
+type PersonKeys = keyof Person; // "name" | "age"
+```
+
+
+2. keyof 与映射类型
+
+```typescript
+interface Person {
+    name: string;
+    age: number;
+}
+
+type ReadonlyPerson = {
+    readonly [K in keyof Person]: Person[K];
+};
+
+const person: ReadonlyPerson = {
+    name: "Alice",
+    age: 30
+};
+```
+
+
 ## as 命令
 
 在 TypeScript 中，`as` 关键字用于类型断言（Type Assertion），它允许开发者告诉编译器某个值的具体类型。它可以将一个值的类型断言为另一个类型。

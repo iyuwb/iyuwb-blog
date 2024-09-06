@@ -126,6 +126,7 @@ const direction = Direction.Up; // 0
 const direction = Direction["Up"]; // 0
 ```
 需要注意的是，Enum 成员值都是只读的，不能修改。
+
 ```typescript
 Direction.Up = 1; // 报错 无法为“Up”赋值，因为它是只读属性。
 ```
@@ -222,8 +223,8 @@ const Direction = {
 }
 ```
 如上，如果设置了 `Up` 的值为 `10`，那么 `Down` 的值就是 `11`，以此类推。需要注意的是，当枚举的值是数值是，可以为整数和小数，不能为 `bigint`。 也可以是计算表达式或者是有返回值的函数调用。
-```typescript
 
+```typescript
 enum Direction {
     Up = 10,
     Down = Up + 1,
@@ -234,7 +235,7 @@ enum Direction {
 
 （2）字符串
 
-枚举的值也可以是字符串。
+枚举的值也可以是字符串。不过字符串枚举的所有成员都必须手动赋值。
 
 ```typescript
 enum Direction {
@@ -243,6 +244,109 @@ enum Direction {
   Left = "LEFT",
   Right = "RIGHT",
 }
+```
+如果没有设置，成员值默认为数值，且位置必须在字符串成员之前。
+```typescript
+enum Direction {
+  Up = "UP",
+  Down, // 报错 枚举成员必须具有初始化表达式。
+  Left,
+  Right,
+}
+
+// 正确
+enum Direction {
+  Up ,
+  Down,
+  Left,
+  Right = "RIGHT",
+}
+```
+枚举成员可以是字符串或者数值混合。
+```typescript
+enum Direction {
+  Up = "UP",
+  Down = 1,
+}
+```
+
+6. 枚举合并
+
+多个同名的枚举类型可以合并，合并后的枚举类型会包含所有枚举成员。
+
+```typescript
+enum Direction {
+  Up,
+  Down,
+}
+
+enum Direction {
+  Left = 100, 
+  Right,
+}
+// 相当于 js
+const Direction = {
+  Up: 0,
+  Down: 1,
+  Left: 100,
+  Right: 101,
+}
+```
+需要注意的是，合并的时候只允许其中一个枚举类型初始值省略，否则会报错。
+```typescript
+enum Direction {
+  Up,
+  Down,
+}
+
+enum Direction {
+  Left, // 在包含多个声明的枚举中，只有一个声明可以省略其第一个枚举元素的初始化表达式。
+  Right,
+}
+
+```
+
+7. 枚举反向映射
+
+枚举类型具有反向映射，即可以通过枚举成员的值获取到枚举成员的名字。
+
+```typescript
+enum Direction {
+  Up,
+  Down,
+  Left,
+  Right,
+}
+
+console.log(Direction.Up); // 0
+console.log(Direction[0]); // Up
+```
+需要注意的是，只有数字枚举类型具有反向映射，字符串枚举类型没有反向映射。
+
+8. 枚举中的`key of`
+
+`keyof` 运算符可以取出 Enum 结构的所有成员名，作为联合类型返回。
+
+```typescript
+enum Direction {
+  Up,
+  Down,
+  Left,
+  Right,
+}
+
+type DirectionKey = keyof typeof Direction; // "Up" | "Down" | "Left" | "Right"
+```
+如果，要返回枚举中的所有成员值，可以使用 `in` 运算符。
+```typescript
+enum MyEnum {
+  A = "a",
+  B = "b",
+}
+
+type Foo = { [key in MyEnum]: any };  // { a：any, b: any }
+```
+
 
 ## 数组类型
 
