@@ -126,6 +126,122 @@ console.log(person2.name); // 输出: Alice
 console.log(person2.age);  // 输出: 30
 ```
 
+对于没有类型声明的变量，Tpesccript 会进行类型推断，但是有些时候，类型推断的结果可能不是我们想要的。这时，我们可以使用类型断言来指定变量的类型。
+```typescript
+type T  = 'a'|'b'|'c'
+let t = 'a'  // 推断为 string 类型
+let t1 :T = t  // 报错 不能将类型“string”分配给类型“T”。
+// 需要断言 
+let t1 :T = t as T
+```
+对象类型有严格的字面量检查，如果存在多余的属性，也会报错。这时，我们可以使用类型断言来指定对象的类型。
+```typescript
+const person:{
+    name: string;
+    age: number;
+} = {
+    name: "Alice",
+    age: 30,
+    gender: "female" // 报错  对象字面量只能指定已知属性，并且“gender”不在类型“{ name: string; age: number; }”中
+}
+
+// 断言为以下  正确
+const person:{
+    name: string;
+    age: number;
+} = {
+    name: "Alice",
+    age: 30,
+    gender: "female"
+} as {  // 断言为与等号左边一致
+    name: string;
+    age: number;
+}
+// 或者
+const person:{
+    name: string;
+    age: number;
+} = {
+    name: "Alice",
+    age: 30,
+    gender: "female"
+} as { // 断言为等号右边类型是左边类型的子类型，子类型可以赋值给父类型
+    name: string;
+    age: number;
+    gender: string;
+}
+```
+实际示例：
+```typescript
+const username = document.getElementById("username");
+
+if (username) {
+  (username as HTMLInputElement).value; // 正确
+}
+```
+如上，我们使用类型断言将 `username` 转换为 `HTMLInputElement` 类型，这样我们就可以访问 `value` 属性了。否则会因为 `HTMLElement` 没有 `value` 属性报错。
+
+1. 类型断言的条件
+
+我们在使用类型的断言的时候，并不能把某个值断言为任意类型。类型断言是有前提条件的。值的实际类型与断言的类型必须满足一个条件。前者是后者的子子类型 或者 后者是前者的子类型。
+
+```typescript
+expr as T  // expr 是 T 的子类型 或者 T 是 expr 的子类型
+```
+
+换句话说，实际类型可以断言为一个更加宽泛的类型，也可以断言为一个更加具体的类型。但是不能断言为一个和原值没有关系的类型。
+
+但是我们可以借用 `unknown` 类型，连续断言两次，将任意类型断言为任意类型。因为 `unknown` 类型是所有类型的子类型。
+```typescript
+// 或者写成 <T><unknown>expr
+expr as unknown as T;
+```
+
+2. as const 断言
+
+`as const` 是 TypeScript 提供的一种类型断言，用于将一个对象字面量断言为具有所有属性均为字面量类型的类型。
+
+
+如果没有声明变量的类型，`let` 命令声明的变量会被推断为 Typescript 内置的基本类型之一。对于 `const` 命令声明的变量，则被推断为值类型常量。
+
+```typescript
+let s = 'JavaScript' // 推断为 string 类型
+
+const s = 'JavaScript' // 推断为 'JavaScript' 类型
+
+let s = 'JavaScript' as const // 推断为 'JavaScript' 类型
+```
+
+需要注意的是，`as const` 只能作用于枚举成员、字符串、数字、布尔值、数组或对象字面量。不能作用于变量，表达式等。
+```typescript
+let s = 'JavaScript'
+let s1 = s as const // 报错 
+
+let s = ('java' + 'script') as const // 报错
+```
+
+`as const` 的前置写法为 `<const>exper` 。
+
+`as const` 断言可以作用域整个对象，也可以用于对象的单个属性。
+···
+```typescript
+const v1 = {
+  x: 1,
+  y: 2,
+}; // 类型是 { x: number; y: number; }
+
+const v2 = {
+  x: 1 as const,
+  y: 2,
+}; // 类型是 { x: 1; y: number; }
+
+const v3 = {
+  x: 1,
+  y: 2,
+} as const; // 类型是 { readonly x: 1; readonly y: 2; }
+```
+
+
 ## 类型缩小
 
 在 TypeScript 中，类型缩小（Type Narrowing）是指通过特定的检查或条件，缩小一个变量的类型范围，从而使得 TypeScript 能够更准确地推断出该变量的具体类型。这种特性可以提高代码的类型安全性，减少运行时错误。
