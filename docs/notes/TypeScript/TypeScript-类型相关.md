@@ -223,7 +223,7 @@ let s = ('java' + 'script') as const // 报错
 `as const` 的前置写法为 `<const>exper` 。
 
 `as const` 断言可以作用域整个对象，也可以用于对象的单个属性。
-···
+
 ```typescript
 const v1 = {
   x: 1,
@@ -240,6 +240,149 @@ const v3 = {
   y: 2,
 } as const; // 类型是 { readonly x: 1; readonly y: 2; }
 ```
+
+`as const` 用于数组字面量时，会把数组变成只读元组。
+
+```typescript
+const v1 = [1, 2, 3]; // 类型是 (number | string)[]
+
+const v2 = [1, 2, 3] as const; // 类型是 readonly [1, 2, 3]
+```
+可以利用这个特性，将数组字面量断言为元组类型之后，使用 `rest` 参数，传给函数。
+```typescript
+function add(x: number, y: number) {
+  return x + y;
+}
+
+const nums = [1, 2]; 
+const total = add(...nums); // 报错 扩张参数必须具有元组类型或传递给 rest 参数。
+
+const nums = [1, 2] as const;
+const total = add(...nums); // 正确
+```
+枚举类型也可以使用 `as const` 断言。
+```typescript
+enum Direction {
+  Up,
+  Down,
+  Left,
+  Right,
+}
+
+let direction = Direction.Up; // 类型是 Direction
+
+let direction = Direction.Up as const; // 类型是 Direction.Up 
+```
+3. 非空断言
+
+在 TypeScript 中，非空断言（Non-null Assertion）是一种特殊的类型断言，用于告诉 TypeScript 编译器，某个变量或表达式在运行时一定不会是 `null` 或 `undefined`。这种断言可以避免 TypeScript 编译器在编译时产生 `null` 或 `undefined` 的错误。
+
+非空断言使用 `!` 符号表示，可以放在变量名、属性访问、函数调用等地方。例如：
+
+```typescript
+let username: string | null = "John";
+let nonNullUsername: string = username!; // 非空断言，将 username 断言为非 null 类型
+```
+我们在日常开发中会经常遇到非空断言，比如 `document.getElementById` 返回的元素可能为 `null`，我们可以使用非空断言来告诉 TypeScript 编译器，这个元素一定存在。
+
+```typescript
+const root = document.getElementById("root");
+// 报错  “root”可能为 “null”。
+root.addEventListener("click", (e) => { });
+
+// 非空断言
+const root = document.getElementById("root")!;
+root.addEventListener("click", (e) => { });
+
+// 或者手动判断
+const root = document.getElementById("root");
+if (root) {
+  root.addEventListener("click", (e) => { });
+}
+```
+
+非空断言还可以用于赋值断言，用于 TypeScript 中的设置，类的属性必须初始化的限制。
+
+```typescript
+class Person {
+  name!: string;
+  age!: number;
+  constructor() {
+  }
+}
+```
+4. 断言函数
+在 TypeScript 中，断言函数（Type Assertion Function）是一种特殊的函数，用于将一个值断言为特定的类型。断言函数可以接受一个值和一个类型参数，并返回该值，同时告诉 TypeScript 编译器，该值在运行时具有指定的类型。
+
+断言函数的语法如下：
+
+```typescript
+function isString(value: unknown): void {
+  if (typeof value !== "string") throw new Error("Not a string");
+}
+const aValue: string | number = "Hello";
+isString(aValue);
+```
+如上，断言函数，如果传入的值达不到断言的条件，就会抛出错误。如果达到要求，就不会进行任何操作。
+
+为了更加清晰的表达断言函数， TypeScript 提供了 `asserts` 类型断言函数，用于断言一个值是否为指定的类型。
+
+```typescript
+function isString(value: unknown): asserts value is string {
+  if (typeof value !== "string") throw new Error("Not a string");
+}
+const aValue: string | number = "Hello";
+isString(aValue);
+```
+如上，`sserts value is string`其中 `asserts` 和 `is` 都是关键词， `value` 是函数的参数名， `string` 是函数参数的预期类型。它的意思是，该函数用来断言参数 `value` 的类型是 `string` ，如果达不到要求，程序就会在这里中断。
+
+需要注意的是 ，使用了 `asserts` 命令的函数，不能返回除了 `undefined` 和 `null` 以外的值，否则 TypeScript 编译器会报错。相当于 `void` 类型。
+
+```typescript
+function isString(value: unknown): asserts value is string {
+  if (typeof value !== "string") throw new Error("Not a string");
+  return value; // 报错  不能将类型“string”分配给类型“void”。
+}
+```
+
+如果要断言参数非空，可以使用 `asserts value is NonNullable<typeof value>` 。
+
+```typescript
+function isNonNullable<T>(value: T): asserts value is NonNullable<T> {
+  if (value === null || value === undefined) {
+    throw new Error("Value is null or undefined");
+  }
+}
+```
+`NonNullable` 为 TypeScript 内置类型，用于断言一个值不是 `null` 或 `undefined`。
+
+断言函数的其他写法：
+```typescript
+const isString = (value: unknown): asserts value is string => {
+  if (typeof value !== "string") throw new Error("Not a string");
+};
+
+
+type IsString = (value: unknown) => asserts value is string;
+
+const isString: IsString = (value) => {
+  if (typeof value !== "string") throw new Error("Not a string");
+};
+```
+
+需要注意的是，断言函数 和 类型保护函数是不同的，类型保护函数是用于检查一个值是否具有特定的类型，通常返回值为 `true` 或者 `false` 。而断言函数没有返回值，它只是告诉 TypeScript 编译器，某个值在运行时具有特定的类型，否则就会报错。
+
+我们可以断言函数来确保某个参数保证为真（即不等于 `false` 、 `undefined` 、 `null`）。TypeScript 提供了断言函数的简写形式。
+
+```typescript
+const isTrue = (value: unknown): asserts value  => {
+  if(!value){
+    throw new Error("Value is false");
+  }
+};
+```
+
+
 
 
 ## 类型缩小

@@ -440,3 +440,64 @@ class Student extends Person {
 const student = new Student();
 student.sayHello(); // Hello, my name is yuwb
 ```
+
+
+## asserts 命令
+
+在 TypeScript 中，asserts 关键字用于类型保护，允许你在函数中进行类型断言，以确保某个条件为真时，特定的类型是有效的。这通常用于自定义类型保护函数，以便在运行时检查某个值的类型，并在检查通过后，告知 TypeScript 编译器该值的类型。
+
+类型保护函数示例：
+
+```typescript
+// 定义一个类型
+type User = {
+    name: string;
+    age: number;
+};
+
+// 自定义类型保护函数
+function assertIsUser(user: any): asserts user is User {
+    if (typeof user !== 'object' || user === null) {
+        throw new Error('Not a user');
+    }
+    if (typeof user.name !== 'string' || typeof user.age !== 'number') {
+        throw new Error('Invalid user properties');
+    }
+}
+
+// 使用类型保护函数
+function processUser(user: any) {
+    assertIsUser(user); // 运行时检查
+    // 这里 TypeScript 知道 user 是 User 类型
+    console.log(`User name: ${user.name}, age: ${user.age}`);
+}
+
+// 测试
+const userInput: any = { name: 'Alice', age: 30 };
+processUser(userInput); // 正常工作
+
+const invalidInput: any = { name: 'Bob', age: 'thirty' };
+processUser(invalidInput); // 抛出错误
+```
+换句话说，该函数用来断言参数 `user` 的类型是 `User`，如果参数 `user` 的类型不是 `User`，则抛出错误。程序就会在这里中断。如果达到要求，则 `user` 的类型会被断言为 `User`，从而在后续代码中可以安全地使用 `User` 类型的属性和方法。
+
+
+## is 命令
+
+在 TypeScript 中，is 关键字通常用于类型保护，帮助 TypeScript 确定某个变量的具体类型。它通常与用户自定义的类型保护函数一起使用。
+
+基础示例：
+
+```typescript
+function isString(value: any): value is string {
+    return typeof value === 'string';
+}
+
+function processValue(value: any) {
+    if (isString(value)) {
+        console.log(`Value is a string: ${value.toUpperCase()}`);
+    } else {
+        console.log(`Value is not a string`);
+    }
+}
+```
