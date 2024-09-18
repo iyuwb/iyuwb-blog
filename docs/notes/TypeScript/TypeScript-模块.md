@@ -200,19 +200,68 @@ import { Component } from "@angular/core";
 2. Node 方法
 
 -   相对模块：编译器会从当前文件所在的目录开始，根据相对路径查找模块文件。
-    -   当前目录是否包含目标文件
-    -   当前目录是否包含目标文件名的同名目录，该目录下是否存在文件 `package.json` ，该文件的 `types` 字段是否指定了入口文件，如果是的就加载该文件。
-    -   当前目录是否包含目标文件名的同名目录，该目录下是否存在文件 `index.d.ts` 、 `index.ts` 。 
+    -   例如：`import { A } from './a'` 。
+    -   当前目录是否包含 `b.ts` 、`b.tsx` 、`b.d.ts` 。
+    -   当前目录是否有子目录 b ，该子目录是否存在文件 `package.json` ，该文件的 `types` 字段是否指定了入口文件，如果是的就加载该文件。
+    -   当前目录的子目录b是否包含 `index.ts` 、`index.tsx` 、`index.d.ts`。 
 
--   非相对模块：以当前脚本的路径为起点，一层一层向上查找是否存在目录 `node_modules`。如果存在，则在该目录下查找目标文件。如果不存在，则继续向上查找，直到找到模块文件或者到达根目录。
-
-    -   当前目录是否包含 `node_modules` 目录，目录是否包含 `x.ts` 、 `x.d.ts`。
-    -   当前目录是否包含 `node_modules` 目录，目录是否包含 `package.json` ，该文件的 `types` 字段是否指定了入口文件，如果是的就加载该文件。
-    -   当前目录的子目录 `node_modules` 里面，是否包含子目录 `@types`，在该目录中查找文件 `x.d.ts` 。
-    -   当前目录的子目录 `node_modules` 里面，是否包含子目录 `x`，在该目录中查找 `index.ts` 、 `index.tsx` 、`index.d.ts` 。
+-   非相对模块：非相对模块则是以当前脚本的路径作为起点，逐级向上层目录查找是否存在子目录 `node_modules` 。
+    -   例如：`import { B } from 'b'` 。
+    -   当前目录的子目录 `node_modules` 是否包含 `b.ts` 、`b.tsx` 、`b.d.ts` 。
+    -   当前目录的子目录 `node_modules` ，是否存在文件 `package.json` ，该文件的 `types` 字段是否指定了入口文件，如果是的就加载该文件。
+    -   当前目录的子目录 `node_modules` 里面，是否包含子目录 `@types` ，在该目录中查找文件 `b.d.ts` 。
+    -   当前目录的子目录 `node_modules` 里面，是否包含子目录 `b` ，在该目录中查找 `index.ts` 、`index.tsx` 、`index.d.ts` 。
     -   进入上一级目录，重复上述步骤。
 
 ## 路径映射
+
+TypeScript 中，我们可以在 `tsconfig.json` 文件里面，手动指定脚本模块的路径。
+
+1. `baseUrl`：表示模块的基路径，所有非相对模块的路径都会基于该路径进行解析。
+```json
+{
+  "compilerOptions": {
+    "baseUrl": "./"
+  }
+}
+```
+如上配置中，基准目录为 `tsconfig.json` 所在的目录。
+
+2. `paths`：指定非相对路径的模块与实际脚本的映射。
+
+```json
+{
+  "compilerOptions": {
+    "baseUrl": "./",
+    "paths": {
+      "@/*": ["src/*"],
+      "jquery": ["node_modules/jquery/dist/jquery"]
+    }
+  }
+}
+```
+上面的配置中，`@/*` 表示所有以 `@` 开头的模块，都会被映射到 `src` 目录下。`jquery` 表示所有以 `jquery` 开头的模块，都会被映射到 `node_modules/jquery/dist/jquery` 目录下。
+
+
+3. `rootDirs`：指定模块定位时必须查找的其他目录。
+
+```json
+{
+  "compilerOptions": {
+    "rootDirs": ["src", "out"]
+  }
+}
+```
+
+上面的配置中，指定了模块定位时，需要查找的不同的目录。
+
+
+tsc 相关参数：
+
+-   `--traceResolution`：打印模块定位的详细信息。能够在编译时在命令行显示模块定位的每一步。
+-   `--noResolve`：禁止自动解析模块。只考虑在命令行传入的模块。
+
+
 
 
 
