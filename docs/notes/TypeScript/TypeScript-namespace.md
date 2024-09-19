@@ -239,6 +239,4 @@ namespace Color {
 
 Color.isColor(Color.Red); 
 Color.Red;
-}
-
 ```
