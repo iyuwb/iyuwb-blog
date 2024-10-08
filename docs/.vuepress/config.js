@@ -234,7 +234,7 @@ export default defineUserConfig({
                             icon: 'ic:baseline-dashboard',
                             items: ['TypeScript-简介安装','TypeScript-类型相关','TypeScript-命令方法', 'TypeScript-基础数据类型', 'TypeScript-特有数据类型', 'TypeScript-any与unknown', 'TypeScript-never与void', 
                                 'TypeScript-数组与元组', 'TypeScript-函数', 'TypeScript-对象',  'TypeScript-接口（Interface）', 'TypeScript-类（Class）','TypeScript-泛型','TypeScript-模块','TypeScript-namespace',
-                                'TypeScript-装饰器']
+                                'TypeScript-装饰器','TypeScript-d.ts类型声明文件']
                         },
                         {
                             text: 'TypeScript方案',
@@ -325,7 +325,7 @@ export default defineUserConfig({
                         {
                             text: '每日积累',
                             icon: 'ic:baseline-dashboard',
-                            items: ['『202408』每日积累','『202409』每日积累']
+                            items: ['『202408』每日积累','『202409』每日积累','『202410』每日积累']
                         },
                     ]
                 },

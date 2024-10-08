@@ -370,9 +370,13 @@ globalVariable = 'Hello'; // 正确
 declare var globalVariable: string;
 globalVariable = 'Hello';
 ```
+注意：`declare` 不能设置变量的值，只能描述变量的类型。
+```typescript
+declare var globalVariable: string = 'Hello'; // 报错
+```
 **函数**
 
-`declare` 关键字可以给出外部函数的类型描述。
+`declare` 关键字可以给出外部函数的类型描述。然后我们就可以直接使用这个函数，而不用关心它的具体实现。
 
 ```typescript
 declare function greet(name: string): void;
@@ -407,7 +411,7 @@ declare namespace MyNamespace {
     export function myFunction(): void;
 }
 ```
-举例说明，下面例子中使用了 `myDemoLib` 外部库定义的类型，但是编译器不知道这个类型的具体实现，这时可以使用`declare` 关键字来描述这个类型。
+举例说明，下面例子中使用了 `myDemoLib` 外部库定义的类型，但是编译器不知道这个类型的具体实现，这时可以使用 `declare` 关键字来描述这个类型。
 
 ```typescript
 // 类型描述
@@ -419,6 +423,70 @@ declare namespace myDemoLib {
 let result = myDemoLib.sayHello("你好");
 let count = myDemoLib.count;
 ```
+
+
+
+**Global**
+
+如果要为 JavaScript 引擎的原生对象添加属性和方法，可以使用 `declare global {}` 语法。
+```typescript
+declare global {
+    interface String {
+        reverse(): string;
+    }
+}
+String.prototype.reverse = function() {
+    return this.split('').reverse().join('');
+};
+console.log("hello".reverse()); // olleh
+```
+给 `window` 对象添加属性和方法。
+```typescript
+declare global {
+    interface Window {
+        myProperty: string;
+    }
+}
+window.myProperty = "Hello";
+console.log(window.myProperty); // Hello
+```
+**枚举（Enum）**
+
+`declare` 关键字可以给出外部枚举的类型描述。
+
+```typescript
+declare enum Color {
+    Red,
+    Green,
+    Blue
+}
+```
+**类型声明文件**
+
+类型声明文件通常以 `.d.ts` 为后缀，用于描述 JavaScript 库的类型信息。类型声明文件中通常包含 `declare` 关键字来描述变量、函数、类、模块等。
+
+```typescript
+declare module "url" {
+  export interface Url {
+    protocol?: string;
+    hostname?: string;
+    pathname?: string;
+  }
+
+  export function parse(
+    urlStr: string,
+    parseQueryString?,
+    slashesDenoteHost?
+  ): Url;
+}
+
+declare module "path" {
+  export function normalize(p: string): string;
+  export function join(...paths: any[]): string;
+  export var sep: string;
+}
+```
+使用类型声明文件时，需要使用 `/// <reference path="name.d.ts" />` 语法来引用类型声明文件。
 
 
 ## abstract 命令
