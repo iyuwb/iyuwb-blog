@@ -1,9 +1,267 @@
 ---
-title: TypeScript-命令方法
+title: TypeScript-关键字与运算符
 author: 耶温
 createTime: 2024/07/31 17:43:20
 permalink: /TypeScript/sa54awwt/
 ---
+# 运算符相关
+
+## typeof 运算符
+
+在 TypeScript 中， `typeof` 运算符用于获取一个值的类型，并返回一个字符串表示该类型的名称。这与 JavaScript 中的行为类似，但在 TypeScript 中这个功能还可以被用来推断变量或表达式的类型。
+
+1. JavaScript 中的 `typeof` 运算符
+
+```js
+console.log(typeof 5); // "number"
+console.log(typeof "hello"); // "string"
+console.log(typeof true); // "boolean"
+console.log(typeof undefined); // "undefined"
+console.log(typeof null); // "object" (这是一个已知的特殊情况)
+
+console.log(typeof []); // "object"
+console.log(typeof {}); // "object"
+console.log(typeof 123n) // "bigint"
+console.log(typeof Symbol("name")) // "symbol"
+console.log(typeof parseInt); // "function"
+```
+
+2. TypeScript 中的 `typeof` 运算符
+
+```typescript
+let myValue = 10;
+type MyValueType = typeof myValue; //  number 
+
+const a = { x: 0 };
+type T0 = typeof a; // { x: number }
+type T1 = typeof a.x; // number
+```
+
+```typescript
+let a = 1;
+let b: typeof a;
+
+if (typeof a === "number") {
+  b = a;
+}
+
+// 上面转成JS后
+let a = 1;
+let b;
+if (typeof a === "number") {
+  b = a;
+}
+```
+
+从上面的示例可以看出：
+
+-   `typeof` 运算符可以在运行时获取变量的类型。转成 Javascript 后， `typeof` 运算符会保留。
+-   在 TypeScript 中， `typeof` 还可以用于获取变量的类型并在类型注解中使用，增强了类型的复用性和代码的可读性。用于 TypeScript 类型相关的代码，会在转成 Javascript 后， `typeof` 运算符会被删除。
+
+
+
+## keyof 运算符
+
+在 TypeScript 中， `keyof` 运算符用于获取一个对象类型的所有键，并返回一个联合类型。它可以用于类型推断和类型检查。
+
+**基本用法**
+1. 获取对象类型的所有键，并返回一个联合类型。
+```typescript
+interface Person {
+    name: string;
+    age: number;
+}
+
+type PersonKeys = keyof Person; // "name" | "age"
+```
+2. 对于没有键的对象类型，`keyof` 返回的类型是 `never`。
+```typescript
+type EmptyObject = {};
+type EmptyObjectKeys = keyof EmptyObject; // never
+```
+3. 如果对象的属性名采用索引签名，则 `keyof` 返回的类型是索引签名的类型。 
+
+```typescript
+interface StringArray {
+    [index: number]: string;
+}
+type StringArrayKeys = keyof StringArray; // number
+
+// 属性名为string时，包含了属性名为number的情况，因为数值会自动转为字符串。
+// 因此下面输出的是string | number
+interface T {
+  [prop: string]: number;
+}
+type TKeys = keyof T; // string | number 
+```
+4. 对于联合类型，`keyof` 返回共有键名的联合类型。
+
+```typescript
+interface Teacher {
+    name: string;
+    subject: string;
+}
+type Person = {
+    name: string;
+    age: number;
+}
+
+type T = Person | Teacher;
+type TKeys = keyof T; // "name"
+```
+
+5. 对于交叉类型，`keyof` 返回的键名的联合类型。
+
+```typescript
+// 如上定义
+type T = Person & Teacher;
+type TKeys = keyof T; // "name" | "age" | "subject"
+```
+
+6. keyof 与映射类型，对象类型中的每个属性类型进行映射。
+
+```typescript
+interface Person {
+    name: string;
+    age: number;
+}
+
+type ReadonlyPerson = {
+    readonly [K in keyof Person]: Person[K]; 
+};
+
+const person: ReadonlyPerson = {
+    name: "Alice",
+    age: 30
+};
+```
+
+**注意事项**
+
+-   ` keyof ` 返回的联合类型中的每个成员都是对象类型的键，并且这些键的类型是 `string | number | symbol` 之一。
+
+**使用技巧**
+1. 利用 `keyof` 取出对象所有值类型
+```typescript
+interface Person {
+    name: string;
+    age: number;
+}
+type PersonValues = Person[keyof Person]; // string | number
+```
+2. 利用 `keyof` 去掉或者添加对象的 `readonly` 修饰符。
+```typescript
+interface Person {
+    readonly name: string;
+    readonly age: number;
+}
+
+type MutablePerson = {
+    -readonly [K in keyof Person]: Person[K];
+};
+
+type ReadonlyPerson = {
+    +readonly [K in keyof Person]: Person[K];
+};
+```
+如上，`-readonly` 表示去掉 `readonly` 修饰符，同理`+readonly` 则为添加 `readonly` 修饰符。
+
+## in 运算符
+在 JavaScript 中， `in` 运算符用于检查一个属性是否存在于对象中。
+```javascript
+const obj = { a: 1, b: 2, c: 3 };
+console.log("a" in obj); // true
+console.log("d" in obj); // false
+```
+
+而在 TypeScript 中， `in` 运算符用来遍历联合类型的每个成员。
+
+```typescript
+type Colors = "red" | "green" | "blue";
+type ColorMap = {
+    [K in Colors]: string; // 依次遍历联合类型中的每个成员
+};
+
+// 等价于
+type ColorMap = {
+    red: string;
+    green: string;
+    blue: string;
+};
+```
+## is 运算符
+
+在 TypeScript 中，is 运算符通常用于类型保护，帮助 TypeScript 确定某个变量的具体类型。它通常与用户自定义的类型保护函数一起使用。
+
+`is` 运算符用来描述返回值属于 `true` 还是 `false` 。
+
+基础示例：
+
+```typescript
+function isString(value: any): value is string {
+    return typeof value === 'string';
+}
+
+function processValue(value: any) {
+    if (isString(value)) {
+        console.log(`Value is a string: ${value.toUpperCase()}`);
+    } else {
+        console.log(`Value is not a string`);
+    }
+}
+```
+## [] 访问运算符
+
+在 TypeScript 类型操作中，`[]` 访问运算符用于获取对象类型中指定键的属性类型。
+
+1. 获取对象类型中指定键的属性类型
+
+```typescript
+interface Person {
+    name: string;
+    age: number;
+}
+
+type NameType = Person["name"]; // string
+type AgeType = Person["age"]; // number
+```
+2. `[]`  中的参数可以是联合类型，表示获取对象类型中多个键的属性类型，返回的也是联合类型。
+
+```typescript
+type NameOrAge = Person["name" | "age"]; // string | number
+```
+
+3. `[]`  中的参数可以是属性名的索引类型。
+```typescript
+type Person = {
+    [key: string]: number;
+}
+type PersonValues = Person[string]; // number
+```
+
+
+**注意事项**
+
+-   `[]` 中的参数必须是对象类型的键，否则会报错。
+
+## extends...? 条件运算符
+
+在 TypeScript 中， `extends...?` 是一个条件运算符，用于根据条件判断返回的类型。
+
+```typescript
+type IsString<T> = T extends string ? true : false;
+```
+
+如上，`IsString` 是一个泛型类型，接受一个类型参数 `T`，如果 `T` 是 `string` 类型，则返回 `true`，否则返回 `false`。
+
+联合类型也可以使用条件运算符。
+```typescript
+type IsStringOrNumber<T> = T extends string | number ? true : false;
+```
+
+## 模版字符串
+
+# 命令相关
 
 ##  type 命令
 
@@ -90,6 +348,7 @@ const personWithAddress: PersonWithAddress = {
 };
 ```
 
+
 ## interface 命令
 
 在 TypeScript 中， `interface` 命令用于定义对象类型。它可以用来描述对象的结构和行为，也可以用来定义函数类型。
@@ -98,94 +357,6 @@ const personWithAddress: PersonWithAddress = {
 关于 `interface` 的详细内容可以查看：[TypeScript-interface](/TypeScript/efqwfrfq/)
 :::
 
-
-## typeof 运算符
-
-在 TypeScript 中， `typeof` 运算符用于获取一个值的类型，并返回一个字符串表示该类型的名称。这与 JavaScript 中的行为类似，但在 TypeScript 中这个功能还可以被用来推断变量或表达式的类型。
-
-1. JavaScript 中的 `typeof` 运算符
-
-```js
-console.log(typeof 5); // "number"
-console.log(typeof "hello"); // "string"
-console.log(typeof true); // "boolean"
-console.log(typeof undefined); // "undefined"
-console.log(typeof null); // "object" (这是一个已知的特殊情况)
-
-console.log(typeof []); // "object"
-console.log(typeof {}); // "object"
-console.log(typeof 123n) // "bigint"
-console.log(typeof Symbol("name")) // "symbol"
-console.log(typeof parseInt); // "function"
-```
-
-2. TypeScript 中的 `typeof` 运算符
-
-```typescript
-let myValue = 10;
-type MyValueType = typeof myValue; //  number 
-
-const a = { x: 0 };
-type T0 = typeof a; // { x: number }
-type T1 = typeof a.x; // number
-```
-
-```typescript
-let a = 1;
-let b: typeof a;
-
-if (typeof a === "number") {
-  b = a;
-}
-
-// 上面转成JS后
-let a = 1;
-let b;
-if (typeof a === "number") {
-  b = a;
-}
-```
-
-从上面的示例可以看出：
-
--   `typeof` 运算符可以在运行时获取变量的类型。转成 Javascript 后， `typeof` 运算符会保留。
--   在 TypeScript 中， `typeof` 还可以用于获取变量的类型并在类型注解中使用，增强了类型的复用性和代码的可读性。用于 TypeScript 类型相关的代码，会在转成 Javascript 后， `typeof` 运算符会被删除。
-
-
-
-## keyof 运算符
-
-在 TypeScript 中， `keyof` 运算符用于获取一个对象类型的所有键，并返回一个联合类型。它可以用于类型推断和类型检查。
-
-1. 基本用法
-
-```typescript
-interface Person {
-    name: string;
-    age: number;
-}
-
-type PersonKeys = keyof Person; // "name" | "age"
-```
-
-
-2. keyof 与映射类型
-
-```typescript
-interface Person {
-    name: string;
-    age: number;
-}
-
-type ReadonlyPerson = {
-    readonly [K in keyof Person]: Person[K];
-};
-
-const person: ReadonlyPerson = {
-    name: "Alice",
-    age: 30
-};
-```
 
 
 ## as 命令
@@ -550,22 +721,22 @@ processUser(invalidInput); // 抛出错误
 换句话说，该函数用来断言参数 `user` 的类型是 `User`，如果参数 `user` 的类型不是 `User`，则抛出错误。程序就会在这里中断。如果达到要求，则 `user` 的类型会被断言为 `User`，从而在后续代码中可以安全地使用 `User` 类型的属性和方法。
 
 
-## is 命令
 
-在 TypeScript 中，is 关键字通常用于类型保护，帮助 TypeScript 确定某个变量的具体类型。它通常与用户自定义的类型保护函数一起使用。
+
+## infer 关键字
+在 TypeScript 中，`infer` 关键字用于在条件类型中推断类型。它通常与泛型一起使用，以便在类型转换或类型推导过程中获取中间类型。
 
 基础示例：
 
 ```typescript
-function isString(value: any): value is string {
-    return typeof value === 'string';
-}
+type Flatten<Type> = Type extends Array<infer Item> ? Item : Type;
 
-function processValue(value: any) {
-    if (isString(value)) {
-        console.log(`Value is a string: ${value.toUpperCase()}`);
-    } else {
-        console.log(`Value is not a string`);
-    }
-}
+// string
+type Str = Flatten<string[]>;
+// number
+type Num = Flatten<number>;
 ```
+如上，`Flatten` 类型定义了一个条件类型，如果 `Type` 是一个数组类型，则推断出数组元素的类型 `Item`，否则返回 `Type` 本身。`infer` 关键字在这里用于推断数组元素的类型。
+
+
+

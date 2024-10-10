@@ -177,7 +177,10 @@ tsc --watch // 持续监听，监听文件改变，实时更新
 
 ::: tip
 我们在日常工作开发中，一般都会使用框架来搭建项目。很多框架使用TypeScript，一般都会需要专门配置。我们按照要求配置即可。
+
+比如：Vue3 + TypeScript + Vite 或者 React + TypeScript + Vite
 :::
+
 
 
 
