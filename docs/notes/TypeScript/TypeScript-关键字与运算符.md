@@ -4,7 +4,7 @@ author: 耶温
 createTime: 2024/07/31 17:43:20
 permalink: /TypeScript/sa54awwt/
 ---
-# 运算符相关
+# TypeScript中的运算符
 
 ## typeof 运算符
 
@@ -261,9 +261,29 @@ type IsStringOrNumber<T> = T extends string | number ? true : false;
 
 ## 模版字符串
 
-# 命令相关
+在 TypeScript 中，可以使用模版字符串来定义类型。
 
-##  type 命令
+```typescript
+type Name = "Alice";
+type Greeting = `Hello, ${Name}!`; // "Hello, Alice!"
+```
+
+如果模版字符串中是一个联合类型，那么返回的类型也是一个联合类型。
+
+```typescript
+type Name = "Alice" | "Bob";
+type Greeting = `Hello, ${Name}!`; // "Hello, Alice!" | "Hello, Bob!"
+```
+
+
+**注意事项**
+
+-   模版字符串中的变量必须是类型，不能是值。
+-   模版字符串可以引用的类型：`string`、`number`、`bigint`、`boolean`、`null`、`undefined`。引用其他类型会报错。
+
+# TypeScript 中的关键字
+
+##  type 关键字
 
 在 TypeScript 中， `type` 关键字用于定义类型别名。类型别名可以是基本类型、联合类型、交叉类型、元组、对象类型等等使用 `type` 可以让代码更具可读性和可维护性。
 
@@ -349,9 +369,9 @@ const personWithAddress: PersonWithAddress = {
 ```
 
 
-## interface 命令
+## interface 关键字
 
-在 TypeScript 中， `interface` 命令用于定义对象类型。它可以用来描述对象的结构和行为，也可以用来定义函数类型。
+在 TypeScript 中， `interface` 关键字用于定义对象类型。它可以用来描述对象的结构和行为，也可以用来定义函数类型。
 
 :::tip
 关于 `interface` 的详细内容可以查看：[TypeScript-interface](/TypeScript/efqwfrfq/)
@@ -359,7 +379,7 @@ const personWithAddress: PersonWithAddress = {
 
 
 
-## as 命令
+## as 关键字
 
 在 TypeScript 中，`as` 关键字用于类型断言（Type Assertion），它允许开发者告诉编译器某个值的具体类型。它可以将一个值的类型断言为另一个类型。
 
@@ -401,7 +421,7 @@ let john = <Person>person;
 
 
 
-## implements 命令
+## implements 关键字
 
 
 在 TypeScript 中， `implements` 关键字用于实现接口（interface）。当一个类实现一个接口时，它必须提供接口中定义的所有属性和方法的具体实现。这种机制使得 TypeScript 支持面向对象编程中的多态性和接口的概念。
@@ -493,13 +513,13 @@ class Beagle implements Dog {
 const beagle = new Beagle('Max');
 beagle.bark(); // 输出: Max says Woof!
 ```
-## namespace 命令
+## namespace 关键字
 
 在 TypeScript 中， `namespace` 关键字用于定义命名空间。命名空间是一种组织和隔离代码的方式，它可以将相关的代码组织到一个范围内。
 
 
 
-## declare 命令
+## declare 关键字
 
 在 TypeScript 中， `declare` 关键字用于声明全局变量、全局函数、全局类型等。它可以帮助编译器识别这些声明，从而提供更好的类型检查和代码补全功能。换句话说 `declare` 关键字用来告诉编译器，某个类型是存在的，可以在当前文件中使用。
 
@@ -660,7 +680,7 @@ declare module "path" {
 使用类型声明文件时，需要使用 `/// <reference path="name.d.ts" />` 语法来引用类型声明文件。
 
 
-## abstract 命令
+## abstract 关键字 
 在 TypeScript 中， `abstract` 关键字用于定义抽象类和抽象方法。抽象类是不能被实例化的类，只能被继承。抽象成员是抽象类中定义的成员，必须在子类中实现。
 
 ```typescript
@@ -681,7 +701,7 @@ student.sayHello(); // Hello, my name is yuwb
 ```
 
 
-## asserts 命令
+## asserts 关键字
 
 在 TypeScript 中，asserts 关键字用于类型保护，允许你在函数中进行类型断言，以确保某个条件为真时，特定的类型是有效的。这通常用于自定义类型保护函数，以便在运行时检查某个值的类型，并在检查通过后，告知 TypeScript 编译器该值的类型。
 
@@ -723,7 +743,7 @@ processUser(invalidInput); // 抛出错误
 
 
 
-## infer 关键字
+## infer 关键字 
 在 TypeScript 中，`infer` 关键字用于在条件类型中推断类型。它通常与泛型一起使用，以便在类型转换或类型推导过程中获取中间类型。
 
 基础示例：

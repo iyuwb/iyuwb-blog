@@ -560,3 +560,117 @@ type IsString<T> = T extends string ? "Yes" : "No";
 type Test1 = IsString<string>; // "Yes"
 type Test2 = IsString<number>; // "No"
 ```
+
+
+## 类型映射
+
+在 TypeScript 中，类型映射（Type Mapping）是一种通过映射类型来创建新类型的方式。它可以帮助我们在现有类型的基础上进行扩展或修改，从而创建出新的类型。
+
+1. 使用 `keyof` 和索引访问类型
+
+```typescript
+interface Person {
+    name: string;
+    age: number;
+}
+
+type ReadonlyPerson = {
+    readonly [K in keyof Person]: Person[K];
+};
+
+const person: ReadonlyPerson = {
+    name: "Alice",
+    age: 30,
+};
+
+person.name = "Bob"; // 报错，因为 name 是只读属性
+```
+如上，我们使用 `keyof` 和索引访问类型来创建了一个新的类型 `ReadonlyPerson`，它将 `Person` 类型中的所有属性都设置为只读。其中 `K` 为属性变量名，可以随便起。
+
+2. 可以使用 `+?`、`-?`、`+readonly`、`-readonly` 来修改属性的可选性、只读性。
+```typescript
+interface Person {
+    name: string;
+    age?: number;
+    readonly gender: string;
+}
+
+type PartialPerson = {
+    [K in keyof Person]+?: Person[K]; // 将所有属性变为可选
+};
+
+type RequiredPerson = {
+    [K in keyof Person]-?: Person[K]; // 将所有属性变为必选
+};
+
+type ReadonlyPerson = {
+    -readonly [K in keyof Person]: Person[K]; // 将所有属性变为可写
+};
+
+type MutablePerson = {
+    +readonly [K in keyof Person]: Person[K]; // 将所有属性变为只读
+};
+```
+在TypeScript中，有两个范型类型：`Partial<T>` 和 `Required<T>`，它们分别用于将类型中的所有属性变为可选和必选。
+还有一个类型 `Readonly<T>`，它用于将类型中的所有属性变为只读。
+
+3. 映射修改键名
+
+我们可以通过模版字符串类型来修改映射类型中的键名。使用 `as` 关键字来指定新的键名。
+```typescript
+interface Person {
+    name: string;
+    age: number;
+}
+//string & K 表示 K 必须是 string 类型
+type RenamePerson = {
+    [K in keyof Person as `new_${string & K}`]: Person[K];
+};
+
+const person: RenamePerson = {
+    new_name: "Alice",
+    new_age: 30,
+};
+```
+
+4. 属性过滤
+
+我们可以使用条件类型来过滤映射类型中的属性。使用 `extends` 关键字来指定过滤条件。
+```typescript
+interface Person {
+    name: string;
+    age: number;
+    gender: string;
+}
+
+type Filter<T> = {
+  // 只保留类型为 string 的属性
+  [K in keyof T as T[K] extends string ? K : never]: string;
+};
+
+const filteredPerson: Filter<Person> = {
+    name: "Alice",
+    gender: "female",
+};
+```
+
+
+**注意事项**
+- 映射会原样复制原始对象的可选属性和只读属性。
+```typescript
+interface Person {
+    name: string;
+    age?: number;
+    readonly gender: string;
+}
+
+type ReadonlyPerson = {
+    [K in keyof Person]: Person[K];
+};
+// 相当于
+type ReadonlyPerson = {
+    name: string;
+    age?: number;
+    readonly gender: string;
+};
+```
