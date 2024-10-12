@@ -255,6 +255,305 @@ type Result = Fn<"hello">; // ["hello", "world"]
 4. 泛型可以嵌套，但是会增加代码复杂性，可读性变差。
 
 
+## 类型工具范型
+
+TypeScript 提供了一些内置的类型工具，这些工具可以帮助我们在类型层面上进行操作。这些工具通常以 `T` 作为参数，并返回一个新的类型。
+### `Awaited<T>`
+`Awaited<T>` 是一个内置的类型工具，用于获取 `Promise` 对象的解析类型。返回的类型是 `Promise` 对象中 `then` 方法的参数类型。
+```typescript
+async function fetchData(): Promise<string> {
+    return "data";
+}
+
+type DataType = Awaited<ReturnType<typeof fetchData>>; // DataType 的类型为 string
+
+async function example() {
+    const data: DataType = await fetchData(); // data 的类型为 string
+    console.log(data);
+}
+```
+### `ConstructorParameters<T>`
+`ConstructorParameters<T>` 是一个内置的类型工具，用于获取构造函数的参数类型。返回的类型是一个元组，元组中的元素类型是构造函数的参数类型。
+
+```typescript
+// 定义一个类 Person，带有构造函数
+class Person {
+    constructor(public name: string, public age: number) {}
+}
+
+// 使用 ConstructorParameters 提取 Person 构造函数的参数类型
+type PersonConstructorParams = ConstructorParameters<typeof Person>; // [string, number]
+
+// PersonConstructorParams 被推断为 [string, number]
+const params: PersonConstructorParams = ['Alice', 30];
+
+```
+### `Excluding<T, K>`
+`Excluding<T, K>` 是一个内置的类型工具，用于从类型 `T` 中排除类型 `K`。返回的类型是 `T` 中不包含 `K` 的类型。
+
+```typescript
+// 定义一个接口 User
+interface User {
+    id: number;
+    name: string;
+    email: string;
+}
+
+// 使用 Omit 排除 User 接口中的 email 属性
+type UserWithoutEmail = Omit<User, 'email'>;
+// UserWithoutEmail 现在是 { id: number; name: string; }
+```
+
+### `Extract<T, K>`
+`Extract<T, K>` 是一个内置的类型工具，用于从类型 `T` 中提取类型 `K`。返回的类型是 `T` 中包含 `K` 的类型。
+
+```typescript
+// 定义一个联合类型
+type Fruit = 'apple' | 'banana' | 'orange' | 'grape';
+
+// 定义一个类型，表示我们想要提取的水果
+type Citrus = 'orange' | 'lemon';
+
+// 使用 Extract 提取 Fruit 中的 Citrus 类型
+type ExtractedFruits = Extract<Fruit, Citrus>;
+
+// ExtractedFruits 现在是 'orange'
+const citrusFruit: ExtractedFruits = 'orange'; // 正确
+```
+
+### `InstanceType<T>`
+`InstanceType<T>` 是一个内置的类型工具，用于获取构造函数类型的实例类型。返回的类型是构造函数的实例类型。
+
+```typescript
+// 定义一个类 Person
+class Person {
+    constructor(public name: string, public age: number) {}
+}
+
+// 使用 InstanceType 提取 Person 类型的实例类型
+type PersonInstance = InstanceType<typeof Person>;
+
+// PersonInstance 现在是 Person
+const person: PersonInstance = new Person('Alice', 30);
+```
+### `NonNullable<T>`
+`NonNullable<T>` 是一个内置的类型工具，用于从类型 `T` 中排除 `null` 和 `undefined`。返回的类型是 `T` 中不包含 `null` 和 `undefined` 的类型。
+
+```typescript
+// 定义一个联合类型
+type MaybeString = string | null | undefined;
+// 使用 NonNullable 从 MaybeString 中排除 null 和 undefined
+type NonNullableString = NonNullable<MaybeString>;
+// NonNullableString 现在是 string
+const nonNullableString: NonNullableString = 'Hello, world!';
+```
+### `Omit<T, K>`
+`Omit<T, K>` 是一个内置的类型工具，用于从类型 `T` 中排除属性 `K`。返回的类型是 `T` 中不包含 `K` 的类型。
+
+```typescript
+// 定义一个接口 User
+interface User {
+    id: number;
+    name: string;
+    email: string;
+}
+// 使用 Omit 排除 User 接口中的 email 属性
+type UserWithoutEmail = Omit<User, 'email'>;
+// UserWithoutEmail 现在是 { id: number; name: string; }
+```
+
+### `OmitThisParameter<T>`
+`OmitThisParameter<T>` 是一个内置的类型工具，用于从类型 `T` 中排除 `this` 参数。返回的类型是 `T` 中不包含 `this` 参数的类型。
+
+```typescript
+// 定义一个类
+class Calculator {
+    constructor(public value: number) {}
+
+    // 定义一个方法，带有 this 参数
+    add(this: Calculator, amount: number) {
+        this.value += amount;
+        return this.value;
+    }
+}
+
+// 使用 OmitThisParameter 来创建一个不带 this 参数的函数类型
+type AddFunction = OmitThisParameter<typeof Calculator.prototype.add>;
+
+// 创建一个 Calculator 实例
+const calculator = new Calculator(10);
+
+// 创建一个不带 this 参数的函数
+const add: AddFunction = calculator.add.bind(calculator);
+
+// 使用不带 this 参数的函数
+const result = add(5); // 结果是 15
+
+console.log(result); // 输出: 15
+console.log(calculator.value); // 输出: 15
+```
+### `Parameters<T>`
+`Parameters<T>` 是一个内置的类型工具，用于获取函数类型的参数类型。返回的类型是一个元组，元组中的每个元素对应函数参数的类型。
+
+```typescript
+// 定义一个函数类型
+type Func = (a: number, b: string) => void;
+
+// 使用 Parameters 获取 Func 的参数类型
+type FuncParameters = Parameters<Func>;
+// FuncParameters 现在是 [number, string]
+```
+
+
+### `Partial<T>`
+`Partial<T>`，将类型 `T` 中的所有属性变为可选。
+```typescript
+interface Person {
+    name: string;
+    age: number;
+}
+
+type PartialPerson = Partial<Person>;
+// 相当于
+type PartialPerson = {
+    name?: string;
+    age?: number;
+};
+```
+### `Pick<T, K>`
+`Pick<T, K>`，从类型 `T` 中选择属性 `K`，返回一个新的类型。
+```typescript
+interface Person {
+    name: string;
+    age: number;
+    email: string;
+}
+
+type PersonName = Pick<Person, 'name'>;
+// 相当于
+type PersonName = {
+    name: string;
+};
+```
+### `Readonly<T>`
+`Readonly<T>`，将类型 `T` 中的所有属性变为只读。
+```typescript
+interface Person {
+    name: string;
+    age: number;
+}
+
+type ReadonlyPerson = Readonly<Person>;
+// 相当于
+type ReadonlyPerson = {
+    readonly name: string;
+    readonly age: number;
+};
+```
+### `Record<K, T>`
+`Record<K, T>`，创建一个对象类型，其属性键为类型 `K`，属性值为类型 `T`。
+```typescript
+type StringArray = Record<string, string[]>;
+
+const names: StringArray = {
+    foo: ['Alice', 'Bob'],
+    bar: ['Charlie', 'David'],
+};
+```
+
+### `Required<T>`
+`Required<T>`，将类型 `T` 中的所有属性变为必选。
+```typescript
+interface Person {
+    name?: string;
+    age?: number;
+}
+
+type RequiredPerson = Required<Person>;
+// 相当于
+type RequiredPerson = {
+    name: string;
+    age: number;
+};
+```
+
+### `ReadonlyArray<T>`
+`ReadonlyArray<T>`，将数组类型 `T` 中的所有元素变为只读。
+```typescript
+const names: ReadonlyArray<string> = ['Alice', 'Bob'];
+names[0] = 'Charlie'; // Error: Assignment to readonly property
+```
+
+### `ReturnType<T>`
+`ReturnType<T>`，获取函数类型 `T` 的返回类型。
+
+```typescript
+type Func = () => number;
+
+type FuncReturnType = ReturnType<Func>;
+// FuncReturnType 现在是 number
+```
+
+### `ThisParameterType<T>`
+`ThisParameterType<T>`，获取函数类型 `T` 的 `this` 参数类型。
+
+```typescript
+function greet(this: { name: string }) {
+    console.log(`Hello, ${this.name}!`);
+}
+
+type GreetThisType = ThisParameterType<typeof greet>;
+// GreetThisType 现在是 { name: string }
+```
+### `thisType<T>`
+
+`ThisType<Type>` 不返回类型，只用来跟其他类型组成交叉类型，用来提示 TypeScript 其他类型里面的this的类型。
+
+```typescript
+let obj: ThisType<{ x: number }> & { getX: () => number };
+
+obj = {
+  getX() {
+    return this.x + this.y; // 报错
+  },
+};
+```
+如上，`ThisType<{ x: number }> & { getX: () => number }` 提示 `obj` 对象的 `this` 类型是 `{ x: number }`，并且 `obj` 对象必须包含一个 `getX` 方法，该方法返回一个数字。
+
+## 字符串范型
+### `Uppercase<T>`
+`Uppercase<T>`，将字符串类型 `T` 中的所有字符变为大写。
+
+```typescript
+type LowercaseString = 'hello';
+type UppercaseString = Uppercase<LowercaseString>;
+// UppercaseString 现在是 'HELLO'
+```
+### `Lowercase<T>`
+`Lowercase<T>`，将字符串类型 `T` 中的所有字符变为小写。
+
+```typescript
+type UppercaseString = 'HELLO';
+type LowercaseString = Lowercase<UppercaseString>;
+// LowercaseString 现在是 'hello'
+```
+### `Capitalize<T>`
+`Capitalize<T>`，将字符串类型 `T` 中的第一个字符变为大写。
+
+```typescript
+type LowercaseString = 'hello';
+type CapitalizedString = Capitalize<LowercaseString>;
+// CapitalizedString 现在是 'Hello'
+```
+### `Uncapitalize<T>`
+  `Uncapitalize<T>`，将字符串类型 `T` 中的第一个字符变为小写。
+```typescript
+type UppercaseString = 'HELLO';
+type UncapitalizedString = Uncapitalize<UppercaseString>;
+// UncapitalizedString 现在是 'hELLO'
+```
+
+
 
 
 

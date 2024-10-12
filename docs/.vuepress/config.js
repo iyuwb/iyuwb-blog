@@ -234,7 +234,7 @@ export default defineUserConfig({
                             icon: 'ic:baseline-dashboard',
                             items: ['TypeScript-简介安装','TypeScript-类型相关','TypeScript-关键字与运算符', 'TypeScript-基础数据类型', 'TypeScript-特有数据类型', 'TypeScript-any与unknown', 'TypeScript-never与void', 
                                 'TypeScript-数组与元组', 'TypeScript-函数', 'TypeScript-对象',  'TypeScript-接口（Interface）', 'TypeScript-类（Class）','TypeScript-泛型','TypeScript-模块','TypeScript-namespace',
-                                'TypeScript-装饰器','TypeScript-d.ts类型声明文件']
+                                'TypeScript-装饰器','TypeScript-d.ts类型声明文件','TypeScript-配置相关']
                         },
                         {
                             text: 'TypeScript方案',
